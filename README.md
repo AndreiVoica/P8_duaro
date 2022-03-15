@@ -40,3 +40,9 @@ Follow this tutorial to install ML-agents --> https://alexisrozhkov.github.io/un
 Make sure the venv is running python 3.6 (or 3.7)
 
 Follow this tutorial to setup ML-agents in Unity --> https://youtu.be/zPFU30tbyKs?t=611
+
+# Launch Duaro
+
+```bash
+   roslaunch khi_duaro_moveit_config demo.launch
+   ```
