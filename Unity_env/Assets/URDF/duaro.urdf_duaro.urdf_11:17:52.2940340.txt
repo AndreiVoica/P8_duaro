@@ -1,0 +1,1849 @@
+************** String Comparator ************
+
+No of Links :
+Equal:  True
+Count: Source: 0019 Exported: 0019
+No of Joints:
+ Equal:  True
+Count: 0018
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source:        world Exported:        world
+ Inertial Checks
+  Inertia Attributes Null:  True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0000
+Exported Count: 0000
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0001
+ Exported: 0001
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source:   world2base
+Exported:   world2base
+Name:
+Equal:  True
+Type: Source:        fixed
+Type: Exported:        fixed
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+Parent:
+Equal:  True
+Parent: Source:        world
+Parent: Exported:        world
+  Axis Checks
+  ,Origin Nullity Check:   True
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source:    base_link
+Child Name: Exported:    base_link
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source:    base_link Exported:    base_link
+ Inertial Checks
+  Inertia Attributes Null:  True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_F502_Adjuster_pad.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_Adjuster_pad.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        White 
+   Exported:        White
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_F502_Adjuster_pad.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_Adjuster_pad.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0006
+ Exported: 0006
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: duaro_body_joint
+Exported: duaro_body_joint
+Name:
+Equal:  True
+Type: Source:        fixed
+Type: Exported:        fixed
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+Parent:
+Equal:  True
+Parent: Source:    base_link
+Parent: Exported:    base_link
+  Axis Checks
+  ,Origin Nullity Check:   True
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source:   duaro_body
+Child Name: Exported:   duaro_body
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source:   duaro_body Exported:   duaro_body
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_F502_Cabinet_body.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_Cabinet_body.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        White 
+   Exported:        White
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_F502_Cabinet_body.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_Cabinet_body.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0001
+ Exported: 0001
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source:       joint0
+Exported:       joint0
+Name:
+Equal:  True
+Type: Source:        fixed
+Type: Exported:        fixed
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.8)
+  RPY:
+   Equal Check:   True
+   Value:Zero Vector
+Parent:
+Equal:  True
+Parent: Source:   duaro_body
+Parent: Exported:   duaro_body
+  Axis Checks
+  ,Origin Nullity Check:   True
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source:     duaro_j0
+Child Name: Exported:     duaro_j0
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source:     duaro_j0 Exported:     duaro_j0
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A201_j0_Ver2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A201_j0_Ver2m.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        White 
+   Exported:        White
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_A201_j0_Ver2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A201_j0_Ver2m.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0002
+ Exported: 0002
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: lower_joint1
+Exported: lower_joint1
+Name:
+Equal:  True
+Type: Source:     revolute
+Type: Exported:     revolute
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.3)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+Parent:
+Equal:  True
+Parent: Source:     duaro_j0
+Parent: Exported:     duaro_j0
+  Axis Checks
+  Axis
+  Equal:   True
+  XYZ : (0.000,0.000,1.000) 
+  Dynamics Checks
+  Damping Nullity Check:   True
+  Damping:
+  Equal:  False
+  Damping Value: Source:            0
+  Damping Valye: Exported:            0
+  Friction Nullity Check:   True
+  Friction:
+  Equal:  False
+  Friction Value: Source:            0
+  Friction Value: Exported:            0
+  Lower Limit:
+  Equal:   True
+  Lower Limit Value: -2.96705972839036
+  Upper Limit:
+  Equal:   True
+  Upper Limit Value: 2.96705972839036
+  Effort Equal:   True Effort: 100.000
+  Velocity Equal:   True Velocity: 4.189
+Child Name:
+Equal:   True
+Child Name: Source: lower_link_j1
+Child Name: Exported: lower_link_j1
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: lower_link_j1 Exported: lower_link_j1
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A201L_J1_Ver2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A201L_J1_Ver2m.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        White 
+   Exported:        White
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_A201L_J1_Ver2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A201L_J1_Ver2m.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0001
+ Exported: 0001
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: lower_joint2
+Exported: lower_joint2
+Name:
+Equal:  True
+Type: Source:     revolute
+Type: Exported:     revolute
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.4, 0.1)
+  RPY:
+   Equal Check:   True
+   Value:Zero Vector
+Parent:
+Equal:  True
+Parent: Source: lower_link_j1
+Parent: Exported: lower_link_j1
+  Axis Checks
+  Axis
+  Equal:   True
+  XYZ : (0.000,0.000,1.000) 
+  Dynamics Checks
+  Damping Nullity Check:   True
+  Damping:
+  Equal:  False
+  Damping Value: Source:            0
+  Damping Valye: Exported:            0
+  Friction Nullity Check:   True
+  Friction:
+  Equal:  False
+  Friction Value: Source:            0
+  Friction Value: Exported:            0
+  Lower Limit:
+  Equal:   True
+  Lower Limit Value: -2.44346095279206
+  Upper Limit:
+  Equal:   True
+  Upper Limit Value: 2.44346095279206
+  Effort Equal:   True Effort: 100.000
+  Velocity Equal:   True Velocity: 5.498
+Child Name:
+Equal:   True
+Child Name: Source: lower_link_j2
+Child Name: Exported: lower_link_j2
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: lower_link_j2 Exported: lower_link_j2
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A202L_J2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202L_J2m.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        White 
+   Exported:        White
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_A202L_J2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202L_J2m.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0001
+ Exported: 0001
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: lower_joint3
+Exported: lower_joint3
+Name:
+Equal:  True
+Type: Source:    prismatic
+Type: Exported:    prismatic
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.4, 0.0)
+  RPY:
+   Equal Check:   True
+   Value:Zero Vector
+Parent:
+Equal:  True
+Parent: Source: lower_link_j2
+Parent: Exported: lower_link_j2
+  Axis Checks
+  Axis
+  Equal:   True
+  XYZ : (0.000,0.000,1.000) 
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source: lower_link_j3
+Child Name: Exported: lower_link_j3
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: lower_link_j3 Exported: lower_link_j3
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A202L_J3m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202L_J3m.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        White 
+   Exported:        White
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_A202L_J3m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202L_J3m.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0002
+ Exported: 0002
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: lower_j3_obstaclem_joint
+Exported: lower_j3_obstaclem_joint
+Name:
+Equal:  True
+Type: Source:        fixed
+Type: Exported:        fixed
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+Parent:
+Equal:  True
+Parent: Source: lower_link_j3
+Parent: Exported: lower_link_j3
+  Axis Checks
+  ,Origin Nullity Check:   True
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source: lower_link_j3_obst
+Child Name: Exported: lower_link_j3_obst
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: lower_link_j3_obst Exported: lower_link_j3_obst
+ Inertial Checks
+  Inertia Attributes Null:  True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A202L_J3_obstaclem.stl Exported: package://khi_duaro_description/meshes/WD002N_A202L_J3_obstaclem.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        Black 
+   Exported:        Black
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0000
+Exported Count: 0000
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0000
+ Exported: 0000
+ Child Attributes:   True Child Name: lower_link_j3_obst
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: lower_joint4
+Exported: lower_joint4
+Name:
+Equal:  True
+Type: Source:     revolute
+Type: Exported:     revolute
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, -0.2)
+  RPY:
+   Equal Check:   True
+   Value:Zero Vector
+Parent:
+Equal:  True
+Parent: Source: lower_link_j3
+Parent: Exported: lower_link_j3
+  Axis Checks
+  Axis
+  Equal:   True
+  XYZ : (0.000,0.000,1.000) 
+  Dynamics Checks
+  Damping Nullity Check:   True
+  Damping:
+  Equal:  False
+  Damping Value: Source:            0
+  Damping Valye: Exported:            0
+  Friction Nullity Check:   True
+  Friction:
+  Equal:  False
+  Friction Value: Source:            0
+  Friction Value: Exported:            0
+  Lower Limit:
+  Equal:   True
+  Lower Limit Value: -6.28318530717959
+  Upper Limit:
+  Equal:   True
+  Upper Limit Value: 6.28318530717959
+  Effort Equal:   True Effort: 100.000
+  Velocity Equal:   True Velocity: 10.472
+Child Name:
+Equal:   True
+Child Name: Source: lower_link_j4
+Child Name: Exported: lower_link_j4
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: lower_link_j4 Exported: lower_link_j4
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A202L_J4m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202L_J4m.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:              
+   Exported:             
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_A202L_J4m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202L_J4m.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0000
+ Exported: 0000
+ Child Attributes:   True Child Name: lower_link_j4
+ Child Attributes:   True Child Name: lower_link_j3
+ Child Attributes:   True Child Name: lower_link_j2
+ Child Attributes:   True Child Name: lower_link_j1
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: upper_joint1
+Exported: upper_joint1
+Name:
+Equal:  True
+Type: Source:     revolute
+Type: Exported:     revolute
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.4)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+Parent:
+Equal:  True
+Parent: Source:     duaro_j0
+Parent: Exported:     duaro_j0
+  Axis Checks
+  Axis
+  Equal:   True
+  XYZ : (0.000,0.000,1.000) 
+  Dynamics Checks
+  Damping Nullity Check:   True
+  Damping:
+  Equal:  False
+  Damping Value: Source:            0
+  Damping Valye: Exported:            0
+  Friction Nullity Check:   True
+  Friction:
+  Equal:  False
+  Friction Value: Source:            0
+  Friction Value: Exported:            0
+  Lower Limit:
+  Equal:   True
+  Lower Limit Value: -2.44346095279206
+  Upper Limit:
+  Equal:   True
+  Upper Limit Value: 8.72664625997165
+  Effort Equal:   True Effort: 100.000
+  Velocity Equal:   True Velocity: 4.189
+Child Name:
+Equal:   True
+Child Name: Source: upper_link_j1
+Child Name: Exported: upper_link_j1
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: upper_link_j1 Exported: upper_link_j1
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  RPY:
+   Equal Check:   True
+   Value:Zero Vector
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A201U_J1_Ver2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A201U_J1_Ver2m.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        White 
+   Exported:        White
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_A201U_J1_Ver2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A201U_J1_Ver2m.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0001
+ Exported: 0001
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: upper_joint2
+Exported: upper_joint2
+Name:
+Equal:  True
+Type: Source:     revolute
+Type: Exported:     revolute
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.4, 0.0)
+  RPY:
+   Equal Check:   True
+   Value:Zero Vector
+Parent:
+Equal:  True
+Parent: Source: upper_link_j1
+Parent: Exported: upper_link_j1
+  Axis Checks
+  Axis
+  Equal:   True
+  XYZ : (0.000,0.000,1.000) 
+  Dynamics Checks
+  Damping Nullity Check:   True
+  Damping:
+  Equal:  False
+  Damping Value: Source:            0
+  Damping Valye: Exported:            0
+  Friction Nullity Check:   True
+  Friction:
+  Equal:  False
+  Friction Value: Source:            0
+  Friction Value: Exported:            0
+  Lower Limit:
+  Equal:   True
+  Lower Limit Value: -2.44346095279206
+  Upper Limit:
+  Equal:   True
+  Upper Limit Value: 2.44346095279206
+  Effort Equal:   True Effort: 100.000
+  Velocity Equal:   True Velocity: 5.498
+Child Name:
+Equal:   True
+Child Name: Source: upper_link_j2
+Child Name: Exported: upper_link_j2
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: upper_link_j2 Exported: upper_link_j2
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A202U_J2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202U_J2m.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        White 
+   Exported:        White
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_A202U_J2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202U_J2m.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0001
+ Exported: 0001
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: upper_joint3
+Exported: upper_joint3
+Name:
+Equal:  True
+Type: Source:    prismatic
+Type: Exported:    prismatic
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.4, 0.0)
+  RPY:
+   Equal Check:   True
+   Value:Zero Vector
+Parent:
+Equal:  True
+Parent: Source: upper_link_j2
+Parent: Exported: upper_link_j2
+  Axis Checks
+  Axis
+  Equal:   True
+  XYZ : (0.000,0.000,1.000) 
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source: upper_link_j3
+Child Name: Exported: upper_link_j3
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: upper_link_j3 Exported: upper_link_j3
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A202U_J3m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202U_J3m.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        White 
+   Exported:        White
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_A202U_J3m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202U_J3m.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0002
+ Exported: 0002
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: upper_j3_obstaclem_joint
+Exported: upper_j3_obstaclem_joint
+Name:
+Equal:  True
+Type: Source:        fixed
+Type: Exported:        fixed
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  RPY:
+   Equal Check:   True
+   Value:Zero Vector
+Parent:
+Equal:  True
+Parent: Source: upper_link_j3
+Parent: Exported: upper_link_j3
+  Axis Checks
+  ,Origin Nullity Check:   True
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source: upper_link_j3_obst
+Child Name: Exported: upper_link_j3_obst
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: upper_link_j3_obst Exported: upper_link_j3_obst
+ Inertial Checks
+  Inertia Attributes Null:  True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A202U_J3_obstaclem.stl Exported: package://khi_duaro_description/meshes/WD002N_A202U_J3_obstaclem.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        Black 
+   Exported:        Black
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0000
+Exported Count: 0000
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0000
+ Exported: 0000
+ Child Attributes:   True Child Name: upper_link_j3_obst
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: upper_joint4
+Exported: upper_joint4
+Name:
+Equal:  True
+Type: Source:     revolute
+Type: Exported:     revolute
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, -0.2)
+  RPY:
+   Equal Check:   True
+   Value:Zero Vector
+Parent:
+Equal:  True
+Parent: Source: upper_link_j3
+Parent: Exported: upper_link_j3
+  Axis Checks
+  Axis
+  Equal:   True
+  XYZ : (0.000,0.000,1.000) 
+  Dynamics Checks
+  Damping Nullity Check:   True
+  Damping:
+  Equal:  False
+  Damping Value: Source:            0
+  Damping Valye: Exported:            0
+  Friction Nullity Check:   True
+  Friction:
+  Equal:  False
+  Friction Value: Source:            0
+  Friction Value: Exported:            0
+  Lower Limit:
+  Equal:   True
+  Lower Limit Value: -6.28318530717959
+  Upper Limit:
+  Equal:   True
+  Upper Limit Value: 6.28318530717959
+  Effort Equal:   True Effort: 100.000
+  Velocity Equal:   True Velocity: 0.300
+Child Name:
+Equal:   True
+Child Name: Source: upper_link_j4
+Child Name: Exported: upper_link_j4
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: upper_link_j4 Exported: upper_link_j4
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A202U_J4m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202U_J4m.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:              
+   Exported:             
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_A202U_J4m.stl Exported: package://khi_duaro_description/meshes/WD002N_A202U_J4m.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0000
+ Exported: 0000
+ Child Attributes:   True Child Name: upper_link_j4
+ Child Attributes:   True Child Name: upper_link_j3
+ Child Attributes:   True Child Name: upper_link_j2
+ Child Attributes:   True Child Name: upper_link_j1
+ Child Attributes:   True Child Name:     duaro_j0
+ Child Attributes:   True Child Name:   duaro_body
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: duaro_j0_cover_joint
+Exported: duaro_j0_cover_joint
+Name:
+Equal:  True
+Type: Source:        fixed
+Type: Exported:        fixed
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.8)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+Parent:
+Equal:  True
+Parent: Source:    base_link
+Parent: Exported:    base_link
+  Axis Checks
+  ,Origin Nullity Check:   True
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source: duaro_j0_cover
+Child Name: Exported: duaro_j0_cover
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: duaro_j0_cover Exported: duaro_j0_cover
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_A201_j0_cover_Ver2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A201_j0_cover_Ver2m.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:   Light_blue 
+   Exported:   Light_blue
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_A201_j0_cover_Ver2m.stl Exported: package://khi_duaro_description/meshes/WD002N_A201_j0_cover_Ver2m.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0000
+ Exported: 0000
+ Child Attributes:   True Child Name: duaro_j0_cover
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: duaro_logo_joint
+Exported: duaro_logo_joint
+Name:
+Equal:  True
+Type: Source:        fixed
+Type: Exported:        fixed
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+Parent:
+Equal:  True
+Parent: Source:    base_link
+Parent: Exported:    base_link
+  Axis Checks
+  ,Origin Nullity Check:   True
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source:   duaro_logo
+Child Name: Exported:   duaro_logo
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source:   duaro_logo Exported:   duaro_logo
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_F502_LOGO_duAro.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_LOGO_duAro.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        Black 
+   Exported:        Black
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_F502_LOGO_duAro.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_LOGO_duAro.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0000
+ Exported: 0000
+ Child Attributes:   True Child Name:   duaro_logo
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: kawasaki_logo_joint
+Exported: kawasaki_logo_joint
+Name:
+Equal:  True
+Type: Source:        fixed
+Type: Exported:        fixed
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+Parent:
+Equal:  True
+Parent: Source:    base_link
+Parent: Exported:    base_link
+  Axis Checks
+  ,Origin Nullity Check:   True
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source: kawasaki_logo
+Child Name: Exported: kawasaki_logo
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: kawasaki_logo Exported: kawasaki_logo
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_F502_LOGO_Kawasaki.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_LOGO_Kawasaki.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:          Red 
+   Exported:          Red
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_F502_LOGO_Kawasaki.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_LOGO_Kawasaki.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0000
+ Exported: 0000
+ Child Attributes:   True Child Name: kawasaki_logo
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source: duaro_body_cover_joint
+Exported: duaro_body_cover_joint
+Name:
+Equal:  True
+Type: Source:        fixed
+Type: Exported:        fixed
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+Parent:
+Equal:  True
+Parent: Source:    base_link
+Parent: Exported:    base_link
+  Axis Checks
+  ,Origin Nullity Check:   True
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source: duaro_body_cover
+Child Name: Exported: duaro_body_cover
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source: duaro_body_cover Exported: duaro_body_cover
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_F502_Cabinet_front_cover.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_Cabinet_front_cover.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:   Light_blue 
+   Exported:   Light_blue
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_F502_Cabinet_front_cover.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_Cabinet_front_cover.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0000
+ Exported: 0000
+ Child Attributes:   True Child Name: duaro_body_cover
+
+
+********Joint*****
+
+Name:
+Equal:  True
+Name: Source:   cart_joint
+Exported:   cart_joint
+Name:
+Equal:  True
+Type: Source:        fixed
+Type: Exported:        fixed
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+Parent:
+Equal:  True
+Parent: Source:    base_link
+Parent: Exported:    base_link
+  Axis Checks
+  ,Origin Nullity Check:   True
+  Dynamics Checks
+  Origin Nullity Check:   True
+Child Name:
+Equal:   True
+Child Name: Source:         cart
+Child Name: Exported:         cart
+
+
+********LINK*****
+
+ Name:
+ Equal:   True
+ Name: Source:         cart Exported:         cart
+ Inertial Checks
+  Mass:
+  Equal:  True
+   Origin Checks
+   Origin Nullity Check:   True
+ Visual Checks
+ Number of Visual Components Equal:  True
+ -Visual Component:   1
+   Visual Component Name :   True
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry Checks
+   Geometry:
+   Type: Mesh
+   Name Equal:   True
+   Name: Source: package://khi_duaro_description/meshes/WD002N_F502_Cart.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_Cart.stl
+   Scales Equal : (1,1,1)
+  Material Checks
+  Material Nullity Check:   True
+   Name Equal:  True
+   Name: Source:        White 
+   Exported:        White
+    Color nullity equality:  True
+   Texture nullity equality:  True
+ Collisions Checks
+Number of Collision Components
+ Equal:  True
+Source Count: 0001
+Exported Count: 0001
+ -Collision Component:   1
+  Collision Name
+  Equal:   True
+  Name: Source:             
+  Exported:             
+  Origin Checks
+  Origin Nullity Check:   True
+  XYZ position
+  Equal:  True
+   Value: (0.0, 0.0, 0.0)
+   RPY position:
+   Equal:  True
+   Value: (0.0, 0.0, 0.0)
+  Geometry:
+  Type: Mesh
+  Name Equal:   True
+  Name: Source: package://khi_duaro_description/meshes/WD002N_F502_Cart.stl Exported: package://khi_duaro_description/meshes/WD002N_F502_Cart.stl
+  Scales Equal : (1,1,1)
+Number of Connected Joints:
+Components Equal:  True
+Count: Source: 0000
+ Exported: 0000
+ Child Attributes:   True Child Name:         cart
+ Child Attributes:   True Child Name:    base_link
+
+
