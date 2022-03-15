@@ -1,6 +1,6 @@
 # P8_duaro
 
-Installing the URDF plugin:
+# Installing the URDF plugin:
 
 1. Open the Package Manager from Unity Menu. Click `Window -> Package Manager`. A new package manager window will appear.
 
@@ -16,10 +16,13 @@ For more info follow this link --> https://github.com/Unity-Technologies/URDF-Im
 
 _______________________________________________________________________________________________________________________________________________________
 
-Installing ROS-TCP-Connector plugin
+# Installing ROS-TCP-Connector plugin
 
 1. Create or open a Unity project.
 
 1. In the Package Manager window, find and click the `+` button in the upper lefthand corner of the window. Select `Add package from git URL...`.
 
     ![](/images/packman.png)
+1. enter `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector`.
+
+1. Click `Add`.
