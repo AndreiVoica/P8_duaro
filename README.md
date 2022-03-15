@@ -1,4 +1,7 @@
 # P8_duaro
+# Unity version:
+
+2020.3.29f1
 
 # Installing the URDF plugin:
 
@@ -30,3 +33,10 @@ ________________________________________________________________________________
 # Setup TCP connection on your terminal (Unity-ROS)
 
 It's easier to just follow this link --> https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/setup.md
+
+# ML-agents
+
+Follow this tutorial to install ML-agents --> https://alexisrozhkov.github.io/unity_rl/
+Make sure the venv is running python 3.6 (or 3.7)
+
+Follow this tutorial to setup ML-agents in Unity --> https://youtu.be/zPFU30tbyKs?t=611
