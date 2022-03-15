@@ -44,5 +44,5 @@ Follow this tutorial to setup ML-agents in Unity --> https://youtu.be/zPFU30tbyK
 # Launch Duaro
 
 ```bash
-   roslaunch khi_duaro_moveit_config demo.launch
-   ```
+roslaunch khi_duaro_moveit_config demo.launch
+```
