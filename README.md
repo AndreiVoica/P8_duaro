@@ -26,3 +26,12 @@ ________________________________________________________________________________
 1. Enter `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector`.
 
 1. Click `Add`.
+
+# Start TCP connection on your terminal
+
+Open a new terminal, navigate to your Catkin workspace, and run:
+
+   ```bash
+   source devel/setup.bash
+   roslaunch ros_tcp_endpoint endpoint.launch
+   ```
