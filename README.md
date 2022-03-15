@@ -16,3 +16,10 @@ For more info follow this link --> https://github.com/Unity-Technologies/URDF-Im
 
 _______________________________________________________________________________________________________________________________________________________
 
+Installing ROS-TCP-Connector plugin
+
+1. Create or open a Unity project.
+
+1. In the Package Manager window, find and click the `+` button in the upper lefthand corner of the window. Select `Add package from git URL...`.
+
+    ![](/images/packman.png)
