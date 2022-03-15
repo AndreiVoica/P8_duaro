@@ -1,0 +1,44 @@
+controller_list:
+  - name: lower_arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - lower_joint1
+      - lower_joint2
+      - lower_joint3
+      - lower_joint4
+  - name: upper_arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - upper_joint1
+      - upper_joint2
+      - upper_joint3
+      - upper_joint4
+  - name: upper_arm_tool_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - upper_joint4
+  - name: lower_arm_tool_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - lower_joint4
+  - name: botharms_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - lower_joint1
+      - lower_joint2
+      - lower_joint3
+      - lower_joint4
+      - upper_joint1
+      - upper_joint2
+      - upper_joint3
+      - upper_joint4
