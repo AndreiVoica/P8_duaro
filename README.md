@@ -27,11 +27,6 @@ ________________________________________________________________________________
 
 1. Click `Add`.
 
-# Start TCP connection on your terminal
+# Setup TCP connection on your terminal (Unity-ROS)
 
-Open a new terminal, navigate to your Catkin workspace, and run:
-
-   ```bash
-   source devel/setup.bash
-   roslaunch ros_tcp_endpoint endpoint.launch
-   ```
+It's easier to just follow this link --> https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/setup.md
