@@ -1,8 +1,0 @@
-lower_arm:
-  kinematics_solver: duaro_lower_arm_kinematics/IKFastKinematicsPlugin
-  kinematics_solver_search_resolution: 0.005
-  kinematics_solver_timeout: 0.005
-upper_arm:
-  kinematics_solver: duaro_upper_arm_kinematics/IKFastKinematicsPlugin
-  kinematics_solver_search_resolution: 0.005
-  kinematics_solver_timeout: 0.005
