@@ -45,12 +45,10 @@ Follow this tutorial to setup ML-agents in Unity --> https://youtu.be/zPFU30tbyK
 
 1. Under `Robotics` tab go to `ROS settings` and change the IP to `127.0.0.1` Port: `10000`.
 
-    [](/images/rosconnection.png)
-    
+    <img src = "images/rosconnection.png">
 2. In the Unity scene, go to the `Ros_connection` game object and change the IP to `127.0.0.1`.
 
-    [](/images/unityrosconnection.png)
-    
+    <img src = "images/unityrosconnection.png">
 # Build msgs in Unity
 
 1. Under `Robotics` tab go to `Generate ROS messages`.
