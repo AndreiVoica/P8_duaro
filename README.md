@@ -41,8 +41,21 @@ Make sure the venv is running python 3.6 (or 3.7)
 
 Follow this tutorial to setup ML-agents in Unity --> https://youtu.be/zPFU30tbyKs?t=611
 
+# Build msgs in Unity
+
+1. Under `Robotics` tab go to `Generate ROS messages`.
+2. Press `Browse` add select your `src` folder location. 
+
+    ![](/images/browse.png)
+    
+    
 # Launch Duaro
 
 ```bash
 roslaunch khi_duaro_moveit_config demo.launch
+```
+# Launch TCP
+
+```bash
+roslaunch ros_tcp_endpoint endpoint.launch
 ```
