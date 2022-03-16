@@ -48,7 +48,11 @@ Follow this tutorial to setup ML-agents in Unity --> https://youtu.be/zPFU30tbyK
 
     ![](/images/browse.png)
     
+3. Build all the msgs, srvs and actions as shown here:
+
+    ![](/images/buildmsgs.png)
     
+
 # Launch Duaro
 
 ```bash
