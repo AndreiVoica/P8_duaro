@@ -1,7 +1,7 @@
 # P8_duaro
 # Unity version:
 
-2020.3.29f1
+2020.3.xxf1
 
 # Installing the URDF plugin:
 
