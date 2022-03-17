@@ -15,8 +15,7 @@ This project is developed and tested with Unity Version 2020.3.29f1. Install the
 
 ### Create a workspace and clone the repository 
 
-Create a catkin workspace catkin_ws for using ROS (http://wiki.ros.org/catkin/Tutorials/create_a_workspace) and clone the repository `git clone https://github.com/AndreiVoica/P8_duaro.git` in `$ cd ~/catkin_ws/src`.
-After, do `$ catkin_make`in `$ cd ~/catkin_ws`.
+Clone the repository `git clone https://github.com/AndreiVoica/P8_duaro.git` and `$ catkin_make`.
 
 ### Open the Unity Project
 
