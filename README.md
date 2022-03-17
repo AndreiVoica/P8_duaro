@@ -32,21 +32,17 @@ Open [Unity_env](/Unity_env) in your Unity Hub.
 
 3. Enter the git URL for the URDF Importer with the latest version tag (currently v0.5.2) `https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.2` in the text box and press `Enter`.
 
-4. Click `Import URDF`.
-
-For more info follow this link --> https://github.com/Unity-Technologies/URDF-Importer
-
+For more information follow this link: https://github.com/Unity-Technologies/URDF-Importer
 
 ### Installing ROS-TCP-Connector plugin
 
 1. Create or open a Unity project.
 
-1. In the Package Manager window, find and click the `+` button in the upper lefthand corner of the window. Select `Add package from git URL...`.
+2. In the Package Manager window, find and click the `+` button in the upper lefthand corner of the window. Select `Add package from git URL...`.
 
     ![](/images/packman.png)
-1. Enter `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector`.
+3. Enter `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector`.
 
-1. Click `Add`.
 
 ### Setup TCP connection on your terminal (Unity-ROS)
 
