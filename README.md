@@ -11,7 +11,16 @@
 
 ### Unity
 
-This project is developed and tested with Unity Version 2020.3.29f1.
+This project is developed and tested with Unity Version 2020.3.29f1. Install the version through the Unity Hub from here: https://unity3d.com/de/get-unity/download/archive.
+
+### Create a workspace and clone the repository 
+
+Create a catkin workspace catkin_ws for using ROS (http://wiki.ros.org/catkin/Tutorials/create_a_workspace) and clone the repository `git clone https://github.com/AndreiVoica/P8_duaro.git` in `$ cd ~/catkin_ws/src`.
+After, do `$ catkin_make`in `$ cd ~/catkin_ws`.
+
+### Open the Unity Project
+
+Open [Unity_env](/Unity_env) in your Unity Hub.
 
 ### Installing the URDF plugin
 
