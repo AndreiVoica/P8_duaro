@@ -1,9 +1,19 @@
 # P8_duaro
-# Unity version:
 
-2020.3.xxf1
+## Table of contents
 
-# Installing the URDF plugin:
+- [Getting Started](#Purpose-Started)
+- [Project Details](#Project-Details)
+- [Authors](#Authors)
+- [References](#References)
+
+## Getting Started: 
+
+### Unity
+
+This project is developed and tested with Unity Version 2020.3.29f1.
+
+### Installing the URDF plugin
 
 1. Open the Package Manager from Unity Menu. Click `Window -> Package Manager`. A new package manager window will appear.
 
@@ -17,9 +27,8 @@
 
 For more info follow this link --> https://github.com/Unity-Technologies/URDF-Importer
 
-_______________________________________________________________________________________________________________________________________________________
 
-# Installing ROS-TCP-Connector plugin
+### Installing ROS-TCP-Connector plugin
 
 1. Create or open a Unity project.
 
@@ -30,18 +39,18 @@ ________________________________________________________________________________
 
 1. Click `Add`.
 
-# Setup TCP connection on your terminal (Unity-ROS)
+### Setup TCP connection on your terminal (Unity-ROS)
 
 It's easier to just follow this link --> https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/setup.md
 
-# ML-agents
+### ML-agents
 
 Follow this tutorial to install ML-agents --> https://alexisrozhkov.github.io/unity_rl/
 Make sure the venv is running python 3.6 (or 3.7)
 
 Follow this tutorial to setup ML-agents in Unity --> https://youtu.be/zPFU30tbyKs?t=611
 
-# ROS-Unity connection
+### ROS-Unity connection
 
 1. Under `Robotics` tab go to `ROS settings` and change the IP to `127.0.0.1` Port: `10000`.
 
@@ -49,7 +58,8 @@ Follow this tutorial to setup ML-agents in Unity --> https://youtu.be/zPFU30tbyK
 2. In the Unity scene, go to the `Ros_connection` game object and change the IP to `127.0.0.1`.
 
     <img src = "images/unityrosconnection.png">
-# Build msgs in Unity
+    
+### Build msgs in Unity
 
 1. Under `Robotics` tab go to `Generate ROS messages`.
 2. Press `Browse` add select your `src` folder location. 
@@ -61,13 +71,31 @@ Follow this tutorial to setup ML-agents in Unity --> https://youtu.be/zPFU30tbyK
     ![](/images/buildmsgs.png)
     
 
-# Launch Duaro
+### Launch Duaro
 
 ```bash
 roslaunch khi_duaro_moveit_config demo.launch
 ```
-# Launch TCP
+### Launch TCP
 
 ```bash
 roslaunch ros_tcp_endpoint endpoint.launch
 ```
+
+
+## Project Details: 
+
+
+
+## Authors:
+
+### Who do I talk to? ###
+
+Group number: 865
+
+Group members e-mail:
+* Adshya Vasudavan Iyer: avasud11@student.aau.dk
+* Andrei Voica: avoica18@student.aau.dk
+* Daniel Moreno París: dmoren21@student.aau.dk
+* Lekshmi Jayakrishnan: ljayak18@student.aau.dk
+* Sabrina Kern: skern21@student.aau.dk
