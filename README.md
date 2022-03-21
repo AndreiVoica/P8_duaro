@@ -11,17 +11,13 @@
 
 ### Unity
 
-This project is developed and tested with Unity Version 2020.3.29f1. Install the version through the Unity Hub from here: https://unity3d.com/de/get-unity/download/archive.
+1. This project is developed and tested with Unity Version 2020.3.29f1. Install the version through the Unity Hub from here: https://unity3d.com/de/get-unity/download/archive.
 
-### Create a workspace and clone the repository 
+2. Clone the repository `$ git clone https://github.com/AndreiVoica/P8_duaro.git` and `$ catkin_make`.
 
-Clone the repository `git clone https://github.com/AndreiVoica/P8_duaro.git` and `$ catkin_make`.
+3. Open the Unity Project [Unity_env](/Unity_env) in your Unity Hub.
 
-### Open the Unity Project
-
-Open [Unity_env](/Unity_env) in your Unity Hub.
-
-### Installing the URDF plugin
+### Installing plugins
 
 1. Open the Package Manager from Unity Menu. Click `Window -> Package Manager`. A new package manager window will appear.
 
@@ -29,23 +25,17 @@ Open [Unity_env](/Unity_env) in your Unity Hub.
 
 <img src = "images/Package_manager_add.png">
 
-3. Enter the git URL for the URDF Importer with the latest version tag (currently v0.5.2) `https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.2` in the text box and press `Enter`.
+3. Install the URDF Importer: Enter the git URL for the URDF Importer with the latest version tag (currently v0.5.2) `https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.2` in the text box and press `Enter`.
 
 For more information follow this link: https://github.com/Unity-Technologies/URDF-Importer
 
-### Installing ROS-TCP-Connector plugin
-
-1. Create or open a Unity project.
-
-2. In the Package Manager window, find and click the `+` button in the upper lefthand corner of the window. Select `Add package from git URL...`.
-
-    ![](/images/packman.png)
-3. Enter `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector`.
-
+4. Install the ROS-TCP-Connector: Enter `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector`.
 
 ### Setup TCP connection on your terminal (Unity-ROS)
 
-It's easier to just follow this link --> https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/setup.md
+1. Source the workspace:`$ source devel/setup.bash`
+2. Run: `$ roslaunch ros_tcp_endpoint endpoint.launch`
+For more information follow this link: https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/setup.md
 
 ### ML-agents
 
