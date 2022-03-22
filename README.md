@@ -25,19 +25,25 @@
 
 <img src = "images/Package_manager_add.png">
 
-3. Install the URDF Importer: Enter the git URL for the URDF Importer with the latest version tag (currently v0.5.2) `https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.2` in the text box and press `Enter`.
-
-For more information follow this link: https://github.com/Unity-Technologies/URDF-Importer
+3. Install the URDF Importer: Enter the git URL for the URDF Importer with the latest version tag (currently v0.5.2) `https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.2` in the text box and press `Enter`. For more information follow this link: https://github.com/Unity-Technologies/URDF-Importer
 
 4. Install the ROS-TCP-Connector: Enter `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector`.
 
 ### Setup TCP connection on your terminal (Unity-ROS)
 
 1. Source the workspace:`$ source devel/setup.bash`
+
 2. Run: `$ roslaunch ros_tcp_endpoint endpoint.launch`
 For more information follow this link: https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/setup.md
 
 ### ML-agents
+
+1. Install the com.unity.ml-agents package through the Package Manager in Unity
+
+2. Install Python 3.6.1 or Higher
+
+3. Install the mlagents Python package: tbd
+
 
 Follow this tutorial to install ML-agents --> https://alexisrozhkov.github.io/unity_rl/
 Make sure the venv is running python 3.6 (or 3.7)
