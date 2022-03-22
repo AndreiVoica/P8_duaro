@@ -38,17 +38,13 @@ For more information follow this link: https://github.com/Unity-Technologies/Uni
 
 ### ML-agents
 
-1. Install the com.unity.ml-agents package through the Package Manager in Unity
+1. Install the com.unity.ml-agents package through the Package Manager in Unity. This project is tested with version 2.2.1.
 
-2. Install Python 3.6.1 or Higher
+2. Install Python 3.6 or 3.7. If needed, create a virtual environment for this, for example as described here: https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/.
 
-3. Install the mlagents Python package: tbd
+3. Install the mlagents Python package: `$ python -m pip install mlagents==0.28.0`. This project uses the version 0.28.0. 
 
-
-Follow this tutorial to install ML-agents --> https://alexisrozhkov.github.io/unity_rl/
-Make sure the venv is running python 3.6 (or 3.7)
-
-Follow this tutorial to setup ML-agents in Unity --> https://youtu.be/zPFU30tbyKs?t=611
+4. Try to run `$ mlagents-learn --help` to ensure it works. 
 
 ### ROS-Unity connection
 
@@ -71,17 +67,19 @@ Follow this tutorial to setup ML-agents in Unity --> https://youtu.be/zPFU30tbyK
     ![](/images/buildmsgs.png)
     
 
-### Launch Duaro
+### Run tests
+
+1. Launch Duaro:
 
 ```bash
 roslaunch khi_duaro_moveit_config demo.launch
 ```
-### Launch TCP
+2. Test connection:
 
 ```bash
 roslaunch ros_tcp_endpoint endpoint.launch
 ```
-
+This should display the following message: [INFO] [1647962485.821796]: Starting server on 127.0.0.1:10000
 
 ## Project Details: 
 
