@@ -1,0 +1,11 @@
+<launch>
+    <arg name="tcp_ip" default="0.0.0.0"/>
+    <arg name="tcp_port" default="10000"/>
+	
+    <node name="unity_endpoint" pkg="ros_tcp_endpoint" type="default_server_endpoint.py" args="--wait" output="screen" respawn="true">
+		<param name="tcp_ip" type="string" value="$(arg tcp_ip)"/>
+        <param name="tcp_port" type="int" value="$(arg tcp_port)"/>
+	</node>
+    <node name="duaro_demo" pkg="khi_duaro_moveit_config" type="duaro_demo.py" args="--wait" output="screen"/>
+    <include file="$(find khi_duaro_moveit_config)/launch/demo.launch" />
+</launch>
