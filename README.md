@@ -87,7 +87,7 @@ roslaunch khi_duaro_moveit_config test.launch
 ```
 This will start the tcp connection and start the python script containing the goal positions for Duaro.
 
-You can press `Play` in Unity before or after.
+You can press `Play` in Unity before or after runnning the above command.
 
 Rviz can be ignored, although it will be used for a bit while we create the skills. (Update this line at a later date)
 
