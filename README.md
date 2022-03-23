@@ -81,6 +81,12 @@ roslaunch ros_tcp_endpoint endpoint.launch
 ```
 This should display the following message: [INFO] [1647962485.821796]: Starting server on 127.0.0.1:10000
 
+1. AND 2. can be ignored and instead run: `
+```bash
+roslaunch khi_duaro_moveit_config test.launch
+```
+This will start the tcp connection and start the python script containing the goal positions for Duaro.
+You can press `Play` in Unity before or after.
 ## Project Details: 
 
 
