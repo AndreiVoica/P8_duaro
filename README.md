@@ -69,19 +69,7 @@ For more information follow this link: https://github.com/Unity-Technologies/Uni
 
 ### Run tests
 
-1. Launch Duaro:
-
-```bash
-roslaunch khi_duaro_moveit_config demo.launch
-```
-2. Test connection:
-
-```bash
-roslaunch ros_tcp_endpoint endpoint.launch
-```
-This should display the following message: [INFO] [1647962485.821796]: Starting server on 127.0.0.1:10000
-
-1. AND 2. can be ignored and instead run:
+Run:
 ```bash
 roslaunch khi_duaro_moveit_config test.launch
 ```
