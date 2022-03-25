@@ -20,7 +20,7 @@ from moveit_commander.conversions import pose_to_list
 
 from niryo_moveit.srv import MoverService, MoverServiceRequest, MoverServiceResponse
 
-joint_names = ['joint_1', 'joint_2', 'joint_3', 'joint_4', 'joint_5', 'joint_6']
+joint_names = ['upper_joint1', 'upper_joint2', 'upper_joint3', 'upper_joint4', 'lower_joint1', 'lower_joint2', 'lower_joint3', 'lower_joint4']
 
 # Between Melodic and Noetic, the return type of plan() changed. moveit_commander has no __version__ variable, so checking the python version as a proxy
 if sys.version_info >= (3, 0):
@@ -72,7 +72,7 @@ def plan_trajectory(move_group, destination_pose, start_joint_angles):
 def plan_pick_and_place(req):
     response = MoverServiceResponse()
 
-    group_name = "arm"
+    group_name = "upper_link"
     move_group = moveit_commander.MoveGroupCommander(group_name)
 
     current_robot_joint_configuration = req.joints_input.joints
