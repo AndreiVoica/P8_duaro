@@ -1,2 +1,4 @@
-# Starting compiling Assembly-CSharp.dll
-/home/andrei/Unity/Hub/Editor/2020.3.29f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-1c6df91516e59348e952a278dc0875e0
+# Starting compiling Unity.Robotics.UrdfImporter.dll
+/home/andrei/Unity/Hub/Editor/2020.3.29f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-576279f91aeb5f02bbdb3cd39ecfbf88
+# Starting compiling Unity.Barracuda.dll
+/home/andrei/Unity/Hub/Editor/2020.3.29f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-d07c97ea5d464f325bb2af3075381b45

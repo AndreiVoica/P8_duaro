@@ -76,12 +76,14 @@ m_PackageAssets:
         - 1.14.9
         - 1.14.12
         - 1.14.13
+        - 1.14.15
         - 1.15.1
         - 1.15.4
         - 1.15.7
         - 1.15.9
         - 1.15.12
         - 1.15.13
+        - 1.15.15
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -95,6 +97,7 @@ m_PackageAssets:
         compatible:
         - 1.15.12
         - 1.15.13
+        - 1.15.15
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -105,7 +108,7 @@ m_PackageAssets:
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
-        verified: 1.15.13
+        verified: 1.15.15
       dependencies:
       - name: com.unity.services.core
         version: 1.0.1
@@ -474,6 +477,7 @@ m_PackageAssets:
         - 2.0.0
         - 2.0.1
         - 2.1.0-exp.1
+        - 2.2.1-exp.1
         compatible:
         - 0.16.0-preview
         - 1.0.0-preview
@@ -503,6 +507,7 @@ m_PackageAssets:
         - 2.0.0
         - 2.0.1
         - 2.1.0-exp.1
+        - 2.2.1-exp.1
         verified: 1.0.8
       dependencies:
       - name: com.unity.barracuda

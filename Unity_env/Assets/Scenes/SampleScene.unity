@@ -6536,6 +6536,7 @@ GameObject:
   - component: {fileID: 983621646}
   - component: {fileID: 983621645}
   - component: {fileID: 983621648}
+  - component: {fileID: 983621649}
   m_Layer: 0
   m_Name: khi_duaro
   m_TagString: robot
@@ -6550,11 +6551,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983621644}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d607ea46a579d44c4b19a6322ce4b9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upper_link_j1: {fileID: 0}
+  khi_duaro: {fileID: 0}
   selectedJoint: 
   selectedIndex: 0
   control: 0
@@ -6629,6 +6632,29 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 0
+--- !u!114 &983621649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983621644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 869d16b2ba42c89d19f5fd3bb22ffadb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotJoints:
+  - {fileID: 509011390}
+  - {fileID: 852326083}
+  - {fileID: 674720389}
+  - {fileID: 1443688089}
+  - {fileID: 257051323}
+  - {fileID: 2050769321}
+  - {fileID: 641149477}
+  - {fileID: 2072471907}
+  - {fileID: 1078677369}
+  - {fileID: 1338136253}
 --- !u!1001 &1041861873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10763,7 +10789,6 @@ GameObject:
   - component: {fileID: 2050769321}
   - component: {fileID: 2050769320}
   - component: {fileID: 2050769319}
-  - component: {fileID: 2050769323}
   m_Layer: 0
   m_Name: upper_link_j1
   m_TagString: joint1u
@@ -10887,19 +10912,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBaseLink: 0
---- !u!114 &2050769323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2050769317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 869d16b2ba42c89d19f5fd3bb22ffadb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 50
 --- !u!1 &2060189061
 GameObject:
   m_ObjectHideFlags: 0
