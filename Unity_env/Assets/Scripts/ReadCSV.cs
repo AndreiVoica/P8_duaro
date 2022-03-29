@@ -10,11 +10,19 @@ public class ReadCSV : MonoBehaviour
     private GameObject joint_1;
     public List<string> angles = new List<string>();
     float change = 50f;
+    string userName;
+
     void Start()
     {
+        //Get userName
+        userName = System.Environment.GetEnvironmentVariable("USER");
+        //Debug.Log(userName);
+        
         ReadCSVFile();
         joint_1 = GameObject.Find("khi_duaro/world/base_link/duaro_body/duaro_j0/upper_link_j1");
+        
     }
+
 
     void update()
     {
@@ -22,7 +30,7 @@ public class ReadCSV : MonoBehaviour
     }
     async void ReadCSVFile()
     {
-        StreamReader strReader = new StreamReader("/home/andrei/Unity_env/bagfiles/test_1.csv");
+        StreamReader strReader = new StreamReader("/home/"+ userName + "/P8_duaro/Unity_env/bagfiles/test_1.csv");
         bool endOfFile = false;
         while(!endOfFile)
         {
