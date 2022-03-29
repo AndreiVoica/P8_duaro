@@ -6,29 +6,15 @@ using System.Collections;
 public class Control : MonoBehaviour
 {
     [SerializeField] private ArticulationBody[] robotJoints = new ArticulationBody[10];
-    // Start is called before the first frame update
+    private Library robot;
     void Start()
     {
-        
+        robot = FindObjectOfType<Library>();
     }
- 
-    /*
-    LEGEND: robotJoints[i]:
-    i = 0 -> lower_link_1;
-    i = 1 -> lower_link_2;
-    i = 2 -> lower_link_3;
-    i = 3 -> lower_link_3_obst;
-    i = 4 -> lower_link_4;
-    i = 5 -> upper_link_1;
-    i = 6 -> upper_link_2;
-    i = 7 -> upper_link_3;
-    i = 8 -> upper_link_3_obst;
-    i = 9 -> upper_link_4;
-    */
+
     void Update()
     {
-        var joint1UpXDrive = robotJoints[5].xDrive;
-        joint1UpXDrive.target = -50f;
-        robotJoints[5].xDrive = joint1UpXDrive;
+        robot.set_upper_joint_target(45f, -45f, 0.09f, 0.0f);
+        robot.set_lower_joint_target(-45f, 45f, 0.09f, 0f);
     }
 }

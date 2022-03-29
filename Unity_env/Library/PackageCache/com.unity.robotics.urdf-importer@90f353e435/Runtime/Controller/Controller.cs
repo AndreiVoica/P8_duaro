@@ -8,8 +8,6 @@ namespace Unity.Robotics.UrdfImporter.Control
     public enum ControlType { PositionControl };
     public class Controller : MonoBehaviour
     {
-        public ArticulationBody upper_link_j1;
-        public GameObject khi_duaro;
         private ArticulationBody[] articulationChain;
         // Stores original colors of the part being highlighted
         private Color[] prevColor;
