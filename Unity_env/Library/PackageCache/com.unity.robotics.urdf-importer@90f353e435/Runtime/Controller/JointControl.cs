@@ -38,7 +38,7 @@ public class JointControl : MonoBehaviour
             if (controltype == Unity.Robotics.UrdfImporter.Control.ControlType.PositionControl)
             {
                 ArticulationDrive currentDrive = joint.xDrive;
-                float newTargetDelta = (int)direction * Time.fixedDeltaTime * speed;
+                float newTargetDelta = (int)direction * Time.fixedDeltaTime * speed; // check this
 
                 if (joint.jointType == ArticulationJointType.RevoluteJoint)
                 {

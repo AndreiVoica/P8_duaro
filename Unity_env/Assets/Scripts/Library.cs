@@ -5,6 +5,8 @@ using UnityEngine;
 public class Library : MonoBehaviour
 {
     [SerializeField] private ArticulationBody[] robotJoints = new ArticulationBody[10];
+    public float m_speed = 10f;
+    Vector3 vel;
     public float set_upper_joint_target(float j1_u, float j2_u, float j3_u, float j4_u)
     {
         var joint1UpXDrive = robotJoints[5].xDrive;
@@ -32,7 +34,7 @@ public class Library : MonoBehaviour
     public float set_lower_joint_target(float j1_l, float j2_l, float j3_l, float j4_l)
     {
         var joint1LoXDrive = robotJoints[0].xDrive;
-        joint1LoXDrive.target = j1_l;
+        joint1LoXDrive.target = j1_l * m_speed * Time.fixedDeltaTime;
         robotJoints[0].xDrive = joint1LoXDrive;
         //return a;
 
