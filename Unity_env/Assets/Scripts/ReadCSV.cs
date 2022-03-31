@@ -20,7 +20,7 @@ public class ReadCSV : MonoBehaviour
     }
     public void ReadCSVFile()
     {
-        using (var strReader = new StreamReader("/home/"+ userName + "P8_duaro/Unity_env/bagfiles/test_1.csv"))
+        using (var strReader = new StreamReader("/home/"+ userName + "/P8_duaro/Unity_env/bagfiles/test_1.csv"))
         {
             bool endOfFile = false;
             while(!endOfFile)
