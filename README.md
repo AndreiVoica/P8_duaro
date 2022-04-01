@@ -83,7 +83,7 @@ Rviz can be ignored, although it will be used for a bit while we create the skil
 
 ### ML Agents
 
-#Getting Started:
+# Getting Started:
 Follow this [link](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Getting-Started.md)
 
 
