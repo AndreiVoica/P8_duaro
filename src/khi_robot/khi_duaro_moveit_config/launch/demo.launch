@@ -8,6 +8,9 @@
   <!-- By default, we are not in debug mode -->
   <arg name="debug" default="false" />
 
+  <!-- Use Rviz -->
+  <arg name="run_rviz" default="false" />
+
   <!--
   By default, hide joint_state_publisher's GUI
 
@@ -44,10 +47,12 @@
   </include>
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
-  <!--<include file="$(find khi_duaro_moveit_config)/launch/moveit_rviz.launch">
-    <arg name="config" value="true"/>
-    <arg name="debug" value="$(arg debug)"/>
-  </include> -->
+  <group if="$(eval arg('run_rviz') == true)">
+    <include file="$(find khi_duaro_moveit_config)/launch/moveit_rviz.launch">
+      <arg name="config" value="true"/>
+      <arg name="debug" value="$(arg debug)"/>
+    </include>
+  </group>
 
   <!-- If database loading was enabled, start mongodb as well -->
   <include file="$(find khi_duaro_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)">
