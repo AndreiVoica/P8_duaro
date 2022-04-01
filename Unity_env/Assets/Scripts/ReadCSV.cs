@@ -7,20 +7,20 @@ public class ReadCSV : MonoBehaviour
 {
     public string data_String;
     public string[] data_values;
-    string userName;
     public float jointAngle;
     public float degJoint1L;
     //public float jointAngle;
     void Start()
     {
-        //Get userName
-        userName = System.Environment.GetEnvironmentVariable("USER");
         ReadCSVFile();
         
     }
     public void ReadCSVFile()
     {
-        using (var strReader = new StreamReader("/home/"+ userName + "/P8_duaro/Unity_env/bagfiles/test_1.csv"))
+	var path = Directory.GetCurrentDirectory();
+	var filePath = Path.Combine(path, "bagfiles/test_1.csv");
+
+        using (var strReader = new StreamReader(filePath))
         {
             bool endOfFile = false;
             while(!endOfFile)
