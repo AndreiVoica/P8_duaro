@@ -11,7 +11,7 @@
 
 ### Unity
 
-1. This project is developed and tested with Unity Version 2020.3.29f1. Install the version through the Unity Hub from here: https://unity3d.com/de/get-unity/download/archive.
+1. This project is developed and tested with Unity Version 2020.3.29f1. Install the version through the Unity Hub from this [link](https://unity3d.com/de/get-unity/download/archive)
 
 2. Clone the repository `$ git clone https://github.com/AndreiVoica/P8_duaro.git` and `$ catkin_make`.
 
@@ -25,7 +25,7 @@
 
 <img src = "images/Package_manager_add.png">
 
-3. Install the URDF Importer: Enter the git URL for the URDF Importer with the latest version tag (currently v0.5.2) `https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.2` in the text box and press `Enter`. For more information follow this link: https://github.com/Unity-Technologies/URDF-Importer
+3. Install the URDF Importer: Enter the git URL for the URDF Importer with the latest version tag (currently v0.5.2) `https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.2` in the text box and press `Enter`. For more information follow this [link](https://github.com/Unity-Technologies/URDF-Importer)
 
 4. Install the ROS-TCP-Connector: Enter `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector`.
 
@@ -34,13 +34,14 @@
 1. Source the workspace:`$ source devel/setup.bash`
 
 2. Run: `$ roslaunch ros_tcp_endpoint endpoint.launch`
-For more information follow this link: https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/setup.md
+For more information follow this [link](https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/setup.md)
 
 ### ML-agents
 
 1. Install the com.unity.ml-agents package through the Package Manager in Unity. This project is tested with version 2.2.1.
 
-2. Install Python 3.6 or 3.7. If needed, create a virtual environment for this, for example as described here: https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/.
+2. Install Python 3.6 or 3.7. If needed, create a virtual environment for this, for example as described in this [link](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/).
+
 
 3. Install the mlagents Python package: `$ python -m pip install mlagents==0.28.0`. This project uses the version 0.28.0. 
 
@@ -78,6 +79,13 @@ This will start the tcp connection and start the python script containing the go
 You can press `Play` in Unity before or after runnning the above command.
 
 Rviz can be ignored, although it will be used for a bit while we create the skills. (Update this line at a later date)
+
+
+### ML Agents
+
+#Getting Started:
+Follow this [link](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Getting-Started.md)
+
 
 ## Project Details: 
 
