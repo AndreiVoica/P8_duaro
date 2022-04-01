@@ -5,7 +5,7 @@ using UnityEngine;
 public class SaveAngles : MonoBehaviour
 {
     public string[] angles;
-    async void Start()
+    void Start()
     {
         GameObject readAngles = GameObject.Find("CSVread");
         ReadCSV csv = readAngles.GetComponent<ReadCSV>();
