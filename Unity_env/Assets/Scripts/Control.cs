@@ -1,6 +1,4 @@
 using UnityEngine;
-//using Unity.Robotics.ROSTCPConnector;
-//using SensorUnity = RosMessageTypes.Sensor.JointStateMsg;
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
@@ -11,11 +9,15 @@ public class Control : MonoBehaviour
     private Library robot;
     private ReadCSV degree;
 
-    public string data_String;
-    public string[] data_values;
-    public float jointAngle;
-    public float degJoint1L;
-    public List<float> listOfFloats = new List<float>();
+    public List<float> joint1L = new List<float>();
+    public List<float> joint2L = new List<float>();
+    public List<float> joint3L = new List<float>();
+    public List<float> joint4L = new List<float>();
+    public List<float> joint1U = new List<float>();
+    public List<float> joint2U = new List<float>();
+    public List<float> joint3U = new List<float>();
+    public List<float> joint4U = new List<float>();
+    private int current_index = 0;
     void Start()
     {
         robot = FindObjectOfType<Library>();
@@ -26,34 +28,49 @@ public class Control : MonoBehaviour
 
     void Update()
     {
-        //for(int i = 0; i < listOfFloats.Count; i++)
-        //{
-            int i =+ 1;
-            robot.set_upper_joint_target(90, -45f, 0.09f, 0.0f);
-            robot.set_lower_joint_target(listOfFloats[i], 45f, 0.09f, 0f);
-        //}
+        if (current_index == joint1L.Count)
+        {
+            current_index = 0;
+        }
+        robot.set_upper_joint_target(joint1U[current_index], joint2U[current_index], joint3U[current_index], joint4U[current_index]);
+        robot.set_lower_joint_target(joint1L[current_index], joint2L[current_index], joint3L[current_index], joint4L[current_index]);
+        current_index++;
     }
 
     public void ReadCSVFile()
     {
-	var path = Directory.GetCurrentDirectory();
-	var filePath = Path.Combine(path, "bagfiles/test_1.csv"); 
+        var path = Directory.GetCurrentDirectory();
+        var filePath = Path.Combine(path, "bagfiles/test_1.csv"); 
 
         using (var strReader = new StreamReader(filePath))
         {
-            bool endOfFile = false;
-            while(!endOfFile)
+            strReader.ReadLine();
+            while (!strReader.EndOfStream)
             {
-                data_String = strReader.ReadLine ();
-                if(data_String == null)
-                {
-                    endOfFile = true;
-                    break;
-                }
-                var data_values = data_String.Split(',');
-                float.TryParse(data_values[12], out float degJoint1L);
-                listOfFloats.Add(degJoint1L);
+                var line = strReader.ReadLine();
+                DecodeLine(line);
             }
         }
+    }
+
+    private void DecodeLine(string line)
+    {
+        string[] values = line.Split(',');
+        float.TryParse(values[12], out float J1L);
+        float.TryParse(values[13], out float J2L);
+        float.TryParse(values[14], out float J3L);
+        float.TryParse(values[15], out float J4L);
+        float.TryParse(values[16], out float J1U);
+        float.TryParse(values[17], out float J2U);
+        float.TryParse(values[18], out float J3U);
+        float.TryParse(values[19], out float J4U);
+        joint1L.Add(J1L);
+        joint2L.Add(J2L);
+        joint3L.Add(J3L);
+        joint4L.Add(J4L);
+        joint1U.Add(J1U);
+        joint2U.Add(J2U);
+        joint3U.Add(J3U);
+        joint4U.Add(J4U);
     }
 }
