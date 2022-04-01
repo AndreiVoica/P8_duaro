@@ -5,9 +5,7 @@ using System.Collections.Generic;
 
 public class Control : MonoBehaviour
 {
-    [SerializeField] private ArticulationBody[] robotJoints = new ArticulationBody[10];
     private Library robot;
-    private ReadCSV degree;
 
     public List<float> joint1L = new List<float>();
     public List<float> joint2L = new List<float>();
@@ -18,10 +16,10 @@ public class Control : MonoBehaviour
     public List<float> joint3U = new List<float>();
     public List<float> joint4U = new List<float>();
     private int current_index = 0;
+
     void Start()
     {
         robot = FindObjectOfType<Library>();
-        degree = FindObjectOfType<ReadCSV>();
 
         ReadCSVFile();
     }
@@ -44,6 +42,7 @@ public class Control : MonoBehaviour
 
         using (var strReader = new StreamReader(filePath))
         {
+            // skipping the first line as it has the column names
             strReader.ReadLine();
             while (!strReader.EndOfStream)
             {
