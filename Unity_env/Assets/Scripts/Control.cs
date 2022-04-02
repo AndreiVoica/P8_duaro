@@ -21,18 +21,31 @@ public class Control : MonoBehaviour
     {
         robot = FindObjectOfType<Library>();
 
+        robot.set_upper_joint_target(-45, 45, 0, 0);
+        robot.set_lower_joint_target(45, -45, 0, 0);
+
         ReadCSVFile();
+
+        var rate = 10f;
+        var waitTime = 1f / rate;
+
+        InvokeRepeating("MoveJoints", 0, waitTime);
     }
 
     void Update()
     {
-        if (current_index == joint1L.Count)
-        {
-            current_index = 0;
-        }
+        // do nothing
+    }
+
+    void MoveJoints()
+    {
         robot.set_upper_joint_target(joint1U[current_index], joint2U[current_index], joint3U[current_index], joint4U[current_index]);
         robot.set_lower_joint_target(joint1L[current_index], joint2L[current_index], joint3L[current_index], joint4L[current_index]);
         current_index++;
+        if (current_index == joint1L.Count)
+        {
+            CancelInvoke();
+        }
     }
 
     public void ReadCSVFile()
@@ -42,7 +55,6 @@ public class Control : MonoBehaviour
 
         using (var strReader = new StreamReader(filePath))
         {
-            // skipping the first line as it has the column names
             strReader.ReadLine();
             while (!strReader.EndOfStream)
             {
