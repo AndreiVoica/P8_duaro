@@ -92,6 +92,7 @@ Follow this [link](https://github.com/Unity-Technologies/ml-agents/blob/main/doc
 
 #### Some theorical info:
 - [link](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/ML-Agents-Overview.md)
+- Info about agents and decisions : [link](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Learning-Environment-Design-Agents.md#decisions) 
 
 
 ## Project Details: 
