@@ -23,11 +23,11 @@ class DuaroAgent : Agent
         robot.set_upper_joint_target(-45, 45, 0, 0);
     }
 
-    public override void CollectObservations(VectorSensor sensor)
+    public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
     {
     }
 
-    public override void OnActionReceived(ActionBuffers actionBuffers)
+    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
     {
     }
 }
