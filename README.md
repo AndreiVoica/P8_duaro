@@ -86,6 +86,13 @@ Rviz can be ignored, although it will be used for a bit while we create the skil
 #### Getting Started:
 Follow this [link](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Getting-Started.md)
 
+#### Examples to try out:
+[link](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Learning-Environment-Create-New.md)
+[link](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Learning-Environment-Examples.md)
+
+#### Some theorical info:
+[link](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/ML-Agents-Overview.md)
+
 
 ## Project Details: 
 
