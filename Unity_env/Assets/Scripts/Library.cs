@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Library : MonoBehaviour
 {
-    [SerializeField] private ArticulationBody[] robotJoints = new ArticulationBody[10];
-    public void set_upper_joint_target(float j1_u, float j2_u, float j3_u, float j4_u)
+    [SerializeField] private ArticulationBody[] robotJoints = new ArticulationBody[12];
+    public void set_upper_joint_target(float j1_u, float j2_u, float j3_u, float j4_u, float gripper_l, float gripper_r)
     {
         var joint1UpXDrive = robotJoints[5].xDrive;
         joint1UpXDrive.target = j1_u;
@@ -26,6 +26,14 @@ public class Library : MonoBehaviour
         var joint4UpXDrive = robotJoints[9].xDrive;
         joint4UpXDrive.target = j4_u;
         robotJoints[9].xDrive = joint4UpXDrive;
+
+        var gripper_lXDrive = robotJoints[10].xDrive;
+        gripper_lXDrive.target = gripper_l;
+        robotJoints[10].xDrive = gripper_lXDrive;
+
+        var gripper_rXDrive = robotJoints[11].xDrive;
+        gripper_rXDrive.target = gripper_r;
+        robotJoints[11].xDrive = gripper_rXDrive;
     }
 
     public void set_lower_joint_target(float j1_l, float j2_l, float j3_l, float j4_l)
