@@ -7,9 +7,6 @@ import termios
 
 from moveit_commander import MoveGroupCommander
 
-orig_settings = termios.tcgetattr(sys.stdin)
-tty.setcbreak(sys.stdin)
-x = 0
 if __name__ == '__main__':
 
     #init_node() [L1, L2, L3, L4, U1, U2, U3, U4]
@@ -72,13 +69,3 @@ if __name__ == '__main__':
     while True:
         upper_plate()
         round_round_peg()
-        if x != chr(27): # ESC
-            x=sys.stdin.read(1)[0]
-            round_round_peg()
-            x = 0
-        elif x != chr(65): # A 
-            x=sys.stdin.read(1)[0]
-            upper_plate()
-            x = 0
-
-        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, orig_settings) 
