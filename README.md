@@ -51,10 +51,10 @@ For more information follow this [link](https://github.com/Unity-Technologies/Un
 
 1. Under `Robotics` tab go to `ROS settings` and change the IP to `127.0.0.1` Port: `10000`.
 
-    <img src = "images/rosconnection.png" width="750">
+<img src = "images/rosconnection.png" width="750">
 2. In the Unity scene, go to the `Ros_connection` game object and change the IP to `127.0.0.1`.
 
-    <img src = "images/unityrosconnection.png" width="750">
+<img src = "images/unityrosconnection.png" width="750">
     
 ### Build msgs in Unity
 
