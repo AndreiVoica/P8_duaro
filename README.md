@@ -94,6 +94,7 @@ Follow this [link](https://github.com/Unity-Technologies/ml-agents/blob/main/doc
 - [link](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/ML-Agents-Overview.md)
 - [Info about agents and decisions](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Learning-Environment-Design-Agents.md#decisions) 
 - [Reward signals and hyperparameters](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Training-Configuration-File.md)
+- [Headless Training](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Learning-Environment-Executable.md)
 
 
 ## Project Details: 
