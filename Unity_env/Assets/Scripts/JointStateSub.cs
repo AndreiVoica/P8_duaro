@@ -2,93 +2,157 @@ using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
 using SensorUnity = RosMessageTypes.Sensor.JointStateMsg;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 
 public class JointStateSub : MonoBehaviour
 {
     [SerializeField] private string rosTopic = "joint_states";
     [SerializeField] private ROSConnection ROS;
     [SerializeField] private ArticulationBody[] robotJoints = new ArticulationBody[10];
+    private List<JointAngles> jointAngles = new List<JointAngles>();
+    private bool recording = false;
     // Start is called before the first frame update
     void Start()
     {
         ROS = ROSConnection.GetOrCreateInstance();
         ROS.Subscribe<SensorUnity>(rosTopic, GetJointPositions);
     }
+
+    void StartRecordingIfNotAlready()
+    {
+        if (!recording)
+        {
+            recording = true;
+            jointAngles.Clear();
+            print("Started recording");
+        }
+    }
+
+    void StopRecordingIfAlready()
+    {
+        if (recording)
+        {
+            recording = false;
+            print("Stopped recording");
+
+            string fileName = "recording_" + System.DateTime.Now.ToString("yy-MM-dd-HH-mm-ss") + ".csv";
+            var path = Directory.GetCurrentDirectory();
+            var filePath = Path.Combine(path, $"bagfiles/{fileName}");
+
+            using (var writer = new StreamWriter(filePath))
+            {
+                writer.WriteLine("Joint1L,Joint2L,Joint3L,Joint4L,Joint1U,Joint2U,Joint3U,Joint4U");
+                foreach (var joints in jointAngles)
+                {
+                    writer.WriteLine(joints.ToString());
+                }
+            }
+            print($"Saved to {filePath}");
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKey("r"))
+        {
+            StartRecordingIfNotAlready();
+        }
+        else if (Input.GetKey("s"))
+        {
+            StopRecordingIfAlready();
+        }
+    }
  
     private void GetJointPositions(SensorUnity sensorMsg)
     {
         StartCoroutine(SetJointValues(sensorMsg));
     }
+
     IEnumerator SetJointValues(SensorUnity message)
     {
+        JointAngles joints = new JointAngles();
+        bool updated = false;
+
         for (int i = 0; i < message.name.Length; i++)
         {
-            if (message.name[i].Contains("lower_joint1"))
+            if (message.name[i].Equals("lower_joint1"))
             {
-                var joint1LoXDrive = robotJoints[0].xDrive;
-                joint1LoXDrive.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
-                robotJoints[0].xDrive = joint1LoXDrive;
+                var joint = robotJoints[0].xDrive;
+                joint.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
+                robotJoints[0].xDrive = joint;
+                joints.Joint1L = joint.target;
+                updated = true;
             }
-            else if (message.name[i].Contains("lower_joint2"))
+            else if (message.name[i].Equals("lower_joint2"))
             {
-                var joint2LoXDrive = robotJoints[1].xDrive;
-                joint2LoXDrive.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
-                robotJoints[1].xDrive = joint2LoXDrive;
+                var joint = robotJoints[1].xDrive;
+                joint.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
+                robotJoints[1].xDrive = joint;
+                joints.Joint2L = joint.target;
+                updated = true;
             }
-            else if (message.name[i].Contains("lower_joint3"))
+            else if (message.name[i].Equals("lower_joint3"))
             {
-                var joint3LoXDrive = robotJoints[2].xDrive;
-                joint3LoXDrive.target = ((float)(message.position[i]));
-                robotJoints[2].xDrive = joint3LoXDrive;
-                var joint3_5LoXDrive = robotJoints[3].xDrive;
-                joint3_5LoXDrive.target = ((float)(message.position[i]));
-                robotJoints[3].xDrive = joint3_5LoXDrive;
+                var joint = robotJoints[2].xDrive;
+                joint.target = ((float)(message.position[i]));
+                robotJoints[2].xDrive = joint;
+                var joint2 = robotJoints[3].xDrive;
+                joint2.target = joint.target;
+                robotJoints[3].xDrive = joint2;
+                joints.Joint3L = joint.target;
+                updated = true;
             }
-            else if (message.name[i].Contains("lower_joint4"))
+            else if (message.name[i].Equals("lower_joint4"))
             {
-                var joint4LoXDrive = robotJoints[4].xDrive;
-                joint4LoXDrive.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
-                robotJoints[4].xDrive = joint4LoXDrive;
+                var joint = robotJoints[4].xDrive;
+                joint.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
+                robotJoints[4].xDrive = joint;
+                joints.Joint4L = joint.target;
+                updated = true;
             }
-            else if (message.name[i].Contains("upper_joint1"))
+            else if (message.name[i].Equals("upper_joint1"))
             {
-                var joint1UpXDrive = robotJoints[5].xDrive;
-                joint1UpXDrive.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
-                robotJoints[5].xDrive = joint1UpXDrive;
+                var joint = robotJoints[5].xDrive;
+                joint.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
+                robotJoints[5].xDrive = joint;
+                joints.Joint1U = joint.target;
+                updated = true;
             }
-            else if (message.name[i].Contains("upper_joint2"))
+            else if (message.name[i].Equals("upper_joint2"))
             {
-                var joint2UpXDrive = robotJoints[6].xDrive;
-                joint2UpXDrive.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
-                robotJoints[6].xDrive = joint2UpXDrive;
+                var joint = robotJoints[6].xDrive;
+                joint.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
+                robotJoints[6].xDrive = joint;
+                joints.Joint2U = joint.target;
+                updated = true;
             }
-            else if (message.name[i].Contains("upper_joint3"))
+            else if (message.name[i].Equals("upper_joint3"))
             {
-                var joint3UpXDrive = robotJoints[7].xDrive;
-                joint3UpXDrive.target = ((float)(message.position[i]));
-                robotJoints[7].xDrive = joint3UpXDrive;
-                var joint3_5UpXDrive = robotJoints[8].xDrive;
-                joint3_5UpXDrive.target = ((float)(message.position[i]));
-                robotJoints[8].xDrive = joint3_5UpXDrive;
+                var joint = robotJoints[7].xDrive;
+                joint.target = ((float)(message.position[i]));
+                robotJoints[7].xDrive = joint;
+                var joint2 = robotJoints[8].xDrive;
+                joint2.target = joint.target;
+                robotJoints[8].xDrive = joint2;
+                joints.Joint3U = joint.target;
+                updated = true;
             }
-            else if (message.name[i].Contains("upper_joint4"))
+            else if (message.name[i].Equals("upper_joint4"))
             {
-                var joint4UpXDrive = robotJoints[9].xDrive;
-                joint4UpXDrive.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
-                robotJoints[9].xDrive = joint4UpXDrive;
+                var joint = robotJoints[9].xDrive;
+                joint.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
+                robotJoints[9].xDrive = joint;
+                joints.Joint4U = joint.target;
+                updated = true;
             }
         }
-        
-        /*
-        for (int i = 0; i < message.name.Length; i++)
+
+        if (updated && recording)
         {
-            var joint1XDrive = robotJoints[i].xDrive;
-            joint1XDrive.target = (float)(message.position[i]) * Mathf.Rad2Deg;
-            robotJoints[i].xDrive = joint1XDrive;
-            //Debug.Log(joint1XDrive.target);
+            jointAngles.Add(joints);
         }
-        */
- 
+
         yield return new WaitForSeconds(1f);
     }
  
