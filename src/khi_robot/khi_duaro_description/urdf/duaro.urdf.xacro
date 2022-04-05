@@ -1,10 +1,12 @@
 <?xml version="1.0" ?>
 <robot name="khi_duaro" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find khi_duaro_description)/urdf/duaro_macro.xacro"/>
-
+  
   <!-- instantiate duaro -->
   <xacro:khi_duaro prefix="" />
 
+  <xacro:include filename="$(find wsg_50_simulation)/urdf/wsg_50.urdf"/>
+  <xacro:wsg_50_xacro prefix="" />
   <!-- Fix duaro to world -->
 
   <link name="world"/>
