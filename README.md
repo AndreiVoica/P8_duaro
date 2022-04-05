@@ -23,7 +23,7 @@
 
 2. Click on the `+` sign on the top left corner of the package manager window and click on `Add Package from Git URL`. 
 
-<img src = "images/Package_manager_add.png">
+<img src = "images/Package_manager_add.png" width="350">
 
 3. Install the URDF Importer: Enter the git URL for the URDF Importer with the latest version tag (currently v0.5.2) `https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.2` in the text box and press `Enter`. For more information follow this [link](https://github.com/Unity-Technologies/URDF-Importer)
 
