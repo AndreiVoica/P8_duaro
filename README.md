@@ -23,7 +23,7 @@
 
 2. Click on the `+` sign on the top left corner of the package manager window and click on `Add Package from Git URL`. 
 
-<img src = "images/Package_manager_add.png" width="350">
+<img src = "images/Package_manager_add.png" width="750">
 
 3. Install the URDF Importer: Enter the git URL for the URDF Importer with the latest version tag (currently v0.5.2) `https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.2` in the text box and press `Enter`. For more information follow this [link](https://github.com/Unity-Technologies/URDF-Importer)
 
@@ -51,21 +51,21 @@ For more information follow this [link](https://github.com/Unity-Technologies/Un
 
 1. Under `Robotics` tab go to `ROS settings` and change the IP to `127.0.0.1` Port: `10000`.
 
-    <img src = "images/rosconnection.png">
+    <img src = "images/rosconnection.png" width="750">
 2. In the Unity scene, go to the `Ros_connection` game object and change the IP to `127.0.0.1`.
 
-    <img src = "images/unityrosconnection.png">
+    <img src = "images/unityrosconnection.png" width="750">
     
 ### Build msgs in Unity
 
 1. Under `Robotics` tab go to `Generate ROS messages`.
 2. Press `Browse` add select your `src` folder location. 
 
-    ![](/images/browse.png)
+<img src="images/browse.png" width="750">
     
 3. Build all the msgs, srvs and actions as shown here:
 
-    ![](/images/buildmsgs.png)
+<img src="images/buildmsgs.png" width="750">
     
 
 ### Run tests
