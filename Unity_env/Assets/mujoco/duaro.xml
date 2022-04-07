@@ -1,0 +1,92 @@
+<mujoco model="khi_duaro">
+    <compiler angle="radian" meshdir="meshes/" />
+    <size njmax="500" nconmax="100" />
+    <asset>
+        <mesh name="WD002N_F502_Adjuster_pad" file="WD002N_F502_Adjuster_pad.stl" />
+        <mesh name="WD002N_F502_Cabinet_body" file="WD002N_F502_Cabinet_body.stl" />
+        <mesh name="WD002N_A201_j0_cover_Ver2m" file="WD002N_A201_j0_cover_Ver2m.stl" />
+        <mesh name="WD002N_F502_LOGO_duAro" file="WD002N_F502_LOGO_duAro.stl" />
+        <mesh name="WD002N_F502_LOGO_Kawasaki" file="WD002N_F502_LOGO_Kawasaki.stl" />
+        <mesh name="WD002N_F502_Cabinet_front_cover" file="WD002N_F502_Cabinet_front_cover.stl" />
+        <mesh name="WD002N_F502_Cart" file="WD002N_F502_Cart.stl" />
+        <mesh name="WD002N_A201_j0_Ver2m" file="WD002N_A201_j0_Ver2m.stl" />
+        <mesh name="WD002N_A201L_J1_Ver2m" file="WD002N_A201L_J1_Ver2m.stl" />
+        <mesh name="WD002N_A202L_J2m" file="WD002N_A202L_J2m.stl" />
+        <mesh name="WD002N_A202L_J3m" file="WD002N_A202L_J3m.stl" />
+        <mesh name="WD002N_A202L_J3_obstaclem" file="WD002N_A202L_J3_obstaclem.stl" />
+        <mesh name="WD002N_A202L_J4m" file="WD002N_A202L_J4m.stl" />
+        <mesh name="WD002N_A201U_J1_Ver2m" file="WD002N_A201U_J1_Ver2m.stl" />
+        <mesh name="WD002N_A202U_J2m" file="WD002N_A202U_J2m.stl" />
+        <mesh name="WD002N_A202U_J3m" file="WD002N_A202U_J3m.stl" />
+        <mesh name="WD002N_A202U_J3_obstaclem" file="WD002N_A202U_J3_obstaclem.stl" />
+        <mesh name="WD002N_A202U_J4m" file="WD002N_A202U_J4m.stl" />
+    </asset>
+    <worldbody>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="WD002N_F502_Adjuster_pad" />
+        <geom type="mesh" rgba="1 1 1 1" mesh="WD002N_F502_Adjuster_pad" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="WD002N_F502_Cabinet_body" />
+        <geom type="mesh" rgba="1 1 1 1" mesh="WD002N_F502_Cabinet_body" />
+        <geom pos="0 0 0.82" type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="WD002N_A201_j0_Ver2m" />
+        <geom pos="0 0 0.82" type="mesh" rgba="1 1 1 1" mesh="WD002N_A201_j0_Ver2m" />
+        <geom pos="0 0 0.82" type="mesh" contype="0" conaffinity="0" group="1" rgba="0 1 1 1" mesh="WD002N_A201_j0_cover_Ver2m" />
+        <geom pos="0 0 0.82" type="mesh" rgba="0 1 1 1" mesh="WD002N_A201_j0_cover_Ver2m" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0 0 0 1" mesh="WD002N_F502_LOGO_duAro" />
+        <geom type="mesh" rgba="0 0 0 1" mesh="WD002N_F502_LOGO_duAro" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 0 0 1" mesh="WD002N_F502_LOGO_Kawasaki" />
+        <geom type="mesh" rgba="1 0 0 1" mesh="WD002N_F502_LOGO_Kawasaki" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0 1 1 1" mesh="WD002N_F502_Cabinet_front_cover" />
+        <geom type="mesh" rgba="0 1 1 1" mesh="WD002N_F502_Cabinet_front_cover" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="WD002N_F502_Cart" />
+        <geom type="mesh" rgba="1 1 1 1" mesh="WD002N_F502_Cart" />
+        <body name="lower_link_j1" pos="0 0 1.0715">
+            <inertial pos="0 0 0" mass="11.463" diaginertia="1 1 0.806914" />
+            <joint name="lower_joint1" pos="0 0 0" axis="0 0 1" limited="true" range="-2.96706 2.96706" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="WD002N_A201L_J1_Ver2m" />
+            <geom type="mesh" rgba="1 1 1 1" mesh="WD002N_A201L_J1_Ver2m" />
+            <body name="lower_link_j2" pos="0 0.36 0.0905">
+                <inertial pos="0 0 0" mass="3.747" diaginertia="1 1 0.167114" />
+                <joint name="lower_joint2" pos="0 0 0" axis="0 0 1" limited="true" range="-2.44346 2.44346" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="WD002N_A202L_J2m" />
+                <geom type="mesh" rgba="1 1 1 1" mesh="WD002N_A202L_J2m" />
+                <body name="lower_link_j3" pos="0 0.4 0.0385">
+                    <inertial pos="0 0 0" mass="3.476" diaginertia="1 1 1" />
+                    <joint name="lower_joint3" pos="0 0 0" axis="0 0 1" type="slide" limited="true" range="0 0.15" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="WD002N_A202L_J3m" />
+                    <geom type="mesh" rgba="1 1 1 1" mesh="WD002N_A202L_J3m" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0 0 0 1" mesh="WD002N_A202L_J3_obstaclem" />
+                    <body name="lower_link_j4" pos="0 0 -0.24">
+                        <inertial pos="0 0 0" mass="0.5" diaginertia="1 1 1" />
+                        <joint name="lower_joint4" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" />
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="WD002N_A202L_J4m" />
+                        <geom type="mesh" mesh="WD002N_A202L_J4m" />
+                    </body>
+                </body>
+            </body>
+        </body>
+        <body name="upper_link_j1" pos="0 0 1.2005">
+            <inertial pos="0 0 0" mass="11.452" diaginertia="1 1 0.853943" />
+            <joint name="upper_joint1" pos="0 0 0" axis="0 0 1" limited="true" range="-2.44346 8.72665" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="WD002N_A201U_J1_Ver2m" />
+            <geom type="mesh" rgba="1 1 1 1" mesh="WD002N_A201U_J1_Ver2m" />
+            <body name="upper_link_j2" pos="0 0.36 0">
+                <inertial pos="0 0 0" mass="3.751" diaginertia="1 1 0.16728" />
+                <joint name="upper_joint2" pos="0 0 0" axis="0 0 1" limited="true" range="-2.44346 2.44346" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="WD002N_A202U_J2m" />
+                <geom type="mesh" rgba="1 1 1 1" mesh="WD002N_A202U_J2m" />
+                <body name="upper_link_j3" pos="0 0.4 0">
+                    <inertial pos="0 0 0" mass="3.476" diaginertia="1 1 1" />
+                    <joint name="upper_joint3" pos="0 0 0" axis="0 0 1" type="slide" limited="true" range="0 0.15" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="WD002N_A202U_J3m" />
+                    <geom type="mesh" rgba="1 1 1 1" mesh="WD002N_A202U_J3m" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0 0 0 1" mesh="WD002N_A202U_J3_obstaclem" />
+                    <body name="upper_link_j4" pos="0 0 -0.24">
+                        <inertial pos="0 0 0" mass="10" diaginertia="1 1 1" />
+                        <joint name="upper_joint4" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" />
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="WD002N_A202U_J4m" />
+                        <geom type="mesh" mesh="WD002N_A202U_J4m" />
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>
