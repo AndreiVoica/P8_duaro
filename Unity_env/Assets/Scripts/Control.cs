@@ -30,7 +30,7 @@ public class Control : MonoBehaviour
         // do nothing
     }
 
-    void MoveJoints()
+    public void MoveJoints()
     {
         robot.set_lower_joint_target(jointAngles[currentIndex].Joint1L, jointAngles[currentIndex].Joint2L, jointAngles[currentIndex].Joint3L, jointAngles[currentIndex].Joint4L);
         robot.set_upper_joint_target(jointAngles[currentIndex].Joint1U, jointAngles[currentIndex].Joint2U, jointAngles[currentIndex].Joint3U, jointAngles[currentIndex].Joint4U, -0.055f, 0.055f);

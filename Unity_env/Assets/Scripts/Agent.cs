@@ -11,7 +11,6 @@ using System.IO;
 class DuaroAgent : Agent
 {
     private Library robot;
-
     void Start()
     {
         robot = GetComponent<Library>();
