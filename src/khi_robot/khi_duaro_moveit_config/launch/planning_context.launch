@@ -5,7 +5,7 @@
   <!-- The name of the parameter under which the URDF is loaded -->
   <arg name="robot_description" default="robot_description"/>
 
-  <!-- Load  robot description format (URDF) -->
+  <!-- Load robot description format (URDF) -->
   <param if="$(arg load_robot_description)" name="$(arg robot_description)" command="$(find xacro)/xacro --inorder '$(find khi_duaro_description)/urdf/duaro.urdf.xacro'"/>
 
   <!-- The semantic description that corresponds to the URDF -->
