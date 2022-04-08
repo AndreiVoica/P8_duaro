@@ -14,8 +14,8 @@ public class Control : MonoBehaviour
     {
         robot = FindObjectOfType<Library>();
 
-        robot.set_upper_joint_target(-45f, 45f, 0f, 0f, -0.055f, 0.055f);
-        robot.set_lower_joint_target(45f, -45f, 0f, 0f);
+        robot.set_upper_joint_target(-45f, 45f, 0f, 0f, -0.055f, 0.055f); // gripper open (-0.055f, 0.055f)
+        robot.set_lower_joint_target(45f, -45f, 0f, 0f, -0.0027f, 0.0027f); //gripper close (-0.0027f, 0.0027f)
 
         ReadCSVFile();
 
@@ -32,8 +32,8 @@ public class Control : MonoBehaviour
 
     void MoveJoints()
     {
-        robot.set_lower_joint_target(jointAngles[currentIndex].Joint1L, jointAngles[currentIndex].Joint2L, jointAngles[currentIndex].Joint3L, jointAngles[currentIndex].Joint4L);
-        robot.set_upper_joint_target(jointAngles[currentIndex].Joint1U, jointAngles[currentIndex].Joint2U, jointAngles[currentIndex].Joint3U, jointAngles[currentIndex].Joint4U, -0.055f, 0.055f);
+        robot.set_lower_joint_target(jointAngles[currentIndex].Joint1L, jointAngles[currentIndex].Joint2L, jointAngles[currentIndex].Joint3L, jointAngles[currentIndex].Joint4L, -0.0027f, 0.0027f);
+        robot.set_upper_joint_target(jointAngles[currentIndex].Joint1U, jointAngles[currentIndex].Joint2U, jointAngles[currentIndex].Joint3U, jointAngles[currentIndex].Joint4U, 0.055f, -0.055f);
         currentIndex++;
         if (currentIndex >= jointAngles.Count)
         {
