@@ -9,7 +9,7 @@
   <arg name="debug" default="false" />
 
   <!-- Use Rviz -->
-  <arg name="run_rviz" default="false" />
+  <arg name="run_rviz" default="true" />
 
   <!--
   By default, hide joint_state_publisher's GUI
