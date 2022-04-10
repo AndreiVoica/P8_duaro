@@ -3,19 +3,19 @@
   <xacro:arg name="prefix" default="duaro" />
   
   <xacro:include filename="$(find khi_duaro_description)/urdf/duaro_macro.xacro"/>
-  <xacro:include filename="$(find khi_duaro_description)/urdf/wsg_50.urdf.xacro"/> 
+  <xacro:include filename="$(find wsg_50_simulation)/urdf/wsg_50.urdf.xacro"/> 
 
   <!-- instantiate duaro -->
   <xacro:khi_duaro prefix="$(arg prefix)" /> 
 
 
   <!-- lower gripper -->
-  <xacro:wsg_50_xacro name="lower_gripper" parent="$(arg prefix)lower_link_j4" finger_length="0.023" finger_tip="0">  
+  <xacro:wsg_50_xacro name="lower_gripper" parent="$(arg prefix)lower_link_j4" finger_length="-0.017" finger_tip="0">  
     <origin xyz="0 0 0" rpy="0 0 0" />  
   </xacro:wsg_50_xacro>
 
   <!-- upper gripper--> 
-  <xacro:wsg_50_xacro name="upper_gripper" parent="$(arg prefix)upper_link_j4" finger_length="0.023" finger_tip="0">
+  <xacro:wsg_50_xacro name="upper_gripper" parent="$(arg prefix)upper_link_j4" finger_length="-0.017" finger_tip="0">
     <origin xyz="0 0 0" rpy="0 0 0" />  
   </xacro:wsg_50_xacro>
 
