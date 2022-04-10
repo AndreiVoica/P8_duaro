@@ -13,10 +13,6 @@ public class Control : MonoBehaviour
     void Start()
     {
         robot = FindObjectOfType<Library>();
-
-        robot.set_upper_joint_target(-45f, 45f, 0f, 0f, -0.055f, 0.055f); // gripper open (-0.055f, 0.055f)
-        robot.set_lower_joint_target(45f, -45f, 0f, 0f, -0.0027f, 0.0027f); //gripper close (-0.0027f, 0.0027f)
-
         ReadCSVFile();
 
         var rate = 10f;
