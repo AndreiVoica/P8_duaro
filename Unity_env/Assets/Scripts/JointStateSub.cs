@@ -112,7 +112,7 @@ public class JointStateSub : MonoBehaviour
             }
             else if (message.name[i].Equals("lower_gripper_finger_left_joint"))
             {
-                var joint = robotJoints[5].xDrive;
+                var joint = robotJoints[10].xDrive;
                 joint.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
                 robotJoints[5].xDrive = joint;
                 joints.Llgripper = joint.target;
@@ -120,7 +120,7 @@ public class JointStateSub : MonoBehaviour
             }
             else if (message.name[i].Equals("lower_gripper_finger_right_joint"))
             {
-                var joint = robotJoints[6].xDrive;
+                var joint = robotJoints[11].xDrive;
                 joint.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
                 robotJoints[6].xDrive = joint;
                 joints.Lrgripper = joint.target;
@@ -128,36 +128,36 @@ public class JointStateSub : MonoBehaviour
             }
             else if (message.name[i].Equals("duaroupper_joint1"))
             {
-                var joint = robotJoints[7].xDrive;
+                var joint = robotJoints[5].xDrive;
                 joint.target = ((float)(message.position[i]));
-                robotJoints[7].xDrive = joint;
+                robotJoints[5].xDrive = joint;
                 joints.Joint1U = joint.target;
                 updated = true;
             }
             else if (message.name[i].Equals("duaroupper_joint2"))
             {
-                var joint = robotJoints[8].xDrive;
+                var joint = robotJoints[6].xDrive;
                 joint.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
-                robotJoints[8].xDrive = joint;
+                robotJoints[6].xDrive = joint;
                 joints.Joint2U = joint.target;
                 updated = true;
             }
             else if (message.name[i].Equals("duaroupper_joint3"))
             {
-                var joint = robotJoints[9].xDrive;
+                var joint = robotJoints[7].xDrive;
                 joint.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
-                robotJoints[9].xDrive = joint;
-                var joint2 = robotJoints[10].xDrive;
+                robotJoints[7].xDrive = joint;
+                var joint2 = robotJoints[8].xDrive;
                 joint2.target = joint.target;
-                robotJoints[10].xDrive = joint2;
+                robotJoints[8].xDrive = joint2;
                 joints.Joint3U = joint.target;
                 updated = true;
             }
             else if (message.name[i].Equals("duaroupper_joint4"))
             {
-                var joint = robotJoints[11].xDrive;
+                var joint = robotJoints[9].xDrive;
                 joint.target = ((float)(message.position[i]) * Mathf.Rad2Deg);
-                robotJoints[11].xDrive = joint;
+                robotJoints[9].xDrive = joint;
                 joints.Joint4U = joint.target;
                 updated = true;
             }

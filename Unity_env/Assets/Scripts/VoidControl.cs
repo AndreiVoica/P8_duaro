@@ -45,7 +45,7 @@ class VoidControl : EditorWindow
         {
             return;
         }
-        robot.set_lower_joint_target(jointAngles.Joint1L, jointAngles.Joint2L, jointAngles.Joint3L, jointAngles.Joint4L, -0.055f, 0.055f);
-        robot.set_upper_joint_target(jointAngles.Joint1U, jointAngles.Joint2U, jointAngles.Joint3U, jointAngles.Joint4U, -0.055f, 0.055f);
+        robot.set_lower_joint_target(jointAngles.Joint1L, jointAngles.Joint2L, jointAngles.Joint3L, jointAngles.Joint4L, -0.0055f, 0.0055f);
+        robot.set_upper_joint_target(jointAngles.Joint1U, jointAngles.Joint2U, jointAngles.Joint3U, jointAngles.Joint4U, -0.0055f, 0.0055f);
     }
 }
