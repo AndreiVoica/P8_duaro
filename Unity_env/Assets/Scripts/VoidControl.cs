@@ -4,7 +4,7 @@ using UnityEditor;
 class VoidControl : EditorWindow
 {
     private Library robot;
-    JointAngles jointAngles = new JointAngles(-45f, 45f, 0, 0, 45f, -45f, 0, 0);
+    JointAngles jointAngles = new JointAngles(-45f, 45f, 0, 0, 45f, -45f, 0, 0, 0, 0, 0, 0);
 
     [MenuItem("Robotics/Void Controller")]
     public static void ShowWindow()

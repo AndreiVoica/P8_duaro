@@ -66,6 +66,6 @@ public class Control : MonoBehaviour
         float.TryParse(values[18], out float joint3U);
         float.TryParse(values[19], out float joint4U);
 
-        return new JointAngles(joint1L, joint2L, joint3L, joint4L, joint1U, joint2U, joint3U, joint4U);
+        return new JointAngles(joint1L, joint2L, joint3L, joint4L, joint1U, joint2U, joint3U, joint4U, 0, 0, 0, 0);
     }
 }

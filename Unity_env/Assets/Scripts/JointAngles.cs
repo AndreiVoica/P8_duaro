@@ -8,12 +8,16 @@ public class JointAngles
     public float Joint2U {get; set;}
     public float Joint3U {get; set;}
     public float Joint4U {get; set;}
+    public float Llgripper {get; set;}
+    public float Lrgripper {get; set;}
+    public float Ulgripper {get; set;}
+    public float Urgripper {get; set;}
 
     public JointAngles()
     {
     }
 
-    public JointAngles(float joint1L, float joint2L, float joint3L, float joint4L, float joint1U, float joint2U, float joint3U, float joint4U)
+    public JointAngles(float joint1L, float joint2L, float joint3L, float joint4L, float joint1U, float joint2U, float joint3U, float joint4U, float llgripper, float lrgripper, float urgripper, float ulgripper)
     {
         Joint1L = joint1L;
         Joint2L = joint2L;
@@ -23,10 +27,14 @@ public class JointAngles
         Joint2U = joint2U;
         Joint3U = joint3U;
         Joint4U = joint4U;
+        Llgripper = llgripper;
+        Lrgripper = lrgripper;
+        Ulgripper = ulgripper;
+        Urgripper = urgripper;
     }
 
     public override string ToString()
     {
-        return $"{Joint1L},{Joint2L},{Joint3L},{Joint4L},{Joint1U},{Joint2U},{Joint3U},{Joint4U}";
+        return $"{Joint1L},{Joint2L},{Joint3L},{Joint4L},{Joint1U},{Joint2U},{Joint3U},{Joint4U},{Llgripper},{Lrgripper},{Ulgripper},{Urgripper}";
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44658828, g: 0.49642307, b: 0.57482517, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6009,7 +6009,7 @@ ArticulationBody:
   m_SwingZ: 2
   m_Twist: 2
   m_XDrive:
-    lowerLimit: 0.0027
+    lowerLimit: 0.0055
     upperLimit: 0.055
     stiffness: 0
     damping: 0
@@ -8990,7 +8990,7 @@ ArticulationBody:
   m_Twist: 2
   m_XDrive:
     lowerLimit: -0.055
-    upperLimit: -0.0027
+    upperLimit: -0.0055
     stiffness: 0
     damping: 0
     forceLimit: 1
@@ -12664,7 +12664,7 @@ ArticulationBody:
   m_Twist: 2
   m_XDrive:
     lowerLimit: -0.055
-    upperLimit: -0.0027
+    upperLimit: -0.0055
     stiffness: 0
     damping: 0
     forceLimit: 1
@@ -15897,7 +15897,7 @@ ArticulationBody:
   m_SwingZ: 2
   m_Twist: 2
   m_XDrive:
-    lowerLimit: 0.0027
+    lowerLimit: 0.0055
     upperLimit: 0.055
     stiffness: 0
     damping: 0
@@ -17178,16 +17178,20 @@ MonoBehaviour:
   rosTopic: joint_states
   ROS: {fileID: 0}
   robotJoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1650556859}
+  - {fileID: 296318379}
+  - {fileID: 731774143}
+  - {fileID: 146333260}
+  - {fileID: 1724790472}
+  - {fileID: 1973089196}
+  - {fileID: 1555244949}
+  - {fileID: 1066419307}
+  - {fileID: 1435042624}
+  - {fileID: 418843731}
+  - {fileID: 553971612}
+  - {fileID: 1386174725}
+  - {fileID: 864016518}
+  - {fileID: 1182902828}
 --- !u!4 &2108317431
 Transform:
   m_ObjectHideFlags: 0
