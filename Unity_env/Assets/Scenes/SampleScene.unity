@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2794,6 +2794,7 @@ GameObject:
   - component: {fileID: 342517081}
   - component: {fileID: 342517080}
   - component: {fileID: 342517079}
+  - component: {fileID: 342517083}
   m_Layer: 0
   m_Name: lower_gripper_finger_right
   m_TagString: Untagged
@@ -2916,6 +2917,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBaseLink: 0
+--- !u!65 &342517083
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342517077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.04, z: 0.014}
+  m_Center: {x: 0, y: -0.11, z: -0.004}
 --- !u!1 &343257145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,7 +2959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343257145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.212, y: 0.825, z: -1.293}
+  m_LocalPosition: {x: 1.309, y: 0.8231, z: -1.293}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1448368914}
@@ -4067,6 +4081,7 @@ GameObject:
   - component: {fileID: 504443676}
   - component: {fileID: 504443675}
   - component: {fileID: 504443674}
+  - component: {fileID: 504443678}
   m_Layer: 0
   m_Name: lower_gripper_finger_left
   m_TagString: Untagged
@@ -4189,6 +4204,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBaseLink: 0
+--- !u!65 &504443678
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504443672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.04, z: 0.014}
+  m_Center: {x: 0, y: -0.11, z: -0.004}
 --- !u!1001 &507578741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4843,7 +4871,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677450744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.212, y: 0.823, z: -1.18}
+  m_LocalPosition: {x: 1.309, y: 0.823, z: -1.18}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1448368914}
@@ -9527,6 +9555,7 @@ GameObject:
   - component: {fileID: 1276894766}
   - component: {fileID: 1276894765}
   - component: {fileID: 1276894764}
+  - component: {fileID: 1276894768}
   m_Layer: 0
   m_Name: upper_gripper_finger_left
   m_TagString: Untagged
@@ -9649,6 +9678,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBaseLink: 0
+--- !u!65 &1276894768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276894762}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.04, z: 0.014}
+  m_Center: {x: 0, y: -0.11, z: -0.004}
 --- !u!1 &1277090559
 GameObject:
   m_ObjectHideFlags: 8
@@ -9977,6 +10019,7 @@ GameObject:
   - component: {fileID: 1340537769}
   - component: {fileID: 1340537768}
   - component: {fileID: 1340537767}
+  - component: {fileID: 1340537771}
   m_Layer: 0
   m_Name: upper_gripper_finger_right
   m_TagString: Untagged
@@ -10099,6 +10142,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBaseLink: 0
+--- !u!65 &1340537771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340537765}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.04, z: 0.014}
+  m_Center: {x: 0, y: -0.11, z: -0.004}
 --- !u!1001 &1353821879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16628,7 +16684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061847291}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.212, y: 0.741, z: -1.238}
+  m_LocalPosition: {x: 1.3076, y: 0.741, z: -1.238}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1448368914}
