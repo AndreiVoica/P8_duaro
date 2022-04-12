@@ -2430,7 +2430,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 100
-    target: 0
+    target: 45
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -3031,9 +3031,8 @@ GameObject:
   - component: {fileID: 343257148}
   - component: {fileID: 343257147}
   - component: {fileID: 343257150}
-  - component: {fileID: 343257151}
   m_Layer: 0
-  m_Name: Cube1
+  m_Name: blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3047,7 +3046,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343257145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.223, y: 0.8231, z: -1.293}
+  m_LocalPosition: {x: 1.223, y: 0.8231, z: -1.3213}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1448368914}
@@ -3130,19 +3129,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 3
---- !u!114 &343257151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343257145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cd383c2a9b4049e8a8ce8f9eb57193e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_CollisionDetection: 0
 --- !u!1 &353465377
 GameObject:
   m_ObjectHideFlags: 0
@@ -4893,7 +4880,7 @@ GameObject:
   - component: {fileID: 677450746}
   - component: {fileID: 677450749}
   m_Layer: 0
-  m_Name: Cube2
+  m_Name: red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4924,7 +4911,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1, z: 1.2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &677450747
 MeshRenderer:
@@ -4990,7 +4977,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 0
 --- !u!1001 &681761394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6078,7 +6065,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 1
-    target: 0
+    target: 0.0121
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -8087,7 +8074,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 100
-    target: 0
+    target: 56
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -8952,7 +8939,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 1
-    target: 0
+    target: -0.0338
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -10375,7 +10362,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 100
-    target: 0
+    target: -37
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -11496,7 +11483,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 100
-    target: 0
+    target: -100
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -12597,7 +12584,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 1
-    target: 0
+    target: -0.055
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -13066,7 +13053,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 100
-    target: 0
+    target: -45
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -15835,7 +15822,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 1
-    target: 0
+    target: 0.055
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -16782,7 +16769,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 0
 --- !u!1001 &2062998797
 PrefabInstance:
   m_ObjectHideFlags: 0

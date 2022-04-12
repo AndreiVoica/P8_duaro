@@ -31,7 +31,6 @@ public class Control : MonoBehaviour
         robot.set_lower_joint_target(jointAngles[currentIndex].Joint1L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint2L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint3L, jointAngles[currentIndex].Joint4L * Mathf.Rad2Deg, jointAngles[currentIndex].Lrgripper, jointAngles[currentIndex].Llgripper);
         robot.set_upper_joint_target(jointAngles[currentIndex].Joint1U * Mathf.Rad2Deg, jointAngles[currentIndex].Joint2U * Mathf.Rad2Deg, jointAngles[currentIndex].Joint3U, jointAngles[currentIndex].Joint4U * Mathf.Rad2Deg, jointAngles[currentIndex].Ulgripper, jointAngles[currentIndex].Urgripper);
         currentIndex++;
-        Debug.Log(jointAngles[currentIndex].Joint1U);
         if (currentIndex >= jointAngles.Count)
         {
             CancelInvoke();
