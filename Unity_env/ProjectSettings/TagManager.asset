@@ -6,6 +6,7 @@ TagManager:
   tags:
   - robot
   - joint1u
+  - gripper
   layers:
   - Default
   - TransparentFX
