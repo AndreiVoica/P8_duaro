@@ -24,6 +24,8 @@ public class DuaroAgent : Agent
     public Transform Joint2Lower;
     public Transform Joint3Lower;
     public Transform Joint4Lower;
+    public Transform GripperLowerBase;
+    public Transform GripperUpperBase;
     public Transform GripperLowerLeft;
     public Transform GripperLowerRight;
     public Transform GripperUpperLeft;
@@ -32,7 +34,7 @@ public class DuaroAgent : Agent
     public Transform Target; //Target the agent will try to touch during training.
 
     // Max steps to do before reset de environment
-    [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 2000;
+    [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 200;
     private int m_resetTimer;
 
     public override void Initialize()
@@ -46,22 +48,21 @@ public class DuaroAgent : Agent
     {
 
         // Move the target to a new spot
-        Target.localPosition = new Vector3(Random.value * -0.18f + 0.09f,
-                                           -0.1f,
-                                           Random.value * - 1.2f);
+        Target.localPosition = new Vector3(Random.value * 0.55f - 0.36f,
+                                           Random.value * 0.23f + 0.77f,
+                                           Random.value * 1.6f - 0.8f);
 
     }
 
     /// <summary>
     /// Add relevant information on each body part to observations.
     /// </summary>
-
     public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
     {
 
         // Target and Agent positions
         sensor.AddObservation(Target.position);
-        sensor.AddObservation(this.transform.position);
+        //sensor.AddObservation(this.transform.position);
 
         // Observations for each Joint
         sensor.AddObservation(Joint1Lower.position);
@@ -73,11 +74,13 @@ public class DuaroAgent : Agent
         sensor.AddObservation(Joint3Upper.position);
         sensor.AddObservation(Joint4Upper.position);
 
-        // Observations for each Finger
+        // Observations for Grippers
         sensor.AddObservation(GripperLowerLeft.position);
         sensor.AddObservation(GripperLowerRight.position);
         sensor.AddObservation(GripperUpperLeft.position);
         sensor.AddObservation(GripperUpperRight.position);
+        sensor.AddObservation(GripperUpperBase.position);
+        sensor.AddObservation(GripperLowerBase.position);
 
     }
 
@@ -88,26 +91,28 @@ public class DuaroAgent : Agent
         var i = -1;
 
         // Actions, size = 4
-        robot.set_lower_joint_target(continuousActions[++i]*90,continuousActions[++i]*90,0,0,0,0);
-        robot.set_upper_joint_target(continuousActions[++i]*90,continuousActions[++i]*90,0,0,0,0);
+        robot.set_lower_joint_target(continuousActions[++i]*90,continuousActions[++i]*90,(continuousActions[++i]+1)*0.045f,0,0,0);
+        robot.set_upper_joint_target(continuousActions[++i]*90,continuousActions[++i]*90,(continuousActions[++i]+1)*0.045f,0,0,0);
         
-
         // Rewards
-        float distanceToTargetOK = Vector3.Distance(Joint3Lower.position, Target.position);
-        float distanceToTargetBAD = Vector3.Distance(Joint3Upper.position, Target.position);
+        float distanceToTargetUpper = Vector3.Distance(GripperUpperBase.position, Target.position);
+        float distanceToTargetLower = Vector3.Distance(GripperLowerBase.position, Target.position);
+
+        //Debug.Log("distanceToTargetUpper = " + distanceToTargetUpper);
+        Debug.Log("Upper Joint 3 Position = " + (continuousActions[2]+1)*0.045f);
 
         // Reached target
-        if (distanceToTargetOK < 0.45f)
+        if (distanceToTargetUpper < 0.42f)
         {
-            SetReward(2.0f);
-            Debug.Log("Good Reward");
+            AddReward(2.0f);
+            //Debug.Log("Good Reward");
             EndEpisode();
         }
 
-        if (distanceToTargetBAD < 0.45f)
+        if (distanceToTargetLower < 0.42f)
         {
-            SetReward(-1.0f);
-            Debug.Log("Bad Reward");
+            AddReward(-1.0f);
+            //Debug.Log("Bad Reward");
             EndEpisode();
         }
 
