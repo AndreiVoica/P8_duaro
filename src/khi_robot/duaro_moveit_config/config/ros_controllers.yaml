@@ -1,0 +1,140 @@
+upper_gripper_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - upper_gripper_finger_left_joint
+    - upper_gripper_finger_right_joint
+  gains:
+    upper_gripper_finger_left_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    upper_gripper_finger_right_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+lower_gripper_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - lower_gripper_finger_left_joint
+    - lower_gripper_finger_right_joint
+  gains:
+    lower_gripper_finger_left_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    lower_gripper_finger_right_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+upper_arm_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - duaroupper_joint1
+    - duaroupper_joint2
+    - duaroupper_joint3
+    - duaroupper_joint4
+  gains:
+    duaroupper_joint1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duaroupper_joint2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duaroupper_joint3:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duaroupper_joint4:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+lower_arm_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - duarolower_joint1
+    - duarolower_joint2
+    - duarolower_joint3
+    - duarolower_joint4
+  gains:
+    duarolower_joint1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duarolower_joint2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duarolower_joint3:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duarolower_joint4:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+botharms_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - duarolower_joint1
+    - duarolower_joint2
+    - duarolower_joint3
+    - duarolower_joint4
+    - duaroupper_joint1
+    - duaroupper_joint2
+    - duaroupper_joint3
+    - duaroupper_joint4
+  gains:
+    duarolower_joint1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duarolower_joint2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duarolower_joint3:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duarolower_joint4:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duaroupper_joint1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duaroupper_joint2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duaroupper_joint3:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    duaroupper_joint4:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="khi_duaro">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="upper_gripper">
+        <joint name="upper_gripper_finger_left_joint"/>
+        <joint name="upper_gripper_finger_right_joint"/>
+    </group>
+    <group name="lower_gripper">
+        <joint name="lower_gripper_finger_left_joint"/>
+        <joint name="lower_gripper_finger_right_joint"/>
+    </group>
+    <group name="upper_arm">
+        <chain base_link="duaroduaro_j0" tip_link="duaroupper_link_j4"/>
+    </group>
+    <group name="lower_arm">
+        <chain base_link="duaroduaro_j0" tip_link="duarolower_link_j4"/>
+    </group>
+    <group name="botharms">
+        <group name="upper_gripper"/>
+        <group name="lower_gripper"/>
+        <group name="upper_arm"/>
+        <group name="lower_arm"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="up_gripper_close" group="upper_gripper">
+        <joint name="upper_gripper_finger_left_joint" value="-0.005"/>
+        <joint name="upper_gripper_finger_right_joint" value="0.005"/>
+    </group_state>
+    <group_state name="up_gripper_open" group="upper_gripper">
+        <joint name="upper_gripper_finger_left_joint" value="-0.055"/>
+        <joint name="upper_gripper_finger_right_joint" value="0.055"/>
+    </group_state>
+    <group_state name="low_gripper_close" group="lower_gripper">
+        <joint name="lower_gripper_finger_left_joint" value="-0.005"/>
+        <joint name="lower_gripper_finger_right_joint" value="0.005"/>
+    </group_state>
+    <group_state name="low_gripper_open" group="lower_gripper">
+        <joint name="lower_gripper_finger_left_joint" value="-0.055"/>
+        <joint name="lower_gripper_finger_right_joint" value="0.055"/>
+    </group_state>
+    <group_state name="upper_home" group="upper_arm">
+        <joint name="duaroupper_joint1" value="0.7853"/>
+        <joint name="duaroupper_joint2" value="-0.7853"/>
+        <joint name="duaroupper_joint3" value="0.09"/>
+        <joint name="duaroupper_joint4" value="0"/>
+    </group_state>
+    <group_state name="lower_home" group="lower_arm">
+        <joint name="duarolower_joint1" value="-0.7853"/>
+        <joint name="duarolower_joint2" value="0.7853"/>
+        <joint name="duarolower_joint3" value="0.09"/>
+        <joint name="duarolower_joint4" value="0"/>
+    </group_state>
+    <group_state name="home" group="botharms">
+        <joint name="duarolower_joint1" value="-0.7853"/>
+        <joint name="duarolower_joint2" value="0.7853"/>
+        <joint name="duarolower_joint3" value="0.09"/>
+        <joint name="duarolower_joint4" value="0"/>
+        <joint name="duaroupper_joint1" value="0.7853"/>
+        <joint name="duaroupper_joint2" value="-0.7853"/>
+        <joint name="duaroupper_joint3" value="0.09"/>
+        <joint name="duaroupper_joint4" value="0"/>
+        <joint name="lower_gripper_finger_left_joint" value="-0.0055"/>
+        <joint name="lower_gripper_finger_right_joint" value="0.0055"/>
+        <joint name="upper_gripper_finger_left_joint" value="-0.055"/>
+        <joint name="upper_gripper_finger_right_joint" value="0.055"/>
+    </group_state>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="duarobase_link" link2="duarocart" reason="Adjacent"/>
+    <disable_collisions link1="duarobase_link" link2="duaroduaro_body" reason="Adjacent"/>
+    <disable_collisions link1="duarobase_link" link2="duaroduaro_body_cover" reason="Adjacent"/>
+    <disable_collisions link1="duarobase_link" link2="duaroduaro_j0" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="duaroduaro_j0_cover" reason="Adjacent"/>
+    <disable_collisions link1="duarobase_link" link2="duaroduaro_logo" reason="Adjacent"/>
+    <disable_collisions link1="duarobase_link" link2="duarokawasaki_logo" reason="Adjacent"/>
+    <disable_collisions link1="duarobase_link" link2="duarolower_link_j1" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="duarolower_link_j2" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="duarolower_link_j3" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="duarolower_link_j4" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="duaroupper_link_j1" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="duaroupper_link_j2" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="duaroupper_link_j3" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="duaroupper_link_j4" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="lower_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="upper_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="upper_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarobase_link" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duaroduaro_body" reason="Default"/>
+    <disable_collisions link1="duarocart" link2="duaroduaro_body_cover" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duaroduaro_j0" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duaroduaro_j0_cover" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duaroduaro_logo" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duarokawasaki_logo" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duarolower_link_j1" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duarolower_link_j2" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duarolower_link_j3" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duarolower_link_j4" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duaroupper_link_j1" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duaroupper_link_j2" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duaroupper_link_j3" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="duaroupper_link_j4" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="lower_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="upper_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="upper_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarocart" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body" link2="duaroduaro_body_cover" reason="Default"/>
+    <disable_collisions link1="duaroduaro_body" link2="duaroduaro_j0" reason="Adjacent"/>
+    <disable_collisions link1="duaroduaro_body" link2="duaroduaro_j0_cover" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body" link2="duaroduaro_logo" reason="Default"/>
+    <disable_collisions link1="duaroduaro_body" link2="duarokawasaki_logo" reason="Default"/>
+    <disable_collisions link1="duaroduaro_body" link2="duarolower_link_j1" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body" link2="duarolower_link_j2" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body" link2="duarolower_link_j3" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body" link2="duarolower_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body" link2="duaroupper_link_j1" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body" link2="duaroupper_link_j2" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body" link2="duaroupper_link_j3" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body" link2="duaroupper_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duaroduaro_j0" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duaroduaro_j0_cover" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duaroduaro_logo" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duarokawasaki_logo" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duarolower_link_j1" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duarolower_link_j2" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duarolower_link_j3" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duarolower_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duaroupper_link_j1" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duaroupper_link_j2" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duaroupper_link_j3" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="duaroupper_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="lower_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="upper_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_body_cover" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="duaroduaro_j0_cover" reason="Default"/>
+    <disable_collisions link1="duaroduaro_j0" link2="duaroduaro_logo" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="duarokawasaki_logo" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="duarolower_link_j1" reason="Adjacent"/>
+    <disable_collisions link1="duaroduaro_j0" link2="duarolower_link_j2" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="duarolower_link_j3" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="duarolower_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="duaroupper_link_j1" reason="Adjacent"/>
+    <disable_collisions link1="duaroduaro_j0" link2="duaroupper_link_j2" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="duaroupper_link_j3" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="duaroupper_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="lower_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="upper_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="duaroduaro_logo" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="duarokawasaki_logo" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="duarolower_link_j1" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="duarolower_link_j2" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="duarolower_link_j3" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="duarolower_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="duaroupper_link_j1" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="duaroupper_link_j2" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="duaroupper_link_j3" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="duaroupper_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="lower_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="upper_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_j0_cover" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="duarokawasaki_logo" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="duarolower_link_j1" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="duarolower_link_j2" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="duarolower_link_j3" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="duarolower_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="duaroupper_link_j1" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="duaroupper_link_j2" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="duaroupper_link_j3" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="duaroupper_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="lower_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="upper_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="upper_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroduaro_logo" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="duarolower_link_j1" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="duarolower_link_j2" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="duarolower_link_j3" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="duarolower_link_j4" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="duaroupper_link_j1" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="duaroupper_link_j2" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="duaroupper_link_j3" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="duaroupper_link_j4" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="lower_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="upper_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="upper_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarokawasaki_logo" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j1" link2="duarolower_link_j2" reason="Adjacent"/>
+    <disable_collisions link1="duarolower_link_j1" link2="duarolower_link_j3" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j1" link2="duarolower_link_j4" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j1" link2="duaroupper_link_j1" reason="Default"/>
+    <disable_collisions link1="duarolower_link_j1" link2="duaroupper_link_j2" reason="Default"/>
+    <disable_collisions link1="duarolower_link_j1" link2="lower_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j1" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j1" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j1" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j1" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j1" link2="upper_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j1" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j1" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j1" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="duarolower_link_j3" reason="Adjacent"/>
+    <disable_collisions link1="duarolower_link_j2" link2="duarolower_link_j4" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="duaroupper_link_j1" reason="Default"/>
+    <disable_collisions link1="duarolower_link_j2" link2="duaroupper_link_j2" reason="Default"/>
+    <disable_collisions link1="duarolower_link_j2" link2="duaroupper_link_j4" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="lower_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="upper_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="upper_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j2" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j3" link2="duarolower_link_j4" reason="Adjacent"/>
+    <disable_collisions link1="duarolower_link_j3" link2="duaroupper_link_j2" reason="Default"/>
+    <disable_collisions link1="duarolower_link_j3" link2="duaroupper_link_j3" reason="Default"/>
+    <disable_collisions link1="duarolower_link_j3" link2="lower_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j3" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j3" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j3" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j3" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j4" link2="duaroupper_link_j1" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j4" link2="duaroupper_link_j4" reason="Default"/>
+    <disable_collisions link1="duarolower_link_j4" link2="lower_gripper_base_link" reason="Adjacent"/>
+    <disable_collisions link1="duarolower_link_j4" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j4" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j4" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j4" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duarolower_link_j4" link2="upper_gripper_base_link" reason="Default"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="duaroupper_link_j2" reason="Adjacent"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="duaroupper_link_j3" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="duaroupper_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="lower_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="upper_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="upper_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j1" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j2" link2="duaroupper_link_j3" reason="Adjacent"/>
+    <disable_collisions link1="duaroupper_link_j2" link2="duaroupper_link_j4" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j2" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j2" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j2" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j2" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j2" link2="upper_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j2" link2="upper_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j2" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j2" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j2" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j3" link2="duaroupper_link_j4" reason="Adjacent"/>
+    <disable_collisions link1="duaroupper_link_j3" link2="upper_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j3" link2="upper_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j3" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j3" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j3" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j4" link2="lower_gripper_base_link" reason="Default"/>
+    <disable_collisions link1="duaroupper_link_j4" link2="upper_gripper_base_link" reason="Adjacent"/>
+    <disable_collisions link1="duaroupper_link_j4" link2="upper_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j4" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j4" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="duaroupper_link_j4" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="lower_gripper_base_link" link2="lower_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="lower_gripper_base_link" link2="lower_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="lower_gripper_base_link" link2="lower_gripper_gripper_left" reason="Adjacent"/>
+    <disable_collisions link1="lower_gripper_base_link" link2="lower_gripper_gripper_right" reason="Adjacent"/>
+    <disable_collisions link1="lower_gripper_base_link" link2="upper_gripper_base_link" reason="Default"/>
+    <disable_collisions link1="lower_gripper_finger_left" link2="lower_gripper_gripper_left" reason="Adjacent"/>
+    <disable_collisions link1="lower_gripper_finger_left" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="lower_gripper_finger_left" link2="upper_gripper_finger_left" reason="Default"/>
+    <disable_collisions link1="lower_gripper_finger_left" link2="upper_gripper_gripper_left" reason="Default"/>
+    <disable_collisions link1="lower_gripper_finger_right" link2="lower_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="lower_gripper_finger_right" link2="lower_gripper_gripper_right" reason="Adjacent"/>
+    <disable_collisions link1="lower_gripper_finger_right" link2="upper_gripper_finger_right" reason="Default"/>
+    <disable_collisions link1="lower_gripper_finger_right" link2="upper_gripper_gripper_right" reason="Default"/>
+    <disable_collisions link1="lower_gripper_gripper_left" link2="lower_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="lower_gripper_gripper_left" link2="upper_gripper_finger_left" reason="Default"/>
+    <disable_collisions link1="lower_gripper_gripper_left" link2="upper_gripper_gripper_left" reason="Default"/>
+    <disable_collisions link1="lower_gripper_gripper_right" link2="upper_gripper_finger_right" reason="Default"/>
+    <disable_collisions link1="lower_gripper_gripper_right" link2="upper_gripper_gripper_right" reason="Default"/>
+    <disable_collisions link1="upper_gripper_base_link" link2="upper_gripper_finger_left" reason="Never"/>
+    <disable_collisions link1="upper_gripper_base_link" link2="upper_gripper_finger_right" reason="Never"/>
+    <disable_collisions link1="upper_gripper_base_link" link2="upper_gripper_gripper_left" reason="Adjacent"/>
+    <disable_collisions link1="upper_gripper_base_link" link2="upper_gripper_gripper_right" reason="Adjacent"/>
+    <disable_collisions link1="upper_gripper_finger_left" link2="upper_gripper_gripper_left" reason="Adjacent"/>
+    <disable_collisions link1="upper_gripper_finger_left" link2="upper_gripper_gripper_right" reason="Never"/>
+    <disable_collisions link1="upper_gripper_finger_right" link2="upper_gripper_gripper_left" reason="Never"/>
+    <disable_collisions link1="upper_gripper_finger_right" link2="upper_gripper_gripper_right" reason="Adjacent"/>
+    <disable_collisions link1="upper_gripper_gripper_left" link2="upper_gripper_gripper_right" reason="Never"/>
+</robot>

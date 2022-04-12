@@ -1,0 +1,51 @@
+controller_list:
+  - name: fake_upper_gripper_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - upper_gripper_finger_left_joint
+      - upper_gripper_finger_right_joint
+  - name: fake_lower_gripper_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - lower_gripper_finger_left_joint
+      - lower_gripper_finger_right_joint
+  - name: fake_upper_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - duaroupper_joint1
+      - duaroupper_joint2
+      - duaroupper_joint3
+      - duaroupper_joint4
+  - name: fake_lower_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - duarolower_joint1
+      - duarolower_joint2
+      - duarolower_joint3
+      - duarolower_joint4
+  - name: fake_botharms_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - duarolower_joint1
+      - duarolower_joint2
+      - duarolower_joint3
+      - duarolower_joint4
+      - lower_gripper_finger_left_joint
+      - lower_gripper_finger_right_joint
+      - duaroupper_joint1
+      - duaroupper_joint2
+      - duaroupper_joint3
+      - duaroupper_joint4
+      - upper_gripper_finger_left_joint
+      - upper_gripper_finger_right_joint
+initial:  # Define initial robot poses per group
+  - group: upper_gripper
+    pose: up_gripper_close
+  - group: lower_gripper
+    pose: low_gripper_close
+  - group: upper_arm
+    pose: upper_home
+  - group: lower_arm
+    pose: lower_home
+  - group: botharms
+    pose: home
