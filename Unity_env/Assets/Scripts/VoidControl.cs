@@ -31,16 +31,16 @@ class VoidControl : EditorWindow
         jointAngles.Joint2L = EditorGUILayout.Slider("Joint 2L", jointAngles.Joint2L, -140, 140);
         jointAngles.Joint3L = EditorGUILayout.Slider("Joint 3L", jointAngles.Joint3L, 0f, 0.15f);
         jointAngles.Joint4L = EditorGUILayout.Slider("Joint 4L", jointAngles.Joint4L, -360, 360);
-        jointAngles.Lrgripper = EditorGUILayout.Slider("LR Gripper", jointAngles.Lrgripper, -0.055f, -0.0055f);
-        jointAngles.Llgripper = EditorGUILayout.Slider("LL Gripper", jointAngles.Llgripper, 0.055f, 0.0055f);
+        jointAngles.Lrgripper = EditorGUILayout.Slider("LR Gripper", jointAngles.Lrgripper, 0.055f, 0.0055f);
+        jointAngles.Llgripper = EditorGUILayout.Slider("LL Gripper", jointAngles.Llgripper, -0.055f, -0.0055f);
         
         GUILayout.Label("Duaro Upper Arm", EditorStyles.boldLabel);
         jointAngles.Joint1U = EditorGUILayout.Slider("Joint 1U", jointAngles.Joint1U, -140, 500);
         jointAngles.Joint2U = EditorGUILayout.Slider("Joint 2U", jointAngles.Joint2U, -140, 140);
         jointAngles.Joint3U = EditorGUILayout.Slider("Joint 3U", jointAngles.Joint3U, 0f, 0.15f);
         jointAngles.Joint4U = EditorGUILayout.Slider("Joint 4U", jointAngles.Joint4U, -360, 360);
-        jointAngles.Urgripper = EditorGUILayout.Slider("UR Gripper", jointAngles.Urgripper, -0.055f, -0.0055f);
-        jointAngles.Ulgripper = EditorGUILayout.Slider("UL Gripper", jointAngles.Ulgripper, 0.055f, 0.0055f);
+        jointAngles.Urgripper = EditorGUILayout.Slider("UR Gripper", jointAngles.Urgripper, 0.055f, 0.0055f);
+        jointAngles.Ulgripper = EditorGUILayout.Slider("UL Gripper", jointAngles.Ulgripper, -0.055f, -0.0055f);
     }
 
     void OnInspectorUpdate()
