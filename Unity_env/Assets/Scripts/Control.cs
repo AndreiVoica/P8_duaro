@@ -40,7 +40,7 @@ public class Control : MonoBehaviour
     void ReadCSVFile()
     {
         var path = Directory.GetCurrentDirectory();
-        var filePath = Path.Combine(path, "bagfiles/grip_test3.csv"); 
+        var filePath = Path.Combine(path, "bagfiles/grip_blue1.csv"); 
 
         using (var strReader = new StreamReader(filePath))
         {
