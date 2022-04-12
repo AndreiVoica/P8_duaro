@@ -1,0 +1,65 @@
+{
+    "DuaroAgent": {
+        "checkpoints": [
+            {
+                "steps": 10104,
+                "file_path": "results/test84/DuaroAgent/DuaroAgent-10104.onnx",
+                "reward": 0.8333333333333334,
+                "creation_time": 1649685001.1081772,
+                "auxillary_file_paths": [
+                    "results/test84/DuaroAgent/DuaroAgent-10104.pt"
+                ]
+            },
+            {
+                "steps": 48624,
+                "file_path": "results/test84/DuaroAgent/DuaroAgent-48624.onnx",
+                "reward": 1.1428571428571428,
+                "creation_time": 1649686802.0393136,
+                "auxillary_file_paths": [
+                    "results/test84/DuaroAgent/DuaroAgent-48624.pt"
+                ]
+            },
+            {
+                "steps": 203005,
+                "file_path": "results/test84/DuaroAgent/DuaroAgent-203005.onnx",
+                "reward": 1.3508771929824561,
+                "creation_time": 1649698624.6442823,
+                "auxillary_file_paths": [
+                    "results/test84/DuaroAgent/DuaroAgent-203005.pt"
+                ]
+            },
+            {
+                "steps": 329870,
+                "file_path": "results/test84/DuaroAgent/DuaroAgent-329870.onnx",
+                "reward": 1.75,
+                "creation_time": 1649702040.4150484,
+                "auxillary_file_paths": [
+                    "results/test84/DuaroAgent/DuaroAgent-329870.pt"
+                ]
+            },
+            {
+                "steps": 343310,
+                "file_path": "results/test84/DuaroAgent/DuaroAgent-343310.onnx",
+                "reward": 1.4,
+                "creation_time": 1649749447.178557,
+                "auxillary_file_paths": [
+                    "results/test84/DuaroAgent/DuaroAgent-343310.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 343310,
+            "file_path": "results/test84/DuaroAgent.onnx",
+            "reward": 1.4,
+            "creation_time": 1649749447.178557,
+            "auxillary_file_paths": [
+                "results/test84/DuaroAgent/DuaroAgent-343310.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.8.1+cu102"
+    }
+}

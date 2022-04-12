@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -616,7 +616,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 0.25
-  m_ParentAnchorPosition: {x: -0.000000059604645, y: 0, z: 0.000000007450581}
+  m_ParentAnchorPosition: {x: 0, y: 0, z: 0.000000029802322}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071069, w: 0.7071069}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -1186,6 +1186,8 @@ GameObject:
   - component: {fileID: 198763914}
   - component: {fileID: 198763913}
   - component: {fileID: 198763912}
+  - component: {fileID: 198763918}
+  - component: {fileID: 198763917}
   m_Layer: 0
   m_Name: DuaroAgent
   m_TagString: robot
@@ -1283,7 +1285,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198763911}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.66226524, y: -0.8432023, z: 0.009275481}
+  m_LocalPosition: {x: -0.66226524, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1655128566}
@@ -1291,6 +1293,66 @@ Transform:
   m_Father: {fileID: 1915259193}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &198763917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198763911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1026e463481ec13a7881f3a1ad17d773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  Joint1Upper: {fileID: 0}
+  Joint2Upper: {fileID: 0}
+  Joint3Upper: {fileID: 0}
+  Joint4Upper: {fileID: 0}
+  Joint1Lower: {fileID: 0}
+  Joint2Lower: {fileID: 0}
+  Joint3Lower: {fileID: 0}
+  Joint4Lower: {fileID: 0}
+  GripperLowerLeft: {fileID: 0}
+  GripperLowerRight: {fileID: 0}
+  GripperUpperLeft: {fileID: 0}
+  GripperUpperRight: {fileID: 0}
+  Target: {fileID: 0}
+  MaxEnvironmentSteps: 2000
+--- !u!114 &198763918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198763911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 30
+    NumStackedVectorObservations: 1
+    m_ActionSpec:
+      m_NumContinuousActions: 4
+      BranchSizes: 
+    VectorActionSize: 04000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 1
+    hasUpgradedBrainParametersWithActionSpec: 1
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_BehaviorType: 0
+  m_BehaviorName: DuaroAgent
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_ObservableAttributeHandling: 0
 --- !u!1 &217239063
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,7 +2544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310404588}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.66226524, y: -0.8432023, z: 0.49971145}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1915259193}
@@ -3309,7 +3371,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 3.476
-  m_ParentAnchorPosition: {x: -0.40000004, y: 0, z: 0.000000007450581}
+  m_ParentAnchorPosition: {x: -0.39999998, y: 0, z: 0.000000029802322}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071069, w: 0.7071069}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -4478,7 +4540,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 1
-  m_ParentAnchorPosition: {x: -0.000000059604645, y: 0, z: 0.000000007450581}
+  m_ParentAnchorPosition: {x: 0, y: 0, z: 0.000000029802322}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071069, w: 0.7071069}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -5959,7 +6021,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 0.1
-  m_ParentAnchorPosition: {x: -0.000000059604645, y: 0, z: 0.000000007450581}
+  m_ParentAnchorPosition: {x: 0, y: 0, z: 0.000000029802322}
   m_ParentAnchorRotation: {x: 0, y: -0.707106, z: 0, w: 0.7071078}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
@@ -6506,7 +6568,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.27059805, y: -0.6532815, z: 0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 1.629, y: 2.112, z: -0.034}
+  m_LocalPosition: {x: 1.779, y: 2.848, z: -0.034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8564,7 +8626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170295429}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03673476, y: -0.4172023, z: 0.009275481}
+  m_LocalPosition: {x: 0.03673476, y: 0.364, z: 0.009275481}
   m_LocalScale: {x: 0.85, y: 0.7, z: 1.8}
   m_Children: []
   m_Father: {fileID: 1915259193}
@@ -8863,7 +8925,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 0.1
-  m_ParentAnchorPosition: {x: -0.000000059604645, y: 0, z: 0.000000007450581}
+  m_ParentAnchorPosition: {x: 0, y: 0, z: 0.000000029802322}
   m_ParentAnchorRotation: {x: 0, y: -0.7071069, z: 0, w: 0.7071069}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
@@ -9537,7 +9599,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 0.1
-  m_ParentAnchorPosition: {x: -0.000000059604645, y: -0.01700002, z: 0.000000007450581}
+  m_ParentAnchorPosition: {x: 0, y: -0.01700002, z: 0.000000029802322}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071069, w: 0.7071069}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -9710,7 +9772,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 1
-  m_ParentAnchorPosition: {x: -0.000000059604645, y: -0.01700002, z: 0.000000007450581}
+  m_ParentAnchorPosition: {x: 0, y: -0.01700002, z: 0.000000029802322}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071069, w: 0.7071069}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -10001,7 +10063,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 0.1
-  m_ParentAnchorPosition: {x: 0.000000059604666, y: -0.01700002, z: -0.0000000074504296}
+  m_ParentAnchorPosition: {x: 7.55543e-14, y: -0.01700002, z: -0.000000029802322}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071069, w: 0.7071069}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -10260,7 +10322,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 10
-  m_ParentAnchorPosition: {x: -0.000000059604645, y: -0.24000001, z: 0.000000007450581}
+  m_ParentAnchorPosition: {x: 0, y: -0.24000001, z: 0.000000029802322}
   m_ParentAnchorRotation: {x: 0, y: 0, z: -0.7071069, w: 0.7071069}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
@@ -11661,7 +11723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448368913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1202652, y: -0.7702023, z: 1.2402754}
+  m_LocalPosition: {x: -1.1202652, y: 0.001, z: 1.2402754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 343257146}
@@ -15528,7 +15590,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915259192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.66226524, y: 0.8432023, z: -0.009275481}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1448368914}

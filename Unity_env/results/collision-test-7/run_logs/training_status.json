@@ -1,0 +1,29 @@
+{
+    "DuaroAgent": {
+        "checkpoints": [
+            {
+                "steps": 400,
+                "file_path": "results/collision-test-7/DuaroAgent/DuaroAgent-400.onnx",
+                "reward": 0.33962264150943394,
+                "creation_time": 1649753226.2553732,
+                "auxillary_file_paths": [
+                    "results/collision-test-7/DuaroAgent/DuaroAgent-400.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 400,
+            "file_path": "results/collision-test-7/DuaroAgent.onnx",
+            "reward": 0.33962264150943394,
+            "creation_time": 1649753226.2553732,
+            "auxillary_file_paths": [
+                "results/collision-test-7/DuaroAgent/DuaroAgent-400.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.8.1+cu102"
+    }
+}
