@@ -80,37 +80,17 @@ public class DraftDuaroAgent : Agent
 	// }
 
 
-    public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        Debug.Log("Heuristic");
-        var discreteActionsOut = actionsOut.DiscreteActions;
-        if (Input.GetKey(KeyCode.Z))
-        {
-            discreteActionsOut[0] = 0;
-            Debug.Log("DDDDDDDDDDDD");
-        }
-        else if (Input.GetKey(KeyCode.X))
-        {
-            discreteActionsOut[0] = 1;
-        }
-        else if (Input.GetKey(KeyCode.C))
-        {
-            discreteActionsOut[0] = 2;
-        }
 
-        Debug.Log("discreteActionsOut = " + discreteActionsOut[0]);
-    }	
 
     public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
     {
         sensor.AddObservation(blue.position);
     }
 
-    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    {      
-
-        
-        int decision = actionBuffers.DiscreteActions[0];
+    public void MoveAgent(ActionSegment<int> act)
+    {
+        //int decision = actionBuffers.DiscreteActions[0];
+        var decision = act[0];
        // decision = 0;
         var skill = 4;
         Debug.Log("test decision: " + decision);
@@ -148,24 +128,19 @@ public class DraftDuaroAgent : Agent
             Debug.Log("Good Reward for ending the task");
             EndEpisode();
         }
-        
     }
 
-    void FixedUpdate()
-    {
-        m_resetTimer += 1;
-        if (m_resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
-        {
-            Debug.Log("Restarting Scene");
-            //SetReward(MaxEnvironmentSteps* - 0.000001f);
-            m_resetTimer = 0;
-            EndEpisode();
-        }
+    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    {      
+        // Move the agent using the action.
+        //MoveAgent(actionBuffers.DiscreteActions);
     }
+
+
 
 
     // // Collision detection:
-    // protected override void OnEnable()
+    // protected override void OnEnablev()
     // {
     //     // Register to OnCollision event
     //     CollisionCallback.OnCollision += CollisionDetected;
@@ -173,7 +148,7 @@ public class DraftDuaroAgent : Agent
 
     // protected override void OnDisable()
     // {
-    //     // Un-Register to OnCollision event
+    //     // Un-Register to OnCollision eent
     //     CollisionCallback.OnCollision -= CollisionDetected;
     // }
 
@@ -249,7 +224,43 @@ public class DraftDuaroAgent : Agent
     //
     //   }
 
-    
+       public override void Heuristic(in ActionBuffers actionsOut)
+    {
+        Debug.Log("Heuristic");
+        var discreteActionsOut = actionsOut.DiscreteActions;
+        if (Input.GetKey(KeyCode.Z))
+        {
+            discreteActionsOut[0] = 0;
+            Debug.Log("ZZZZZZZZZZZZZZ");
+            control.PickBlue();
+        }
+        else if (Input.GetKey(KeyCode.X))
+        {
+            discreteActionsOut[0] = 1;
+            Debug.Log("XXXXXXXXXXX");
+            control.PickRed();
+        }
+        else if (Input.GetKey(KeyCode.C))
+        {
+            discreteActionsOut[0] = 2;
+            Debug.Log("CCCCCCCCCCCCCC");
+            control.PickWhite();
+        }
 
+        Debug.Log("discreteActionsOut = " + discreteActionsOut[0]);
+    }	 
+
+
+    void FixedUpdate()
+    {
+        m_resetTimer += 1;
+        if (m_resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
+        {
+            Debug.Log("Restarting Scene");
+            //SetReward(MaxEnvironmentSteps* - 0.000001f);
+            m_resetTimer = 0;
+            EndEpisode();
+        }
+    }
 
 }
