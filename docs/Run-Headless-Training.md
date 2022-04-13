@@ -6,6 +6,38 @@
 - [Run on the cloud GPU](#Run-on-the-cloud-GPU)
 
 ## Create an executable environment in Unity
+The tutorial to create an executable environment is on this [link](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Learning-Environment-Executable.md).
+
+### How to create the executable file:
+1. Open Player Settings:
+- At the top menu: `Edit` > `Project Settings` > `Player`.
+- Under Resolution and Presentation:
+    - Ensure that `Run in Background` is Checked.
+    - Ensure that `Display Resolution Dialog` is set to Disabled. (Note: this setting may not be available in newer versions of the editor.)
+2. Open the Build Settings window:
+- At the top menu: `File` > `Build Settings`.
+3. Choose the target platform.
+- (optional) Select `Development Build` to log debug messages.
+4. If any scenes are shown in the Scenes in Build list, make sure that your scene is the only one checked. (If the list is empty, then only the current scene is included in the build).
+5. Click `Build`:
+- In the `File` dialog, navigate to your ML-Agents directory.
+- Assign a file name and click `Save`.
+
+### Launch the executable file:
+- You can do it by just pressing on the executable file.
+- It is possible to use the [Python API](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Python-API.md) to launch it:
+```
+from mlagents_envs.environment import UnityEnvironment
+env = UnityEnvironment(file_name=<env_name>)
+```
+### Run the enviroment to train:
+- Select the algorithm from `config/` directory.
+- In the flag `--env` add the path to the executable file (It is not necessary to add the file extension).
+- Launch the following command:
+`mlagents-learn config/ppo/duaro-test-ppo.yaml --env=Build/test-approx --run-id=firstHeadlessRun`
+
+
+
 ## Train headless
 ## Build on Docker
 ## Run on the cloud GPU
