@@ -36,8 +36,13 @@ env = UnityEnvironment(file_name=<env_name>)
 - Launch the following command:
 `mlagents-learn config/ppo/duaro-test-ppo.yaml --env=Build/test-approx --run-id=firstHeadlessRun`
 
-
-
 ## Train headless
+There are 2 options to train headless:
+1. Add the `--no-graphics` when running the training, i.e:
+`mlagents-learn config/ppo/duaro-test-ppo.yaml --env=Build/test-duaro --run-id=firstRun --no-graphics`
+
+2. Build the Unity executable with `Server Build` checked. You can find this setting in Build Settings in the Unity Editor.
+`mlagents-learn config/ppo/duaro-test-ppo.yaml --env=Build/test-duaro --run-id=firstRun `
+
 ## Build on Docker
 ## Run on the cloud GPU
