@@ -19,7 +19,7 @@ public class Control : MonoBehaviour
         var rate = 10f;
         var waitTime = 1f / rate;
         
-        InvokeRepeating("MoveJoints", 0, waitTime);
+        InvokeRepeating("MoveJoints", 0, waitTime); //Check this function
     }
 /*
     public void Update()
@@ -40,14 +40,18 @@ public class Control : MonoBehaviour
         robot.set_lower_joint_target(jointAngles[currentIndex].Joint1L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint2L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint3L, jointAngles[currentIndex].Joint4L * Mathf.Rad2Deg, jointAngles[currentIndex].Lrgripper, jointAngles[currentIndex].Llgripper);
         robot.set_upper_joint_target(jointAngles[currentIndex].Joint1U * Mathf.Rad2Deg, jointAngles[currentIndex].Joint2U * Mathf.Rad2Deg, jointAngles[currentIndex].Joint3U, jointAngles[currentIndex].Joint4U * Mathf.Rad2Deg, jointAngles[currentIndex].Ulgripper, jointAngles[currentIndex].Urgripper);
         currentIndex++;
-        if (currentIndex >= 155)
-        {
-            CancelInvoke();
-            currentIndex = 0;
-        }
+        //Debug.Log("CurrentIndex = " + currentIndex);
+        // if (currentIndex >= 10000) //For what is this needed?
+        // {
+
+        //     currentIndex = 0;
+        //     //CancelInvoke();
+        //     Debug.Log("CancelInvoke");
+        // }
     }
 
-    public void PicKWhite()
+
+    public void PickWhite()
     {
         var pathWhite = Directory.GetCurrentDirectory();
         var filePathWhite = Path.Combine(pathWhite, "bagfiles/grip_white.csv"); 
@@ -62,6 +66,7 @@ public class Control : MonoBehaviour
                 jointAngles.Add(anglesWhite);
             }
         }
+        Debug.Log("Pick White");
     }
 
     public void PickBlue()
@@ -79,7 +84,9 @@ public class Control : MonoBehaviour
                 jointAngles.Add(anglesBlue);
             }
         }
+        Debug.Log("Pick Blue");
     }
+
 
     public void PickRed()
     {
@@ -96,6 +103,7 @@ public class Control : MonoBehaviour
                 jointAngles.Add(anglesRed);
             }
         }
+        Debug.Log("Pick Red");
     }
 
     private JointAngles DecodeLine(string line)

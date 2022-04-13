@@ -36,7 +36,7 @@ public class DraftDuaroAgent : Agent
 
     // public Transform Target; //Target the agent will try to touch during training.
 
-    [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 2000;
+    [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 50000;
     private int m_resetTimer;
 
 
@@ -66,69 +66,53 @@ public class DraftDuaroAgent : Agent
     /// Add relevant information on each body part to observations.
     /// </summary>
 
-    // public override void Heuristic(in ActionBuffers actionsOut){
-    //     Debug.Log("Heuristic");
-	// 	ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
-	// 	if (Input.GetKeyDown(KeyCode.Q))
-    //         discreteActions[0] = 0;
-    //         Debug.Log("HeuristicQQQQQQQ");
-    //     if (Input.GetKeyDown(KeyCode.W))
-    //         discreteActions[0] = 1;
-    //     if (Input.GetKeyDown(KeyCode.A))
-    //         discreteActions[0] = 2;
-        
-	// }
-
-
-
-
     public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
     {
         sensor.AddObservation(blue.position);
     }
 
-    public void MoveAgent(ActionSegment<int> act)
-    {
-        //int decision = actionBuffers.DiscreteActions[0];
-        var decision = act[0];
-       // decision = 0;
-        var skill = 4;
-        Debug.Log("test decision: " + decision);
-        // tbd:
-        switch (decision)
-        {        
-        case 0:
-            count_collision_blue = 0;
-            count_collision_red = 0;        
-            count_collision_rectangle = 0;
-            pickup_blue = true;
-            control.PickBlue();
-            break;
-        case 1:
-            count_collision_blue = 0;
-            count_collision_red = 0;        
-            count_collision_rectangle = 0;
-            pickup_red = true;
-            control.PickRed();
-            break;
-        case 2:
-            count_collision_blue = 0;
-            count_collision_red = 0;        
-            count_collision_rectangle = 0;
-            pickup_rectangle = true;
-            control.PicKWhite();
-            break;
-        default:
-            break;
-        }
-        // ControlAgent.Start(); start the skill 0, 1 or 2
-        if (pickup_blue && pickup_red && pickup_rectangle)
-        {
-            AddReward(2.0f);
-            Debug.Log("Good Reward for ending the task");
-            EndEpisode();
-        }
-    }
+    // public void MoveAgent(ActionSegment<int> act)
+    // {
+    //     //int decision = actionBuffers.DiscreteActions[0];
+    //     var decision = act[0];
+    //    // decision = 0;
+    //     var skill = 4;
+    //     Debug.Log("test decision: " + decision);
+    //     // tbd:
+    //     switch (decision)
+    //     {        
+    //     case 0:
+    //         count_collision_blue = 0;
+    //         count_collision_red = 0;        
+    //         count_collision_rectangle = 0;
+    //         pickup_blue = true;
+    //         control.PickBlue();
+    //         break;
+    //     case 1:
+    //         count_collision_blue = 0;
+    //         count_collision_red = 0;        
+    //         count_collision_rectangle = 0;
+    //         pickup_red = true;
+    //         control.PickRed();
+    //         break;
+    //     case 2:
+    //         count_collision_blue = 0;
+    //         count_collision_red = 0;        
+    //         count_collision_rectangle = 0;
+    //         pickup_rectangle = true;
+    //         control.PickWhite();
+    //         break;
+    //     default:
+    //         break;
+    //     }
+    //     // ControlAgent.Start(); start the skill 0, 1 or 2
+    //     if (pickup_blue && pickup_red && pickup_rectangle)
+    //     {
+    //         AddReward(10.0f);
+    //         Debug.Log("Good Reward for ending the task");
+    //         EndEpisode();
+    //     }
+    // }
 
     public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
     {      
@@ -228,22 +212,22 @@ public class DraftDuaroAgent : Agent
     {
         Debug.Log("Heuristic");
         var discreteActionsOut = actionsOut.DiscreteActions;
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.A))
         {
             discreteActionsOut[0] = 0;
-            Debug.Log("ZZZZZZZZZZZZZZ");
+            Debug.Log("Key A Pressed");
             control.PickBlue();
         }
-        else if (Input.GetKey(KeyCode.X))
+        else if (Input.GetKey(KeyCode.B))
         {
             discreteActionsOut[0] = 1;
-            Debug.Log("XXXXXXXXXXX");
+            Debug.Log("Key B Pressed");
             control.PickRed();
         }
         else if (Input.GetKey(KeyCode.C))
         {
             discreteActionsOut[0] = 2;
-            Debug.Log("CCCCCCCCCCCCCC");
+            Debug.Log("Key C Pressed");
             control.PickWhite();
         }
 

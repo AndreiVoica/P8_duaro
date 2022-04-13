@@ -31,7 +31,7 @@ public class TestContol : MonoBehaviour
         }
         else if(Input.GetKey(KeyCode.D))
         {
-            control.PicKWhite();
+            control.PickWhite();
         }
     }
 
@@ -48,7 +48,7 @@ public class TestContol : MonoBehaviour
     }
     IEnumerator White()
     {
-        control.PicKWhite();
+        control.PickWhite();
         yield return null;
     }
 
@@ -65,7 +65,7 @@ public class TestContol : MonoBehaviour
         }
         if(Input.GetKey(KeyCode.D))
         {
-            control.PicKWhite();
+            control.PickWhite();
         }
     }
 */
