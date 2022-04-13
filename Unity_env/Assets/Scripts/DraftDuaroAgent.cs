@@ -26,6 +26,7 @@ public class DraftDuaroAgent : Agent
     int count_collision_blue;
     int count_collision_red;        
     int count_collision_rectangle;
+    private Control control;
 
     // public Control ControlAgent; 
 
@@ -39,7 +40,7 @@ public class DraftDuaroAgent : Agent
     {
         // reset cube positions:
         Vector3 rotationVector = new Vector3(0, 0, 0);
-
+        Debug.Log("OnEpBegin");
         blue.transform.position = new Vector3(1.22300005f,0.823099971f,-1.32130003f);
         blue.transform.rotation = Quaternion.Euler(rotationVector);
         red.transform.position = new Vector3(1.22500002f,0.823000014f,-1.17999995f);
@@ -48,7 +49,7 @@ public class DraftDuaroAgent : Agent
         rectangle.transform.rotation = Quaternion.Euler(rotationVector);
         pickup_blue = false;
         pickup_red = false;
-
+        control = FindObjectOfType<Control>();
     }
 
     /// <summary>
@@ -56,6 +57,7 @@ public class DraftDuaroAgent : Agent
     /// </summary>
 
     public override void Heuristic(in ActionBuffers actionsOut){
+        Debug.Log("Heuristic");
 		ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
 		if (Input.GetKeyDown(KeyCode.Q))
                 	discreteActions[0] = 0;
@@ -63,6 +65,7 @@ public class DraftDuaroAgent : Agent
                 	discreteActions[0] = 1;
             	if (Input.GetKeyDown(KeyCode.A))
                 	discreteActions[0] = 2;
+        
 	}
 
     public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
@@ -70,13 +73,12 @@ public class DraftDuaroAgent : Agent
 
 
     }
-  
 
     public override void OnActionReceived(ActionBuffers actions) //receives actions and assigns the reward
     {      
         int decision = actions.DiscreteActions[0];
         var skill = 4;
-
+        Debug.Log("OnActReceived");
         // tbd:
         switch (decision)
         {        
@@ -86,6 +88,7 @@ public class DraftDuaroAgent : Agent
             count_collision_rectangle = 0;
             pickup_blue = true;
             skill = 0; // blue
+            control.PickBlue();
             break;
         case 1:
             count_collision_blue = 0;
@@ -93,6 +96,7 @@ public class DraftDuaroAgent : Agent
             count_collision_rectangle = 0;
             pickup_red = true;
             skill = 1; // red
+            control.PickRed();
             break;
         case 2:
             count_collision_blue = 0;
@@ -100,6 +104,7 @@ public class DraftDuaroAgent : Agent
             count_collision_rectangle = 0;
             pickup_rectangle = true;
             skill = 2; // rectangle
+            control.PicKWhite();
             break;
         }
         // ControlAgent.Start(); start the skill 0, 1 or 2
@@ -109,6 +114,7 @@ public class DraftDuaroAgent : Agent
             Debug.Log("Good Reward for ending the task");
             EndEpisode();
         }
+        
     }
 
     void FixedUpdate()

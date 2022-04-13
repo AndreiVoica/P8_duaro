@@ -1189,7 +1189,7 @@ GameObject:
   - component: {fileID: 198763918}
   - component: {fileID: 198763917}
   - component: {fileID: 198763919}
-  - component: {fileID: 198763920}
+  - component: {fileID: 198763921}
   m_Layer: 0
   m_Name: DuaroAgent
   m_TagString: robot
@@ -1351,7 +1351,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 1
   m_BehaviorName: DuaroAgent
   TeamId: 0
   m_UseChildSensors: 1
@@ -1364,23 +1364,31 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198763911}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28fbed9cfb0f1f46495f869f88540f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &198763920
+--- !u!114 &198763921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198763911}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c91992356a1bb3b83526a9ab42800d, type: 3}
+  m_Script: {fileID: 11500000, guid: f8e868324e06f1cd49a70b0edad17167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 1000
+  blue: {fileID: 343257146}
+  red: {fileID: 677450745}
+  rectangle: {fileID: 2061847292}
+  MaxEnvironmentSteps: 2000
 --- !u!1 &217239063
 GameObject:
   m_ObjectHideFlags: 0

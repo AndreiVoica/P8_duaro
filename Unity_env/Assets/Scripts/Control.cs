@@ -21,7 +21,7 @@ public class Control : MonoBehaviour
         
         InvokeRepeating("MoveJoints", 0, waitTime);
     }
-
+/*
     public void Update()
     {
         if(Input.GetKey(KeyCode.A))
@@ -32,9 +32,9 @@ public class Control : MonoBehaviour
         {
             PickBlue();
         }
-        Debug.Log("index test: " + currentIndex);
+        //Debug.Log("index test: " + currentIndex);
     }
-
+*/
     void MoveJoints()
     {
         robot.set_lower_joint_target(jointAngles[currentIndex].Joint1L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint2L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint3L, jointAngles[currentIndex].Joint4L * Mathf.Rad2Deg, jointAngles[currentIndex].Lrgripper, jointAngles[currentIndex].Llgripper);
