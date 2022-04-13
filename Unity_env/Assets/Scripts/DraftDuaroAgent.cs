@@ -21,6 +21,7 @@ public class DraftDuaroAgent : Agent
 
     private bool pickup_blue;
     private bool pickup_red;
+    private bool pickup_rectangle;
     private int[] skills_array; // order: blue, red, rectangle 
 
     // public Control ControlAgent; 
@@ -52,44 +53,51 @@ public class DraftDuaroAgent : Agent
     /// Add relevant information on each body part to observations.
     /// </summary>
 
+    public override void Heuristic(in ActionBuffers actionsOut){
+		ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
+		if (Input.GetKeyDown(KeyCode.Q))
+                	discreteActions[0] = 0;
+            	if (Input.GetKeyDown(KeyCode.W))
+                	discreteActions[0] = 1;
+            	if (Input.GetKeyDown(KeyCode.A))
+                	discreteActions[0] = 2;
+	}
+
     public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
     {
 
-    if (skills_array[0] == 1 && skills_array[1] == 1 && skills_array[2] == 1)
-    {
-        Random rnd = new Random();
-        int random_index = rnd.Next(skills_array.Length);
-        skills_array[random_index] = 0;    
-    }
-    else if (skills_array[0] == 0 && skills_array[1] == 0 && skills_array[2] == 0)    
-    {
-        // end episode after this? 
-        // EndEpisode();
 
-    }
-    else if (skills_array[0] == 1 && skills_array[1] == 1 && skills_array[2] == 1)
-    {
-
-    }
-
-    
-    if (skills_array[0] == 0)
-    {
-        pickup_blue = true;
-    }
-    else if (skills_array[1] == 0)
-    {
-        pickup_red = true;
-    }
     }
   
 
-    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    {
+    public override void OnActionReceived(ActionBuffers actions) //receives actions and assigns the reward
+    {      
+        int decision = actions.DiscreteActions[0];
+        var skill = 4;
 
-    // tbd: add, which script to start
-    // ControlAgent.Start();
-
+        // tbd:
+        switch (decision)
+        {        
+        case 0:
+            pickup_blue = true;
+            skill = 0; // blue
+            break;
+        case 1:
+            pickup_red = true;
+            skill = 1; // red
+            break;
+        case 2:
+            pickup_rectangle = true;
+            skill = 2; // rectangle
+            break;
+        }
+        // ControlAgent.Start(); start the skill 0, 1 or 2
+        if (pickup_blue && pickup_red && pickup_rectangle)
+        {
+            AddReward(2.0f);
+            Debug.Log("Good Reward for ending the episode");
+            EndEpisode();
+        }
     }
 
     void FixedUpdate()
@@ -122,42 +130,74 @@ public class DraftDuaroAgent : Agent
     // When collision happens:
     void CollisionDetected(Collision collision)
     {
-        Debug.Log("Collision happened with: " + collision.gameObject.name);
-
-        // Reward depending on collision
-        if (collision.gameObject.name == "red")
-        {
-            if (pickup_red == true)
-            {
-            AddReward(2.0f);
-            Debug.Log("Good Reward");
-            EndEpisode();
-            }
-            else
-            {
-            SetReward(-1.0f);
-            Debug.Log("Bad Reward");
-            EndEpisode();                
-            }
-
-        }
-
+        // Debug.Log("Collision happened with: " + collision.gameObject.name);
+        int count_collision_blue = 0;
+        int count_collision_red = 0;        
+        int count_collision_rectangle = 0;
+       
         if (collision.gameObject.name == "blue")
         {
-            if (pickup_blue == true)
+            count_collision_blue += 1;          
+            
+            if (count_collision_blue == 1)
             {
-            SetReward(2.0f);
-            Debug.Log("Good Reward");
-            EndEpisode();
+                if (pickup_blue == true)
+                {
+                    SetReward(2.0f);
+                    Debug.Log("Good Reward");
+                    EndEpisode();
+                }
+                else
+                {
+                    SetReward(-1.0f);
+                    Debug.Log("Bad Reward");
+                    EndEpisode();                
+                }    
             }
-            else
-            {
-            SetReward(-1.0f);
-            Debug.Log("Bad Reward");
-            EndEpisode();                
-            }
-
         }
+
+        if (collision.gameObject.name == "red")
+        {
+            count_collision_red += 1;          
+            
+            if (count_collision_red == 1)
+            {
+                if (pickup_red == true)
+                {
+                    SetReward(2.0f);
+                    Debug.Log("Good Reward");
+                    EndEpisode();
+                }
+                else
+                {
+                    SetReward(-1.0f);
+                    Debug.Log("Bad Reward");
+                    EndEpisode();                
+                }    
+            }
+        }
+
+        if (collision.gameObject.name == "Rectangle")
+        {
+            count_collision_rectangle += 1;          
+            
+            if (count_collision_rectangle == 1)
+            {
+                if (pickup_red == true && pickup_blue == true)
+                {
+                    SetReward(2.0f);
+                    Debug.Log("Good Reward");
+                    EndEpisode();
+                }
+                else
+                {
+                    SetReward(-1.0f);
+                    Debug.Log("Bad Reward");
+                    EndEpisode();                
+                }    
+            }
+        }
+
     }
 
 
