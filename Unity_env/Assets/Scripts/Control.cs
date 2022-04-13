@@ -9,7 +9,6 @@ public class Control : MonoBehaviour
 
     private List<JointAngles> jointAngles = new List<JointAngles>();
     private int currentIndex = 0;
-    bool isDone = false;
     public void Start()
     {
         robot = FindObjectOfType<Library>();
@@ -21,14 +20,13 @@ public class Control : MonoBehaviour
         InvokeRepeating("MoveJoints", 0, waitTime);
     }
 
-    void Update()
-    {
-        if(Input.GetKey(KeyCode.A) && (!isDone))
-        {
-            PicKWhite();
-            isDone = true;
-        }
-    }
+    //public void Update()
+    //{
+        //if(Input.GetKey(KeyCode.A))
+        //{
+            //PickRed();
+        //}
+    //}
 
     void MoveJoints()
     {
@@ -58,19 +56,36 @@ public class Control : MonoBehaviour
         }
     }
 
-    public void ReadCSVFile()
+    public void PickBlue()
     {
-        var path = Directory.GetCurrentDirectory();
-        var filePath = Path.Combine(path, "bagfiles/grip_blue.csv"); 
+        var pathBlue = Directory.GetCurrentDirectory();
+        var filePathBlue = Path.Combine(pathBlue, "bagfiles/grip_blue.csv"); 
 
-        using (var strReader = new StreamReader(filePath))
+        using (var strReader = new StreamReader(filePathBlue))
         {
             strReader.ReadLine();
             while (!strReader.EndOfStream)
             {
-                var line = strReader.ReadLine();
-                var angles = DecodeLine(line);
-                jointAngles.Add(angles);
+                var lineBlue = strReader.ReadLine();
+                var anglesBlue = DecodeLine(lineBlue);
+                jointAngles.Add(anglesBlue);
+            }
+        }
+    }
+
+    public void PickRed()
+    {
+        var pathRed = Directory.GetCurrentDirectory();
+        var filePathRed = Path.Combine(pathRed, "bagfiles/grip_red.csv"); 
+
+        using (var strReader = new StreamReader(filePathRed))
+        {
+            strReader.ReadLine();
+            while (!strReader.EndOfStream)
+            {
+                var lineRed = strReader.ReadLine();
+                var anglesRed = DecodeLine(lineRed);
+                jointAngles.Add(anglesRed);
             }
         }
     }
