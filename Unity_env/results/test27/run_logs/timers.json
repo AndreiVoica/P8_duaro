@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1649857893",
+        "python_version": "3.6.15 (default, Jan 15 2022, 19:47:13) \n[GCC 9.3.0]",
+        "command_line_arguments": "/home/andrei/Uni/unity-mlagents/bin/mlagents-learn config/duaro-test-ppo.yaml --run-id=test27",
+        "mlagents_version": "0.28.0",
+        "mlagents_envs_version": "0.28.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.8.1+cu102",
+        "numpy_version": "1.14.5",
+        "end_time_seconds": "1649857940"
+    },
+    "total": 47.00617890800004,
+    "count": 1,
+    "self": 0.017198561999975936,
+    "children": {
+        "run_training.setup": {
+            "total": 0.04549687100001165,
+            "count": 1,
+            "self": 0.04549687100001165
+        },
+        "TrainerController.start_learning": {
+            "total": 46.94348347500005,
+            "count": 1,
+            "self": 0.0005709010000600756,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 46.94289380800001,
+                    "count": 1,
+                    "self": 46.94289380800001
+                },
+                "trainer_threads": {
+                    "total": 4.418999992594763e-06,
+                    "count": 1,
+                    "self": 4.418999992594763e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 1.4346999989811593e-05,
+                    "count": 1,
+                    "self": 1.4346999989811593e-05
+                }
+            }
+        }
+    }
+}
