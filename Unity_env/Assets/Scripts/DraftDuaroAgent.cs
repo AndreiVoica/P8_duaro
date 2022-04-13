@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Unity.MLAgentsExamples;
+using Random = System.Random;
 
 
 public class DraftDuaroAgent : Agent
@@ -21,9 +22,8 @@ public class DraftDuaroAgent : Agent
     private bool pickup_blue;
     private bool pickup_red;
     private int[] skills_array; // order: blue, red, rectangle 
-    private int[] next_step; 
 
-    public Control DuaroAgent;
+    // public Control ControlAgent; 
 
     // public Transform Target; //Target the agent will try to touch during training.
 
@@ -34,16 +34,17 @@ public class DraftDuaroAgent : Agent
     public override void OnEpisodeBegin() //set-up the environment for a new episode
     {
         // reset cube positions:
-        blue.transform.position = new Vector3(1.22300005,0.823099971,-1.32130003);
-        blue.training.rotation = new Vector3(0,0,0);
-        red.transform.position = new Vector3(1.22500002,0.823000014,-1.17999995);
-        red.transform.rotation = new Vector3(0,0,0);
-        rectangle.transform.position = new Vector3(1.22000003,0.740999997,-1.23800004);
-        rectangle.transform.rotation = new Vector3(0,0,0);
-        pickup_blue == false;
-        pickup_red == false;
+        Vector3 rotationVector = new Vector3(0, 0, 0);
+
+        blue.transform.position = new Vector3(1.22300005f,0.823099971f,-1.32130003f);
+        blue.transform.rotation = Quaternion.Euler(rotationVector);
+        red.transform.position = new Vector3(1.22500002f,0.823000014f,-1.17999995f);
+        red.transform.rotation = Quaternion.Euler(rotationVector);
+        rectangle.transform.position = new Vector3(1.22000003f,0.740999997f,-1.23800004f);
+        rectangle.transform.rotation = Quaternion.Euler(rotationVector);
+        pickup_blue = false;
+        pickup_red = false;
         int[] skills_array = {1,1,1}; // order: blue, red, rectangle 
-        int[] next_step = {0,0,0};
 
     }
 
@@ -54,32 +55,40 @@ public class DraftDuaroAgent : Agent
     public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
     {
 
-    if (skills_array[0] == 1 && skills_array[1] == 1 && skills_array[1] == 1)
+    if (skills_array[0] == 1 && skills_array[1] == 1 && skills_array[2] == 1)
     {
-        Random_step = Elements[Random.Range(0,skills_array.Length)];
-        skills_array[Random_step] == 0;
-      
+        Random rnd = new Random();
+        int random_index = rnd.Next(skills_array.Length);
+        skills_array[random_index] = 0;    
     }
-    else if (skills_array[0] == 0 && skills_array[1] == 0 && skills_array[1] == 0)    
+    else if (skills_array[0] == 0 && skills_array[1] == 0 && skills_array[2] == 0)    
     {
         // end episode after this? 
         // EndEpisode();
 
     }
-    else
+    else if (skills_array[0] == 1 && skills_array[1] == 1 && skills_array[2] == 1)
     {
 
     }
 
-    }
-
     
+    if (skills_array[0] == 0)
+    {
+        pickup_blue = true;
+    }
+    else if (skills_array[1] == 0)
+    {
+        pickup_red = true;
+    }
+    }
+  
 
     public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
     {
 
     // tbd: add, which script to start
-    DuaroAgent.Start();
+    // ControlAgent.Start();
 
     }
 
@@ -97,13 +106,13 @@ public class DraftDuaroAgent : Agent
 
 
     // Collision detection:
-    void OnEnable()
+    protected override void OnEnable()
     {
         // Register to OnCollision event
         CollisionCallback.OnCollision += CollisionDetected;
     }
 
-    void OnDisable()
+    protected override void OnDisable()
     {
         // Un-Register to OnCollision event
         CollisionCallback.OnCollision -= CollisionDetected;
