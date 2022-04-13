@@ -1,13 +1,13 @@
 # P8_duaro
 
-## Table of contents
+## Table of contents:
 
 - [Purpose of Project](#Purpose-Started)
 - [Project Details](#Project-Details)
 - [Authors](#Authors)
 - [References](#References)
 
-## Purpose of project
+## Purpose of project:
 
 tbd
 
