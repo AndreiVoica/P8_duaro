@@ -36,6 +36,12 @@ env = UnityEnvironment(file_name=<env_name>)
 - Launch the following command:
 `mlagents-learn config/ppo/duaro-test-ppo.yaml --env=Build/test-approx --run-id=firstHeadlessRun`
 
+### Launch TensorBoard:
+1. From the another command terminal run: `tensorboard --logdir results --port 6006`
+2. Open a browser window and navigate to [localhost:6006](localhost:6006).
+
+[Using TensorBoard to Observe Training Tutorial](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Using-Tensorboard.md)
+
 ## Train headless
 There are 2 options to train headless:
 1. Add the `--no-graphics` when running the training, i.e:
