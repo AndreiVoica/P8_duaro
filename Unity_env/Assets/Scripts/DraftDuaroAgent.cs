@@ -41,12 +41,13 @@ public class DraftDuaroAgent : Agent
         // reset cube positions:
         Vector3 rotationVector = new Vector3(0, 0, 0);
         Debug.Log("OnEpBegin");
-        blue.transform.position = new Vector3(1.22300005f,0.823099971f,-1.32130003f);
+        blue.transform.localPosition = new Vector3(1.22300005f,0.823099971f,-1.32130003f);
         blue.transform.rotation = Quaternion.Euler(rotationVector);
-        red.transform.position = new Vector3(1.22500002f,0.823000014f,-1.17999995f);
+        red.transform.localPosition = new Vector3(1.22500002f,0.823000014f,-1.17999995f);
         red.transform.rotation = Quaternion.Euler(rotationVector);
-        rectangle.transform.position = new Vector3(1.22000003f,0.740999997f,-1.23800004f);
+        rectangle.transform.localPosition = new Vector3(1.22000003f,0.740999997f,-1.23800004f);
         rectangle.transform.rotation = Quaternion.Euler(rotationVector);
+        
         pickup_blue = false;
         pickup_red = false;
         control = FindObjectOfType<Control>();
@@ -78,7 +79,7 @@ public class DraftDuaroAgent : Agent
     {      
         int decision = actions.DiscreteActions[0];
         var skill = 4;
-        Debug.Log("OnActReceived");
+        Debug.Log("test decision: " + decision);
         // tbd:
         switch (decision)
         {        
@@ -215,7 +216,7 @@ public class DraftDuaroAgent : Agent
 
     }
 
-
+    
 
 
 }
