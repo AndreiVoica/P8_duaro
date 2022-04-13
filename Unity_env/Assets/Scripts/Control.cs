@@ -9,6 +9,8 @@ public class Control : MonoBehaviour
 
     private List<JointAngles> jointAngles = new List<JointAngles>();
     private int currentIndex = 0;
+    
+
     public void Start()
     {
         robot = FindObjectOfType<Library>();
@@ -19,23 +21,29 @@ public class Control : MonoBehaviour
         
         InvokeRepeating("MoveJoints", 0, waitTime);
     }
-
-    //public void Update()
-    //{
-        //if(Input.GetKey(KeyCode.A))
-        //{
-            //PickRed();
-        //}
-    //}
-
+/*
+    public void Update()
+    {
+        if(Input.GetKey(KeyCode.A))
+        {
+            PickRed();
+        }
+        if(Input.GetKey(KeyCode.S))
+        {
+            PickBlue();
+        }
+        //Debug.Log("index test: " + currentIndex);
+    }
+*/
     void MoveJoints()
     {
         robot.set_lower_joint_target(jointAngles[currentIndex].Joint1L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint2L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint3L, jointAngles[currentIndex].Joint4L * Mathf.Rad2Deg, jointAngles[currentIndex].Lrgripper, jointAngles[currentIndex].Llgripper);
         robot.set_upper_joint_target(jointAngles[currentIndex].Joint1U * Mathf.Rad2Deg, jointAngles[currentIndex].Joint2U * Mathf.Rad2Deg, jointAngles[currentIndex].Joint3U, jointAngles[currentIndex].Joint4U * Mathf.Rad2Deg, jointAngles[currentIndex].Ulgripper, jointAngles[currentIndex].Urgripper);
         currentIndex++;
-        if (currentIndex >= jointAngles.Count)
+        if (currentIndex >= 155)
         {
             CancelInvoke();
+            currentIndex = 0;
         }
     }
 
