@@ -9,21 +9,25 @@ public class Control : MonoBehaviour
 
     private List<JointAngles> jointAngles = new List<JointAngles>();
     private int currentIndex = 0;
-
-    void Start()
+    bool isDone = false;
+    public void Start()
     {
         robot = FindObjectOfType<Library>();
-        ReadCSVFile();
-
+        robot.set_lower_joint_target(-45f, 45f, 0f, 0f, 0.055f, -0.055f);
+        robot.set_upper_joint_target(45f, -45f, 0f, 0f, 0.055f, -0.055f);
         var rate = 10f;
         var waitTime = 1f / rate;
-
+        
         InvokeRepeating("MoveJoints", 0, waitTime);
     }
 
     void Update()
     {
-        // do nothing
+        if(Input.GetKey(KeyCode.A) && (!isDone))
+        {
+            PicKWhite();
+            isDone = true;
+        }
     }
 
     void MoveJoints()
@@ -37,10 +41,27 @@ public class Control : MonoBehaviour
         }
     }
 
-    void ReadCSVFile()
+    public void PicKWhite()
+    {
+        var pathWhite = Directory.GetCurrentDirectory();
+        var filePathWhite = Path.Combine(pathWhite, "bagfiles/grip_white.csv"); 
+
+        using (var strReader = new StreamReader(filePathWhite))
+        {
+            strReader.ReadLine();
+            while (!strReader.EndOfStream)
+            {
+                var lineWhite = strReader.ReadLine();
+                var anglesWhite = DecodeLine(lineWhite);
+                jointAngles.Add(anglesWhite);
+            }
+        }
+    }
+
+    public void ReadCSVFile()
     {
         var path = Directory.GetCurrentDirectory();
-        var filePath = Path.Combine(path, "bagfiles/grip_white.csv"); 
+        var filePath = Path.Combine(path, "bagfiles/grip_blue.csv"); 
 
         using (var strReader = new StreamReader(filePath))
         {
