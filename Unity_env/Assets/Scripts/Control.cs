@@ -98,12 +98,6 @@ public class Control : MonoBehaviour
         }
     }
 
-    void List()
-    {
-        List<Actions> skills = new List<Actions>();
-        
-    }
-
     private JointAngles DecodeLine(string line)
     {
         string[] values = line.Split(',');
