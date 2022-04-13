@@ -10,6 +10,7 @@ using System.Linq;
 using System.IO;
 using Unity.MLAgentsExamples;
 using Random = System.Random;
+//using Random = UnityEngine.Random;
 
 
 public class DraftDuaroAgent : Agent
@@ -27,7 +28,6 @@ public class DraftDuaroAgent : Agent
     int count_collision_red;        
     int count_collision_rectangle;
     public Control control;
-
     // public Control ControlAgent; 
 
     // public Transform Target; //Target the agent will try to touch during training.
@@ -51,6 +51,7 @@ public class DraftDuaroAgent : Agent
         pickup_blue = false;
         pickup_red = false;
         control = FindObjectOfType<Control>();
+        
     }
 
     /// <summary>
@@ -61,20 +62,20 @@ public class DraftDuaroAgent : Agent
         Debug.Log("Heuristic");
 		//ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
         var discreteActions = actionBuffersOut.DiscreteActions;
+        
 		if (Input.GetKeyDown(KeyCode.Q))
                 	discreteActions[0] = 0;
             	if (Input.GetKeyDown(KeyCode.W))
                 	discreteActions[0] = 1;
             	if (Input.GetKeyDown(KeyCode.A))
                 	discreteActions[0] = 2;
-        
 	}
 
-    public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
-    {
+    //public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
+    //{
 
 
-    }
+    //}
 
     public override void OnActionReceived(ActionBuffers actions) //receives actions and assigns the reward
     {      

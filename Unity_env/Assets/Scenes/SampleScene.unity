@@ -1209,6 +1209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869d16b2ba42c89d19f5fd3bb22ffadb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentIndex: 0
 --- !u!114 &198763913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1308,7 +1309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DecisionPeriod: 10
-  TakeActionsBetweenDecisions: 1
+  TakeActionsBetweenDecisions: 0
 --- !u!114 &198763918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1370,6 +1371,7 @@ MonoBehaviour:
   blue: {fileID: 343257146}
   red: {fileID: 677450745}
   rectangle: {fileID: 2061847292}
+  control: {fileID: 198763912}
   MaxEnvironmentSteps: 2000
 --- !u!1 &217239063
 GameObject:

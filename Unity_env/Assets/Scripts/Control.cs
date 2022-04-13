@@ -8,7 +8,7 @@ public class Control : MonoBehaviour
     private Library robot;
 
     private List<JointAngles> jointAngles = new List<JointAngles>();
-    private int currentIndex = 0;
+    public int currentIndex = 0;
     
 
     public void Start()
