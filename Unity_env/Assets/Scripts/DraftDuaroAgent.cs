@@ -22,7 +22,10 @@ public class DraftDuaroAgent : Agent
     private bool pickup_blue;
     private bool pickup_red;
     private bool pickup_rectangle;
-    private int[] skills_array; // order: blue, red, rectangle 
+
+    int count_collision_blue;
+    int count_collision_red;        
+    int count_collision_rectangle;
 
     // public Control ControlAgent; 
 
@@ -45,7 +48,6 @@ public class DraftDuaroAgent : Agent
         rectangle.transform.rotation = Quaternion.Euler(rotationVector);
         pickup_blue = false;
         pickup_red = false;
-        int[] skills_array = {1,1,1}; // order: blue, red, rectangle 
 
     }
 
@@ -79,14 +81,23 @@ public class DraftDuaroAgent : Agent
         switch (decision)
         {        
         case 0:
+            count_collision_blue = 0;
+            count_collision_red = 0;        
+            count_collision_rectangle = 0;
             pickup_blue = true;
             skill = 0; // blue
             break;
         case 1:
+            count_collision_blue = 0;
+            count_collision_red = 0;        
+            count_collision_rectangle = 0;
             pickup_red = true;
             skill = 1; // red
             break;
         case 2:
+            count_collision_blue = 0;
+            count_collision_red = 0;        
+            count_collision_rectangle = 0;
             pickup_rectangle = true;
             skill = 2; // rectangle
             break;
@@ -95,7 +106,7 @@ public class DraftDuaroAgent : Agent
         if (pickup_blue && pickup_red && pickup_rectangle)
         {
             AddReward(2.0f);
-            Debug.Log("Good Reward for ending the episode");
+            Debug.Log("Good Reward for ending the task");
             EndEpisode();
         }
     }
@@ -131,9 +142,7 @@ public class DraftDuaroAgent : Agent
     void CollisionDetected(Collision collision)
     {
         // Debug.Log("Collision happened with: " + collision.gameObject.name);
-        int count_collision_blue = 0;
-        int count_collision_red = 0;        
-        int count_collision_rectangle = 0;
+
        
         if (collision.gameObject.name == "blue")
         {
@@ -144,13 +153,13 @@ public class DraftDuaroAgent : Agent
                 if (pickup_blue == true)
                 {
                     SetReward(2.0f);
-                    Debug.Log("Good Reward");
+                    Debug.Log("Good Reward for blue");
                     EndEpisode();
                 }
                 else
                 {
                     SetReward(-1.0f);
-                    Debug.Log("Bad Reward");
+                    Debug.Log("Bad Reward for blue");
                     EndEpisode();                
                 }    
             }
@@ -165,13 +174,13 @@ public class DraftDuaroAgent : Agent
                 if (pickup_red == true)
                 {
                     SetReward(2.0f);
-                    Debug.Log("Good Reward");
+                    Debug.Log("Good Reward for red");
                     EndEpisode();
                 }
                 else
                 {
                     SetReward(-1.0f);
-                    Debug.Log("Bad Reward");
+                    Debug.Log("Bad Reward for red");
                     EndEpisode();                
                 }    
             }
@@ -186,13 +195,13 @@ public class DraftDuaroAgent : Agent
                 if (pickup_red == true && pickup_blue == true)
                 {
                     SetReward(2.0f);
-                    Debug.Log("Good Reward");
+                    Debug.Log("Good Reward for rectangle");
                     EndEpisode();
                 }
                 else
                 {
                     SetReward(-1.0f);
-                    Debug.Log("Bad Reward");
+                    Debug.Log("Bad Reward for rectangle");
                     EndEpisode();                
                 }    
             }
