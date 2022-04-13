@@ -26,7 +26,7 @@ public class DraftDuaroAgent : Agent
     int count_collision_blue;
     int count_collision_red;        
     int count_collision_rectangle;
-    private Control control;
+    public Control control;
 
     // public Control ControlAgent; 
 
@@ -57,9 +57,10 @@ public class DraftDuaroAgent : Agent
     /// Add relevant information on each body part to observations.
     /// </summary>
 
-    public override void Heuristic(in ActionBuffers actionsOut){
+    public override void Heuristic(in ActionBuffers actionBuffersOut){
         Debug.Log("Heuristic");
-		ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
+		//ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
+        var discreteActions = actionBuffersOut.DiscreteActions;
 		if (Input.GetKeyDown(KeyCode.Q))
                 	discreteActions[0] = 0;
             	if (Input.GetKeyDown(KeyCode.W))
@@ -78,7 +79,6 @@ public class DraftDuaroAgent : Agent
     public override void OnActionReceived(ActionBuffers actions) //receives actions and assigns the reward
     {      
         int decision = actions.DiscreteActions[0];
-        var skill = 4;
         Debug.Log("test decision: " + decision);
         // tbd:
         switch (decision)
@@ -88,7 +88,6 @@ public class DraftDuaroAgent : Agent
             count_collision_red = 0;        
             count_collision_rectangle = 0;
             pickup_blue = true;
-            skill = 0; // blue
             control.PickBlue();
             break;
         case 1:
@@ -96,7 +95,6 @@ public class DraftDuaroAgent : Agent
             count_collision_red = 0;        
             count_collision_rectangle = 0;
             pickup_red = true;
-            skill = 1; // red
             control.PickRed();
             break;
         case 2:
@@ -104,8 +102,9 @@ public class DraftDuaroAgent : Agent
             count_collision_red = 0;        
             count_collision_rectangle = 0;
             pickup_rectangle = true;
-            skill = 2; // rectangle
             control.PicKWhite();
+            break;
+        default:
             break;
         }
         // ControlAgent.Start(); start the skill 0, 1 or 2
