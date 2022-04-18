@@ -66,7 +66,7 @@ public class Control : MonoBehaviour
                 jointAngles.Add(anglesWhite);
             }
         }
-        Debug.Log("Pick White");
+        Debug.Log("Control - Pick White");
     }
 
     public void PickBlue()
@@ -84,7 +84,7 @@ public class Control : MonoBehaviour
                 jointAngles.Add(anglesBlue);
             }
         }
-        Debug.Log("Pick Blue");
+        Debug.Log("Control - Pick Blue");
     }
 
 
@@ -103,7 +103,7 @@ public class Control : MonoBehaviour
                 jointAngles.Add(anglesRed);
             }
         }
-        Debug.Log("Pick Red");
+        Debug.Log("Control - Pick Red");
     }
 
     private JointAngles DecodeLine(string line)
