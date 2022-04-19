@@ -133,3 +133,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 Unity_env/.vscode/settings.json
+
+Unity_env/Assets/ML-Agents/Timers/Collision_SampleScene_timers.json
+
+Unity_env/Assets/ML-Agents/Timers/Collision_SampleScene_timers.json.meta
