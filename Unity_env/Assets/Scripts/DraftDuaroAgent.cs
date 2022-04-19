@@ -15,7 +15,7 @@ using Random = System.Random;
 
 public class DraftDuaroAgent : Agent
 {
-      
+  
     public Transform blue;
     public Transform red;
     public Transform rectangle;
@@ -30,7 +30,19 @@ public class DraftDuaroAgent : Agent
     int count_collision_rectangle;
     private Control control;
 
+    // Position of the BLUE cube in the Array
+    int blueRow = 1;
+    int blueCol = 0;
+    // Position of the RED cube in the Array
+    int redRow = 1;
+    int redCol = 3;
 
+    // Array with the shape of the blocks
+    int[,] taskArray = new int[3,4]{ 
+                                    {0,0,0,0},
+                                    {1,0,0,1}, 
+                                    {1,1,1,1}, 
+                                };
 
     // public Control ControlAgent; 
 
@@ -65,61 +77,155 @@ public class DraftDuaroAgent : Agent
     /// <summary>
     /// Add relevant information on each body part to observations.
     /// </summary>
-
     public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
     {
         sensor.AddObservation(blue.position);
     }
 
-    // public void MoveAgent(ActionSegment<int> act)
-    // {
-    //     //int decision = actionBuffers.DiscreteActions[0];
-    //     var decision = act[0];
-    //    // decision = 0;
-    //     var skill = 4;
-    //     Debug.Log("test decision: " + decision);
-    //     // tbd:
-    //     switch (decision)
-    //     {        
-    //     case 0:
-    //         count_collision_blue = 0;
-    //         count_collision_red = 0;        
-    //         count_collision_rectangle = 0;
-    //         pickup_blue = true;
-    //         control.PickBlue();
-    //         break;
-    //     case 1:
-    //         count_collision_blue = 0;
-    //         count_collision_red = 0;        
-    //         count_collision_rectangle = 0;
-    //         pickup_red = true;
-    //         control.PickRed();
-    //         break;
-    //     case 2:
-    //         count_collision_blue = 0;
-    //         count_collision_red = 0;        
-    //         count_collision_rectangle = 0;
-    //         pickup_rectangle = true;
-    //         control.PickWhite();
-    //         break;
-    //     default:
-    //         break;
-    //     }
-    //     // ControlAgent.Start(); start the skill 0, 1 or 2
-    //     if (pickup_blue && pickup_red && pickup_rectangle)
-    //     {
-    //         AddReward(10.0f);
-    //         Debug.Log("Good Reward for ending the task");
-    //         EndEpisode();
-    //     }
-    // }
+
 
     public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
     {      
         // Move the agent using the action.
         //MoveAgent(actionBuffers.DiscreteActions);
+        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
     }
 
+
+    /// <summary>
+    /// Function to call the discrete action selected 
+    /// (while training or in heuristics mode)
+    /// </summary>
+    public void MoveAgent(ActionSegment<int> act)
+    {
+        var decision = act[0];
+       // decision = 0;
+        var skill = 4;
+        Debug.Log("test decision: " + decision);
+        // tbd:
+        count_collision_blue = 0;
+        count_collision_red = 0;        
+        count_collision_rectangle = 0;
+        switch (decision)
+        {        
+        case 0:
+            pickup_blue = true;
+            control.PickBlue();
+
+            // // Reward
+            // if (pickup_blue == true && taskArray[blueRow,blueCol] == 1 && taskArray[blueRow - 1,blueCol] == 0)
+            // {
+            //     AddReward(1.0f);
+            //     taskArray[blueRow,blueCol] = 0;
+            //     Debug.Log("Add Reward BLUE");
+            // }
+            // // Penalize choosing same action again
+            // else if (pickup_blue == true && taskArray[blueRow,blueCol] == 0)
+            // { 
+            //     AddReward(-1.0f);
+            //     Debug.Log("Add Negative Reward Blue");
+            // }
+            break;
+        case 1:
+            pickup_red = true;
+            control.PickRed();
+            break;
+        case 2:
+            pickup_rectangle = true;
+            control.PickWhite();
+            break;
+        default:
+            break;
+        }
+    }
+
+
+    /// <summary>
+    /// Assign rewards when choosing a correct action
+    /// </summary>
+    public void AgentRewards (ActionSegment<int> act)
+    {
+        // Debug.Log("Agent Rewards");
+
+        var action = act[0];
+
+        // Rewards
+        if (action == 0); //Picking BLUE cube
+        {
+            if (pickup_blue == true && taskArray[blueRow,blueCol] == 1 && taskArray[blueRow - 1,blueCol] == 0)
+            {
+                AddReward(1.0f);
+                taskArray[blueRow,blueCol] = 0;
+                Debug.Log("Add Reward BLUE");
+            }
+            // Penalize choosing same action again
+            else if (pickup_blue == true && taskArray[blueRow,blueCol] == 0)
+            { 
+                AddReward(-1.0f);
+                Debug.Log("Add Negative Reward BLUE");
+            }
+        }
+        if (action == 1); //Picking RED cube
+        {
+            if (pickup_red == true && taskArray[redRow,redCol] == 1 && taskArray[redRow - 1,redCol] == 0)
+            {
+                AddReward(1.0f);
+                taskArray[redRow,redCol] = 0;
+                Debug.Log("Add Reward RED");
+            }
+            // Penalize choosing same action again
+            else if (pickup_blue == true && taskArray[redRow,redCol] == 0)
+            { 
+                AddReward(-1.0f);
+                Debug.Log("Add Negative Reward RED");
+            }
+
+
+        }    
+    }
+
+    public override void Heuristic(in ActionBuffers actionsOut)
+    {
+        // Debug.Log("Heuristic");
+        var discreteActionsOut = actionsOut.DiscreteActions;
+
+        if (Input.GetKey(KeyCode.A)) // Select discrete action 0
+        {
+            discreteActionsOut[0] = 0;
+            Debug.Log("Key A Pressed");
+            MoveAgent(actionsOut.DiscreteActions);
+            AgentRewards(actionsOut.DiscreteActions);
+        }
+        else if (Input.GetKey(KeyCode.B)) // Select discrete action 1
+        {
+            discreteActionsOut[0] = 1;
+            Debug.Log("Key B Pressed");
+            MoveAgent(actionsOut.DiscreteActions);
+            AgentRewards(actionsOut.DiscreteActions);
+        }
+        else if (Input.GetKey(KeyCode.C)) // Select discrete action 2
+        {
+            discreteActionsOut[0] = 2;
+            Debug.Log("Key C Pressed");
+            MoveAgent(actionsOut.DiscreteActions);
+            AgentRewards(actionsOut.DiscreteActions);
+        }
+
+        Debug.Log("discreteActionsOut = " + discreteActionsOut[0]);
+    }	 
+
+
+    void FixedUpdate()
+    {
+        m_resetTimer += 1;
+        if (m_resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
+        {
+            Debug.Log("Restarting Scene");
+            //SetReward(MaxEnvironmentSteps* - 0.000001f);
+            m_resetTimer = 0;
+            EndEpisode();
+        }
+    }
 
 
 
@@ -207,44 +313,5 @@ public class DraftDuaroAgent : Agent
     //     }
     //
     //   }
-
-       public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        Debug.Log("Heuristic");
-        var discreteActionsOut = actionsOut.DiscreteActions;
-        if (Input.GetKey(KeyCode.A))
-        {
-            discreteActionsOut[0] = 0;
-            Debug.Log("Key A Pressed");
-            control.PickBlue();
-        }
-        else if (Input.GetKey(KeyCode.B))
-        {
-            discreteActionsOut[0] = 1;
-            Debug.Log("Key B Pressed");
-            control.PickRed();
-        }
-        else if (Input.GetKey(KeyCode.C))
-        {
-            discreteActionsOut[0] = 2;
-            Debug.Log("Key C Pressed");
-            control.PickWhite();
-        }
-
-        Debug.Log("discreteActionsOut = " + discreteActionsOut[0]);
-    }	 
-
-
-    void FixedUpdate()
-    {
-        m_resetTimer += 1;
-        if (m_resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
-        {
-            Debug.Log("Restarting Scene");
-            //SetReward(MaxEnvironmentSteps* - 0.000001f);
-            m_resetTimer = 0;
-            EndEpisode();
-        }
-    }
 
 }
