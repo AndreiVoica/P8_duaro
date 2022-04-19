@@ -67,9 +67,9 @@ public class DraftDuaroAgent : Agent
         // Reset cube positions:
         Vector3 rotationVector = new Vector3(0, 0, 0);
         Debug.Log("OnEpisodeBegin");
-        black.transform.localPosition = new Vector3(1.22f,0.796f,-1.3663f);
+        black.transform.localPosition = new Vector3(1.22f,0.789f,-1.3663f);
         black.transform.rotation = Quaternion.Euler(rotationVector);
-        green.transform.localPosition = new Vector3(1.219f,0.8857f,-1.32f);
+        green.transform.localPosition = new Vector3(1.219f,0.898f,-1.32f);
         green.transform.rotation = Quaternion.Euler(rotationVector);
         Rectangle.transform.localPosition = new Vector3(1.22f,0.763f,-1.184f);
         Rectangle.transform.rotation = Quaternion.Euler(rotationVector);
@@ -131,7 +131,7 @@ public class DraftDuaroAgent : Agent
             break;
         case 2:
             pickup_rectangle = true;
-            control.PickWhite();
+            control.PickGreenLower();
             break;
         default:
             break;

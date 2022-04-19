@@ -1369,12 +1369,12 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 100000
-  black: {fileID: 0}
-  green: {fileID: 0}
-  Rectangle: {fileID: 0}
-  yellow: {fileID: 0}
+  black: {fileID: 2091971714}
+  green: {fileID: 1585638695}
+  Rectangle: {fileID: 2061847292}
+  yellow: {fileID: 473038354}
   blue: {fileID: 343257146}
-  red: {fileID: 0}
+  red: {fileID: 677450745}
   MaxEnvironmentSteps: 500000
   MaxSkills: 10
 --- !u!1 &217239063
@@ -12820,7 +12820,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585638694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.219, y: 0.8857, z: -1.5263}
+  m_LocalPosition: {x: 1.219, y: 0.898, z: -1.32}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.15}
   m_Children: []
   m_Father: {fileID: 1448368914}
@@ -17286,13 +17286,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091971713}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.22, y: 0.796, z: -1.3954}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.22, y: 0.789, z: -1.3663}
+  m_LocalScale: {x: 0.05, y: 0.1, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1448368914}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2091971715
 Rigidbody:
   m_ObjectHideFlags: 0

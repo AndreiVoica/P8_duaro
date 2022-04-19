@@ -59,6 +59,25 @@ public class Control : MonoBehaviour
     // PickWhite, PickBlue and PickRed are functions each representing a skill. PickWhite will pick the white cube in the Unity scene, PickRed -> Red cube, PickBlue -> Blue cube
     // All 3 functions work the same. The functions will find the csv file and read through all the rows and collumns.
     // The values will be then added to the jointAnglesU and jointAnglesL lists.
+
+    public void PickGreenLower()
+    {
+        var pathWhite = Directory.GetCurrentDirectory();
+        var filePathWhite = Path.Combine(pathWhite, "bagfiles/green_cube_lower.csv"); 
+
+        using (var strReader = new StreamReader(filePathWhite))
+        {
+            strReader.ReadLine();
+            while (!strReader.EndOfStream)
+            {
+                var lineWhite = strReader.ReadLine();
+                var anglesWhite = DecodeLine(lineWhite);
+                jointAnglesL.Add(anglesWhite);
+            }
+        }
+        Debug.Log("Control - Pick White");
+    }
+
     public void PickWhite()
     {
         var pathWhite = Directory.GetCurrentDirectory();
