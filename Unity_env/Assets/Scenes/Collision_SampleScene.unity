@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 198763912}
   - component: {fileID: 198763918}
   - component: {fileID: 198763919}
-  - component: {fileID: 198763921}
+  - component: {fileID: 198763920}
   - component: {fileID: 198763917}
   m_Layer: 0
   m_Name: DuaroAgent
@@ -1209,7 +1209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869d16b2ba42c89d19f5fd3bb22ffadb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentIndex: 0
+  currentIndexU: 0
+  currentIndexL: 0
 --- !u!114 &198763913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1308,8 +1309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 10
-  TakeActionsBetweenDecisions: 0
+  DecisionPeriod: 5
+  TakeActionsBetweenDecisions: 1
 --- !u!114 &198763918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1335,7 +1336,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 1
-  m_BehaviorName: DraftDuaroAgent
+  m_BehaviorName: DraftDuaroAgentCollision
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -1352,7 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fbed9cfb0f1f46495f869f88540f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &198763921
+--- !u!114 &198763920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1361,7 +1362,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 198763911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e868324e06f1cd49a70b0edad17167, type: 3}
+  m_Script: {fileID: 11500000, guid: 517c79e2cd67bcdaeba88f9558db11c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:

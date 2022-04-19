@@ -26,21 +26,14 @@ public class DraftDuaroAgent : Agent
     private bool pickup_red;
     private bool pickup_rectangle;
 
-    int count_collision_blue;
-    int count_collision_red;        
-    int count_collision_rectangle;
     private Control control;
 
-    // Position of the BLUE cube in the Array
-    int blueRow = 1;
-    int blueCol = 0;
-    // Position of the RED cube in the Array
-    int redRow = 1;
-    int redCol = 3;
-    // Position of the RECTANGLE cube in the Array
-    int rectangleRow = 2;
-    int[,] rectangleCol = new int[1,4];
-    private bool rectanglePos;
+    //Array to Store the items Position (Initial Row, Initial Column, Row Length, Column Length)
+    int[,] itemsPosition = new int[3,4]{ 
+                                        {1,0,1,1}, // Blue Cube
+                                        {1,3,1,1}, // Red Cube
+                                        {2,0,1,4}, // Rectangle
+                                    };
 
     // Array with the shape of the blocks
     int[,] taskArray = new int[3,4]{ 
@@ -48,6 +41,9 @@ public class DraftDuaroAgent : Agent
                                     {1,0,0,1}, 
                                     {1,1,1,1}, 
                                 };
+
+    // Boolean to check if there are items above in the rewards function                                
+    private bool itemsAbove;
 
     //Max Number of Steps to be performed before the environment restarts
     [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 50000;
@@ -96,13 +92,13 @@ public class DraftDuaroAgent : Agent
         sensor.AddObservation(blue.position);
     }
 
-    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    {      
-        Debug.Log("OnActionReceived");
-        // Move the agent using the action.
-        //MoveAgent(actionBuffers.DiscreteActions);
-        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
-    }
+    // public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    // {      
+    //     Debug.Log("OnActionReceived");
+    //     // Move the agent using the action.
+    //     //MoveAgent(actionBuffers.DiscreteActions);
+    //     // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
+    // }
 
 
     /// <summary>
@@ -113,12 +109,8 @@ public class DraftDuaroAgent : Agent
     {
         var decision = act[0];
        // decision = 0;
-        var skill = 4;
         Debug.Log("test decision: " + decision);
-        // tbd:
-        count_collision_blue = 0;
-        count_collision_red = 0;        
-        count_collision_rectangle = 0;
+
         switch (decision)
         {        
         case 0:
@@ -137,88 +129,58 @@ public class DraftDuaroAgent : Agent
             break;
         }
         m_resetSkill +=1; // Add +1 to Skills Counter  
-              Debug.Log("Skill = " + m_resetSkill);
-
+        Debug.Log("Skill Number: " + m_resetSkill);
     }
 
-
-    /// <summary>
-    /// Assign rewards when choosing a correct action
-    /// </summary>
     public void AgentRewards (ActionSegment<int> act)
-    {
+        {
         // Debug.Log("Agent Rewards");
 
         var action = act[0];
 
         // Rewards
-        if (action == 0); // Picking BLUE cube
-        {
-            if (pickup_blue == true && taskArray[blueRow,blueCol] == 1 && taskArray[blueRow - 1,blueCol] == 0)
+        Debug.Log("action = " + action);
+        if (action == 2)
+        { 
+            // Check if there are items above
+            itemsAbove = false;
+            for (int i = itemsPosition[action,1]; i < itemsPosition[action,3]; i++)
             {
-                AddReward(1.0f);
-                taskArray[blueRow,blueCol] = 0;
-                Debug.Log("Add Reward BLUE");
-            }
-            // Penalize choosing same action again
-            else if (pickup_blue == true && taskArray[blueRow,blueCol] == 0)
-            { 
-                AddReward(-1.0f);
-                Debug.Log("Add Negative Reward BLUE");
-            }
-        }
-        if (action == 1); // Picking RED cube
-        {
-            if (pickup_red == true && taskArray[redRow,redCol] == 1 && taskArray[redRow - 1,redCol] == 0)
-            {
-                AddReward(1.0f);
-                taskArray[redRow,redCol] = 0;
-                Debug.Log("Add Reward RED");
-            }
-            // Penalize choosing same action again
-            else if (pickup_red == true && taskArray[redRow,redCol] == 0)
-            { 
-                AddReward(-1.0f);
-                Debug.Log("Add Negative Reward RED");
-            }
-        }   
-        if (action == 2); // Picking RECTANGLE
-        {
-            rectanglePos = false;
-            for (int i = 0; i < rectangleCol.Length; i++)
-            {
-                if (taskArray[rectangleRow,rectangleCol[0,i]] == 1 && taskArray[rectangleRow - 1,rectangleCol[0,i]] == 1)
+                if (taskArray[itemsPosition[action,0] - 1, i] == 1)
                 {
-                    rectanglePos = true; // There are some objects above this part
+                    itemsAbove = true; // There are some objects above this part
                 }
+            }
+
+            if (taskArray[itemsPosition[action,0], itemsPosition[action,1]] == 1 && itemsAbove == false)
+            {
+                AddReward(1.0f);
                 
-            }
-
-            if (pickup_rectangle == true && rectanglePos == false)
-            {
-                AddReward(1.0f);
-
-                for (int i = 0; i < rectangleCol.Length; i++)
+                // Update items Matrix Space
+                for (int i = itemsPosition[action,1]; i < itemsPosition[action,3]; i++)
                 {
-                    taskArray[rectangleRow,rectangleCol[0,i]] = 0;
+                    for (int j = itemsPosition[action,0]; j < itemsPosition[action,2]; j++)
+                    {
+                        taskArray[itemsPosition[action,0 + j], itemsPosition[action,1] + i] = 0;
+                    }
                 }
-
-                Debug.Log("Add Reward RECTANGLE");
+                Debug.Log("Add Reward");
             }
             // Penalize choosing same action again
-            else if (pickup_rectangle == true && taskArray[rectangleRow,rectangleCol[0,0]] == 0)
+            else if(taskArray[itemsPosition[action,0], itemsPosition[action,1]] == 0)
             { 
                 AddReward(-1.0f);
-                Debug.Log("Add Negative Reward RECTANGLE - Choosing the same action");
+                Debug.Log("Add Negative Reward - Choosing the same action");
             }
             // Penalize picking up the rectangle while there is something above
-            else if (pickup_rectangle == true && rectanglePos == true)
+            else if(itemsAbove == true)
             { 
                 AddReward(-1.0f);
-                Debug.Log("Add Negative Reward RECTANGLE - There is something above");
+                Debug.Log("Add Negative Reward - There is something above");
             }
         }  
     }
+
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -246,9 +208,7 @@ public class DraftDuaroAgent : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-
         Debug.Log("discreteActionsOut = " + discreteActionsOut[0]);
-        
     }	 
 
 
@@ -268,92 +228,7 @@ public class DraftDuaroAgent : Agent
             EndEpisode();
         }
     }
-
-
-
-    // // Collision detection:
-    // protected override void OnEnablev()
-    // {
-    //     // Register to OnCollision event
-    //     CollisionCallback.OnCollision += CollisionDetected;
-    // }
-
-    // protected override void OnDisable()
-    // {
-    //     // Un-Register to OnCollision eent
-    //     CollisionCallback.OnCollision -= CollisionDetected;
-    // }
-
-
-    // // When collision happens:
-    // void CollisionDetected(Collision collision)
-    // {
-    //     // Debug.Log("Collision happened with: " + collision.gameObject.name);
-
-       
-    //     if (collision.gameObject.name == "blue")
-    //     {
-    //         count_collision_blue += 1;          
-            
-    //         if (count_collision_blue == 1)
-    //         {
-    //             if (pickup_blue == true)
-    //             {
-    //                 SetReward(2.0f);
-    //                 Debug.Log("Good Reward for blue");
-    //                 EndEpisode();
-    //             }
-    //             else
-    //             {
-    //                 SetReward(-1.0f);
-    //                 Debug.Log("Bad Reward for blue");
-    //                 EndEpisode();                
-    //             }    
-    //         }
-    //     }
-
-    //     if (collision.gameObject.name == "red")
-    //     {
-    //         count_collision_red += 1;          
-            
-    //         if (count_collision_red == 1)
-    //         {
-    //             if (pickup_red == true)
-    //             {
-    //                 SetReward(2.0f);
-    //                 Debug.Log("Good Reward for red");
-    //                 EndEpisode();
-    //             }
-    //             else
-    //             {
-    //                 SetReward(-1.0f);
-    //                 Debug.Log("Bad Reward for red");
-    //                 EndEpisode();                
-    //             }    
-    //         }
-    //     }
-
-    //     if (collision.gameObject.name == "Rectangle")
-    //     {
-    //         count_collision_rectangle += 1;          
-            
-    //         if (count_collision_rectangle == 1)
-    //         {
-    //             if (pickup_red == true && pickup_blue == true)
-    //             {
-    //                 SetReward(2.0f);
-    //                 Debug.Log("Good Reward for rectangle");
-    //                 EndEpisode();
-    //             }
-    //             else
-    //             {
-    //                 SetReward(-1.0f);
-    //                 Debug.Log("Bad Reward for rectangle");
-    //                 EndEpisode();                
-    //             }    
-    //         }
-    //     }
-    //
-    //   }
-
 }
+
+
+

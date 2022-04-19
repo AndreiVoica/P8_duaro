@@ -20,6 +20,6 @@ public class CollisionTest : MonoBehaviour
     //This is invoked when trigger happens
     void CollisionDetected(Collision collision)
     {
-        //Debug.Log("Collision happened with: " + collision.gameObject.name);
+        Debug.Log("Collision happened with: " + collision.gameObject.name);
     }
 }

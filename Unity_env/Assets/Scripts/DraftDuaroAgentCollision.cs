@@ -143,6 +143,8 @@ public class DraftDuaroAgentCollision : Agent
     /// <summary>
     /// Assign rewards when choosing a correct action
     /// </summary>
+    
+    /*
     public void AgentRewards (ActionSegment<int> act)
     {
         // Debug.Log("Agent Rewards");
@@ -182,7 +184,7 @@ public class DraftDuaroAgentCollision : Agent
 
 
         }    
-    }
+    } */
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -194,21 +196,21 @@ public class DraftDuaroAgentCollision : Agent
             discreteActionsOut[0] = 0;
             Debug.Log("Key A Pressed");
             MoveAgent(actionsOut.DiscreteActions);
-            AgentRewards(actionsOut.DiscreteActions);
+            //AgentRewards(actionsOut.DiscreteActions);
         }
         else if (Input.GetKey(KeyCode.B)) // Select discrete action 1
         {
             discreteActionsOut[0] = 1;
             Debug.Log("Key B Pressed");
             MoveAgent(actionsOut.DiscreteActions);
-            AgentRewards(actionsOut.DiscreteActions);
+            //AgentRewards(actionsOut.DiscreteActions);
         }
         else if (Input.GetKey(KeyCode.C)) // Select discrete action 2
         {
             discreteActionsOut[0] = 2;
             Debug.Log("Key C Pressed");
             MoveAgent(actionsOut.DiscreteActions);
-            AgentRewards(actionsOut.DiscreteActions);
+            //AgentRewards(actionsOut.DiscreteActions);
         }
 
         Debug.Log("discreteActionsOut = " + discreteActionsOut[0]);
@@ -225,9 +227,15 @@ public class DraftDuaroAgentCollision : Agent
             m_resetTimer = 0;
             EndEpisode();
         }
+
+        CollisionCallback.OnCollision += CollisionDetected;
+
     }
 
-
+    void CollisionDetected(Collision collision)
+    {
+        Debug.Log("Collision happened with: " + collision.gameObject.name);
+    }
 
     // // Collision detection:
     // protected override void OnEnablev()
