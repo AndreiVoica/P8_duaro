@@ -8,7 +8,9 @@ public class Control : MonoBehaviour
     private Library robot;
 
     private List<JointAngles> jointAngles = new List<JointAngles>();
+    private List<JointAngles> jointAnglesL = new List<JointAngles>();
     public int currentIndex = 0;
+    public int currentIndexL = 0;
     
 
     public void Start()
@@ -19,7 +21,8 @@ public class Control : MonoBehaviour
         var rate = 10f;
         var waitTime = 1f / rate;
         
-        InvokeRepeating("MoveJoints", 0, waitTime); //Check this function
+        InvokeRepeating("MoveJointsUpper", 0, waitTime); //Check this function
+        InvokeRepeating("MoveJointsLower", 0, waitTime);
     }
 /*
     public void Update()
@@ -35,9 +38,24 @@ public class Control : MonoBehaviour
         //Debug.Log("index test: " + currentIndex);
     }
 */
-    void MoveJoints()
+    void MoveJointsLower()
     {
-        robot.set_lower_joint_target(jointAngles[currentIndex].Joint1L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint2L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint3L, jointAngles[currentIndex].Joint4L * Mathf.Rad2Deg, jointAngles[currentIndex].Lrgripper, jointAngles[currentIndex].Llgripper);
+        robot.set_lower_joint_target(jointAnglesL[currentIndexL].Joint1L * Mathf.Rad2Deg, jointAnglesL[currentIndexL].Joint2L * Mathf.Rad2Deg, jointAnglesL[currentIndexL].Joint3L, jointAnglesL[currentIndexL].Joint4L * Mathf.Rad2Deg, jointAnglesL[currentIndexL].Lrgripper, jointAnglesL[currentIndexL].Llgripper);
+        //robot.set_upper_joint_target(jointAnglesL[currentIndex].Joint1U * Mathf.Rad2Deg, jointAnglesL[currentIndex].Joint2U * Mathf.Rad2Deg, jointAnglesL[currentIndex].Joint3U, jointAnglesL[currentIndex].Joint4U * Mathf.Rad2Deg, jointAnglesL[currentIndex].Ulgripper, jointAnglesL[currentIndex].Urgripper);
+        currentIndexL++;
+        //Debug.Log("CurrentIndex = " + currentIndex);
+        // if (currentIndex >= 10000) //For what is this needed?
+        // {
+
+        //     currentIndex = 0;
+        //     //CancelInvoke();
+        //     Debug.Log("CancelInvoke");
+        // }
+    }
+
+    void MoveJointsUpper()
+    {
+        //robot.set_lower_joint_target(jointAngles[currentIndex].Joint1L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint2L * Mathf.Rad2Deg, jointAngles[currentIndex].Joint3L, jointAngles[currentIndex].Joint4L * Mathf.Rad2Deg, jointAngles[currentIndex].Lrgripper, jointAngles[currentIndex].Llgripper);
         robot.set_upper_joint_target(jointAngles[currentIndex].Joint1U * Mathf.Rad2Deg, jointAngles[currentIndex].Joint2U * Mathf.Rad2Deg, jointAngles[currentIndex].Joint3U, jointAngles[currentIndex].Joint4U * Mathf.Rad2Deg, jointAngles[currentIndex].Ulgripper, jointAngles[currentIndex].Urgripper);
         currentIndex++;
         //Debug.Log("CurrentIndex = " + currentIndex);
@@ -49,7 +67,6 @@ public class Control : MonoBehaviour
         //     Debug.Log("CancelInvoke");
         // }
     }
-
 
     public void PickWhite()
     {
@@ -81,7 +98,7 @@ public class Control : MonoBehaviour
             {
                 var lineBlue = strReader.ReadLine();
                 var anglesBlue = DecodeLine(lineBlue);
-                jointAngles.Add(anglesBlue);
+                jointAnglesL.Add(anglesBlue);
             }
         }
         Debug.Log("Control - Pick Blue");
