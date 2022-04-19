@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Library : MonoBehaviour
 {
-    [SerializeField] private ArticulationBody[] robotJoints = new ArticulationBody[14];
-    public void set_upper_joint_target(float j1_u, float j2_u, float j3_u, float j4_u, float gripperu_r, float gripperu_l)
+    [SerializeField] private ArticulationBody[] robotJoints = new ArticulationBody[14]; //Defining the duaro joints (drag and drop the joints in Unity scene)
+    public void set_upper_joint_target(float j1_u, float j2_u, float j3_u, float j4_u, float gripperu_r, float gripperu_l) //function for inputting a joint/gripper value
     {
-        var joint1UpXDrive = robotJoints[7].xDrive;
+        var joint1UpXDrive = robotJoints[7].xDrive; //robotJoints[i] represents which joint in the list will be actuated
         joint1UpXDrive.target = j1_u;
         robotJoints[7].xDrive = joint1UpXDrive;
 
