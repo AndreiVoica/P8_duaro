@@ -1372,6 +1372,7 @@ MonoBehaviour:
   red: {fileID: 677450745}
   rectangle: {fileID: 2061847292}
   MaxEnvironmentSteps: 500000
+  MaxSkills: 10
 --- !u!1 &217239063
 GameObject:
   m_ObjectHideFlags: 0
