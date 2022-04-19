@@ -16,10 +16,12 @@ using Random = System.Random;
 public class DraftDuaroAgent : Agent
 {
   
+    public Transform black;
+    public Transform green;
+    public Transform Rectangle;
+    public Transform yellow;
     public Transform blue;
     public Transform red;
-    public Transform rectangle;
-
     private bool pickup_blue;
     private bool pickup_red;
     private bool pickup_rectangle;
@@ -65,12 +67,18 @@ public class DraftDuaroAgent : Agent
         // Reset cube positions:
         Vector3 rotationVector = new Vector3(0, 0, 0);
         Debug.Log("OnEpisodeBegin");
-        blue.transform.localPosition = new Vector3(1.22300005f,0.823099971f,-1.296f);
+        black.transform.localPosition = new Vector3(1.22f,0.796f,-1.3663f);
+        black.transform.rotation = Quaternion.Euler(rotationVector);
+        green.transform.localPosition = new Vector3(1.219f,0.8857f,-1.32f);
+        green.transform.rotation = Quaternion.Euler(rotationVector);
+        Rectangle.transform.localPosition = new Vector3(1.22f,0.763f,-1.184f);
+        Rectangle.transform.rotation = Quaternion.Euler(rotationVector);
+        blue.transform.localPosition = new Vector3(1.219f,0.8231f,-1.267f);
         blue.transform.rotation = Quaternion.Euler(rotationVector);
-        red.transform.localPosition = new Vector3(1.22500002f,0.823000014f,-1.17999995f);
+        yellow.transform.localPosition = new Vector3(1.2213f,0.8255f,-1.0598f);
+        yellow.transform.rotation = Quaternion.Euler(rotationVector);
+        red.transform.localPosition = new Vector3(1.221f,0.823f,-1.1674f);
         red.transform.rotation = Quaternion.Euler(rotationVector);
-        rectangle.transform.localPosition = new Vector3(1.22000003f,0.740999997f,-1.23800004f);
-        rectangle.transform.rotation = Quaternion.Euler(rotationVector);
         
         pickup_blue = false;
         pickup_red = false;
