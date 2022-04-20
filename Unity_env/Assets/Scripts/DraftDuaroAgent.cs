@@ -134,6 +134,12 @@ public class DraftDuaroAgent : Agent
         case 5: 
             control.PickBlueUpper();
             break;
+        case 6: 
+            control.PickRedLower();
+            break;
+        case 7: 
+            control.PickRedUpper();
+            break;
         default:
             break;
         }
@@ -235,6 +241,20 @@ public class DraftDuaroAgent : Agent
         {
             discreteActionsOut[0] = 5;
             Debug.Log("Key 3 Pressed");
+            MoveAgent(actionsOut.DiscreteActions);
+            AgentRewards(actionsOut.DiscreteActions);
+        }
+        else if(Input.GetKey(KeyCode.Keypad4))
+        {
+            discreteActionsOut[0] = 6;
+            Debug.Log("Key 4 Pressed");
+            MoveAgent(actionsOut.DiscreteActions);
+            AgentRewards(actionsOut.DiscreteActions);
+        }
+        else if(Input.GetKey(KeyCode.Keypad5))
+        {
+            discreteActionsOut[0] = 7;
+            Debug.Log("Key 5 Pressed");
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
