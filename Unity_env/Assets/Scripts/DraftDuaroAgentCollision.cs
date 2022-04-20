@@ -88,11 +88,12 @@ public class DraftDuaroAgentCollision : Agent
 
 
 
-    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions 
     {      
+        Debug.Log("OnActionReceived");
         // Move the agent using the action.
-        //MoveAgent(actionBuffers.DiscreteActions);
-        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
+        MoveAgent(actionBuffers.DiscreteActions);        
+        
     }
 
 
