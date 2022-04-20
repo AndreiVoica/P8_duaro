@@ -28,6 +28,10 @@ public class DraftDuaroAgentCollision : Agent
     int count_collision_blue;
     int count_collision_red;        
     int count_collision_rectangle;
+    int count_collision_base_link;
+
+    float reward;
+
     private Control control;
 
     // Position of the BLUE cube in the Array
@@ -62,7 +66,7 @@ public class DraftDuaroAgentCollision : Agent
         // reset cube positions:
         Vector3 rotationVector = new Vector3(0, 0, 0);
         Debug.Log("OnEpisodeBegin");
-        blue.transform.localPosition = new Vector3(1.22300005f,0.823099971f,-1.32130003f);
+        blue.transform.localPosition = new Vector3(1.22300005f,0.823099971f,-1.296f);
         blue.transform.rotation = Quaternion.Euler(rotationVector);
         red.transform.localPosition = new Vector3(1.22500002f,0.823000014f,-1.17999995f);
         red.transform.rotation = Quaternion.Euler(rotationVector);
@@ -98,14 +102,16 @@ public class DraftDuaroAgentCollision : Agent
     /// </summary>
     public void MoveAgent(ActionSegment<int> act)
     {
+
         var decision = act[0];
        // decision = 0;
         var skill = 4;
-        Debug.Log("test decision: " + decision);
+        //Debug.Log("test decision: " + decision);
 
         count_collision_blue = 0;
         count_collision_red = 0;        
         count_collision_rectangle = 0;
+        count_collision_base_link = 0;
         switch (decision)
         {        
         case 0:
@@ -213,7 +219,7 @@ public class DraftDuaroAgentCollision : Agent
             //AgentRewards(actionsOut.DiscreteActions);
         }
 
-        Debug.Log("discreteActionsOut = " + discreteActionsOut[0]);
+        //Debug.Log("discreteActionsOut = " + discreteActionsOut[0]);
     }	 
 
 
@@ -229,12 +235,12 @@ public class DraftDuaroAgentCollision : Agent
         }
 
         CollisionCallback.OnCollision += CollisionDetected;
-
+        reward = GetCumulativeReward();
     }
 
     void CollisionDetected(Collision collision)
     {
-        Debug.Log("Collision happened with: " + collision.gameObject.name);
+        //Debug.Log("Collision happened with: " + collision.gameObject.name);
         if (collision.gameObject.name == "blue")
         {
             count_collision_blue += 1;          
@@ -245,11 +251,14 @@ public class DraftDuaroAgentCollision : Agent
                 {
                     AddReward(1.0f);
                     Debug.Log("Good Reward for blue");
+                    Debug.Log("CumulativeReward " + reward);
                 }
                 else
                 {
                     AddReward(-1.0f);
                     Debug.Log("Bad Reward for blue");
+                    Debug.Log("CumulativeReward " + reward);
+
                 }    
             }
         }
@@ -263,11 +272,15 @@ public class DraftDuaroAgentCollision : Agent
                 {
                     AddReward(1.0f);
                     Debug.Log("Good Reward for red");
+                    Debug.Log("CumulativeReward " + reward);
+
                 }
                 else
                 {
                     AddReward(-1.0f);
                     Debug.Log("Bad Reward for red");
+                    Debug.Log("CumulativeReward " + reward);
+                    
                 }    
             }
         }
@@ -282,26 +295,33 @@ public class DraftDuaroAgentCollision : Agent
                 {
                     AddReward(1.0f);
                     Debug.Log("Good Reward for rectangle");
-                    
+                    Debug.Log("CumulativeReward " + reward);
+
                 }
                 else
                 {
                     AddReward(-1.0f);
                     Debug.Log("Bad Reward for rectangle");
-                               
+                    Debug.Log("CumulativeReward " + reward);
+                              
                 }    
+            }
+        }
+
+        if (collision.gameObject.name == "lower_gripper_base_link")
+        {
+            count_collision_base_link += 1;          
+            
+            if (count_collision_base_link == 1)
+            {
+                AddReward(-1.0f);
+                Debug.Log("Bad Reward for collision of arms");
+                Debug.Log("CumulativeReward " + reward);
+
+
             }
         }
     
     }
-
-
-    // // When collision happens:
-    // void CollisionDetected(Collision collision)
-    // {
-    //     // Debug.Log("Collision happened with: " + collision.gameObject.name);
-
-       
-
 
 }
