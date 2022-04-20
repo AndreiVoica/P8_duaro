@@ -66,7 +66,7 @@ public class DraftDuaroAgentCollision : Agent
         // reset cube positions:
         Vector3 rotationVector = new Vector3(0, 0, 0);
         Debug.Log("OnEpisodeBegin");
-        blue.transform.localPosition = new Vector3(1.22300005f,0.823099971f,-1.32130003f);
+        blue.transform.localPosition = new Vector3(1.22300005f,0.823099971f,-1.296f);
         blue.transform.rotation = Quaternion.Euler(rotationVector);
         red.transform.localPosition = new Vector3(1.22500002f,0.823000014f,-1.17999995f);
         red.transform.rotation = Quaternion.Euler(rotationVector);
