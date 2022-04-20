@@ -6188,7 +6188,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 1
-    target: 0.0055
+    target: 0.055
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -8197,7 +8197,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 100
-    target: 78
+    target: 89
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -9062,7 +9062,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 1
-    target: -0.0055
+    target: -0.055
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -10485,7 +10485,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 100
-    target: 0
+    target: -10
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -11606,7 +11606,7 @@ ArticulationBody:
     stiffness: 0
     damping: 0
     forceLimit: 100
-    target: -99
+    target: -83
     targetVelocity: 0
   m_YDrive:
     lowerLimit: 0
@@ -12820,7 +12820,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585638694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.219, y: 0.898, z: -1.32}
+  m_LocalPosition: {x: 1.219, y: 0.898, z: -1.31}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.15}
   m_Children: []
   m_Father: {fileID: 1448368914}
