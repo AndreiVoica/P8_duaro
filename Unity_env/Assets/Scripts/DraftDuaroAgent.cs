@@ -95,14 +95,14 @@ public class DraftDuaroAgent : Agent
         sensor.AddObservation(blue.position);
     }
 
-    // public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    // {      
-    //      Debug.Log("OnActionReceived");
-    //     // Move the agent using the action.
-    //     MoveAgent(actionBuffers.DiscreteActions);
-    //     AgentRewards(actionBuffers.DiscreteActions);
-    //     // CHECK WHY APPLIES THIS EVEN IN HEURISTIC MODE
-    // }
+    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    {      
+         Debug.Log("OnActionReceived");
+        // Move the agent using the action.
+        MoveAgent(actionBuffers.DiscreteActions);
+        AgentRewards(actionBuffers.DiscreteActions);
+        // CHECK WHY APPLIES THIS EVEN IN HEURISTIC MODE
+    }
 
 
     /// <summary>
