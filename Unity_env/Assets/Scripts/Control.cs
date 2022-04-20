@@ -78,6 +78,24 @@ public class Control : MonoBehaviour
         Debug.Log("Control - Pick White");
     }
 
+    public void PickGreenUpper()
+    {
+        var pathWhite = Directory.GetCurrentDirectory();
+        var filePathWhite = Path.Combine(pathWhite, "bagfiles/green_cube_upper.csv"); 
+
+        using (var strReader = new StreamReader(filePathWhite))
+        {
+            strReader.ReadLine();
+            while (!strReader.EndOfStream)
+            {
+                var lineWhite = strReader.ReadLine();
+                var anglesWhite = DecodeLine(lineWhite);
+                jointAnglesU.Add(anglesWhite);
+            }
+        }
+        Debug.Log("Control - Pick White");
+    }
+
     public void PickWhite()
     {
         var pathWhite = Directory.GetCurrentDirectory();

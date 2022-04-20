@@ -119,7 +119,7 @@ public class DraftDuaroAgent : Agent
             break;
         case 1:
             pickup_red = true;
-            control.PickRed();
+            control.PickGreenUpper();
             break;
         case 2:
             pickup_rectangle = true;
