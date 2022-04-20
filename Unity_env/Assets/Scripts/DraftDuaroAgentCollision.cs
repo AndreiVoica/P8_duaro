@@ -110,7 +110,7 @@ public class DraftDuaroAgentCollision : Agent
         {        
         case 0:
             pickup_blue = true;
-            control.PickBlue();
+            control.PickGreenUpper();
 
             // // Reward
             // if (pickup_blue == true && taskArray[blueRow,blueCol] == 1 && taskArray[blueRow - 1,blueCol] == 0)
@@ -128,11 +128,11 @@ public class DraftDuaroAgentCollision : Agent
             break;
         case 1:
             pickup_red = true;
-            control.PickRed();
+            control.PickGreenLower();
             break;
         case 2:
             pickup_rectangle = true;
-            control.PickWhite();
+            control.PickBlackLower();
             break;
         default:
             break;

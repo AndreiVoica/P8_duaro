@@ -96,10 +96,28 @@ public class Control : MonoBehaviour
         Debug.Log("Control - Pick White");
     }
 
-    public void PickWhite()
+    public void PickBlackLower()
     {
         var pathWhite = Directory.GetCurrentDirectory();
-        var filePathWhite = Path.Combine(pathWhite, "bagfiles/grip_white.csv"); 
+        var filePathWhite = Path.Combine(pathWhite, "bagfiles/black_cube_lower.csv"); 
+
+        using (var strReader = new StreamReader(filePathWhite))
+        {
+            strReader.ReadLine();
+            while (!strReader.EndOfStream)
+            {
+                var lineWhite = strReader.ReadLine();
+                var anglesWhite = DecodeLine(lineWhite);
+                jointAnglesL.Add(anglesWhite);
+            }
+        }
+        Debug.Log("Control - Pick White");
+    }
+
+    public void PickBlackUpper()
+    {
+        var pathWhite = Directory.GetCurrentDirectory();
+        var filePathWhite = Path.Combine(pathWhite, "bagfiles/black_cube_upper.csv"); 
 
         using (var strReader = new StreamReader(filePathWhite))
         {
@@ -114,41 +132,40 @@ public class Control : MonoBehaviour
         Debug.Log("Control - Pick White");
     }
 
-    public void PickBlue()
+    public void PickBlueLower()
     {
-        var pathBlue = Directory.GetCurrentDirectory();
-        var filePathBlue = Path.Combine(pathBlue, "bagfiles/grip_blue.csv"); 
+        var pathWhite = Directory.GetCurrentDirectory();
+        var filePathWhite = Path.Combine(pathWhite, "bagfiles/blue_cube_lower.csv"); 
 
-        using (var strReader = new StreamReader(filePathBlue))
+        using (var strReader = new StreamReader(filePathWhite))
         {
             strReader.ReadLine();
             while (!strReader.EndOfStream)
             {
-                var lineBlue = strReader.ReadLine();
-                var anglesBlue = DecodeLine(lineBlue);
-                jointAnglesL.Add(anglesBlue);
+                var lineWhite = strReader.ReadLine();
+                var anglesWhite = DecodeLine(lineWhite);
+                jointAnglesL.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick Blue");
+        Debug.Log("Control - Pick White");
     }
 
-
-    public void PickRed()
+    public void PickBlueUpper()
     {
-        var pathRed = Directory.GetCurrentDirectory();
-        var filePathRed = Path.Combine(pathRed, "bagfiles/grip_red.csv"); 
+        var pathWhite = Directory.GetCurrentDirectory();
+        var filePathWhite = Path.Combine(pathWhite, "bagfiles/blue_cube_upper.csv"); 
 
-        using (var strReader = new StreamReader(filePathRed))
+        using (var strReader = new StreamReader(filePathWhite))
         {
             strReader.ReadLine();
             while (!strReader.EndOfStream)
             {
-                var lineRed = strReader.ReadLine();
-                var anglesRed = DecodeLine(lineRed);
-                jointAnglesU.Add(anglesRed);
+                var lineWhite = strReader.ReadLine();
+                var anglesWhite = DecodeLine(lineWhite);
+                jointAnglesU.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick Red");
+        Debug.Log("Control - Pick White");
     }
 
     // The data from the csv comes as a string and we have to use floats for controlling the joints.
