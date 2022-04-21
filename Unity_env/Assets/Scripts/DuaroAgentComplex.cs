@@ -25,41 +25,51 @@ public class DuaroAgentComplex : Agent
 
     private Control control;
 
+    public int action;
+
 
     //**************
     //Add all the cube Positions:
     //**************
     
     //Array to Store the items Position (Initial Row, Initial Column, Row Length, Column Length)
-    int[,] itemsPosition = new int[3,4]{ 
-                                        {1,0,1,1}, // Blue Cube
-                                        {1,3,1,1}, // Red Cube
-                                        {2,0,1,4}, // Rectangle
+    int[,] itemsPosition = new int[6,4]{ 
+                                        {3,0,1,2}, // Black Cube
+                                        {2,2,1,1}, // Blue Cube
+                                        {1,0,2,1}, // Green Cube
+                                        {2,4,1,1}, // Red Cube
+                                        {3,1,1,6}, // White Cube
+                                        {2,6,1,1}, // Yellow Cube
                                     };
 
     // Array with the shape of the blocks
-    int[,] taskArray = new int[3,4]{ 
-                                    {0,0,0,0},
-                                    {1,0,0,1}, 
-                                    {1,1,1,1}, 
+    int[,] taskArray = new int[4,7]{ 
+                                    {0,0,0,0,0,0,0},
+                                    {1,1,1,0,0,0,0},
+                                    {1,0,1,0,1,0,1}, 
+                                    {1,1,1,1,1,1,1},  
                                 };
 
-    int[,] shapeBackup = new int[3,4]{ 
-                                    {0,0,0,0},
-                                    {1,0,0,1}, 
-                                    {1,1,1,1}, 
+    int[,] shapeBackup = new int[4,7]{ 
+                                    {0,0,0,0,0,0,0},
+                                    {1,1,1,0,0,0,0},
+                                    {1,0,1,0,1,0,1}, 
+                                    {1,1,1,1,1,1,1}, 
                                 };
 
     // Boolean to check if there are items above in the rewards function                                
     private bool itemsAbove;
 
     private int checkAllDone;
+    
+    // Check which arm has to move
+    private bool moveLowerOrUpper;
 
     //Max Number of Steps to be performed before the environment restarts
-    [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 50000;
+    [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 100000;
     private int m_resetTimer;
     //Max Number of Skills to be performed before the environment restarts
-    [Tooltip("Max Number of Skills")] public int MaxSkills = 15;
+    [Tooltip("Max Number of Skills")] public int MaxSkills = 30;
     private int m_resetSkill;
 
     // Variable to store the cumulative Reward
@@ -120,58 +130,70 @@ public class DuaroAgentComplex : Agent
     /// </summary>
     public void MoveAgent(ActionSegment<int> act)
     {
-        var decision = act[0];
-        //Debug.Log("Decision: " + decision);
+        if(moveLowerOrUpper == true)
+        {
+           //var decision = act[0];
+            action = act[0];
 
-
-        switch (decision)
-        {        
-        case 0:
-            control.currentIndexL = 0;
-            control.PickBlackLower();
-            break;
-        case 1:
-            control.currentIndexU = 0;
-            control.PickGreenUpper();
-            break;
-        case 2:
-            control.currentIndexL = 0;
-            control.PickGreenLower();
-            break;
-        case 3: 
-            control.currentIndexU = 0;
-            control.PickBlackUpper();
-            break;
-        case 4:
-            control.currentIndexL = 0;
-            control.PickBlueLower();
-            break;
-        case 5: 
-            control.currentIndexU = 0;
-            control.PickBlueUpper();
-            break;
-        case 6:
-            control.currentIndexL = 0;
-            control.PickRedLower();
-            break;
-        case 7: 
-            control.currentIndexU = 0;
-            control.PickRedUpper();
-            break;
-        case 8:
-            control.currentIndexU = 0;
-            control.PickYellowUpper();
-            break;
-        case 9:
-            control.currentIndexL = 0;
-            control.PickWhiteLower();
-            break;
-        case 10: 
-            control.currentIndexU = 0;
-            control.PickWhiteUpper();
-            break;
-        default:
-            break;
+            switch (action)
+            {        
+                case 0:
+                    control.currentIndexL = 0;
+                    control.PickBlackLower();
+                    break;
+                case 1:
+                    control.currentIndexL = 0;
+                    control.PickBlueLower();
+                    break;
+                case 2:
+                    control.currentIndexL = 0;
+                    control.PickGreenLower();
+                    break;
+                case 3: 
+                    control.currentIndexL = 0;
+                    control.PickRedLower();
+                    break;
+                case 4:
+                    control.currentIndexL = 0;
+                    control.PickWhiteLower();
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if (moveLowerOrUpper == false)
+        {
+            //var decision = act[1];
+            action = act[1];
+            switch (action)
+            {        
+                case 0:
+                    control.currentIndexU = 0;
+                    control.PickBlackUpper();
+                    break;
+                case 1:
+                    control.currentIndexU = 0;
+                    control.PickBlueUpper();
+                    break;
+                case 2:
+                    control.currentIndexU = 0;
+                    control.PickGreenUpper();
+                    break;
+                case 3: 
+                    control.currentIndexU = 0;
+                    control.PickRedUpper();
+                    break;
+                case 4:
+                    control.currentIndexU = 0;
+                    control.PickWhiteUpper();
+                    break;
+                case 5:
+                    control.currentIndexU = 0;
+                    control.PickYellowUpper();
+                    break;
+                default:
+                    break;
+            }
         }
         m_resetSkill +=1; // Add +1 to Skills Counter  
         Debug.Log("Skill Number: " + m_resetSkill);
@@ -181,10 +203,10 @@ public class DuaroAgentComplex : Agent
     {
         // Debug.Log("Agent Rewards");
 
-        var action = act[0];
+
 
         // Rewards
-        Debug.Log("Action = " + action);
+        Debug.Log("Action Lower = " + action);
 
         // Check if there are items above
         itemsAbove = false;
@@ -265,91 +287,123 @@ public class DuaroAgentComplex : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         // Debug.Log("Heuristic");
+
+        // moveLowerOrUpper = true; Lower Arm moves
+        // moveLowerOrUpper = false; Upper arm moves
+        
         var discreteActionsOut = actionsOut.DiscreteActions;
 
-        if (Input.GetKey(KeyCode.A) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action 0
+        if (Input.GetKey(KeyCode.A) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action Lower 0
         {
             discreteActionsOut[0] = 0;
             Debug.Log("Key A Pressed");
+            moveLowerOrUpper = true;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if (Input.GetKey(KeyCode.B) && control.currentIndexU >= control.jointAnglesU.Count ) // Select discrete action 1
+        else if (Input.GetKey(KeyCode.B) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action Lower 1
         {
             discreteActionsOut[0] = 1;
             Debug.Log("Key B Pressed");
+            moveLowerOrUpper = true;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if (Input.GetKey(KeyCode.C) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action 2
+        else if (Input.GetKey(KeyCode.C) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action Lower 2
         {
             discreteActionsOut[0] = 2;
             Debug.Log("Key C Pressed");
+            moveLowerOrUpper = true;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad1) && control.currentIndexU >= control.jointAnglesU.Count)
+        else if(Input.GetKey(KeyCode.D) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action Lower 3
         {
             discreteActionsOut[0] = 3;
-            Debug.Log("Key 1 Pressed");
+            Debug.Log("Key D Pressed");
+            moveLowerOrUpper = true;
             MoveAgent(actionsOut.DiscreteActions);
-            AgentRewards(actionsOut.DiscreteActions);
+            AgentRewards(actionsOut.DiscreteActions); 
         }
-        else if(Input.GetKey(KeyCode.Keypad2) && control.currentIndexL >= control.jointAnglesL.Count)
+        else if(Input.GetKey(KeyCode.E) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action Lower 4
         {
             discreteActionsOut[0] = 4;
+            Debug.Log("Key E Pressed");
+            moveLowerOrUpper = true;
+            MoveAgent(actionsOut.DiscreteActions);
+            AgentRewards(actionsOut.DiscreteActions);
+        }
+        else if(Input.GetKey(KeyCode.Keypad1) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 0
+        {
+            discreteActionsOut[1] = 0;
+            Debug.Log("Key 1 Pressed");
+            moveLowerOrUpper = false;
+            MoveAgent(actionsOut.DiscreteActions);
+            AgentRewards(actionsOut.DiscreteActions);
+        }
+        else if(Input.GetKey(KeyCode.Keypad2) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 1
+        {
+            discreteActionsOut[1] = 1;
             Debug.Log("Key 2 Pressed");
+            moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad3) && control.currentIndexU >= control.jointAnglesU.Count)
+        else if(Input.GetKey(KeyCode.Keypad3) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 2
         {
-            discreteActionsOut[0] = 5;
+            discreteActionsOut[1] = 2;
             Debug.Log("Key 3 Pressed");
+            moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad4) && control.currentIndexL >= control.jointAnglesL.Count)
+        else if(Input.GetKey(KeyCode.Keypad4) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 3
         {
-            discreteActionsOut[0] = 6;
+            discreteActionsOut[1] = 3;
             Debug.Log("Key 4 Pressed");
+            moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad5) && control.currentIndexU >= control.jointAnglesU.Count)
+        else if(Input.GetKey(KeyCode.Keypad5) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 4
         {
-            discreteActionsOut[0] = 7;
+            discreteActionsOut[1] = 4;
             Debug.Log("Key 5 Pressed");
+            moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad6) && control.currentIndexU >= control.jointAnglesU.Count)
+        else if(Input.GetKey(KeyCode.Keypad6) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 5
         {
-            discreteActionsOut[0] = 8;
+            discreteActionsOut[1] = 5;
             Debug.Log("Key 6 Pressed");
+            moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad7) && control.currentIndexL >= control.jointAnglesL.Count)
-        {
-            discreteActionsOut[0] = 9;
-            Debug.Log("Key 7 Pressed");
-            MoveAgent(actionsOut.DiscreteActions);
-            AgentRewards(actionsOut.DiscreteActions);
-        }
-        else if(Input.GetKey(KeyCode.Keypad8) && control.currentIndexU >= control.jointAnglesU.Count)
-        {
-            discreteActionsOut[0] = 10;
-            Debug.Log("Key 8 Pressed");
-            MoveAgent(actionsOut.DiscreteActions);
-            AgentRewards(actionsOut.DiscreteActions);
-        }
-        Debug.Log("discreteActionsOut = " + discreteActionsOut[0]);
+        Debug.Log("discreteActionsOut Lower = " + discreteActionsOut[0]);
+        Debug.Log("discreteActionsOut Upper = " + discreteActionsOut[1]);
     }	 
 
 
     void FixedUpdate()
     {
+        if(control.currentIndexL >= control.jointAnglesL.Count)
+        {
+            //actionEndLower = true;
+            moveLowerOrUpper = true;
+            RequestDecision();
+        }
+        if(control.currentIndexU >= control.jointAnglesU.Count)
+        {
+            //actionEndUpper = true;
+            moveLowerOrUpper = false;
+            RequestDecision();
+        }
+
+        // Update Cumulative Reward
+        reward = GetCumulativeReward();
+
         Debug.Log("Fixed Update");
         m_resetTimer += 1; // Add +1 to Steps Counter
         if (m_resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
