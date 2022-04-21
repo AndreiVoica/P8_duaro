@@ -25,7 +25,7 @@ public class DuaroAgentComplex : Agent
 
     private Control control;
 
-    public int action;
+    private int action;
 
 
     //**************
@@ -105,6 +105,7 @@ public class DuaroAgentComplex : Agent
         taskArray = (int[,]) shapeBackup.Clone(); // make a copy
 
         //SetReward(0.0f);
+
     }
 
     /// <summary>
@@ -203,8 +204,6 @@ public class DuaroAgentComplex : Agent
     {
         // Debug.Log("Agent Rewards");
 
-
-
         // Rewards
         Debug.Log("Action Lower = " + action);
 
@@ -283,13 +282,12 @@ public class DuaroAgentComplex : Agent
         Debug.Log("CumulativeReward: " + reward);
     }
 
-
-    public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        // Debug.Log("Heuristic");
-
         // moveLowerOrUpper = true; Lower Arm moves
         // moveLowerOrUpper = false; Upper arm moves
+    public override void Heuristic(in ActionBuffers actionsOut)
+    {
+        
+        // Debug.Log("Heuristic");
         
         var discreteActionsOut = actionsOut.DiscreteActions;
 
@@ -333,7 +331,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad1) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 0
+        else if(Input.GetKey(KeyCode.Keypad1) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 0
         {
             discreteActionsOut[1] = 0;
             Debug.Log("Key 1 Pressed");
@@ -341,7 +339,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad2) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 1
+        else if(Input.GetKey(KeyCode.Keypad2) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 1
         {
             discreteActionsOut[1] = 1;
             Debug.Log("Key 2 Pressed");
@@ -349,7 +347,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad3) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 2
+        else if(Input.GetKey(KeyCode.Keypad3) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 2
         {
             discreteActionsOut[1] = 2;
             Debug.Log("Key 3 Pressed");
@@ -357,7 +355,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad4) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 3
+        else if(Input.GetKey(KeyCode.Keypad4) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 3
         {
             discreteActionsOut[1] = 3;
             Debug.Log("Key 4 Pressed");
@@ -365,7 +363,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad5) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 4
+        else if(Input.GetKey(KeyCode.Keypad5) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 4
         {
             discreteActionsOut[1] = 4;
             Debug.Log("Key 5 Pressed");
@@ -373,7 +371,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad6) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 5
+        else if(Input.GetKey(KeyCode.Keypad6) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 5
         {
             discreteActionsOut[1] = 5;
             Debug.Log("Key 6 Pressed");
@@ -388,18 +386,19 @@ public class DuaroAgentComplex : Agent
 
     void FixedUpdate()
     {
-        if(control.currentIndexL >= control.jointAnglesL.Count)
-        {
-            //actionEndLower = true;
-            moveLowerOrUpper = true;
-            RequestDecision();
-        }
-        if(control.currentIndexU >= control.jointAnglesU.Count)
-        {
-            //actionEndUpper = true;
-            moveLowerOrUpper = false;
-            RequestDecision();
-        }
+
+        // if(control.currentIndexL >= control.jointAnglesL.Count)
+        // {
+        //     //actionEndLower = true;
+        //     moveLowerOrUpper = true;
+        //     RequestDecision();
+        // }
+        // if(control.currentIndexU >= control.jointAnglesU.Count)
+        // {
+        //     //actionEndUpper = true;
+        //     moveLowerOrUpper = false;
+        //     RequestDecision();
+        // }
 
         // Update Cumulative Reward
         reward = GetCumulativeReward();

@@ -75,7 +75,7 @@ public class Control : MonoBehaviour
                 jointAnglesL.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick White");
+        Debug.Log("Control - PickGreenLower");
     }
 
     public void PickGreenUpper()
@@ -93,7 +93,7 @@ public class Control : MonoBehaviour
                 jointAnglesU.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick White");
+        Debug.Log("Control - PickGreenUpper");
     }
 
     public void PickBlackLower()
@@ -111,7 +111,7 @@ public class Control : MonoBehaviour
                 jointAnglesL.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick White");
+        Debug.Log("Control - PickBlackLower");
     }
 
     public void PickBlackUpper()
@@ -129,7 +129,7 @@ public class Control : MonoBehaviour
                 jointAnglesU.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick White");
+        Debug.Log("Control - PickBlackUpper");
     }
 
     public void PickBlueLower()
@@ -147,7 +147,7 @@ public class Control : MonoBehaviour
                 jointAnglesL.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick White");
+        Debug.Log("Control - PickBlueLower");
     }
 
     public void PickBlueUpper()
@@ -165,7 +165,7 @@ public class Control : MonoBehaviour
                 jointAnglesU.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick White");
+        Debug.Log("Control - PickBlueUpper");
     }
 
     public void PickRedLower()
@@ -183,7 +183,7 @@ public class Control : MonoBehaviour
                 jointAnglesL.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick White");
+        Debug.Log("Control - PickRedLower");
     }
 
     public void PickRedUpper()
@@ -201,7 +201,7 @@ public class Control : MonoBehaviour
                 jointAnglesU.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick White");
+        Debug.Log("Control - PickRedUpper");
     }
 
     public void PickYellowUpper()
@@ -219,7 +219,7 @@ public class Control : MonoBehaviour
                 jointAnglesU.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick White");
+        Debug.Log("Control - PickYellowUpper");
     }
 
     public void PickWhiteLower()
@@ -237,7 +237,7 @@ public class Control : MonoBehaviour
                 jointAnglesL.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick White");
+        Debug.Log("Control - PickWhiteLower");
     }
 
     public void PickWhiteUpper()
@@ -255,7 +255,7 @@ public class Control : MonoBehaviour
                 jointAnglesU.Add(anglesWhite);
             }
         }
-        Debug.Log("Control - Pick White");
+        Debug.Log("Control - PickWhiteUpper");
     }
     // The data from the csv comes as a string and we have to use floats for controlling the joints.
     // In here we we take the collumns of interest (16 -> 27), because these contain the data that we need (joint/gripper angles/positions)
