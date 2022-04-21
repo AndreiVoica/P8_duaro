@@ -137,7 +137,10 @@ Unity_env/.vscode/settings.json
 Unity_env/Assets/ML-Agents/Timers/Collision_SampleScene_timers.json
 
 Unity_env/Assets/ML-Agents/Timers/Collision_SampleScene_timers.json.meta
+<<<<<<< HEAD
+=======
 
 Unity_env/Assets/ML-Agents/Timers/SampleScene_timers.json
 
 *.json
+>>>>>>> main

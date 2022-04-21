@@ -31,24 +31,24 @@ public class TestContol : MonoBehaviour
         }
         else if(Input.GetKey(KeyCode.D))
         {
-            control.PickWhite();
+            control.PickBlackLower();
         }
     }
 
 
     IEnumerator Blue()
     {
-        control.PickBlue();
+        control.PickGreenUpper();
         yield return new WaitForEndOfFrame();
     }
     IEnumerator Red()
     {
-        control.PickRed();
+        control.PickGreenLower();
         yield return new WaitForEndOfFrame();
     }
     IEnumerator White()
     {
-        control.PickWhite();
+        control.PickBlackLower();
         yield return null;
     }
 

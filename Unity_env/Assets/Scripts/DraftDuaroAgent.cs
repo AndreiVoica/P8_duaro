@@ -124,15 +124,15 @@ public class DraftDuaroAgent : Agent
         {        
         case 0:
             actionEndLower = false;
-            control.PickBlue();
+            control.PickBlueUpper();
             break;
         case 1:
             actionEndUpper = false;
-            control.PickRed();
+            control.PickRedUpper();
             break;
         case 2:
             actionEndUpper = false;
-            control.PickWhite();
+            control.PickBlackLower();
             break;
         default:
             break;
