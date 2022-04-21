@@ -139,7 +139,6 @@ public class DraftDuaroAgent : Agent
         }
         m_resetSkill +=1; // Add +1 to Skills Counter  
         Debug.Log("Skill Number: " + m_resetSkill);
-
     }
 
     public void AgentRewards (ActionSegment<int> act)
