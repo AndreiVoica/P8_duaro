@@ -221,6 +221,42 @@ public class Control : MonoBehaviour
         }
         Debug.Log("Control - Pick White");
     }
+
+    public void PickWhiteLower()
+    {
+        var pathWhite = Directory.GetCurrentDirectory();
+        var filePathWhite = Path.Combine(pathWhite, "bagfiles/white_cube_lower.csv"); 
+
+        using (var strReader = new StreamReader(filePathWhite))
+        {
+            strReader.ReadLine();
+            while (!strReader.EndOfStream)
+            {
+                var lineWhite = strReader.ReadLine();
+                var anglesWhite = DecodeLine(lineWhite);
+                jointAnglesL.Add(anglesWhite);
+            }
+        }
+        Debug.Log("Control - Pick White");
+    }
+
+    public void PickWhiteUpper()
+    {
+        var pathWhite = Directory.GetCurrentDirectory();
+        var filePathWhite = Path.Combine(pathWhite, "bagfiles/white_cube_upper.csv"); 
+
+        using (var strReader = new StreamReader(filePathWhite))
+        {
+            strReader.ReadLine();
+            while (!strReader.EndOfStream)
+            {
+                var lineWhite = strReader.ReadLine();
+                var anglesWhite = DecodeLine(lineWhite);
+                jointAnglesU.Add(anglesWhite);
+            }
+        }
+        Debug.Log("Control - Pick White");
+    }
     // The data from the csv comes as a string and we have to use floats for controlling the joints.
     // In here we we take the collumns of interest (16 -> 27), because these contain the data that we need (joint/gripper angles/positions)
     // float.TryParse is try to parse the string value from collum 16 into a float that is later added to the JointAngles and used to move the robot
