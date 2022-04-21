@@ -7,8 +7,8 @@ public class Control : MonoBehaviour
 {
     private Library robot; // imports library script which contains the joint and gripper definitions and the functions to control them
 
-    private List<JointAngles> jointAnglesU = new List<JointAngles>(); //List that holds the joint angles values for the upper hand
-    private List<JointAngles> jointAnglesL = new List<JointAngles>(); //List that holds the joint angles values for the lower hand
+    public List<JointAngles> jointAnglesU = new List<JointAngles>(); //List that holds the joint angles values for the upper hand
+    public List<JointAngles> jointAnglesL = new List<JointAngles>(); //List that holds the joint angles values for the lower hand
     public int currentIndexU = 0; //index that will iterate through each value of the joint angle (Upper hand)
     public int currentIndexL = 0; //index that will iterate through each value of the joint angle (Lower hand)
     

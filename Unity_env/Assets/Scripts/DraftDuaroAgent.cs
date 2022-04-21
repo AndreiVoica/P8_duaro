@@ -25,7 +25,6 @@ public class DraftDuaroAgent : Agent
     private bool pickup_blue;
     private bool pickup_red;
     private bool pickup_rectangle;
-
     private Control control;
 
     //Array to Store the items Position (Initial Row, Initial Column, Row Length, Column Length)
@@ -143,7 +142,7 @@ public class DraftDuaroAgent : Agent
         case 8: 
             control.PickYellowUpper();
             break;
-        case 9: 
+        case 9:
             control.PickWhiteLower();
             break;
         case 10: 
