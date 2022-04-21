@@ -113,39 +113,50 @@ public class DraftDuaroAgent : Agent
         switch (decision)
         {        
         case 0:
+            control.currentIndexL = 0;
             pickup_blue = true;
             control.PickBlackLower();
             break;
         case 1:
+            control.currentIndexU = 0;
             pickup_red = true;
             control.PickGreenUpper();
             break;
         case 2:
+            control.currentIndexL = 0;
             pickup_rectangle = true;
             control.PickGreenLower();
             break;
         case 3: 
+            control.currentIndexU = 0;
             control.PickBlackUpper();
             break;
-        case 4: 
+        case 4:
+            control.currentIndexL = 0;
             control.PickBlueLower();
             break;
         case 5: 
+            control.currentIndexU = 0;
             control.PickBlueUpper();
             break;
-        case 6: 
+        case 6:
+            control.currentIndexL = 0;
             control.PickRedLower();
             break;
         case 7: 
+            control.currentIndexU = 0;
             control.PickRedUpper();
             break;
-        case 8: 
+        case 8:
+            control.currentIndexU = 0;
             control.PickYellowUpper();
             break;
         case 9:
+            control.currentIndexL = 0;
             control.PickWhiteLower();
             break;
         case 10: 
+            control.currentIndexU = 0;
             control.PickWhiteUpper();
             break;
         default:
@@ -210,77 +221,77 @@ public class DraftDuaroAgent : Agent
         // Debug.Log("Heuristic");
         var discreteActionsOut = actionsOut.DiscreteActions;
 
-        if (Input.GetKey(KeyCode.A)) // Select discrete action 0
+        if (Input.GetKey(KeyCode.A) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action 0
         {
             discreteActionsOut[0] = 0;
             Debug.Log("Key A Pressed");
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if (Input.GetKey(KeyCode.B)) // Select discrete action 1
+        else if (Input.GetKey(KeyCode.B) && control.currentIndexU >= control.jointAnglesU.Count ) // Select discrete action 1
         {
             discreteActionsOut[0] = 1;
             Debug.Log("Key B Pressed");
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if (Input.GetKey(KeyCode.C)) // Select discrete action 2
+        else if (Input.GetKey(KeyCode.C) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action 2
         {
             discreteActionsOut[0] = 2;
             Debug.Log("Key C Pressed");
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad1))
+        else if(Input.GetKey(KeyCode.Keypad1) && control.currentIndexU >= control.jointAnglesU.Count)
         {
             discreteActionsOut[0] = 3;
             Debug.Log("Key 1 Pressed");
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad2))
+        else if(Input.GetKey(KeyCode.Keypad2) && control.currentIndexL >= control.jointAnglesL.Count)
         {
             discreteActionsOut[0] = 4;
             Debug.Log("Key 2 Pressed");
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad3))
+        else if(Input.GetKey(KeyCode.Keypad3) && control.currentIndexU >= control.jointAnglesU.Count)
         {
             discreteActionsOut[0] = 5;
             Debug.Log("Key 3 Pressed");
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad4))
+        else if(Input.GetKey(KeyCode.Keypad4) && control.currentIndexL >= control.jointAnglesL.Count)
         {
             discreteActionsOut[0] = 6;
             Debug.Log("Key 4 Pressed");
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad5))
+        else if(Input.GetKey(KeyCode.Keypad5) && control.currentIndexU >= control.jointAnglesU.Count)
         {
             discreteActionsOut[0] = 7;
             Debug.Log("Key 5 Pressed");
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad6))
+        else if(Input.GetKey(KeyCode.Keypad6) && control.currentIndexU >= control.jointAnglesU.Count)
         {
             discreteActionsOut[0] = 8;
             Debug.Log("Key 6 Pressed");
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad7))
+        else if(Input.GetKey(KeyCode.Keypad7) && control.currentIndexL >= control.jointAnglesL.Count)
         {
             discreteActionsOut[0] = 9;
             Debug.Log("Key 7 Pressed");
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad8))
+        else if(Input.GetKey(KeyCode.Keypad8) && control.currentIndexU >= control.jointAnglesU.Count)
         {
             discreteActionsOut[0] = 10;
             Debug.Log("Key 8 Pressed");
