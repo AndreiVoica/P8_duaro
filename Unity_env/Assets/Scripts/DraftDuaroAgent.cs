@@ -46,6 +46,10 @@ public class DraftDuaroAgent : Agent
     // Boolean to check if there are items above in the rewards function                                
     private bool itemsAbove;
 
+    public bool actionEndLower = true;
+    public bool actionEndUpper = true;
+
+
     private int checkAllDone;
 
     //Max Number of Steps to be performed before the environment restarts
@@ -81,7 +85,6 @@ public class DraftDuaroAgent : Agent
 
         //shapeBackup.CopyTo(taskArray, 0);
         taskArray = (int[,]) shapeBackup.Clone(); // make a copy
-        //taskArray = shapeBackup; 
 
         //SetReward(0.0f);
         
@@ -95,14 +98,16 @@ public class DraftDuaroAgent : Agent
         sensor.AddObservation(blue.position);
     }
 
-    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    {      
-         Debug.Log("OnActionReceived");
-        // Move the agent using the action.
-        MoveAgent(actionBuffers.DiscreteActions);
-        AgentRewards(actionBuffers.DiscreteActions);
-        // CHECK WHY APPLIES THIS EVEN IN HEURISTIC MODE
-    }
+
+
+    // public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    // {      
+    //     Debug.Log("OnActionReceived");
+    //     // Move the agent using the action.
+    //     MoveAgent(actionBuffers.DiscreteActions);
+    //     AgentRewards(actionBuffers.DiscreteActions);
+    //     // CHECK WHY APPLIES THIS EVEN IN HEURISTIC MODE
+    // }
 
 
     /// <summary>
@@ -118,12 +123,15 @@ public class DraftDuaroAgent : Agent
         switch (decision)
         {        
         case 0:
+            actionEndLower = false;
             control.PickBlue();
             break;
         case 1:
+            actionEndUpper = false;
             control.PickRed();
             break;
         case 2:
+            actionEndUpper = false;
             control.PickWhite();
             break;
         default:
@@ -131,6 +139,7 @@ public class DraftDuaroAgent : Agent
         }
         m_resetSkill +=1; // Add +1 to Skills Counter  
         Debug.Log("Skill Number: " + m_resetSkill);
+
     }
 
     public void AgentRewards (ActionSegment<int> act)
@@ -250,6 +259,27 @@ public class DraftDuaroAgent : Agent
 
     void FixedUpdate()
     {
+        if(control.currentIndexL >= control.jointAnglesL.Count)
+        {
+            actionEndLower = true;
+            RequestDecision();
+        }
+        if(control.currentIndexU >= control.jointAnglesU.Count)
+        {
+            actionEndUpper = true;
+            RequestDecision();
+        }
+
+
+        // // Request a decision when last action has finished
+        // if (actionEndLower == true)
+        // {
+        //     RequestDecision();
+        // }
+        // if (actionEndUpper == true)
+        // {
+        //     RequestDecision();
+        // }
         // Update Cumulative Reward
         reward = GetCumulativeReward();
 
