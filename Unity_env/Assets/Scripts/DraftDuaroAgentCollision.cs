@@ -28,6 +28,10 @@ public class DraftDuaroAgentCollision : Agent
     int count_collision_blue;
     int count_collision_red;        
     int count_collision_rectangle;
+    int count_collision_base_link;
+
+    float reward;
+
     private Control control;
 
     // Position of the BLUE cube in the Array
@@ -62,7 +66,7 @@ public class DraftDuaroAgentCollision : Agent
         // reset cube positions:
         Vector3 rotationVector = new Vector3(0, 0, 0);
         Debug.Log("OnEpisodeBegin");
-        blue.transform.localPosition = new Vector3(1.22300005f,0.823099971f,-1.32130003f);
+        blue.transform.localPosition = new Vector3(1.22300005f,0.823099971f,-1.296f);
         blue.transform.rotation = Quaternion.Euler(rotationVector);
         red.transform.localPosition = new Vector3(1.22500002f,0.823000014f,-1.17999995f);
         red.transform.rotation = Quaternion.Euler(rotationVector);
@@ -84,11 +88,12 @@ public class DraftDuaroAgentCollision : Agent
 
 
 
-    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions 
     {      
+        Debug.Log("OnActionReceived");
         // Move the agent using the action.
-        //MoveAgent(actionBuffers.DiscreteActions);
-        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
+        MoveAgent(actionBuffers.DiscreteActions);        
+        
     }
 
 
@@ -98,14 +103,16 @@ public class DraftDuaroAgentCollision : Agent
     /// </summary>
     public void MoveAgent(ActionSegment<int> act)
     {
+
         var decision = act[0];
        // decision = 0;
         var skill = 4;
-        Debug.Log("test decision: " + decision);
-        // tbd:
+        //Debug.Log("test decision: " + decision);
+
         count_collision_blue = 0;
         count_collision_red = 0;        
         count_collision_rectangle = 0;
+        count_collision_base_link = 0;
         switch (decision)
         {        
         case 0:
@@ -213,7 +220,7 @@ public class DraftDuaroAgentCollision : Agent
             //AgentRewards(actionsOut.DiscreteActions);
         }
 
-        Debug.Log("discreteActionsOut = " + discreteActionsOut[0]);
+        //Debug.Log("discreteActionsOut = " + discreteActionsOut[0]);
     }	 
 
 
@@ -227,6 +234,7 @@ public class DraftDuaroAgentCollision : Agent
             m_resetTimer = 0;
             EndEpisode();
         }
+<<<<<<< HEAD
 
         CollisionCallback.OnCollision += CollisionDetected;
 
@@ -235,91 +243,97 @@ public class DraftDuaroAgentCollision : Agent
     void CollisionDetected(Collision collision)
     {
         Debug.Log("Collision happened with: " + collision.gameObject.name);
+=======
+
+        CollisionCallback.OnCollision += CollisionDetected;
+        reward = GetCumulativeReward();
+>>>>>>> main
     }
 
-    // // Collision detection:
-    // protected override void OnEnablev()
-    // {
-    //     // Register to OnCollision event
-    //     CollisionCallback.OnCollision += CollisionDetected;
-    // }
-
-    // protected override void OnDisable()
-    // {
-    //     // Un-Register to OnCollision eent
-    //     CollisionCallback.OnCollision -= CollisionDetected;
-    // }
-
-
-    // // When collision happens:
-    // void CollisionDetected(Collision collision)
-    // {
-    //     // Debug.Log("Collision happened with: " + collision.gameObject.name);
-
-       
-    //     if (collision.gameObject.name == "blue")
-    //     {
-    //         count_collision_blue += 1;          
+    void CollisionDetected(Collision collision)
+    {
+        //Debug.Log("Collision happened with: " + collision.gameObject.name);
+        if (collision.gameObject.name == "blue")
+        {
+            count_collision_blue += 1;          
             
-    //         if (count_collision_blue == 1)
-    //         {
-    //             if (pickup_blue == true)
-    //             {
-    //                 SetReward(2.0f);
-    //                 Debug.Log("Good Reward for blue");
-    //                 EndEpisode();
-    //             }
-    //             else
-    //             {
-    //                 SetReward(-1.0f);
-    //                 Debug.Log("Bad Reward for blue");
-    //                 EndEpisode();                
-    //             }    
-    //         }
-    //     }
+            if (count_collision_blue == 1)
+            {
+                if (pickup_blue == true)
+                {
+                    AddReward(1.0f);
+                    Debug.Log("Good Reward for blue");
+                    Debug.Log("CumulativeReward " + reward);
+                }
+                else
+                {
+                    AddReward(-1.0f);
+                    Debug.Log("Bad Reward for blue");
+                    Debug.Log("CumulativeReward " + reward);
 
-    //     if (collision.gameObject.name == "red")
-    //     {
-    //         count_collision_red += 1;          
+                }    
+            }
+        }
+        if (collision.gameObject.name == "red")
+        {
+            count_collision_red += 1;          
             
-    //         if (count_collision_red == 1)
-    //         {
-    //             if (pickup_red == true)
-    //             {
-    //                 SetReward(2.0f);
-    //                 Debug.Log("Good Reward for red");
-    //                 EndEpisode();
-    //             }
-    //             else
-    //             {
-    //                 SetReward(-1.0f);
-    //                 Debug.Log("Bad Reward for red");
-    //                 EndEpisode();                
-    //             }    
-    //         }
-    //     }
+            if (count_collision_red == 1)
+            {
+                if (pickup_red == true)
+                {
+                    AddReward(1.0f);
+                    Debug.Log("Good Reward for red");
+                    Debug.Log("CumulativeReward " + reward);
 
-    //     if (collision.gameObject.name == "Rectangle")
-    //     {
-    //         count_collision_rectangle += 1;          
+                }
+                else
+                {
+                    AddReward(-1.0f);
+                    Debug.Log("Bad Reward for red");
+                    Debug.Log("CumulativeReward " + reward);
+                    
+                }    
+            }
+        }
+
+        if (collision.gameObject.name == "Rectangle")
+        {
+            count_collision_rectangle += 1;          
+         
+             if (count_collision_rectangle == 1)
+             {
+                if (pickup_red == true && pickup_blue == true)
+                {
+                    AddReward(1.0f);
+                    Debug.Log("Good Reward for rectangle");
+                    Debug.Log("CumulativeReward " + reward);
+
+                }
+                else
+                {
+                    AddReward(-1.0f);
+                    Debug.Log("Bad Reward for rectangle");
+                    Debug.Log("CumulativeReward " + reward);
+                              
+                }    
+            }
+        }
+
+        if (collision.gameObject.name == "lower_gripper_base_link")
+        {
+            count_collision_base_link += 1;          
             
-    //         if (count_collision_rectangle == 1)
-    //         {
-    //             if (pickup_red == true && pickup_blue == true)
-    //             {
-    //                 SetReward(2.0f);
-    //                 Debug.Log("Good Reward for rectangle");
-    //                 EndEpisode();
-    //             }
-    //             else
-    //             {
-    //                 SetReward(-1.0f);
-    //                 Debug.Log("Bad Reward for rectangle");
-    //                 EndEpisode();                
-    //             }    
-    //         }
-    //     }
-    //
-    //   }
+            if (count_collision_base_link == 1)
+            {
+                AddReward(-1.0f);
+                Debug.Log("Bad Reward for collision of arms");
+                Debug.Log("CumulativeReward " + reward);
+
+
+            }
+        }
+    
+    }
 
 }

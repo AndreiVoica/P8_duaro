@@ -1,0 +1,29 @@
+{
+    "DraftDuaroAgent": {
+        "checkpoints": [
+            {
+                "steps": 4014,
+                "file_path": "results/TEST-CUBES-15/DraftDuaroAgent/DraftDuaroAgent-4014.onnx",
+                "reward": null,
+                "creation_time": 1650459285.191384,
+                "auxillary_file_paths": [
+                    "results/TEST-CUBES-15/DraftDuaroAgent/DraftDuaroAgent-4014.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 4014,
+            "file_path": "results/TEST-CUBES-15/DraftDuaroAgent.onnx",
+            "reward": null,
+            "creation_time": 1650459285.191384,
+            "auxillary_file_paths": [
+                "results/TEST-CUBES-15/DraftDuaroAgent/DraftDuaroAgent-4014.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.8.1+cu102"
+    }
+}
