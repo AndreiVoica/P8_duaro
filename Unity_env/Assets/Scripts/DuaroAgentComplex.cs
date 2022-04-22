@@ -34,9 +34,9 @@ public class DuaroAgentComplex : Agent
     
     //Array to Store the items Position (Initial Row, Initial Column, Row Length, Column Length)
     int[,] itemsPosition = new int[6,4]{ 
-                                        {3,0,1,2}, // Black Cube
+                                        {2,0,2,1}, // Black Cube
                                         {2,2,1,1}, // Blue Cube
-                                        {1,0,2,1}, // Green Cube
+                                        {1,0,1,3}, // Green Cube
                                         {2,4,1,1}, // Red Cube
                                         {3,1,1,6}, // White Cube
                                         {2,6,1,1}, // Yellow Cube
@@ -274,10 +274,10 @@ public class DuaroAgentComplex : Agent
         //     EndEpisode();
         // }
 
-        // foreach (int a in taskArray) 
-        //   {
-        //       Debug.Log(a);
-        //   }
+        foreach (int a in taskArray) 
+          {
+              Debug.Log(a);
+          }
         
         // Update and show Cumulative Reward
         reward = GetCumulativeReward();        

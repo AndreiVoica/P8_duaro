@@ -1328,8 +1328,8 @@ MonoBehaviour:
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 03000000
-    VectorActionSize: 03000000
+      BranchSizes: 0500000006000000
+    VectorActionSize: 0500000006000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
@@ -1375,6 +1375,7 @@ MonoBehaviour:
   yellow: {fileID: 473038354}
   blue: {fileID: 343257146}
   red: {fileID: 677450745}
+  action: 0
   MaxEnvironmentSteps: 500000
   MaxSkills: 10
 --- !u!1 &217239063
