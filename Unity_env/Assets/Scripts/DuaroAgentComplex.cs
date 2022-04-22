@@ -25,7 +25,7 @@ public class DuaroAgentComplex : Agent
 
     private Control control;
 
-    private int action;
+    public int action;
 
 
     //**************
@@ -133,7 +133,8 @@ public class DuaroAgentComplex : Agent
     {
         if(moveLowerOrUpper == true)
         {
-           //var decision = act[0];
+            control.jointAnglesL.Clear();
+
             action = act[0];
 
             switch (action)
@@ -164,7 +165,8 @@ public class DuaroAgentComplex : Agent
         }
         else if (moveLowerOrUpper == false)
         {
-            //var decision = act[1];
+            control.jointAnglesU.Clear();
+
             action = act[1];
             switch (action)
             {        
@@ -331,7 +333,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad1) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 0
+        else if(Input.GetKey(KeyCode.Keypad1) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 0
         {
             discreteActionsOut[1] = 0;
             Debug.Log("Key 1 Pressed");
@@ -339,7 +341,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad2) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 1
+        else if(Input.GetKey(KeyCode.Keypad2) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 1
         {
             discreteActionsOut[1] = 1;
             Debug.Log("Key 2 Pressed");
@@ -347,7 +349,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad3) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 2
+        else if(Input.GetKey(KeyCode.Keypad3) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 2
         {
             discreteActionsOut[1] = 2;
             Debug.Log("Key 3 Pressed");
@@ -355,7 +357,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad4) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 3
+        else if(Input.GetKey(KeyCode.Keypad4) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 3
         {
             discreteActionsOut[1] = 3;
             Debug.Log("Key 4 Pressed");
@@ -363,7 +365,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad5) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 4
+        else if(Input.GetKey(KeyCode.Keypad5) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 4
         {
             discreteActionsOut[1] = 4;
             Debug.Log("Key 5 Pressed");
@@ -371,7 +373,7 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad6) && control.currentIndexU > control.jointAnglesU.Count) // Select discrete action Upper 5
+        else if(Input.GetKey(KeyCode.Keypad6) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 5
         {
             discreteActionsOut[1] = 5;
             Debug.Log("Key 6 Pressed");
@@ -387,18 +389,19 @@ public class DuaroAgentComplex : Agent
     void FixedUpdate()
     {
 
-        // if(control.currentIndexL >= control.jointAnglesL.Count)
-        // {
-        //     //actionEndLower = true;
-        //     moveLowerOrUpper = true;
-        //     RequestDecision();
-        // }
-        // if(control.currentIndexU >= control.jointAnglesU.Count)
-        // {
-        //     //actionEndUpper = true;
-        //     moveLowerOrUpper = false;
-        //     RequestDecision();
-        // }
+        if(control.currentIndexL == control.jointAnglesL.Count)
+        {
+            
+            //actionEndLower = true;
+            moveLowerOrUpper = true;
+            RequestDecision();
+        }
+        if(control.currentIndexU == control.jointAnglesU.Count)
+        {
+            //actionEndUpper = true;
+            moveLowerOrUpper = false;
+            RequestDecision();
+        }
 
         // Update Cumulative Reward
         reward = GetCumulativeReward();
