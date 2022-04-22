@@ -28,9 +28,9 @@ public class DuaroAgentComplex : Agent
     public int action;
 
 
-    //**************
-    //Add all the cube Positions:
-    //**************
+    //****************
+    // Cube Positions:
+    //****************
     
     //Array to Store the items Position (Initial Row, Initial Column, Row Length, Column Length)
     int[,] itemsPosition = new int[6,4]{ 
@@ -69,7 +69,7 @@ public class DuaroAgentComplex : Agent
     [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 100000;
     private int m_resetTimer;
     //Max Number of Skills to be performed before the environment restarts
-    [Tooltip("Max Number of Skills")] public int MaxSkills = 20;
+    [Tooltip("Max Number of Skills")] public int MaxSkills = 15;
     private int m_resetSkill;
 
     // Variable to store the cumulative Reward
@@ -117,15 +117,15 @@ public class DuaroAgentComplex : Agent
         sensor.AddObservation(blue.position);
     }
 
-    // public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    // {      
-    //     Debug.Log("OnActionReceived");
-    //     // Move the agent using the action.
-    //     MoveAgent(actionBuffers.DiscreteActions);
-    //     AgentRewards(actionBuffers.DiscreteActions);
+    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    {      
+        Debug.Log("OnActionReceived");
+        // Move the agent using the action.
+        MoveAgent(actionBuffers.DiscreteActions);
+        AgentRewards(actionBuffers.DiscreteActions);
 
-    //     // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
-    // }
+        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
+    }
 
 
     /// <summary>
@@ -237,7 +237,9 @@ public class DuaroAgentComplex : Agent
             }
             Debug.Log("Add Reward (+2)");
 
-
+        //*********************************************************
+        // TO BE DONE: (It is not scalable, just for training test)
+        //********************************************************* 
             checkAllDone = 0;
             for (int i = 0; i < 7; i++)
             {
@@ -246,13 +248,10 @@ public class DuaroAgentComplex : Agent
 
             if (checkAllDone == 0)
             {
-                AddReward(10.0f);
-                Debug.Log("TASK COMPLETED +10!");
+                AddReward(5.0f);
+                Debug.Log("TASK COMPLETED (+5)! -- Restarting the Environment");
                 checkAllDone = 2;
-                
-                //EndEpisode();
             }
-
 
         }
         // Penalize choosing same action again
@@ -264,25 +263,9 @@ public class DuaroAgentComplex : Agent
         // Penalize picking up the rectangle while there is something above
         if(itemsAbove == true)
         { 
-            AddReward(-3.0f);
-            Debug.Log("Add Negative Reward - There is something above (-1)");
+            AddReward(-2.0f);
+            Debug.Log("Add Negative Reward - There is something above (-2)");
         } 
-
-        //*********************************************************
-        // TO BE DONE: (It is not scalable, just for training test)
-
-        //********************************************************* 
-
-        // CHECK IF taskArray ONLY CONTAINS ZEROS, GIVE A HIGH REWARD AND RESET 
-        // TO DO BETTER:
-
-        // var allElementsAreZero = taskArray.All(o => o == 0);
-        // if (allElementsAreZero == true)
-        // {
-        //     AddReward(10.0f);
-        //     Debug.Log("TASK COMPLETED +10!");
-        //     EndEpisode();
-        // }
 
         // foreach (int a in taskArray) 
         //   {
@@ -290,8 +273,8 @@ public class DuaroAgentComplex : Agent
         //   }
         
         // Update and show Cumulative Reward
-        reward = GetCumulativeReward();        
-        Debug.Log("CumulativeReward: " + reward);
+        //reward = GetCumulativeReward();        
+        //Debug.Log("CumulativeReward: " + reward);
     }
 
         // moveLowerOrUpper = true; Lower Arm moves
@@ -402,24 +385,18 @@ public class DuaroAgentComplex : Agent
         // IF THAT IS THE CASE, TRY TO REQUEST ACTION FROM ONLY 1 OF THE DISCRETE ACTION BRANCHES
         if(control.currentIndexL >= control.jointAnglesL.Count && checkAllDone != 2)
         {
-            
-            //actionEndLower = true;
             moveLowerOrUpper = true;
             RequestDecision();
         }
         if(control.currentIndexU >= control.jointAnglesU.Count && checkAllDone != 2)
         {
-            //actionEndUpper = true;
             moveLowerOrUpper = false;
             RequestDecision();
         }
         if(checkAllDone == 2 && control.currentIndexU >= control.jointAnglesU.Count && control.currentIndexL >= control.jointAnglesL.Count)
         {
-            Debug.Log("WTF!");
             EndEpisode();
         }
-
-
 
         // Update Cumulative Reward
         reward = GetCumulativeReward();
