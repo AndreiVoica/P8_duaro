@@ -120,7 +120,9 @@ public class DuaroAgentComplex : Agent
     // {      
     //     Debug.Log("OnActionReceived");
     //     // Move the agent using the action.
-    //     //MoveAgent(actionBuffers.DiscreteActions);
+    //     MoveAgent(actionBuffers.DiscreteActions);
+    //     AgentRewards(actionBuffers.DiscreteActions);
+
     //     // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
     // }
 
@@ -388,15 +390,16 @@ public class DuaroAgentComplex : Agent
 
     void FixedUpdate()
     {
-
-        if(control.currentIndexL == control.jointAnglesL.Count)
+        // RESEARCH IF REQUESTING ACTIONS THIS WAY THE AGENT MAY BE LEARNING FROM HALF OF THE ACTIONS THAT ARE NOT DOING ANYTHING 
+        // IF THAT IS THE CASE, TRY TO REQUEST ACTION FROM ONLY 1 OF THE DISCRETE ACTION BRANCHES
+        if(control.currentIndexL >= control.jointAnglesL.Count)
         {
             
             //actionEndLower = true;
             moveLowerOrUpper = true;
             RequestDecision();
         }
-        if(control.currentIndexU == control.jointAnglesU.Count)
+        if(control.currentIndexU >= control.jointAnglesU.Count)
         {
             //actionEndUpper = true;
             moveLowerOrUpper = false;
