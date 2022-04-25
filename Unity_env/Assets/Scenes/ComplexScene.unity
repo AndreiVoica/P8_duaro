@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3312,6 +3312,7 @@ GameObject:
   - component: {fileID: 418843731}
   - component: {fileID: 418843730}
   - component: {fileID: 418843729}
+  - component: {fileID: 418843733}
   m_Layer: 0
   m_Name: duaroupper_link_j3
   m_TagString: Untagged
@@ -3436,6 +3437,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBaseLink: 0
+--- !u!114 &418843733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418843727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd383c2a9b4049e8a8ce8f9eb57193e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &421923853
 GameObject:
   m_ObjectHideFlags: 0

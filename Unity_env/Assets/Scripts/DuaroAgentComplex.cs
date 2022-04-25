@@ -29,6 +29,11 @@ public class DuaroAgentComplex : Agent
 
 
     //****************
+    // For Collision of Arms:
+    //****************
+    int count_collision_arm_link;
+
+    //****************
     // Cube Positions:
     //****************
     
@@ -126,7 +131,7 @@ public class DuaroAgentComplex : Agent
 
     public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
     {      
-        Debug.Log("OnActionReceived");
+        //Debug.Log("OnActionReceived");
         // Move the agent using the action.
         MoveAgent(actionBuffers.DiscreteActions);
         AgentRewards(actionBuffers.DiscreteActions);
@@ -209,7 +214,7 @@ public class DuaroAgentComplex : Agent
             }
         }
         m_resetSkill +=1; // Add +1 to Skills Counter  
-        Debug.Log("Skill Number: " + m_resetSkill);
+        //Debug.Log("Skill Number: " + m_resetSkill);
     }
 
     public void AgentRewards (ActionSegment<int> act)
@@ -217,7 +222,7 @@ public class DuaroAgentComplex : Agent
         // Debug.Log("Agent Rewards");
 
         // Rewards
-        Debug.Log("Action Lower = " + action);
+        //Debug.Log("Action Lower = " + action);
 
         // Check if there are items above
         itemsAbove = false;
@@ -381,8 +386,8 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        Debug.Log("discreteActionsOut Lower = " + discreteActionsOut[0]);
-        Debug.Log("discreteActionsOut Upper = " + discreteActionsOut[1]);
+        //Debug.Log("discreteActionsOut Lower = " + discreteActionsOut[0]);
+        //Debug.Log("discreteActionsOut Upper = " + discreteActionsOut[1]);
     }	 
 
 
@@ -421,6 +426,33 @@ public class DuaroAgentComplex : Agent
             Debug.Log("Restarting Scene from Fixed Update (Max Number of Skills)");
             EndEpisode();
         }
+
+        //****************
+        // For Collision of Arms:
+        //****************
+
+        CollisionCallback.OnCollision += CollisionDetected;
+    }
+
+        //****************
+        // For Collision of Arms:
+        //****************
+        void CollisionDetected(Collision collision)
+    {
+        if (collision.gameObject.name == "duarolower_link_j3")
+        {
+            count_collision_arm_link += 1;          
+            
+            if (count_collision_arm_link == 1)
+            {
+                AddReward(-5.0f);
+                Debug.Log("Bad Reward for collision of arms");
+                Debug.Log("CumulativeReward " + reward);
+                EndEpisode();
+
+            }
+        } 
+    
     }
 }
 
