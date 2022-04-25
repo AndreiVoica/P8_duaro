@@ -11,6 +11,7 @@ using System.IO;
 using Unity.MLAgentsExamples;
 using Random = System.Random;
 //using Random = UnityEngine.Random;
+using System.Threading.Tasks;
 
 
 public class DuaroAgentComplex : Agent
@@ -129,6 +130,7 @@ public class DuaroAgentComplex : Agent
 
     }
 
+    
     public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
     {      
         //Debug.Log("OnActionReceived");
@@ -137,7 +139,7 @@ public class DuaroAgentComplex : Agent
         AgentRewards(actionBuffers.DiscreteActions);
 
         // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
-    }
+    } 
 
 
     /// <summary>
@@ -146,6 +148,11 @@ public class DuaroAgentComplex : Agent
     /// </summary>
     public void MoveAgent(ActionSegment<int> act)
     {
+    //****************
+    // For Collision of Arms:
+    //****************
+        count_collision_arm_link = 0;
+
         if(moveLowerOrUpper == true)
         {
             control.jointAnglesL.Clear();
@@ -338,50 +345,50 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad1) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 0
+        else if(Input.GetKey(KeyCode.F) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 0
         {
             discreteActionsOut[1] = 0;
-            Debug.Log("Key 1 Pressed");
+            Debug.Log("Key F Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad2) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 1
+        else if(Input.GetKey(KeyCode.G) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 1
         {
             discreteActionsOut[1] = 1;
-            Debug.Log("Key 2 Pressed");
+            Debug.Log("Key G Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad3) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 2
+        else if(Input.GetKey(KeyCode.H) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 2
         {
             discreteActionsOut[1] = 2;
-            Debug.Log("Key 3 Pressed");
+            Debug.Log("Key H Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad4) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 3
+        else if(Input.GetKey(KeyCode.I) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 3
         {
             discreteActionsOut[1] = 3;
-            Debug.Log("Key 4 Pressed");
+            Debug.Log("Key I Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad5) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 4
+        else if(Input.GetKey(KeyCode.J) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 4
         {
             discreteActionsOut[1] = 4;
-            Debug.Log("Key 5 Pressed");
+            Debug.Log("Key J Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.Keypad6) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 5
+        else if(Input.GetKey(KeyCode.K) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 5
         {
             discreteActionsOut[1] = 5;
-            Debug.Log("Key 6 Pressed");
+            Debug.Log("Key K Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
@@ -428,7 +435,8 @@ public class DuaroAgentComplex : Agent
         }
 
         //****************
-        // For Collision of Arms:
+        // For Collision of Arms
+        // Comment that out, if running without collision checking
         //****************
 
         CollisionCallback.OnCollision += CollisionDetected;
@@ -448,11 +456,17 @@ public class DuaroAgentComplex : Agent
                 AddReward(-5.0f);
                 Debug.Log("Bad Reward for collision of arms");
                 Debug.Log("CumulativeReward " + reward);
-                EndEpisode();
 
-            }
-        } 
+            /*while (control.currentIndexU < control.jointAnglesU.Count && control.currentIndexL < control.jointAnglesL.Count)
+            {
+                Debug.Log("Waiting for finish task");
+                System.Threading.Thread.Sleep(1000);
+            }                
+            EndEpisode(); */
+
+            } 
     
+        }
     }
 }
 
