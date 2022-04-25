@@ -141,7 +141,12 @@ public class DuaroAgentComplexCollision : Agent
     /// </summary>
     public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
     {
-        sensor.AddObservation(blue.position);
+        sensor.AddObservation(pickup_blue);
+        sensor.AddObservation(pickup_red);
+        sensor.AddObservation(pickup_Rectangle);
+        sensor.AddObservation(pickup_black);
+        sensor.AddObservation(pickup_green);
+        sensor.AddObservation(pickup_yellow);
     }
 
 
@@ -612,7 +617,7 @@ public class DuaroAgentComplexCollision : Agent
                 else
                 {
                     AddReward(-1.0f);
-                    Debug.Log("Bad Reward for ");
+                    Debug.Log("Bad Reward for Rectangle");
                     Debug.Log("CumulativeReward " + reward);
                     
                 }    
@@ -626,10 +631,10 @@ public class DuaroAgentComplexCollision : Agent
             
             if (count_collision_arm_link == 1)
             {
-                AddReward(-1.0f);
+                AddReward(-5.0f);
                 Debug.Log("Bad Reward for collision of arms");
                 Debug.Log("CumulativeReward " + reward);
-
+                EndEpisode();
 
             }
         } 

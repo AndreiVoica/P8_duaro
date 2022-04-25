@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1186,9 +1186,8 @@ GameObject:
   - component: {fileID: 198763914}
   - component: {fileID: 198763913}
   - component: {fileID: 198763912}
-  - component: {fileID: 198763918}
   - component: {fileID: 198763919}
-  - component: {fileID: 198763920}
+  - component: {fileID: 198763918}
   - component: {fileID: 198763917}
   m_Layer: 0
   m_Name: DuaroAgent
@@ -1306,13 +1305,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 198763911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d2ded7a24b51cee983578fcbe3dedc, type: 3}
+  m_Script: {fileID: 11500000, guid: 513fd2505e63452fb8721ff969d516b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 100000
   black: {fileID: 2091971714}
   green: {fileID: 1585638695}
   Rectangle: {fileID: 2061847292}
@@ -1335,7 +1334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 3
+    VectorObservationSize: 6
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -1345,8 +1344,8 @@ MonoBehaviour:
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_InferenceDevice: 1
+  m_BehaviorType: 0
   m_BehaviorName: DuaroAgentComplex
   TeamId: 0
   m_UseChildSensors: 1
@@ -1364,31 +1363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fbed9cfb0f1f46495f869f88540f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &198763920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198763911}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4380d7bd1bcc3a41586ff201192aae57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 100000
-  black: {fileID: 2091971714}
-  green: {fileID: 1585638695}
-  Rectangle: {fileID: 2061847292}
-  yellow: {fileID: 473038354}
-  blue: {fileID: 343257146}
-  red: {fileID: 677450745}
-  action: 0
-  MaxEnvironmentSteps: 500000
-  MaxSkills: 20
 --- !u!1 &217239063
 GameObject:
   m_ObjectHideFlags: 0
