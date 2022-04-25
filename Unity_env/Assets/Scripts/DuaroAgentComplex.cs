@@ -114,7 +114,14 @@ public class DuaroAgentComplex : Agent
     /// </summary>
     public override void CollectObservations(VectorSensor sensor) //collect info needed to make decision
     {
-        sensor.AddObservation(blue.position);
+        for (int i = 0; i < 7; i++)
+        {
+            for (int j = 1; j < 4; j++)
+            {
+                sensor.AddObservation(taskArray[j,i]);
+            }
+        }
+
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
