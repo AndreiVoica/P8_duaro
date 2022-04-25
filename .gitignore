@@ -144,3 +144,11 @@ Unity_env/Assets/ML-Agents/Timers/SampleScene_timers.json
 
 *.json
 >>>>>>> main
+
+Unity_env/results/test-simple-3/configuration.yaml
+
+Unity_env/results/test-simple-4/configuration.yaml
+
+Unity_env/Assets/ML-Agents/Timers/ComplexScene_Collision_timers.json.meta
+
+*.meta

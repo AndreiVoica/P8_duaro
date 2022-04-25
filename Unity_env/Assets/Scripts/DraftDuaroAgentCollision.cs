@@ -34,23 +34,6 @@ public class DraftDuaroAgentCollision : Agent
 
     private Control control;
 
-    // Position of the BLUE cube in the Array
-    int blueRow = 1;
-    int blueCol = 0;
-    // Position of the RED cube in the Array
-    int redRow = 1;
-    int redCol = 3;
-
-    // Array with the shape of the blocks
-    int[,] taskArray = new int[3,4]{ 
-                                    {0,0,0,0},
-                                    {1,0,0,1}, 
-                                    {1,1,1,1}, 
-                                };
-
-    // public Control ControlAgent; 
-
-    // public Transform Target; //Target the agent will try to touch during training.
 
     [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 50000;
     private int m_resetTimer;
@@ -87,14 +70,14 @@ public class DraftDuaroAgentCollision : Agent
     }
 
 
-
+    /*
     public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions 
     {      
         Debug.Log("OnActionReceived");
         // Move the agent using the action.
         MoveAgent(actionBuffers.DiscreteActions);        
         
-    }
+    } */
 
 
     /// <summary>
@@ -309,7 +292,7 @@ public class DraftDuaroAgentCollision : Agent
             }
         }
 
-        if (collision.gameObject.name == "lower_gripper_base_link")
+        if (collision.gameObject.name == "duarolower_link_j3")
         {
             count_collision_base_link += 1;          
             
