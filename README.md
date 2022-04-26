@@ -14,7 +14,7 @@ tbd
 
 ## Project Details: 
 * Getting Started - [Setting up Unity and ML-Agents](docs/GettingStarted/GettingStarted.md)
-* Training Headless - [Documentation](docs/Run-Headless-Training.md)
+* Training on Server - [Documentation](docs/Run-Headless-Training.md)
 
 ## Authors:
 
