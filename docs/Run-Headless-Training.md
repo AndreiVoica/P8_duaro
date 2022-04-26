@@ -51,7 +51,8 @@ There are 2 options to train headless:
 `mlagents-learn config/ppo/duaro-test-ppo.yaml --env=Build/test-duaro --run-id=firstRun `
 
 ## Build on Docker
-## Run on the cloud GPU
+## Run on the cloud GPU/CPU
 Getting Started: 
 1. Log in here: [AAU Strato Login](https://strato-new.claaudia.aau.dk)
 2. Follow the [Quick Start](https://www.strato-docs.claaudia.aau.dk/guides/quick-start/) and create a Ubunutu 20.4 Instance
+3. Install mlagents as described in [Getting Started](docs/GettingStarted/GettingStarted.md)
