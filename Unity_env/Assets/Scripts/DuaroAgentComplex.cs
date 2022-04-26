@@ -87,6 +87,9 @@ public class DuaroAgentComplex : Agent
     {
         control = FindObjectOfType<Control>();
         robot = FindObjectOfType<Library>();
+
+        robot.set_lower_joint_target(-45f, 45f, 0f, 0f, 0.055f, -0.055f); //Set the lower joint values to a home position
+        robot.set_upper_joint_target(45f, -45f, 0f, 0f, 0.055f, -0.055f); //Set the upper joint values to a home position
     }
 
     public override void OnEpisodeBegin() //set-up the environment for a new episode
@@ -96,12 +99,12 @@ public class DuaroAgentComplex : Agent
         Vector3 rotationVectorDuaro = new Vector3(0, 180, 0);
         Debug.Log("OnEpisodeBegin");
 
-        robot.set_lower_joint_target(-45f, 45f, 0f, 0f, 0.055f, -0.055f); //Set the lower joint values to a home position
-        robot.set_upper_joint_target(45f, -45f, 0f, 0f, 0.055f, -0.055f); //Set the upper joint values to a home position
+        robot.set_lower_joint_target(-45f, 45f, 0.15f, 0f, 0.055f, -0.055f); //Set the lower joint values to a home position
+        robot.set_upper_joint_target(45f, -45f, 0.15f, 0f, 0.055f, -0.055f); //Set the upper joint values to a home position
 
         black.transform.localPosition = new Vector3(1.22f,0.789f,-1.3663f);
         black.transform.rotation = Quaternion.Euler(rotationVector);
-        green.transform.localPosition = new Vector3(1.219f,0.898f,-1.32f);
+        green.transform.localPosition = new Vector3(1.219f,0.884f,-1.32f);
         green.transform.rotation = Quaternion.Euler(rotationVector);
         Rectangle.transform.localPosition = new Vector3(1.22f,0.763f,-1.184f);
         Rectangle.transform.rotation = Quaternion.Euler(rotationVector);
@@ -471,8 +474,11 @@ public class DuaroAgentComplex : Agent
                 AddReward(-5.0f);
                 Debug.Log("Bad Reward for collision of arms (-5)");
                 Debug.Log("CumulativeReward " + reward);
-                control.StopUpper();
-                control.StopLower();
+                //control.StopUpper();
+                //control.StopLower();
+                control.currentIndexU = 1000;
+                control.currentIndexL = 1000;
+                //control.jointAnglesU = 0;
                 EndEpisode();
 
             /*while (control.currentIndexU < control.jointAnglesU.Count && control.currentIndexL < control.jointAnglesL.Count)
