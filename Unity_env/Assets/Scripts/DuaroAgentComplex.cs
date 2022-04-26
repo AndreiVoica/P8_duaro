@@ -16,6 +16,9 @@ using System.Threading.Tasks;
 
 public class DuaroAgentComplex : Agent
 {
+
+    public int requestedLower;
+    public int requestedUpper;
   
     public Transform black;
     public Transform green;
@@ -35,6 +38,7 @@ public class DuaroAgentComplex : Agent
     // For Collision of Arms:
     //*************************
     int count_collision_arm_link;
+    int arm_collision;
 
     //*************************
     // Cube Positions:
@@ -128,6 +132,10 @@ public class DuaroAgentComplex : Agent
         //SetReward(0.0f);
         checkAllDone = 0;
 
+
+        
+        arm_collision = 0;
+
     }
 
     /// <summary>
@@ -142,18 +150,19 @@ public class DuaroAgentComplex : Agent
                 sensor.AddObservation(taskArray[j,i]);
             }
         }
+        sensor.AddObservation(arm_collision);
     }
 
-    
-    // public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    // {      
-    //     //Debug.Log("OnActionReceived");
-    //     // Move the agent using the action.
-    //     MoveAgent(actionBuffers.DiscreteActions);
-    //     AgentRewards(actionBuffers.DiscreteActions);
 
-    //     // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
-    // } 
+    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    {      
+        //Debug.Log("OnActionReceived");
+        // Move the agent using the action.
+        MoveAgent(actionBuffers.DiscreteActions);
+        AgentRewards(actionBuffers.DiscreteActions);
+
+        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
+    } 
 
 
     /// <summary>
@@ -165,6 +174,9 @@ public class DuaroAgentComplex : Agent
     //****************
     // For Collision of Arms:
     //****************
+
+        requestedLower = act[0];
+        requestedUpper = act[1];
         count_collision_arm_link = 0;
 
         if(moveLowerOrUpper == true)
@@ -429,6 +441,8 @@ public class DuaroAgentComplex : Agent
         if(control.currentIndexU >= control.jointAnglesU.Count && checkAllDone != 2)
         {
             moveLowerOrUpper = false;
+            //RequestAction();
+
             RequestDecision();
         }
         if(checkAllDone == 2 && control.currentIndexU >= control.jointAnglesU.Count && control.currentIndexL >= control.jointAnglesL.Count)
@@ -472,6 +486,7 @@ public class DuaroAgentComplex : Agent
             
             if (count_collision_arm_link == 1)
             {
+                arm_collision = 1;
                 AddReward(-5.0f);
                 Debug.Log("Bad Reward for collision of arms (-5)");
                 Debug.Log("CumulativeReward " + reward);
