@@ -102,21 +102,23 @@ public class DuaroAgentComplex : Agent
         robot.set_lower_joint_target(-45f, 45f, 0.15f, 0f, 0.055f, -0.055f); //Set the lower joint values to a home position
         robot.set_upper_joint_target(45f, -45f, 0.15f, 0f, 0.055f, -0.055f); //Set the upper joint values to a home position
 
-        black.transform.localPosition = new Vector3(1.22f,0.789f,-1.3663f);
-        black.transform.rotation = Quaternion.Euler(rotationVector);
-        green.transform.localPosition = new Vector3(1.219f,0.884f,-1.32f);
-        green.transform.rotation = Quaternion.Euler(rotationVector);
-        Rectangle.transform.localPosition = new Vector3(1.22f,0.763f,-1.184f);
-        Rectangle.transform.rotation = Quaternion.Euler(rotationVector);
-        blue.transform.localPosition = new Vector3(1.219f,0.8231f,-1.267f);
-        blue.transform.rotation = Quaternion.Euler(rotationVector);
-        yellow.transform.localPosition = new Vector3(1.2213f,0.8255f,-1.0598f);
-        yellow.transform.rotation = Quaternion.Euler(rotationVector);
-        red.transform.localPosition = new Vector3(1.221f,0.823f,-1.1674f);
-        red.transform.rotation = Quaternion.Euler(rotationVector);
         DuaroAgent.position = new Vector3(-0.6622652f, 0.0f, 0.0f);
         DuaroAgent.rotation = Quaternion.Euler(rotationVectorDuaro);
         transform.Find("world/duarobase_link").GetComponent<ArticulationBody>().TeleportRoot(DuaroAgent.position, DuaroAgent.rotation);
+
+        black.transform.localPosition = new Vector3(1.22f,0.77f,-1.3663f);
+        black.transform.rotation = Quaternion.Euler(rotationVector);
+        green.transform.localPosition = new Vector3(1.219f,0.862f,-1.32f);
+        green.transform.rotation = Quaternion.Euler(rotationVector);
+        Rectangle.transform.localPosition = new Vector3(1.22f,0.748f,-1.184f);
+        Rectangle.transform.rotation = Quaternion.Euler(rotationVector);
+        blue.transform.localPosition = new Vector3(1.219f,0.804f,-1.267f);
+        blue.transform.rotation = Quaternion.Euler(rotationVector);
+        yellow.transform.localPosition = new Vector3(1.2213f,0.804f,-1.0598f);
+        yellow.transform.rotation = Quaternion.Euler(rotationVector);
+        red.transform.localPosition = new Vector3(1.221f,0.804f,-1.1674f);
+        red.transform.rotation = Quaternion.Euler(rotationVector);
+
         m_resetTimer = 0;
         m_resetSkill = 0;
         
@@ -140,7 +142,6 @@ public class DuaroAgentComplex : Agent
                 sensor.AddObservation(taskArray[j,i]);
             }
         }
-
     }
 
     
