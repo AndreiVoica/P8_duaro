@@ -75,7 +75,7 @@ public class DuaroAgentComplex : Agent
     private int checkAllDone;
     
     // Check which arm has to move
-    private bool moveLowerOrUpper;
+    private bool moveLowerOrUpper = true;
 
     //Max Number of Steps to be performed before the environment restarts
     [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 100000;
@@ -131,11 +131,9 @@ public class DuaroAgentComplex : Agent
 
         //SetReward(0.0f);
         checkAllDone = 0;
-
-
         
+        // Arm Collision observation
         arm_collision = 0;
-
     }
 
     /// <summary>
@@ -153,6 +151,27 @@ public class DuaroAgentComplex : Agent
         sensor.AddObservation(arm_collision);
     }
 
+    //Action Mask
+    public override void WriteDiscreteActionMask(IDiscreteActionMask actionMask)
+    {
+        if (moveLowerOrUpper == true)
+        {
+            actionMask.SetActionEnabled(0, 5, false);
+            actionMask.SetActionEnabled(0, 6, false);
+            actionMask.SetActionEnabled(0, 7, false);
+            actionMask.SetActionEnabled(0, 8, false);
+            actionMask.SetActionEnabled(0, 9, false);
+            actionMask.SetActionEnabled(0, 10, false);
+        }
+        else if (moveLowerOrUpper == false)
+        {
+            actionMask.SetActionEnabled(0, 0, false);
+            actionMask.SetActionEnabled(0, 1, false);
+            actionMask.SetActionEnabled(0, 2, false);
+            actionMask.SetActionEnabled(0, 3, false);
+            actionMask.SetActionEnabled(0, 4, false);
+        }
+    }
 
     public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
     {      
@@ -175,79 +194,75 @@ public class DuaroAgentComplex : Agent
     // For Collision of Arms:
     //****************
 
-        requestedLower = act[0];
-        requestedUpper = act[1];
         count_collision_arm_link = 0;
 
-        if(moveLowerOrUpper == true)
+        m_resetSkill +=1; // Add +1 to Skills Counter  CHANGE TO WHEN THE ACTION ENDS
+        //Debug.Log("Skill Number: " + m_resetSkill);
+
+        if(moveLowerOrUpper == true) // Lower Arm
         {
             control.jointAnglesL.Clear();
-
             action = act[0];
-
-            switch (action)
-            {        
-                case 0:
-                    control.currentIndexL = 0;
-                    control.PickBlackLower();
-                    break;
-                case 1:
-                    control.currentIndexL = 0;
-                    control.PickBlueLower();
-                    break;
-                case 2:
-                    control.currentIndexL = 0;
-                    control.PickGreenLower();
-                    break;
-                case 3: 
-                    control.currentIndexL = 0;
-                    control.PickRedLower();
-                    break;
-                case 4:
-                    control.currentIndexL = 0;
-                    control.PickWhiteLower();
-                    break;
-                default:
-                    break;
-            }
+            requestedLower = act[0];
         }
-        else if (moveLowerOrUpper == false)
+        else if (moveLowerOrUpper == false) // Upper Arm
         {
             control.jointAnglesU.Clear();
-
-            action = act[1];
-            switch (action)
-            {        
-                case 0:
-                    control.currentIndexU = 0;
-                    control.PickBlackUpper();
-                    break;
-                case 1:
-                    control.currentIndexU = 0;
-                    control.PickBlueUpper();
-                    break;
-                case 2:
-                    control.currentIndexU = 0;
-                    control.PickGreenUpper();
-                    break;
-                case 3: 
-                    control.currentIndexU = 0;
-                    control.PickRedUpper();
-                    break;
-                case 4:
-                    control.currentIndexU = 0;
-                    control.PickWhiteUpper();
-                    break;
-                case 5:
-                    control.currentIndexU = 0;
-                    control.PickYellowUpper();
-                    break;
-                default:
-                    break;
-            }
+            //action = act[0] - 5;
+            requestedUpper = act[0];
         }
-        m_resetSkill +=1; // Add +1 to Skills Counter  
-        //Debug.Log("Skill Number: " + m_resetSkill);
+
+        var decision = act[0];
+
+        switch (decision)
+        {        
+            case 0:
+                control.currentIndexL = 0;
+                control.PickBlackLower();
+                break;
+            case 1:
+                control.currentIndexL = 0;
+                control.PickBlueLower();
+                break;
+            case 2:
+                control.currentIndexL = 0;
+                control.PickGreenLower();
+                break;
+            case 3: 
+                control.currentIndexL = 0;
+                control.PickRedLower();
+                break;
+            case 4:
+                control.currentIndexL = 0;
+                control.PickWhiteLower();
+                break;
+            case 5:
+                control.currentIndexU = 0;
+                control.PickBlackUpper();
+                break;
+            case 6:
+                control.currentIndexU = 0;
+                control.PickBlueUpper();
+                break;
+            case 7:
+                control.currentIndexU = 0;
+                control.PickGreenUpper();
+                break;
+            case 8: 
+                control.currentIndexU = 0;
+                control.PickRedUpper();
+                break;
+            case 9:
+                control.currentIndexU = 0;
+                control.PickWhiteUpper();
+                break;
+            case 10:
+                control.currentIndexU = 0;
+                control.PickYellowUpper();
+                break;
+            default:
+                break;
+        }
     }
 
     public void AgentRewards (ActionSegment<int> act)
@@ -255,7 +270,7 @@ public class DuaroAgentComplex : Agent
         // Debug.Log("Agent Rewards");
 
         // Rewards
-        //Debug.Log("Action Lower = " + action);
+        Debug.Log("Action = " + action);
 
         // Check if there are items above
         itemsAbove = false;
@@ -373,7 +388,7 @@ public class DuaroAgentComplex : Agent
         }
         else if(Input.GetKey(KeyCode.F) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 0
         {
-            discreteActionsOut[1] = 0;
+            discreteActionsOut[0] = 5;
             Debug.Log("Key F Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
@@ -381,7 +396,7 @@ public class DuaroAgentComplex : Agent
         }
         else if(Input.GetKey(KeyCode.G) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 1
         {
-            discreteActionsOut[1] = 1;
+            discreteActionsOut[0] = 6;
             Debug.Log("Key G Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
@@ -389,7 +404,7 @@ public class DuaroAgentComplex : Agent
         }
         else if(Input.GetKey(KeyCode.H) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 2
         {
-            discreteActionsOut[1] = 2;
+            discreteActionsOut[0] = 7;
             Debug.Log("Key H Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
@@ -397,7 +412,7 @@ public class DuaroAgentComplex : Agent
         }
         else if(Input.GetKey(KeyCode.I) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 3
         {
-            discreteActionsOut[1] = 3;
+            discreteActionsOut[0] = 8;
             Debug.Log("Key I Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
@@ -405,7 +420,7 @@ public class DuaroAgentComplex : Agent
         }
         else if(Input.GetKey(KeyCode.J) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 4
         {
-            discreteActionsOut[1] = 4;
+            discreteActionsOut[0] = 9;
             Debug.Log("Key J Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
@@ -413,7 +428,7 @@ public class DuaroAgentComplex : Agent
         }
         else if(Input.GetKey(KeyCode.K) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 5
         {
-            discreteActionsOut[1] = 5;
+            discreteActionsOut[0] = 10;
             Debug.Log("Key K Pressed");
             moveLowerOrUpper = false;
             MoveAgent(actionsOut.DiscreteActions);
@@ -431,18 +446,16 @@ public class DuaroAgentComplex : Agent
 
     void FixedUpdate()
     {
-        // RESEARCH IF REQUESTING ACTIONS THIS WAY THE AGENT MAY BE LEARNING FROM HALF OF THE ACTIONS THAT ARE NOT DOING ANYTHING 
-        // IF THAT IS THE CASE, TRY TO REQUEST ACTION FROM ONLY 1 OF THE DISCRETE ACTION BRANCHES
-        if(control.currentIndexL >= control.jointAnglesL.Count && checkAllDone != 2)
+        if(checkAllDone != 2 && control.currentIndexL >= control.jointAnglesL.Count)
         {
             moveLowerOrUpper = true;
+            WriteDiscreteActionMask();
             RequestDecision();
         }
-        if(control.currentIndexU >= control.jointAnglesU.Count && checkAllDone != 2)
+        else if(checkAllDone != 2 && control.currentIndexU >= control.jointAnglesU.Count)
         {
             moveLowerOrUpper = false;
-            //RequestAction();
-
+            WriteDiscreteActionMask();
             RequestDecision();
         }
         if(checkAllDone == 2 && control.currentIndexU >= control.jointAnglesU.Count && control.currentIndexL >= control.jointAnglesL.Count)
@@ -478,7 +491,7 @@ public class DuaroAgentComplex : Agent
         //****************
         // For Collision of Arms:
         //****************
-        void CollisionDetected(Collision collision)
+    void CollisionDetected(Collision collision)
     {
         if (collision.gameObject.name == "duarolower_link_j3")
         {
@@ -490,11 +503,10 @@ public class DuaroAgentComplex : Agent
                 AddReward(-5.0f);
                 Debug.Log("Bad Reward for collision of arms (-5)");
                 Debug.Log("CumulativeReward " + reward);
-                //control.StopUpper();
-                //control.StopLower();
+
                 control.currentIndexU = 1000;
                 control.currentIndexL = 1000;
-                //control.jointAnglesU = 0;
+
                 EndEpisode();
 
             /*while (control.currentIndexU < control.jointAnglesU.Count && control.currentIndexL < control.jointAnglesL.Count)
@@ -508,7 +520,11 @@ public class DuaroAgentComplex : Agent
     
         }
     }
+
+
 }
+
+
 
 
 

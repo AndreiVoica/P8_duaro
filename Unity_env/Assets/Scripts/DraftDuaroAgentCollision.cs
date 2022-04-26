@@ -23,7 +23,6 @@ public class DraftDuaroAgentCollision : Agent
 
     private bool pickup_blue;
     private bool pickup_red;
-    private bool pickup_rectangle;
 
     int count_collision_blue;
     int count_collision_red;        
@@ -88,8 +87,7 @@ public class DraftDuaroAgentCollision : Agent
     {
 
         var decision = act[0];
-       // decision = 0;
-        var skill = 4;
+
         //Debug.Log("test decision: " + decision);
 
         count_collision_blue = 0;
@@ -121,7 +119,6 @@ public class DraftDuaroAgentCollision : Agent
             control.PickRedUpper();
             break;
         case 2:
-            pickup_rectangle = true;
             control.PickBlackLower();
             break;
         default:
