@@ -23,6 +23,7 @@ public class DuaroAgentComplex : Agent
     public Transform yellow;
     public Transform blue;
     public Transform red;
+    public Transform DuaroAgent;
 
     private Control control;
 
@@ -90,6 +91,7 @@ public class DuaroAgentComplex : Agent
     {
         // Reset cube positions:
         Vector3 rotationVector = new Vector3(0, 0, 0);
+        Vector3 rotationVectorDuaro = new Vector3(0, 180, 0);
         Debug.Log("OnEpisodeBegin");
         black.transform.localPosition = new Vector3(1.22f,0.789f,-1.3663f);
         black.transform.rotation = Quaternion.Euler(rotationVector);
@@ -103,7 +105,9 @@ public class DuaroAgentComplex : Agent
         yellow.transform.rotation = Quaternion.Euler(rotationVector);
         red.transform.localPosition = new Vector3(1.221f,0.823f,-1.1674f);
         red.transform.rotation = Quaternion.Euler(rotationVector);
-
+        DuaroAgent.position = new Vector3(-0.6622652f, 0.0f, 0.0f);
+        DuaroAgent.rotation = Quaternion.Euler(rotationVectorDuaro);
+        transform.Find("world/duarobase_link").GetComponent<ArticulationBody>().TeleportRoot(DuaroAgent.position, DuaroAgent.rotation);
         m_resetTimer = 0;
         m_resetSkill = 0;
         

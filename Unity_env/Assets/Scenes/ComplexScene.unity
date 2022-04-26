@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 198763920}
   m_Layer: 0
   m_Name: DuaroAgent
-  m_TagString: robot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1360,6 +1360,7 @@ MonoBehaviour:
   yellow: {fileID: 473038354}
   blue: {fileID: 343257146}
   red: {fileID: 677450745}
+  DuaroAgent: {fileID: 198763916}
   action: 0
   MaxEnvironmentSteps: 500000
   MaxSkills: 20
