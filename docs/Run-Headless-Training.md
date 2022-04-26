@@ -50,9 +50,13 @@ There are 2 options to train headless:
 2. Build the Unity executable with `Server Build` checked. You can find this setting in Build Settings in the Unity Editor.
 `mlagents-learn config/ppo/duaro-test-ppo.yaml --env=Build/test-duaro --run-id=firstRun `
 
-## Build on Docker
 ## Run on the cloud GPU/CPU
-Getting Started: 
+### Getting Started
 1. Log in here: [AAU Strato Login](https://strato-new.claaudia.aau.dk)
-2. Follow the [Quick Start](https://www.strato-docs.claaudia.aau.dk/guides/quick-start/) and create a Ubunutu 20.4 Instance
-3. Install mlagents as described in [Getting Started](../docs/GettingStarted/GettingStarted.md)
+2. Follow the [Quick Start](https://www.strato-docs.claaudia.aau.dk/guides/quick-start/) and create a Ubunutu 20.4 Instance. Check the IP address (10.92.0.xxx) at Openstack --> Compute --> Instances
+3. Install mlagents as described in [Getting Started](../docs/GettingStarted/GettingStarted.md) (in the terminal of ubuntu@10.92.0.xxx)
+4. Create a folder and copy the .yaml file (in the terminal of the host):
+```bash
+mkdir remotefolder
+scp -i ~/strato.pem config/DuaroAgentComplex_servertest.yaml ubuntu@10.92.0.xxx:~/remotefolder/
+```
