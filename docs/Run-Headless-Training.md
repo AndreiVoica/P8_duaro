@@ -53,6 +53,5 @@ There are 2 options to train headless:
 ## Build on Docker
 ## Run on the cloud GPU
 Getting Started: 
-- [AAU Strato Login](https://strato-new.claaudia.aau.dk)
-- [Strato Documentation](https://www.strato-docs.claaudia.aau.dk/)
-- [Quick Start](https://www.strato-docs.claaudia.aau.dk/guides/quick-start/)
+1. Log in here: [AAU Strato Login](https://strato-new.claaudia.aau.dk)
+2. Follow the [Quick Start](https://www.strato-docs.claaudia.aau.dk/guides/quick-start/) and create a Ubunutu 20.4 Instance
