@@ -16,8 +16,8 @@ public class Control : MonoBehaviour
     public void Start()
     {
         robot = FindObjectOfType<Library>(); //Finds the object containing the library (Maybe unnecessary, check later)
-        robot.set_lower_joint_target(-45f, 45f, 0f, 0f, 0.055f, -0.055f); //Sets the lower joint values to a home position
-        robot.set_upper_joint_target(45f, -45f, 0f, 0f, 0.055f, -0.055f); //Sets the upper joint values to a home position
+        //robot.set_lower_joint_target(-45f, 45f, 0f, 0f, 0.055f, -0.055f); //Sets the lower joint values to a home position
+        //robot.set_upper_joint_target(45f, -45f, 0f, 0f, 0.055f, -0.055f); //Sets the upper joint values to a home position
         var rate = 10f;
         var waitTime = 1f / rate; //Wait time for each iterations through joint angles (Upper and Lower)
         
@@ -257,6 +257,17 @@ public class Control : MonoBehaviour
         }
         Debug.Log("Control - PickWhiteUpper");
     }
+
+    // Stop Movement
+    public void StopLower()
+    {
+        CancelInvoke("MoveJointsLower");
+    }
+    public void StopUpper()
+    {
+        CancelInvoke("MoveJointsUpper");
+    }
+
     // The data from the csv comes as a string and we have to use floats for controlling the joints.
     // In here we we take the collumns of interest (16 -> 27), because these contain the data that we need (joint/gripper angles/positions)
     // float.TryParse is try to parse the string value from collum 16 into a float that is later added to the JointAngles and used to move the robot

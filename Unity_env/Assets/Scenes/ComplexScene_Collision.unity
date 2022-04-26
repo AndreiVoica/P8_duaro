@@ -1186,7 +1186,6 @@ GameObject:
   - component: {fileID: 198763914}
   - component: {fileID: 198763913}
   - component: {fileID: 198763912}
-  - component: {fileID: 198763919}
   - component: {fileID: 198763918}
   - component: {fileID: 198763917}
   m_Layer: 0
@@ -1334,8 +1333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 6
-    NumStackedVectorObservations: 1
+    VectorObservationSize: 21
+    NumStackedVectorObservations: 7
     m_ActionSpec:
       m_NumContinuousActions: 0
       BranchSizes: 0500000006000000
@@ -1343,7 +1342,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 267f597baabee6cdf93dcbcf07829836, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: DuaroAgentComplex
@@ -1351,18 +1350,6 @@ MonoBehaviour:
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_ObservableAttributeHandling: 0
---- !u!114 &198763919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198763911}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28fbed9cfb0f1f46495f869f88540f07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &217239063
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,18 +26,19 @@ public class DuaroAgentComplex : Agent
     public Transform DuaroAgent;
 
     private Control control;
+    private Library robot;
 
     public int action;
 
 
-    //****************
+    //*************************
     // For Collision of Arms:
-    //****************
+    //*************************
     int count_collision_arm_link;
 
-    //****************
+    //*************************
     // Cube Positions:
-    //****************
+    //*************************
     
     //Array to Store the items Position (Initial Row, Initial Column, Row Length, Column Length)
     int[,] itemsPosition = new int[6,4]{ 
@@ -85,6 +86,7 @@ public class DuaroAgentComplex : Agent
     public override void Initialize()
     {
         control = FindObjectOfType<Control>();
+        robot = FindObjectOfType<Library>();
     }
 
     public override void OnEpisodeBegin() //set-up the environment for a new episode
@@ -93,6 +95,10 @@ public class DuaroAgentComplex : Agent
         Vector3 rotationVector = new Vector3(0, 0, 0);
         Vector3 rotationVectorDuaro = new Vector3(0, 180, 0);
         Debug.Log("OnEpisodeBegin");
+
+        robot.set_lower_joint_target(-45f, 45f, 0f, 0f, 0.055f, -0.055f); //Set the lower joint values to a home position
+        robot.set_upper_joint_target(45f, -45f, 0f, 0f, 0.055f, -0.055f); //Set the upper joint values to a home position
+
         black.transform.localPosition = new Vector3(1.22f,0.789f,-1.3663f);
         black.transform.rotation = Quaternion.Euler(rotationVector);
         green.transform.localPosition = new Vector3(1.219f,0.898f,-1.32f);
@@ -135,15 +141,15 @@ public class DuaroAgentComplex : Agent
     }
 
     
-    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    {      
-        //Debug.Log("OnActionReceived");
-        // Move the agent using the action.
-        MoveAgent(actionBuffers.DiscreteActions);
-        AgentRewards(actionBuffers.DiscreteActions);
+    // public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    // {      
+    //     //Debug.Log("OnActionReceived");
+    //     // Move the agent using the action.
+    //     MoveAgent(actionBuffers.DiscreteActions);
+    //     AgentRewards(actionBuffers.DiscreteActions);
 
-        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
-    } 
+    //     // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
+    // } 
 
 
     /// <summary>
@@ -271,8 +277,8 @@ public class DuaroAgentComplex : Agent
 
             if (checkAllDone == 0)
             {
-                AddReward(5.0f);
-                Debug.Log("TASK COMPLETED (+5)! -- Restarting the Environment");
+                AddReward(8.0f);
+                Debug.Log("TASK COMPLETED (+8)! -- Restarting the Environment");
                 checkAllDone = 2;
             }
 
@@ -397,6 +403,11 @@ public class DuaroAgentComplex : Agent
             MoveAgent(actionsOut.DiscreteActions);
             AgentRewards(actionsOut.DiscreteActions);
         }
+        else if(Input.GetKey(KeyCode.R)) // Restart Episode
+        {
+            Debug.Log("Key R Pressed -- Restarting Episode");
+            EndEpisode();
+        }
         //Debug.Log("discreteActionsOut Lower = " + discreteActionsOut[0]);
         //Debug.Log("discreteActionsOut Upper = " + discreteActionsOut[1]);
     }	 
@@ -458,8 +469,11 @@ public class DuaroAgentComplex : Agent
             if (count_collision_arm_link == 1)
             {
                 AddReward(-5.0f);
-                Debug.Log("Bad Reward for collision of arms");
+                Debug.Log("Bad Reward for collision of arms (-5)");
                 Debug.Log("CumulativeReward " + reward);
+                control.StopUpper();
+                control.StopLower();
+                EndEpisode();
 
             /*while (control.currentIndexU < control.jointAnglesU.Count && control.currentIndexL < control.jointAnglesL.Count)
             {
