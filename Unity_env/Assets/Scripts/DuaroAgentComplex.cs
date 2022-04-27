@@ -55,7 +55,7 @@ public class DuaroAgentComplex : Agent
                                     };
 
     // Array with the shape of the blocks
-    int[,] taskArray = new int[4,7]{ 
+    public int[,] taskArray = new int[4,7]{ 
                                     {0,0,0,0,0,0,0},
                                     {1,1,1,0,0,0,0},
                                     {1,0,1,0,1,0,1}, 
@@ -79,7 +79,7 @@ public class DuaroAgentComplex : Agent
 
     //Max Number of Steps to be performed before the environment restarts
     [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 100000;
-    private int m_resetTimer;
+    public int m_resetTimer;
     //Max Number of Skills to be performed before the environment restarts
     [Tooltip("Max Number of Skills")] public int MaxSkills = 15;
     private int m_resetSkill;
@@ -151,28 +151,6 @@ public class DuaroAgentComplex : Agent
         sensor.AddObservation(arm_collision);
     }
 
-    //Action Mask
-    public override void WriteDiscreteActionMask(IDiscreteActionMask actionMask)
-    {
-        if (moveLowerOrUpper == true)
-        {
-            actionMask.SetActionEnabled(0, 5, false);
-            actionMask.SetActionEnabled(0, 6, false);
-            actionMask.SetActionEnabled(0, 7, false);
-            actionMask.SetActionEnabled(0, 8, false);
-            actionMask.SetActionEnabled(0, 9, false);
-            actionMask.SetActionEnabled(0, 10, false);
-        }
-        else if (moveLowerOrUpper == false)
-        {
-            actionMask.SetActionEnabled(0, 0, false);
-            actionMask.SetActionEnabled(0, 1, false);
-            actionMask.SetActionEnabled(0, 2, false);
-            actionMask.SetActionEnabled(0, 3, false);
-            actionMask.SetActionEnabled(0, 4, false);
-        }
-    }
-
     public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
     {      
         //Debug.Log("OnActionReceived");
@@ -183,6 +161,29 @@ public class DuaroAgentComplex : Agent
         // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
     } 
 
+    //Action Mask
+    public override void WriteDiscreteActionMask(IDiscreteActionMask actionMask)
+    {
+        if (moveLowerOrUpper == true && control.currentIndexL >= control.jointAnglesL.Count) // Lower Arm (Disabled Upper)
+        {
+            Debug.Log("Masking Lower");
+            actionMask.SetActionEnabled(0, 5, false);
+            actionMask.SetActionEnabled(0, 6, false);
+            actionMask.SetActionEnabled(0, 7, false);
+            actionMask.SetActionEnabled(0, 8, false);
+            actionMask.SetActionEnabled(0, 9, false);
+            actionMask.SetActionEnabled(0, 10, false);
+        }
+        else if (moveLowerOrUpper == false && control.currentIndexU >= control.jointAnglesU.Count) // Upper Arm (Disabled lower)
+        {
+            Debug.Log("Masking Upper");
+            actionMask.SetActionEnabled(0, 0, false);
+            actionMask.SetActionEnabled(0, 1, false);
+            actionMask.SetActionEnabled(0, 2, false);
+            actionMask.SetActionEnabled(0, 3, false);
+            actionMask.SetActionEnabled(0, 4, false);
+        }
+    }
 
     /// <summary>
     /// Function to call the discrete action selected 
@@ -193,7 +194,6 @@ public class DuaroAgentComplex : Agent
     //****************
     // For Collision of Arms:
     //****************
-
         count_collision_arm_link = 0;
 
         m_resetSkill +=1; // Add +1 to Skills Counter  CHANGE TO WHEN THE ACTION ENDS
@@ -208,7 +208,7 @@ public class DuaroAgentComplex : Agent
         else if (moveLowerOrUpper == false) // Upper Arm
         {
             control.jointAnglesU.Clear();
-            //action = act[0] - 5;
+            action = act[0] - 5;
             requestedUpper = act[0];
         }
 
@@ -341,7 +341,6 @@ public class DuaroAgentComplex : Agent
         // moveLowerOrUpper = false; Upper arm moves
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        
         // Debug.Log("Heuristic");
         
         var discreteActionsOut = actionsOut.DiscreteActions;
@@ -443,19 +442,16 @@ public class DuaroAgentComplex : Agent
         //Debug.Log("discreteActionsOut Upper = " + discreteActionsOut[1]);
     }	 
 
-
     void FixedUpdate()
     {
         if(checkAllDone != 2 && control.currentIndexL >= control.jointAnglesL.Count)
         {
             moveLowerOrUpper = true;
-            WriteDiscreteActionMask();
             RequestDecision();
         }
         else if(checkAllDone != 2 && control.currentIndexU >= control.jointAnglesU.Count)
         {
             moveLowerOrUpper = false;
-            WriteDiscreteActionMask();
             RequestDecision();
         }
         if(checkAllDone == 2 && control.currentIndexU >= control.jointAnglesU.Count && control.currentIndexL >= control.jointAnglesL.Count)
@@ -500,8 +496,8 @@ public class DuaroAgentComplex : Agent
             if (count_collision_arm_link == 1)
             {
                 arm_collision = 1;
-                AddReward(-5.0f);
-                Debug.Log("Bad Reward for collision of arms (-5)");
+                AddReward(-2.0f);
+                Debug.Log("Bad Reward for collision of arms (-2)");
                 Debug.Log("CumulativeReward " + reward);
 
                 control.currentIndexU = 1000;
