@@ -68,3 +68,9 @@ There are 2 options to train headless:
 ```bash
 ubuntu@ubuntu:~/remotefolder$ mlagents-learn DuaroAgentComplex_servertest.yaml --env=Build/ComplexScene_servertest --run-id=cpu-test-4 --no-graphics
 ```
+7. Create a shared directory to get access to Tensorboard:
+```bash
+(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ sudo sshfs -o allow_other -o nonempty -o IdentityFile=~/strato.pem  ubuntu@10.92.0.124:remotefolder ~/remoteDir
+
+(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ tensorboard --logdir remoteDir/results --port 6006
+```
