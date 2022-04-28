@@ -26,7 +26,6 @@ public class DuaroAgentSimple : Agent
     //private Control control;
 
     public int action;
-    public int actionU;
 
 
     //**************
@@ -122,7 +121,6 @@ public class DuaroAgentSimple : Agent
                 sensor.AddObservation(taskArray[j,i]);
             }
         }
-
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
@@ -130,8 +128,7 @@ public class DuaroAgentSimple : Agent
         Debug.Log("OnActionReceived");
         // Move the agent using the action.
         //MoveAgent(actionBuffers.DiscreteActions);
-        AgentRewardsL(actionBuffers.DiscreteActions);
-        AgentRewardsU(actionBuffers.DiscreteActions);
+        AgentRewards(actionBuffers.DiscreteActions);
 
         // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
     }
@@ -215,10 +212,15 @@ public class DuaroAgentSimple : Agent
         // }
     }
 
-    public void AgentRewardsL (ActionSegment<int> act)
+    public void AgentRewards (ActionSegment<int> act)
     {
-
         action = act[0];
+        
+        if (action > 4)
+        {
+            action = act[0] - 5;
+        }
+
         m_resetSkill +=1; // Add +1 to Skills Counter
         Debug.Log("Skill Number: " + m_resetSkill);
         // Debug.Log("Agent Rewards");
@@ -255,82 +257,6 @@ public class DuaroAgentSimple : Agent
 
         // Penalize choosing same action again
         else if(taskArray[itemsPosition[action,0], itemsPosition[action,1]] == 0)
-        { 
-            AddReward(-1.0f);
-            Debug.Log("Add Negative Reward - Choosing the same action (-1)");
-        }
-        // Penalize picking up the rectangle while there is something above
-        if(itemsAbove == true)
-        { 
-            AddReward(-2.0f);
-            Debug.Log("Add Negative Reward - There is something above (-2)");
-        } 
-        //*********************************************************
-        // TO BE DONE: (It is not scalable, just for training test)
-        //********************************************************* 
-        checkAllDone = 0;
-        for (int i = 0; i < 7; i++)
-        {
-            checkAllDone = checkAllDone + taskArray[3,i];
-        }
-
-        if (checkAllDone == 0)
-        {
-            AddReward(5.0f);
-            Debug.Log("TASK COMPLETED (+5)! -- Restarting the Environment");
-            EndEpisode();
-        }
-
-        
-        // foreach (int a in taskArray) 
-        //   {
-        //       Debug.Log(a);
-        //   }
-        
-        // Update and show Cumulative Reward
-        //reward = GetCumulativeReward();        
-        //Debug.Log("CumulativeReward: " + reward);
-    }
-        public void AgentRewardsU (ActionSegment<int> act)
-    {
-
-        actionU = act[1];
-        m_resetSkill +=1; // Add +1 to Skills Counter
-        Debug.Log("Skill Number: " + m_resetSkill);
-        // Debug.Log("Agent Rewards");
-
-        // Rewards
-        Debug.Log("Action Upper = " + actionU);
-
-        // Check if there are items above
-        itemsAbove = false;
-        for (int i = itemsPosition[actionU,1]; i < itemsPosition[actionU,3]; i++)
-        {
-            if (taskArray[itemsPosition[actionU,0] - 1, i] == 1)
-            {
-                itemsAbove = true; // There are some objects above this part
-            }
-        }
-
-        if (taskArray[itemsPosition[actionU,0], itemsPosition[actionU,1]] == 1 && itemsAbove == false)
-        {
-            AddReward(2.0f);
-            
-            // Update items Matrix Space
-            for (int i = itemsPosition[actionU,1]; i < (itemsPosition[actionU,1] + itemsPosition[actionU,3]); i++)
-            {
-                for (int j = itemsPosition[actionU,0]; j < (itemsPosition[actionU,0] + itemsPosition[actionU,2]); j++)
-                {
-                    taskArray[j,i] = 0;
-                    //Debug.Log("Cleaning");
-                }
-            }
-            Debug.Log("Add Reward (+2)");
-
-        }
-
-        // Penalize choosing same action again
-        else if(taskArray[itemsPosition[actionU,0], itemsPosition[actionU,1]] == 0)
         { 
             AddReward(-1.0f);
             Debug.Log("Add Negative Reward - Choosing the same action (-1)");

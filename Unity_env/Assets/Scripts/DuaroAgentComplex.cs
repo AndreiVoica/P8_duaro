@@ -55,7 +55,7 @@ public class DuaroAgentComplex : Agent
                                     };
 
     // Array with the shape of the blocks
-    public int[,] taskArray = new int[4,7]{ 
+    int[,] taskArray = new int[4,7]{ 
                                     {0,0,0,0,0,0,0},
                                     {1,1,1,0,0,0,0},
                                     {1,0,1,0,1,0,1}, 
@@ -86,6 +86,13 @@ public class DuaroAgentComplex : Agent
 
     // Variable to store the cumulative Reward
     float reward;
+
+    // Variable to Update the taskArray when an action has been completed
+    public int skillCompleted = -1;
+
+    public int decision;
+
+
 
     public override void Initialize()
     {
@@ -151,22 +158,22 @@ public class DuaroAgentComplex : Agent
         sensor.AddObservation(arm_collision);
     }
 
-    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    {      
-        //Debug.Log("OnActionReceived");
-        // Move the agent using the action.
-        MoveAgent(actionBuffers.DiscreteActions);
-        AgentRewards(actionBuffers.DiscreteActions);
+    // public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    // {      
+    //     //Debug.Log("OnActionReceived");
+    //     // Move the agent using the action.
+    //     MoveAgent(actionBuffers.DiscreteActions);
+    //     AgentRewards(actionBuffers.DiscreteActions);
 
-        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
-    } 
+    //     // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
+    // } 
 
     //Action Mask
     public override void WriteDiscreteActionMask(IDiscreteActionMask actionMask)
     {
         if (moveLowerOrUpper == true && control.currentIndexL >= control.jointAnglesL.Count) // Lower Arm (Disabled Upper)
         {
-            Debug.Log("Masking Lower");
+            //Debug.Log("Mask Lower");
             actionMask.SetActionEnabled(0, 5, false);
             actionMask.SetActionEnabled(0, 6, false);
             actionMask.SetActionEnabled(0, 7, false);
@@ -176,7 +183,7 @@ public class DuaroAgentComplex : Agent
         }
         else if (moveLowerOrUpper == false && control.currentIndexU >= control.jointAnglesU.Count) // Upper Arm (Disabled lower)
         {
-            Debug.Log("Masking Upper");
+            //Debug.Log("Mask Upper");
             actionMask.SetActionEnabled(0, 0, false);
             actionMask.SetActionEnabled(0, 1, false);
             actionMask.SetActionEnabled(0, 2, false);
@@ -212,7 +219,7 @@ public class DuaroAgentComplex : Agent
             requestedUpper = act[0];
         }
 
-        var decision = act[0];
+        decision = act[0];
 
         switch (decision)
         {        
@@ -285,34 +292,9 @@ public class DuaroAgentComplex : Agent
         if (taskArray[itemsPosition[action,0], itemsPosition[action,1]] == 1 && itemsAbove == false)
         {
             AddReward(2.0f);
-            
-            // Update items Matrix Space
-            for (int i = itemsPosition[action,1]; i < (itemsPosition[action,1] + itemsPosition[action,3]); i++)
-            {
-                for (int j = itemsPosition[action,0]; j < (itemsPosition[action,0] + itemsPosition[action,2]); j++)
-                {
-                    taskArray[j,i] = 0;
-                    //Debug.Log("Cleaning");
-                }
-            }
+            skillCompleted = decision;
             Debug.Log("Add Reward (+2)");
-
-        //*********************************************************
-        // TO BE DONE: (It is not scalable, just for training test)
-        //********************************************************* 
-            checkAllDone = 0;
-            for (int i = 0; i < 7; i++)
-            {
-                checkAllDone = checkAllDone + taskArray[3,i];
-            }
-
-            if (checkAllDone == 0)
-            {
-                AddReward(8.0f);
-                Debug.Log("TASK COMPLETED (+8)! -- Restarting the Environment");
-                checkAllDone = 2;
-            }
-
+            // Update items Matrix Space
         }
         // Penalize choosing same action again
         else if(taskArray[itemsPosition[action,0], itemsPosition[action,1]] == 0)
@@ -327,14 +309,7 @@ public class DuaroAgentComplex : Agent
             Debug.Log("Add Negative Reward - There is something above (-2)");
         } 
 
-        // foreach (int a in taskArray) 
-        //   {
-        //       Debug.Log(a);
-        //   }
-        
-        // Update and show Cumulative Reward
-        //reward = GetCumulativeReward();        
-        //Debug.Log("CumulativeReward: " + reward);
+
     }
 
         // moveLowerOrUpper = true; Lower Arm moves
@@ -454,6 +429,16 @@ public class DuaroAgentComplex : Agent
             moveLowerOrUpper = false;
             RequestDecision();
         }
+
+        if (skillCompleted > 4 && control.currentIndexU >= control.jointAnglesU.Count)
+        {
+            skillCompleted = skillCompleted - 5;
+            UpdateMatrix(skillCompleted);
+        }
+        else if (skillCompleted >= 0 && skillCompleted <= 4 && control.currentIndexL >= control.jointAnglesL.Count)
+            UpdateMatrix(skillCompleted);
+        {
+
         if(checkAllDone == 2 && control.currentIndexU >= control.jointAnglesU.Count && control.currentIndexL >= control.jointAnglesL.Count)
         {
             EndEpisode();
@@ -476,17 +461,51 @@ public class DuaroAgentComplex : Agent
             EndEpisode();
         }
 
-        //****************
-        // For Collision of Arms
-        // Comment that out, if running without collision checking
-        //****************
-
+        // For Collision of Arms (Comment that out, if running without collision checking)
         CollisionCallback.OnCollision += CollisionDetected;
     }
 
         //****************
         // For Collision of Arms:
         //****************
+
+    void UpdateMatrix(int skillCompleted)
+    {
+        for (int i = itemsPosition[skillCompleted,1]; i < (itemsPosition[skillCompleted,1] + itemsPosition[skillCompleted,3]); i++)
+        {
+            for (int j = itemsPosition[skillCompleted,0]; j < (itemsPosition[skillCompleted,0] + itemsPosition[skillCompleted,2]); j++)
+            {
+                taskArray[j,i] = 0;
+                //Debug.Log("Cleaning");
+            }
+        }
+    //*********************************************************
+    // TO BE DONE: (It is not scalable, just for training test)
+    //********************************************************* 
+        checkAllDone = 0;
+        for (int i = 0; i < 7; i++)
+        {
+            checkAllDone = checkAllDone + taskArray[3,i];
+        }
+
+        if (checkAllDone == 0)
+        {
+            AddReward(5.0f);
+            Debug.Log("TASK COMPLETED (+5)! -- Restarting the Environment");
+            checkAllDone = 2;
+        }
+
+        foreach (int a in taskArray) 
+          {
+              Debug.Log(a);
+          }
+
+        skillCompleted = -1;
+
+    }
+
+
+
     void CollisionDetected(Collision collision)
     {
         if (collision.gameObject.name == "duarolower_link_j3")
@@ -505,6 +524,8 @@ public class DuaroAgentComplex : Agent
 
                 EndEpisode();
 
+                
+
             /*while (control.currentIndexU < control.jointAnglesU.Count && control.currentIndexL < control.jointAnglesL.Count)
             {
                 Debug.Log("Waiting for finish task");
@@ -513,11 +534,9 @@ public class DuaroAgentComplex : Agent
             EndEpisode(); */
 
             } 
-    
         }
     }
-
-
+}
 }
 
 
