@@ -1,0 +1,65 @@
+{
+    "DuaroAgentComplex": {
+        "checkpoints": [
+            {
+                "steps": 6866,
+                "file_path": "results/trainingFromScratch/DuaroAgentComplex/DuaroAgentComplex-6866.onnx",
+                "reward": -0.2864583333333333,
+                "creation_time": 1651176067.013376,
+                "auxillary_file_paths": [
+                    "results/trainingFromScratch/DuaroAgentComplex/DuaroAgentComplex-6866.pt"
+                ]
+            },
+            {
+                "steps": 7866,
+                "file_path": "results/trainingFromScratch/DuaroAgentComplex/DuaroAgentComplex-7866.onnx",
+                "reward": -1.8127659574468085,
+                "creation_time": 1651219712.7077453,
+                "auxillary_file_paths": [
+                    "results/trainingFromScratch/DuaroAgentComplex/DuaroAgentComplex-7866.pt"
+                ]
+            },
+            {
+                "steps": 8099,
+                "file_path": "results/trainingFromScratch/DuaroAgentComplex/DuaroAgentComplex-8099.onnx",
+                "reward": -1.5614035087719298,
+                "creation_time": 1651219914.163391,
+                "auxillary_file_paths": [
+                    "results/trainingFromScratch/DuaroAgentComplex/DuaroAgentComplex-8099.pt"
+                ]
+            },
+            {
+                "steps": 8877,
+                "file_path": "results/trainingFromScratch/DuaroAgentComplex/DuaroAgentComplex-8877.onnx",
+                "reward": -0.8666666666666667,
+                "creation_time": 1651221183.6623755,
+                "auxillary_file_paths": [
+                    "results/trainingFromScratch/DuaroAgentComplex/DuaroAgentComplex-8877.pt"
+                ]
+            },
+            {
+                "steps": 8923,
+                "file_path": "results/trainingFromScratch/DuaroAgentComplex/DuaroAgentComplex-8923.onnx",
+                "reward": -1.3,
+                "creation_time": 1651221742.8628285,
+                "auxillary_file_paths": [
+                    "results/trainingFromScratch/DuaroAgentComplex/DuaroAgentComplex-8923.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 8923,
+            "file_path": "results/trainingFromScratch/DuaroAgentComplex.onnx",
+            "reward": -1.3,
+            "creation_time": 1651221742.8628285,
+            "auxillary_file_paths": [
+                "results/trainingFromScratch/DuaroAgentComplex/DuaroAgentComplex-8923.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.8.1+cu102"
+    }
+}
