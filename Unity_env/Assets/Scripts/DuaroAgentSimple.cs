@@ -15,18 +15,12 @@ using Random = System.Random;
 
 public class DuaroAgentSimple : Agent
 {
-  
-    public Transform black;
-    public Transform green;
-    public Transform Rectangle;
-    public Transform yellow;
-    public Transform blue;
-    public Transform red;
-
-    //private Control control;
 
     public int action;
 
+    List<int> sequence = new List<int>(6);
+    //List<List<int>> allSequences = new List<List<int>>(); //Creates new nested List
+    List<int> allSequences = new List<int>();
 
     //**************
     //Add all the cube Positions:
@@ -104,6 +98,7 @@ public class DuaroAgentSimple : Agent
         //shapeBackup.CopyTo(taskArray, 0);
         taskArray = (int[,]) shapeBackup.Clone(); // make a copy
 
+        sequence.Clear();
         //SetReward(0.0f);
         //checkAllDone = 0;
 
@@ -215,6 +210,7 @@ public class DuaroAgentSimple : Agent
     public void AgentRewards (ActionSegment<int> act)
     {
         action = act[0];
+        var decision = act[0];
         
         if (action > 4)
         {
@@ -241,6 +237,7 @@ public class DuaroAgentSimple : Agent
         if (taskArray[itemsPosition[action,0], itemsPosition[action,1]] == 1 && itemsAbove == false)
         {
             AddReward(2.0f);
+            sequence.Add(decision);
             
             // Update items Matrix Space
             for (int i = itemsPosition[action,1]; i < (itemsPosition[action,1] + itemsPosition[action,3]); i++)
@@ -280,6 +277,21 @@ public class DuaroAgentSimple : Agent
         {
             AddReward(5.0f);
             Debug.Log("TASK COMPLETED (+5)! -- Restarting the Environment");
+            foreach(int item in sequence)
+            {
+                Debug.Log("item = " + item);            
+            }
+
+            allSequences.AddRange(sequence);
+
+            // using (var file = File.CreateText(path))
+            // {
+            //     foreach(var arr in allSequences)
+            //     {
+            //         file.WriteLine(string.Join(",", arr));
+            //     }
+            // }
+
             EndEpisode();
         }
 

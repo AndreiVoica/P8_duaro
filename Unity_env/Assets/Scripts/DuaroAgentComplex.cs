@@ -110,7 +110,7 @@ public class DuaroAgentComplex : Agent
 
         DuaroAgent.position = new Vector3(-0.6622652f, 0.0f, 0.0f);
         DuaroAgent.rotation = Quaternion.Euler(rotationVectorDuaro);
-        //transform.Find("world/duarobase_link").GetComponent<ArticulationBody>().TeleportRoot(DuaroAgent.position, DuaroAgent.rotation);
+        transform.Find("world/duarobase_link").GetComponent<ArticulationBody>().TeleportRoot(DuaroAgent.position, DuaroAgent.rotation);
 
         black.transform.localPosition = new Vector3(1.22f,0.77f,-1.3663f);
         black.transform.rotation = Quaternion.Euler(rotationVector);
@@ -393,7 +393,7 @@ public class DuaroAgentComplex : Agent
         {
             AddReward(5.0f);
             Debug.Log("TASK COMPLETED (+5)! -- Restarting the Environment");
-            checkAllDone = 2;
+            checkAllDone = 2; 
         }
 
         foreach (int a in taskArray) 
