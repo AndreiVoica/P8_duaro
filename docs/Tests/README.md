@@ -12,6 +12,6 @@ behaviors:
     
     
 REWARDS:
- - Write the rewards used for the training
+ - Write the rewards used for the training. They can be found in Unity_env/Assets/Scripts/DuaroAgentComplex.cs
 
 This data will be later used for the report
