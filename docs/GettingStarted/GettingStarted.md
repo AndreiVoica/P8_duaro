@@ -34,7 +34,7 @@ For more information follow this [link](https://github.com/Unity-Technologies/Un
 2. Install Python 3.6 or 3.7. If needed, create a virtual environment for this, for example as described in this [link](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/).
 
 
-3. Install the mlagents Python package: `$ python -m pip install mlagents==0.28.0`. This project uses the version 0.28.0. 
+3. Install the mlagents Python package: `$ python -m pip install mlagents==0.28.0`. This project uses the version 0.28.0. If neccessary, install pip first: `$ sudo apt-get install python3-pip -y`
 
 4. Try to run `$ mlagents-learn --help` to ensure it works. 
 
