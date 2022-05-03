@@ -73,7 +73,7 @@ ssh ubuntu@10.92.0.33 -i P8_duaro/Strato/Key/strato_33.pem
 ```
 6. Copy the Unity_env folder to the remotefolder:
 ```bash
-(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~/P8_duaro$ scp -i ~/strato.pem -r Unity_env ubuntu@10.92.0.124:~/remotefolder
+(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~/P8_duaro$ scp -i ~/P8_duaro/Strato/Key/strato_33.pem -r Unity_env ubuntu@10.92.0.124:~/remotefolder
 ```
 7. Start Training:
 ```bash
