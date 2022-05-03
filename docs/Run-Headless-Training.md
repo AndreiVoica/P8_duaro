@@ -50,27 +50,27 @@ There are 2 options to train headless:
 2. Build the Unity executable with `Server Build` checked. You can find this setting in Build Settings in the Unity Editor.
 `mlagents-learn config/ppo/duaro-test-ppo.yaml --env=Build/test-duaro --run-id=firstRun `
 
-## Run on the cloud GPU/CPU
+## Run on Strato
 1. Log in here: [AAU Strato Login](https://strato-new.claaudia.aau.dk)
 2. Follow the [Quick Start](https://www.strato-docs.claaudia.aau.dk/guides/quick-start/) and create a Ubunutu 20.4 Instance. Check the IP address (10.92.0.xxx) at Openstack --> Compute --> Instances
 3. Install mlagents as described in [Getting Started](../docs/GettingStarted/GettingStarted.md) 
-4. Create a folder and copy the .yaml file (In different terminals!)
+4. Create a folder 
 ```bash
 (mlagents_env) ubuntu@ubuntu:~$ mkdir remotefolder
-
-(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~/P8_duaro/Unity_env$ scp -i ~/strato.pem config/DuaroAgentComplex_servertest.yaml ubuntu@10.92.0.124:~/remotefolder/
 ```
-5. Create an executable environment as described above and save it in a directory `Build` . Copy it:
+5. Copy the Unity_env folder to the remotefolder:
 ```bash
-(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~/P8_duaro/Unity_env$ scp -i ~/strato.pem -r Build/Build ubuntu@10.92.0.124:~/remotefolder
+(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~/P8_duaro$ scp -i ~/strato.pem -r Unity_env ubuntu@10.92.0.124:~/remotefolder
 ```
 6. Start Training:
 ```bash
-ubuntu@ubuntu:~/remotefolder$ mlagents-learn DuaroAgentComplex_servertest.yaml --env=Build/ComplexScene_servertest --run-id=cpu-test-4 --no-graphics
+ubuntu@ubuntu:~/remotefolder/Unity_env$ mlagents-learn config/DuaroAgentComplex_servertest.yaml --env=Build/Build/ComplexScene_servertest --run-id=cpu-test-4 --no-graphics
 ```
 7. Create a shared directory to get access to Tensorboard:
 ```bash
 (mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ sudo sshfs -o allow_other -o nonempty -o IdentityFile=~/strato.pem  ubuntu@10.92.0.124:remotefolder ~/remoteDir
 
-(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ tensorboard --logdir remoteDir/results --port 6006
+(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ tensorboard --logdir remoteDir/Unity_env/results --port 6006
 ```
+## Run on AI Cloud
+
