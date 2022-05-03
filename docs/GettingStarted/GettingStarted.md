@@ -31,10 +31,9 @@ For more information follow this [link](https://github.com/Unity-Technologies/Un
 
 1. Install the com.unity.ml-agents package through the Package Manager in Unity. This project is tested with version 2.2.1.
 
-2. Install Python 3.6 or 3.7. If needed, create a virtual environment for this, for example as described in this [link](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/).
+2. Install Python 3.6 or 3.7. If needed, create a virtual environment for this, for example as described in this [link](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/). And this [link](https://stackoverflow.com/questions/46939562/update-to-python-3-7-using-anaconda)
 
-
-3. Install the mlagents Python package: `$ python -m pip install mlagents==0.28.0`. This project uses the version 0.28.0. If neccessary, install pip first: `$ sudo apt-get install python3-pip -y`
+3. Install the mlagents Python package: `$ python -m pip install mlagents==0.28.0`. This project uses the version 0.28.0.
 
 4. Try to run `$ mlagents-learn --help` to ensure it works. 
 
