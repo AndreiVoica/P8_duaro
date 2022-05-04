@@ -1,9 +1,8 @@
-# Run Headless Training
+# Training on a server
 ## Steps to follow
 - [Create an executable environment in Unity](#Create-an-executable-environment-in-Unity)
 - [Train headless](#Train-headless)
-- [Build on Docker](#Build-onDocker)
-- [Run on the cloud GPU](#Run-on-the-cloud-GPU)
+- [Running on Strato ](#Running-on-Strato)
 
 ## Create an executable environment in Unity
 The tutorial to create an executable environment is on this [link](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Learning-Environment-Executable.md).
@@ -74,6 +73,10 @@ ssh ubuntu@10.92.0.33 -i P8_duaro/Strato/Key/strato_33.pem
 6. Copy the Unity_env folder to the remotefolder:
 ```bash
 (mlagents_env) sabrina@sabrina-ThinkPad-T490s:~/P8_duaro$ scp -i ~/P8_duaro/Strato/Key/strato_33.pem -r Unity_env ubuntu@10.92.0.124:~/remotefolder
+```
+To delete it, when neccessary:
+```bash
+$ rm -rf Unity_env
 ```
 7. Start Training:
 ```bash
