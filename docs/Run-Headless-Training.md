@@ -88,5 +88,10 @@ $ rm -rf Unity_env
 
 (mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ tensorboard --logdir remoteDir/Unity_env/results --port 6006
 ```
+### Restart a Training
+Add `--resume`, for example:
+```bash
+(mlagents_env) ubuntu@ubuntu:~/remotefolder/Unity_env/results$ mlagents-learn config/DuaroAgentComplex_servertest.yaml --env=Build/Build/ComplexScene_servertest.x86_64 --run-id=test-8instances-2 --num-envs=8 --no-graphics --resume
+```
 ## Run on AI Cloud
 
