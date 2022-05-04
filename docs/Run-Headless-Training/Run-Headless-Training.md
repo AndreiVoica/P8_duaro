@@ -88,5 +88,17 @@ $ rm -rf Unity_env
 
 (mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ tensorboard --logdir remoteDir/Unity_env/results --port 6006
 ```
+### Restart a Training / Continously Training
+
+* If you want to quite the training with <kbd>Ctrl</kbd> + <kbd>c</kbd>: Add `--resume`, for example:
+```bash
+(mlagents_env) ubuntu@ubuntu:~/remotefolder/Unity_env/results$ mlagents-learn config/DuaroAgentComplex_servertest.yaml --env=Build/Build/ComplexScene_servertest.x86_64 --run-id=test-8instances-2 --num-envs=8 --no-graphics --resume
+```
+* If you want to end the SSH connection and log out but continue running the training on the server:
+    - open the ssh connnection
+    - run `tmux` and run your training in the new terminal that opens
+    - before ending the session type <kbd>Ctrl</kbd> + <kbd>b</kbd> and then <kbd>d</kbd>. This will detach the session
+    - To reopen the session: open the ssh connection and type `tmux attach`
+
 ## Run on AI Cloud
 
