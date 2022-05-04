@@ -50,25 +50,38 @@ There are 2 options to train headless:
 2. Build the Unity executable with `Server Build` checked. You can find this setting in Build Settings in the Unity Editor.
 `mlagents-learn config/ppo/duaro-test-ppo.yaml --env=Build/test-duaro --run-id=firstRun `
 
-## Run on Strato
+## Running on Strato
 1. Log in here: [AAU Strato Login](https://strato-new.claaudia.aau.dk)
-2. Follow the [Quick Start](https://www.strato-docs.claaudia.aau.dk/guides/quick-start/) and create a Ubunutu 20.4 Instance. Check the IP address (10.92.0.xxx) at Openstack --> Compute --> Instances
-3. Install mlagents as described in [Getting Started](../docs/GettingStarted/GettingStarted.md) 
-4. Create a folder 
+2. Follow the [Quick Start](https://www.strato-docs.claaudia.aau.dk/guides/quick-start/) and create a Ubunutu 20.4 Instance. 
+3. Log in to the Instance that you will work on. First, check the IP address (10.92.0.xxx) at Strato --> Compute --> Instances. Then log in with the appropriate key (strato_33.pem for example):
+```bash
+ssh ubuntu@10.92.0.33 -i P8_duaro/Strato/Key/strato_33.pem
+```
+4. Install mlagents as described in [Getting Started](../docs/GettingStarted/GettingStarted.md) 
+    - create an virtual environment with conda
+    - install pyhthon 3.7 
+    ```bash
+    $ conda install python=3.7 anaconda=custom
+    ```
+    - install mlagents
+    ```bash
+    $ python -m pip install mlagents==0.28.0
+    ```    
+5. Create a remote folder for sharing files and directories  
 ```bash
 (mlagents_env) ubuntu@ubuntu:~$ mkdir remotefolder
 ```
-5. Copy the Unity_env folder to the remotefolder:
+6. Copy the Unity_env folder to the remotefolder:
 ```bash
-(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~/P8_duaro$ scp -i ~/strato.pem -r Unity_env ubuntu@10.92.0.124:~/remotefolder
+(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~/P8_duaro$ scp -i ~/P8_duaro/Strato/Key/strato_33.pem -r Unity_env ubuntu@10.92.0.124:~/remotefolder
 ```
-6. Start Training:
+7. Start Training:
 ```bash
-ubuntu@ubuntu:~/remotefolder/Unity_env$ mlagents-learn config/DuaroAgentComplex_servertest.yaml --env=Build/Build/ComplexScene_servertest --run-id=cpu-test-4 --no-graphics
+(mlagents_env) ubuntu@ubuntu:~/remotefolder/Unity_env$ mlagents-learn config/DuaroAgentComplex_servertest.yaml --env=exe-env/env1/ComplexScene_servertest --run-id=cpu-test-4 --no-graphics
 ```
-7. Create a shared directory to get access to Tensorboard:
+8. Create a shared directory to get access to Tensorboard:
 ```bash
-(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ sudo sshfs -o allow_other -o nonempty -o IdentityFile=~/strato.pem  ubuntu@10.92.0.124:remotefolder ~/remoteDir
+(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ sudo sshfs -o allow_other -o nonempty -o IdentityFile=~/P8_duaro/Strato/Key/strato_33.pem  ubuntu@10.92.0.124:remotefolder ~/remoteDir
 
 (mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ tensorboard --logdir remoteDir/Unity_env/results --port 6006
 ```
