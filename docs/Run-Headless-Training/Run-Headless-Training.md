@@ -88,6 +88,11 @@ $ rm -rf Unity_env
 
 (mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ tensorboard --logdir remoteDir/Unity_env/results --port 6006
 ```
+### Saving Data 
+
+* Remember to manually copy the Unity_env into to the remotefolder after every change
+* If you want to save the results folder, those also have to copied manually to the git repo
+
 ### Restart a Training / Continously Training
 
 * If you want to quite the training with <kbd>Ctrl</kbd> + <kbd>c</kbd>: Add `--resume`, for example:
@@ -100,5 +105,10 @@ $ rm -rf Unity_env
     - before ending the session type <kbd>Ctrl</kbd> + <kbd>b</kbd> and then <kbd>d</kbd>. This will detach the session
     - To reopen the session: open the ssh connection and type `tmux attach`
 
-## Run on AI Cloud
+## Naming of Trainings
+* Name of environment (env1, env2,...)
+* Where it was trained (localgpu, cloudcpu,...) and number of instances 
+* config file (complex2, complex1, simple,...)
+* ongoing number
 
+Example: env1_cloudcpu8_complex2_1
