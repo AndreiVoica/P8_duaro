@@ -34,3 +34,4 @@ Add Reward - Upper Arm (+2)
 Add Reward - Lower Arm (+2)
 TASK COMPLETED (+5)! -- Restarting the Environment
 Bad Reward for collision of arms (-2)
+Reward for waiting: -0.1
