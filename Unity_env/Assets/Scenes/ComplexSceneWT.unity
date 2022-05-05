@@ -1215,7 +1215,7 @@ MonoBehaviour:
   black: {fileID: 2091971714}
   green: {fileID: 1585638695}
   Rectangle: {fileID: 2061847292}
-  yellow: {fileID: 1585638695}
+  yellow: {fileID: 473038354}
   blue: {fileID: 343257146}
   red: {fileID: 677450745}
   DuaroAgent: {fileID: 198763916}
@@ -1376,9 +1376,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_Model: {fileID: 5022602860645237092, guid: 381c262c5a0a35009964ad1dcdd4b4df, type: 3}
+  m_InferenceDevice: 3
+  m_BehaviorType: 2
   m_BehaviorName: DuaroAgentComplex
   TeamId: 0
   m_UseChildSensors: 1
@@ -12782,7 +12782,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585638694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.219, y: 0.865, z: -1.31}
+  m_LocalPosition: {x: 1.219, y: 0.856, z: -1.316}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.15}
   m_Children: []
   m_Father: {fileID: 1448368914}
