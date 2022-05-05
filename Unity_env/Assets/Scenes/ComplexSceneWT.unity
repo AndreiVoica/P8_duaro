@@ -1205,7 +1205,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 198763911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc6aa7b6ae4d336b92703898fef9e92, type: 3}
+  m_Script: {fileID: 11500000, guid: 738b5472364cd0c21a513d8868827e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   black: {fileID: 2091971714}
   green: {fileID: 1585638695}
   Rectangle: {fileID: 2061847292}
-  yellow: {fileID: 473038354}
+  yellow: {fileID: 1585638695}
   blue: {fileID: 343257146}
   red: {fileID: 677450745}
   DuaroAgent: {fileID: 198763916}
