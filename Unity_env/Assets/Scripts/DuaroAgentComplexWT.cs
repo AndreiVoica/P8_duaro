@@ -119,7 +119,7 @@ public class DuaroAgentComplexWT : Agent
 
         black.transform.localPosition = new Vector3(1.22f,0.77f,-1.3663f);
         black.transform.rotation = Quaternion.Euler(rotationVector);
-        green.transform.localPosition = new Vector3(1.219f,0.862f,-1.32f);
+        green.transform.localPosition = new Vector3(1.219f,0.856f,-1.316f);
         green.transform.rotation = Quaternion.Euler(rotationVector);
         Rectangle.transform.localPosition = new Vector3(1.22f,0.748f,-1.184f);
         Rectangle.transform.rotation = Quaternion.Euler(rotationVector);
@@ -276,13 +276,13 @@ public class DuaroAgentComplexWT : Agent
                 control.currentIndexL = 0;
                 waitingTimerLower = waitingTimer;
                 Debug.Log("Waiting " + waitTime/50 + " Seconds - Lower Arm");
-                AddReward(-0.1f);
+                AddReward(-0.4f);
                 break;
             case 12:
                 control.currentIndexU = 0;
                 waitingTimerUpper = waitingTimer;
                 Debug.Log("Waiting " + waitTime/50 + " Seconds - Upper Arm");
-                AddReward(-0.1f);
+                AddReward(-0.4f);
                 break;
             default:
                 break;
