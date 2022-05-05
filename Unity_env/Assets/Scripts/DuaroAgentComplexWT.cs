@@ -117,7 +117,7 @@ public class DuaroAgentComplexWT : Agent
         DuaroAgent.rotation = Quaternion.Euler(rotationVectorDuaro);
         transform.Find("world/duarobase_link").GetComponent<ArticulationBody>().TeleportRoot(DuaroAgent.position, DuaroAgent.rotation);
 
-        black.transform.localPosition = new Vector3(1.22f,0.77f,-1.3663f);
+        black.transform.localPosition = new Vector3(1.22f,0.774f,-1.3663f);
         black.transform.rotation = Quaternion.Euler(rotationVector);
         green.transform.localPosition = new Vector3(1.219f,0.856f,-1.316f);
         green.transform.rotation = Quaternion.Euler(rotationVector);
@@ -127,7 +127,7 @@ public class DuaroAgentComplexWT : Agent
         blue.transform.rotation = Quaternion.Euler(rotationVector);
         yellow.transform.localPosition = new Vector3(1.2213f,0.804f,-1.0598f);
         yellow.transform.rotation = Quaternion.Euler(rotationVector);
-        red.transform.localPosition = new Vector3(1.221f,0.804f,-1.1674f);
+        red.transform.localPosition = new Vector3(1.221f,0.823f,-1.1674f);
         red.transform.rotation = Quaternion.Euler(rotationVector);
 
         m_resetTimer = 0;
@@ -188,15 +188,15 @@ public class DuaroAgentComplexWT : Agent
         }
     }
 
-    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    {      
-        //Debug.Log("OnActionReceived");
-        // Move the agent using the action.
-        MoveAgent(actionBuffers.DiscreteActions);
-        AgentRewards(actionBuffers.DiscreteActions);
+    // public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    // {      
+    //     //Debug.Log("OnActionReceived");
+    //     // Move the agent using the action.
+    //     MoveAgent(actionBuffers.DiscreteActions);
+    //     AgentRewards(actionBuffers.DiscreteActions);
 
-        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
-    } 
+    //     // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
+    // } 
 
     /// <summary>
     /// Function to call the discrete action selected 
