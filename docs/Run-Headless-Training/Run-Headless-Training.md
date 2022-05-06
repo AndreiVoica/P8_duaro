@@ -56,8 +56,12 @@ There are 2 options to train headless:
 ```bash
 ssh ubuntu@10.92.0.33 -i P8_duaro/Strato/Key/strato_33.pem
 ```
-4. Install mlagents as described in [Getting Started](../docs/GettingStarted/GettingStarted.md) 
-    - create an virtual environment with conda
+If you have an error saying that the public key is denied, run this first:
+```bash
+chmod 600 strato_33.pem
+```
+4. Install mlagents as described in [Getting Started](../../docs/GettingStarted/GettingStarted.md) 
+    - create an virtual environment with conda (install conda first, for example like [this](https://www.rosehosting.com/blog/how-to-install-anaconda-on-ubuntu-20-04/)
     - install pyhthon 3.7 
     ```bash
     $ conda install python=3.7 anaconda=custom
@@ -105,7 +109,14 @@ $ rm -rf Unity_env
     - before ending the session type <kbd>Ctrl</kbd> + <kbd>b</kbd> and then <kbd>d</kbd>. This will detach the session
     - To reopen the session: open the ssh connection and type `tmux attach`
 
-## Naming of Trainings
+### Overview of Instances
+| Creator  | IP Adress | Key |
+| ------------- | ------------- | ------------- |
+| Andrei | 10.92.0.247  | strato_247.pem |
+| Sabrina  | 10.92.0.33  | strato_33.pem |
+| Daniel | 10.92.0.253  | strato_253.pem |
+
+### Naming of Trainings
 * Name of environment (env1, env2,...)
 * Where it was trained (localgpu, cloudcpu,...) and number of instances 
 * config file (complex2, complex1, simple,...)
