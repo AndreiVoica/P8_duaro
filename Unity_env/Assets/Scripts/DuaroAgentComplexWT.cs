@@ -356,8 +356,9 @@ public class DuaroAgentComplexWT : Agent
         }
 
         // Check if the task has been completed
-        if(checkAllDone == 2 && control.currentIndexU >= control.jointAnglesU.Count && control.currentIndexL >= control.jointAnglesL.Count)
+        if(checkAllDone == 2)
         {
+            Debug.Log("RESTARTING ENVIRONMENT -- TASK COMPLETED SUCCESFULLY");
             EndEpisode();
         }
 
@@ -421,7 +422,7 @@ public class DuaroAgentComplexWT : Agent
         if (checkAllDone == 0)
         {
             AddReward(5.0f);
-            Debug.Log("TASK COMPLETED (+5)! -- Restarting the Environment");
+            Debug.Log("TASK COMPLETED (+5)!");
             checkAllDone = 2; 
         }
 

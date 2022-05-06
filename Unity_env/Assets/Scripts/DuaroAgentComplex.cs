@@ -168,7 +168,7 @@ public class DuaroAgentComplex : Agent
         }
         else if (moveLowerOrUpper == false && control.currentIndexU >= control.jointAnglesU.Count) // Upper Arm (Disabled lower)
         {
-            Debug.Log("Mask Upper");
+            //Debug.Log("Mask Upper");
             actionMask.SetActionEnabled(0, 0, false);
             actionMask.SetActionEnabled(0, 1, false);
             actionMask.SetActionEnabled(0, 2, false);
@@ -329,8 +329,9 @@ public class DuaroAgentComplex : Agent
         }
 
         // Check if the task has been completed
-        if(checkAllDone == 2 && control.currentIndexU >= control.jointAnglesU.Count && control.currentIndexL >= control.jointAnglesL.Count)
+        if(checkAllDone == 2)
         {
+            Debug.Log("RESTARTING ENVIRONMENT -- TASK COMPLETED SUCCESFULLY");
             EndEpisode();
         }
 
@@ -392,14 +393,14 @@ public class DuaroAgentComplex : Agent
         if (checkAllDone == 0)
         {
             AddReward(5.0f);
-            Debug.Log("TASK COMPLETED (+5)! -- Restarting the Environment");
+            Debug.Log("TASK COMPLETED (+5)!");
             checkAllDone = 2; 
         }
 
-        foreach (int a in taskArray) 
-        {
-            Debug.Log(a);
-        }
+        // foreach (int a in taskArray) 
+        // {
+        //     Debug.Log(a);
+        // }
     }
 
     void CollisionDetected(Collision collision)
