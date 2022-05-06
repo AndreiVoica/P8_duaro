@@ -61,7 +61,7 @@ If you have an error saying that the public key is denied, run this first:
 chmod 600 strato_33.pem
 ```
 4. Install mlagents as described in [Getting Started](../../docs/GettingStarted/GettingStarted.md) 
-    - create an virtual environment with conda (install conda first, for example like [this](https://www.rosehosting.com/blog/how-to-install-anaconda-on-ubuntu-20-04/)
+    - create an virtual environment `mlagents_env` with conda (install conda first, for example like [this](https://www.rosehosting.com/blog/how-to-install-anaconda-on-ubuntu-20-04/))
     - install pyhthon 3.7 
     ```bash
     $ conda install python=3.7 anaconda=custom
