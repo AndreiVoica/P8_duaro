@@ -113,6 +113,7 @@ $ conda install -c conda-forge sshfs
     - run `tmux` and run your training in the new terminal that opens
     - before ending the session type <kbd>Ctrl</kbd> + <kbd>b</kbd> and then <kbd>d</kbd>. This will detach the session
     - To reopen the session: open the ssh connection and type `tmux attach`
+* Find useful commands for tmux [here](https://tmuxcheatsheet.com/)
 
 ### Overview of Instances
 | Creator  | IP Adress | Key |
