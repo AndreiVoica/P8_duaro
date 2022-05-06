@@ -1142,7 +1142,7 @@ GameObject:
   - component: {fileID: 198763914}
   - component: {fileID: 198763913}
   - component: {fileID: 198763912}
-  - component: {fileID: 198763920}
+  - component: {fileID: 198763919}
   - component: {fileID: 198763918}
   - component: {fileID: 198763917}
   m_Layer: 0
@@ -1265,7 +1265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DecisionPeriod: 1
-  TakeActionsBetweenDecisions: 0
+  TakeActionsBetweenDecisions: 1
 --- !u!114 &198763918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 198763911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7da37002e0a9227dea925f8496736d44, type: 3}
+  m_Script: {fileID: 11500000, guid: 645a30a0d97ebf30bac0d61e2cc01cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -1283,9 +1283,9 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   action: 0
-  MaxEnvironmentSteps: 100000
-  MaxSkills: 6
---- !u!114 &198763920
+  MaxEnvironmentSteps: 10000
+  MaxSkills: 10
+--- !u!114 &198763919
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1298,8 +1298,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 7
+    VectorObservationSize: 22
+    NumStackedVectorObservations: 3
     m_ActionSpec:
       m_NumContinuousActions: 0
       BranchSizes: 0b000000
@@ -1308,9 +1308,9 @@ MonoBehaviour:
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
-  m_InferenceDevice: 1
+  m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: DuaroAgentSimple
+  m_BehaviorName: DuaroAgentComplex
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
