@@ -73,7 +73,7 @@ public class DuaroAgentComplexWT : Agent
     private bool moveLowerOrUpper = true;
 
     // Max Number of Steps to be performed before the environment restarts
-    [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 100000;
+    [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 20000;
     public int m_resetTimer;
     // Max Number of Skills to be performed before the environment restarts
     [Tooltip("Max Number of Skills")] public int MaxSkills = 15;
