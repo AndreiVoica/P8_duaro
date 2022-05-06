@@ -94,6 +94,8 @@ $ conda install -c conda-forge sshfs
 ```
 - Then, run this:
 ```bash
+(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ mkdir remoteDir
+
 (mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ sudo sshfs -o allow_other -o nonempty -o IdentityFile=~/P8_duaro/Strato/Key/strato_33.pem  ubuntu@10.92.0.33:remotefolder ~/remoteDir
 
 (mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ tensorboard --logdir remoteDir/Unity_env/results --port 6006
