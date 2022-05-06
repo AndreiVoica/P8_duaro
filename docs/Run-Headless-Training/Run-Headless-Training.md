@@ -130,3 +130,13 @@ $ conda install -c conda-forge sshfs
 * ongoing number
 
 Example: env1_cloudcpu8_complex2_1
+
+### Use VPN to get access from home
+1. Check if Java is installed with `java -version`. If not, install it: `$ sudo apt install default-jre`
+2. Log in to this [link](https://ssl-vpn1.aau.dk) with you AAU Account and click on Download
+3. Go to the folder where the file was downloaded and run the following command (with the downloaded file chosen):
+```bash
+sudo bash anyconnect-linux64-4.10.05085-core-vpn-webdeploy-k9.sh 
+```
+4. Launch the Cisco client: `$ /opt/cisco/anyconnect/bin/vpnui`
+5. Connect to: `ssl-vpn1.aau.dk` and log in
