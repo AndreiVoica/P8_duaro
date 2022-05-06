@@ -394,6 +394,8 @@ public class DuaroAgentComplexWT : Agent
         {
             Debug.Log("Restarting Scene from Fixed Update (Max Number of Skills)");
             EndEpisode();
+            AddReward(-2.0f);
+            Debug.Log("Add Negative Reward - MAX SKILLS REACHED (-2)");
         }
 
         // For Collision of Arms (Comment that out, if running without collision checking)
