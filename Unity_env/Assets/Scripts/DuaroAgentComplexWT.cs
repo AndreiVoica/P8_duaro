@@ -188,15 +188,15 @@ public class DuaroAgentComplexWT : Agent
         }
     }
 
-    // public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    // {      
-    //     //Debug.Log("OnActionReceived");
-    //     // Move the agent using the action.
-    //     MoveAgent(actionBuffers.DiscreteActions);
-    //     AgentRewards(actionBuffers.DiscreteActions);
+    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    {      
+        //Debug.Log("OnActionReceived");
+        // Move the agent using the action.
+        MoveAgent(actionBuffers.DiscreteActions);
+        AgentRewards(actionBuffers.DiscreteActions);
 
-    //     // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
-    // } 
+        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
+    } 
 
     /// <summary>
     /// Function to call the discrete action selected 
@@ -276,13 +276,13 @@ public class DuaroAgentComplexWT : Agent
                 control.currentIndexL = 0;
                 waitingTimerLower = waitingTimer;
                 Debug.Log("Waiting " + waitTime/50 + " Seconds - Lower Arm");
-                AddReward(-0.4f);
+                AddReward(-1f);
                 break;
             case 12:
                 control.currentIndexU = 0;
                 waitingTimerUpper = waitingTimer;
                 Debug.Log("Waiting " + waitTime/50 + " Seconds - Upper Arm");
-                AddReward(-0.4f);
+                AddReward(-1f);
                 break;
             default:
                 break;
