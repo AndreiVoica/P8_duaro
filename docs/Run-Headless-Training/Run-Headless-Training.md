@@ -87,6 +87,11 @@ $ rm -rf Unity_env
 (mlagents_env) ubuntu@ubuntu:~/remotefolder/Unity_env$ mlagents-learn config/DuaroAgentComplex_servertest.yaml --env=exe-env/env1/ComplexScene_servertest --run-id=cpu-test-4 --no-graphics
 ```
 8. Create a shared directory to get access to Tensorboard:
+- First, install sshfs, for example with conda in your virtual environment
+```bash
+$ conda install -c conda-forge sshfs
+```
+- Then, run this:
 ```bash
 (mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ sudo sshfs -o allow_other -o nonempty -o IdentityFile=~/P8_duaro/Strato/Key/strato_33.pem  ubuntu@10.92.0.33:remotefolder ~/remoteDir
 
