@@ -1,0 +1,25 @@
+behaviors:
+  DuaroAgentComplex:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 256
+      buffer_size: 4096
+      learning_rate: 0.0002
+      beta: 0.0002
+      epsilon: 0.16
+      lambd: 0.95
+      num_epoch: 4
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 64
+      num_layers: 1
+      vis_encode_type: simple
+    reward_signals:
+      extrinsic:
+        gamma: 0.95
+        strength: 1.0
+    keep_checkpoints: 5
+    max_steps: 3000000
+    time_horizon: 1024
+    summary_freq: 1000
