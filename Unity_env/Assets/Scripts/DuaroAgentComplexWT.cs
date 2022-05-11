@@ -300,7 +300,7 @@ public class DuaroAgentComplexWT : Agent
         {
             // Check if there are items above
             itemsAbove = false;
-            for (int i = itemsPosition[action,1]; i < itemsPosition[action,3]; i++)
+            for (int i = itemsPosition[action,1]; i < itemsPosition[action,1] + itemsPosition[action,3]; i++)
             {
                 if (taskArray[itemsPosition[action,0] - 1, i] == 1)
                 {
@@ -577,9 +577,9 @@ public class DuaroAgentComplexWT : Agent
             MoveAgent(actionsOut.DiscreteActions);
             //AgentRewards(actionsOut.DiscreteActions);
         }
-        else if(Input.GetKey(KeyCode.R)) // Restart Episode
+        else if(Input.GetKey(KeyCode.N)) // Restart Episode
         {
-            Debug.Log("Key R Pressed -- Restarting Episode");
+            Debug.Log("Key N Pressed -- Restarting Episode");
             control.currentIndexU = 1000;
             control.currentIndexL = 1000;
             EndEpisode();
