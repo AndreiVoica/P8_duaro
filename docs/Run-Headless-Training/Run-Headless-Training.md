@@ -61,7 +61,7 @@ If you have an error saying that the public key is denied, run this first:
 chmod 600 strato_33.pem
 ```
 4. Install mlagents as described in [Getting Started](../../docs/GettingStarted/GettingStarted.md) 
-    - create an virtual environment with conda (install conda first, for example like [this](https://www.rosehosting.com/blog/how-to-install-anaconda-on-ubuntu-20-04/)
+    - create an virtual environment `mlagents_env` with conda (install conda first, for example like [this](https://www.rosehosting.com/blog/how-to-install-anaconda-on-ubuntu-20-04/))
     - install pyhthon 3.7 
     ```bash
     $ conda install python=3.7 anaconda=custom
@@ -84,7 +84,8 @@ $ rm -rf Unity_env
 ```
 7. Start Training:
 ```bash
-(mlagents_env) ubuntu@ubuntu:~/remotefolder/Unity_env$ mlagents-learn config/DuaroAgentComplex_servertest.yaml --env=exe-env/env1/ComplexScene_servertest --run-id=cpu-test-4 --no-graphics
+(mlagents_env) ubuntu@ubuntu:~/remotefolder/Unity_env$ mlagents-learn config/complex2.yaml --env=exe-env/env4/env4 --run-id=env4_cloudcpu_complex2_1 --n-envs=8 --no-graphics
+
 ```
 8. Create a shared directory to get access to Tensorboard:
 - First, install sshfs, for example with conda in your virtual environment
@@ -93,6 +94,8 @@ $ conda install -c conda-forge sshfs
 ```
 - Then, run this:
 ```bash
+(mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ mkdir remoteDir
+
 (mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ sudo sshfs -o allow_other -o nonempty -o IdentityFile=~/P8_duaro/Strato/Key/strato_33.pem  ubuntu@10.92.0.33:remotefolder ~/remoteDir
 
 (mlagents_env) sabrina@sabrina-ThinkPad-T490s:~$ tensorboard --logdir remoteDir/Unity_env/results --port 6006
@@ -113,6 +116,9 @@ $ conda install -c conda-forge sshfs
     - run `tmux` and run your training in the new terminal that opens
     - before ending the session type <kbd>Ctrl</kbd> + <kbd>b</kbd> and then <kbd>d</kbd>. This will detach the session
     - To reopen the session: open the ssh connection and type `tmux attach`
+* For enable scrolling in the tmux terminal: type <kbd>Ctrl</kbd> + <kbd>b</kbd> and then <kbd>:</kbd>, then type `set mouse on`
+* Find more useful commands for tmux [here](https://tmuxcheatsheet.com/)
+
 
 ### Overview of Instances
 | Creator  | IP Adress | Key |
@@ -128,3 +134,13 @@ $ conda install -c conda-forge sshfs
 * ongoing number
 
 Example: env1_cloudcpu8_complex2_1
+
+### Use VPN to get access from home
+1. Check if Java is installed with `java -version`. If not, install it: `$ sudo apt install default-jre`
+2. Log in to this [link](https://ssl-vpn1.aau.dk) with you AAU Account and click on Download
+3. Go to the folder where the file was downloaded and run the following command (with the downloaded file chosen):
+```bash
+sudo bash anyconnect-linux64-4.10.05085-core-vpn-webdeploy-k9.sh 
+```
+4. Launch the Cisco client: `$ /opt/cisco/anyconnect/bin/vpnui`
+5. Connect to: `ssl-vpn1.aau.dk` and log in

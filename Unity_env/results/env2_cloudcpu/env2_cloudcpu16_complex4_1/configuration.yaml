@@ -65,7 +65,7 @@ checkpoint_settings:
   run_id: env2_cloudcpu16_complex4_1
   initialize_from: null
   load_model: false
-  resume: false
+  resume: true
   force: false
   train_model: false
   inference: false

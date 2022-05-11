@@ -276,13 +276,13 @@ public class DuaroAgentComplexWT : Agent
                 control.currentIndexL = 0;
                 waitingTimerLower = waitingTimer;
                 Debug.Log("Waiting " + waitTime/50 + " Seconds - Lower Arm");
-                AddReward(-0.5f);
+                AddReward(-2.5f);
                 break;
             case 12:
                 control.currentIndexU = 0;
                 waitingTimerUpper = waitingTimer;
                 Debug.Log("Waiting " + waitTime/50 + " Seconds - Upper Arm");
-                AddReward(-0.5f);
+                AddReward(-2.5f);
                 break;
             default:
                 break;
@@ -320,22 +320,23 @@ public class DuaroAgentComplexWT : Agent
                 }
                 else if(skillLower == skillUpper)
                 {
-                    AddReward(-1.0f);
-                    Debug.Log("Add Negative Reward - Choosing the same action at the same time (-1)");
+                    AddReward(-5.0f);
+                    Debug.Log("Add Negative Reward - Choosing the same action at the same time (-5)");
                 }
                 // Update items Matrix Space
             }
             // Penalize choosing same action again
             else if(taskArray[itemsPosition[action,0], itemsPosition[action,1]] == 0)
             { 
-                AddReward(-1.0f);
-                Debug.Log("Add Negative Reward - Choosing the same action (-1)");
+                AddReward(-5.0f);
+                Debug.Log("Add Negative Reward - Choosing the same action (-5)");
             }
             // Penalize picking up the rectangle while there is something above
             if(itemsAbove == true)
             { 
-                AddReward(-2.0f);
-                Debug.Log("Add Negative Reward - There is something above (-2)");
+                AddReward(-10.0f);
+                Debug.Log("Add Negative Reward - There is something above (-10) - Restarting Environment");
+                EndEpisode();
             } 
         }
     }
@@ -365,15 +366,15 @@ public class DuaroAgentComplexWT : Agent
         // Check if an action has finished to assign the reward and Update the space matrix
         if (upperSkillReward == true &&  control.currentIndexU >= control.jointAnglesU.Count)
         {   
-            AddReward(2.0f);
-            Debug.Log("Add Reward - Upper Arm (+2)");
+            AddReward(10.0f);
+            Debug.Log("Add Reward - Upper Arm (+10)");
             upperSkillReward = false;
             UpdateMatrix(skillUpper);
         }
         else if (lowerSkillReward == true && control.currentIndexL >= control.jointAnglesL.Count)
         {
-            AddReward(2.0f);
-            Debug.Log("Add Reward - Lower Arm (+2)");
+            AddReward(10.0f);
+            Debug.Log("Add Reward - Lower Arm (+10)");
             lowerSkillReward = false;
             UpdateMatrix(skillLower);
         }
@@ -394,8 +395,8 @@ public class DuaroAgentComplexWT : Agent
         {
             Debug.Log("Restarting Scene from Fixed Update (Max Number of Skills)");
             EndEpisode();
-            //AddReward(-5.0f);
-            //Debug.Log("Add Negative Reward - MAX SKILLS REACHED (-5)");
+            AddReward(-10.0f);
+            Debug.Log("Add Negative Reward - MAX SKILLS REACHED (-10)");
         }
 
         // For Collision of Arms (Comment that out, if running without collision checking)
@@ -423,8 +424,8 @@ public class DuaroAgentComplexWT : Agent
 
         if (checkAllDone == 0)
         {
-            AddReward(5.0f);
-            Debug.Log("TASK COMPLETED (+5)!");
+            AddReward(40.0f);
+            Debug.Log("TASK COMPLETED (+40)!");
             checkAllDone = 2; 
         }
 

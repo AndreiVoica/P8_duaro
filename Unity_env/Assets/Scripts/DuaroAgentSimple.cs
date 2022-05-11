@@ -59,6 +59,8 @@ public class DuaroAgentSimple : Agent
     // Check which arm has to move
     private bool moveLowerOrUpper;
 
+    private int arm_collision = 0;
+
     //Max Number of Steps to be performed before the environment restarts
     [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 100000;
     private int m_resetTimer;
@@ -76,31 +78,16 @@ public class DuaroAgentSimple : Agent
 
     public override void OnEpisodeBegin() //set-up the environment for a new episode
     {
-        // Reset cube positions:
-        //Vector3 rotationVector = new Vector3(0, 0, 0);
         Debug.Log("OnEpisodeBegin");
-        // black.transform.localPosition = new Vector3(1.22f,0.789f,-1.3663f);
-        // black.transform.rotation = Quaternion.Euler(rotationVector);
-        // green.transform.localPosition = new Vector3(1.219f,0.898f,-1.32f);
-        // green.transform.rotation = Quaternion.Euler(rotationVector);
-        // Rectangle.transform.localPosition = new Vector3(1.22f,0.763f,-1.184f);
-        // Rectangle.transform.rotation = Quaternion.Euler(rotationVector);
-        // blue.transform.localPosition = new Vector3(1.219f,0.8231f,-1.267f);
-        // blue.transform.rotation = Quaternion.Euler(rotationVector);
-        // yellow.transform.localPosition = new Vector3(1.2213f,0.8255f,-1.0598f);
-        // yellow.transform.rotation = Quaternion.Euler(rotationVector);
-        // red.transform.localPosition = new Vector3(1.221f,0.823f,-1.1674f);
-        // red.transform.rotation = Quaternion.Euler(rotationVector);
 
+
+        arm_collision = 0;
         m_resetTimer = 0;
         m_resetSkill = 0;
         
-        //shapeBackup.CopyTo(taskArray, 0);
         taskArray = (int[,]) shapeBackup.Clone(); // make a copy
 
         sequence.Clear();
-        //SetReward(0.0f);
-        //checkAllDone = 0;
 
     }
 
@@ -115,6 +102,7 @@ public class DuaroAgentSimple : Agent
             {
                 sensor.AddObservation(taskArray[j,i]);
             }
+            sensor.AddObservation(arm_collision);
         }
     }
 
@@ -135,76 +123,7 @@ public class DuaroAgentSimple : Agent
     /// </summary>
     public void MoveAgent(ActionSegment<int> act)
     {
-        // if(moveLowerOrUpper == true)
-        // {
-        //     //control.jointAnglesL.Clear();
-
-        //     action = act[0];
-
-        //     // switch (action)
-        //     // {        
-        //     //     case 0:
-        //     //         control.currentIndexL = 0;
-        //     //         control.PickBlackLower();
-        //     //         break;
-        //     //     case 1:
-        //     //         control.currentIndexL = 0;
-        //     //         control.PickBlueLower();
-        //     //         break;
-        //     //     case 2:
-        //     //         control.currentIndexL = 0;
-        //     //         control.PickGreenLower();
-        //     //         break;
-        //     //     case 3: 
-        //     //         control.currentIndexL = 0;
-        //     //         control.PickRedLower();
-        //     //         break;
-        //     //     case 4:
-        //     //         control.currentIndexL = 0;
-        //     //         control.PickWhiteLower();
-        //     //         break;
-        //     //     default:
-        //     //         break;
-        //     // }
-        //     moveLowerOrUpper = false;
-        // }
-        // else if (moveLowerOrUpper == false)
-        // {
-        //     //control.jointAnglesU.Clear();
-
-        //     action = act[1];
-
-        //     // switch (action)
-        //     // {        
-        //     //     case 0:
-        //     //         control.currentIndexU = 0;
-        //     //         control.PickBlackUpper();
-        //     //         break;
-        //     //     case 1:
-        //     //         control.currentIndexU = 0;
-        //     //         control.PickBlueUpper();
-        //     //         break;
-        //     //     case 2:
-        //     //         control.currentIndexU = 0;
-        //     //         control.PickGreenUpper();
-        //     //         break;
-        //     //     case 3: 
-        //     //         control.currentIndexU = 0;
-        //     //         control.PickRedUpper();
-        //     //         break;
-        //     //     case 4:
-        //     //         control.currentIndexU = 0;
-        //     //         control.PickWhiteUpper();
-        //     //         break;
-        //     //     case 5:
-        //     //         control.currentIndexU = 0;
-        //     //         control.PickYellowUpper();
-        //     //         break;
-        //     //     default:
-        //     //         break;
-        //     // }
-        //     moveLowerOrUpper = true;
-        // }
+        
     }
 
     public void AgentRewards (ActionSegment<int> act)
@@ -284,14 +203,6 @@ public class DuaroAgentSimple : Agent
 
             allSequences.AddRange(sequence);
 
-            // using (var file = File.CreateText(path))
-            // {
-            //     foreach(var arr in allSequences)
-            //     {
-            //         file.WriteLine(string.Join(",", arr));
-            //     }
-            // }
-
             EndEpisode();
         }
 
@@ -306,125 +217,11 @@ public class DuaroAgentSimple : Agent
         //Debug.Log("CumulativeReward: " + reward);
     }
 
-        // moveLowerOrUpper = true; Lower Arm moves
-        // moveLowerOrUpper = false; Upper arm moves
-
-    // public override void Heuristic(in ActionBuffers actionsOut)
-    // {
         
-    //     // Debug.Log("Heuristic");
-        
-    //     var discreteActionsOut = actionsOut.DiscreteActions;
-
-    //     if (Input.GetKey(KeyCode.A) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action Lower 0
-    //     {
-    //         discreteActionsOut[0] = 0;
-    //         Debug.Log("Key A Pressed");
-    //         moveLowerOrUpper = true;
-    //         MoveAgent(actionsOut.DiscreteActions);
-    //         AgentRewards(actionsOut.DiscreteActions);
-    //     }
-    //     else if (Input.GetKey(KeyCode.B) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action Lower 1
-    //     {
-    //         discreteActionsOut[0] = 1;
-    //         Debug.Log("Key B Pressed");
-    //         moveLowerOrUpper = true;
-    //         MoveAgent(actionsOut.DiscreteActions);
-    //         AgentRewards(actionsOut.DiscreteActions);
-    //     }
-    //     else if (Input.GetKey(KeyCode.C) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action Lower 2
-    //     {
-    //         discreteActionsOut[0] = 2;
-    //         Debug.Log("Key C Pressed");
-    //         moveLowerOrUpper = true;
-    //         MoveAgent(actionsOut.DiscreteActions);
-    //         AgentRewards(actionsOut.DiscreteActions);
-    //     }
-    //     else if(Input.GetKey(KeyCode.D) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action Lower 3
-    //     {
-    //         discreteActionsOut[0] = 3;
-    //         Debug.Log("Key D Pressed");
-    //         moveLowerOrUpper = true;
-    //         MoveAgent(actionsOut.DiscreteActions);
-    //         AgentRewards(actionsOut.DiscreteActions); 
-    //     }
-    //     else if(Input.GetKey(KeyCode.E) && control.currentIndexL >= control.jointAnglesL.Count) // Select discrete action Lower 4
-    //     {
-    //         discreteActionsOut[0] = 4;
-    //         Debug.Log("Key E Pressed");
-    //         moveLowerOrUpper = true;
-    //         MoveAgent(actionsOut.DiscreteActions);
-    //         AgentRewards(actionsOut.DiscreteActions);
-    //     }
-    //     else if(Input.GetKey(KeyCode.Keypad1) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 0
-    //     {
-    //         discreteActionsOut[1] = 0;
-    //         Debug.Log("Key 1 Pressed");
-    //         moveLowerOrUpper = false;
-    //         MoveAgent(actionsOut.DiscreteActions);
-    //         AgentRewards(actionsOut.DiscreteActions);
-    //     }
-    //     else if(Input.GetKey(KeyCode.Keypad2) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 1
-    //     {
-    //         discreteActionsOut[1] = 1;
-    //         Debug.Log("Key 2 Pressed");
-    //         moveLowerOrUpper = false;
-    //         MoveAgent(actionsOut.DiscreteActions);
-    //         AgentRewards(actionsOut.DiscreteActions);
-    //     }
-    //     else if(Input.GetKey(KeyCode.Keypad3) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 2
-    //     {
-    //         discreteActionsOut[1] = 2;
-    //         Debug.Log("Key 3 Pressed");
-    //         moveLowerOrUpper = false;
-    //         MoveAgent(actionsOut.DiscreteActions);
-    //         AgentRewards(actionsOut.DiscreteActions);
-    //     }
-    //     else if(Input.GetKey(KeyCode.Keypad4) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 3
-    //     {
-    //         discreteActionsOut[1] = 3;
-    //         Debug.Log("Key 4 Pressed");
-    //         moveLowerOrUpper = false;
-    //         MoveAgent(actionsOut.DiscreteActions);
-    //         AgentRewards(actionsOut.DiscreteActions);
-    //     }
-    //     else if(Input.GetKey(KeyCode.Keypad5) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 4
-    //     {
-    //         discreteActionsOut[1] = 4;
-    //         Debug.Log("Key 5 Pressed");
-    //         moveLowerOrUpper = false;
-    //         MoveAgent(actionsOut.DiscreteActions);
-    //         AgentRewards(actionsOut.DiscreteActions);
-    //     }
-    //     else if(Input.GetKey(KeyCode.Keypad6) && control.currentIndexU >= control.jointAnglesU.Count) // Select discrete action Upper 5
-    //     {
-    //         discreteActionsOut[1] = 5;
-    //         Debug.Log("Key 6 Pressed");
-    //         moveLowerOrUpper = false;
-    //         MoveAgent(actionsOut.DiscreteActions);
-    //         AgentRewards(actionsOut.DiscreteActions);
-    //     }
-    //     Debug.Log("discreteActionsOut Lower = " + discreteActionsOut[0]);
-    //     Debug.Log("discreteActionsOut Upper = " + discreteActionsOut[1]);
-    // }	 
 
 
     void FixedUpdate()
     {
-        // RESEARCH IF REQUESTING ACTIONS THIS WAY THE AGENT MAY BE LEARNING FROM HALF OF THE ACTIONS THAT ARE NOT DOING ANYTHING 
-        // IF THAT IS THE CASE, TRY TO REQUEST ACTION FROM ONLY 1 OF THE DISCRETE ACTION BRANCHES
-        // if(control.currentIndexL >= control.jointAnglesL.Count && checkAllDone != 2)
-        // {
-        //     moveLowerOrUpper = true;
-        //     RequestDecision();
-        // }
-        // if(control.currentIndexU >= control.jointAnglesU.Count && checkAllDone != 2)
-        // {
-        //     moveLowerOrUpper = false;
-        //     RequestDecision();
-        // }
-
-
         // Update Cumulative Reward
         //reward = GetCumulativeReward();
 
