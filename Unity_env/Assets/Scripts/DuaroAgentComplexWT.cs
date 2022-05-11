@@ -188,15 +188,15 @@ public class DuaroAgentComplexWT : Agent
         }
     }
 
-    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    {      
-        //Debug.Log("OnActionReceived");
-        // Move the agent using the action.
-        MoveAgent(actionBuffers.DiscreteActions);
-        AgentRewards(actionBuffers.DiscreteActions);
+    // public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    // {      
+    //     //Debug.Log("OnActionReceived");
+    //     // Move the agent using the action.
+    //     MoveAgent(actionBuffers.DiscreteActions);
+    //     AgentRewards(actionBuffers.DiscreteActions);
 
-        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
-    } 
+    //     // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
+    // } 
 
     /// <summary>
     /// Function to call the discrete action selected 
@@ -276,13 +276,13 @@ public class DuaroAgentComplexWT : Agent
                 control.currentIndexL = 0;
                 waitingTimerLower = waitingTimer;
                 Debug.Log("Waiting " + waitTime/50 + " Seconds - Lower Arm");
-                AddReward(-1f);
+                AddReward(-0.5f);
                 break;
             case 12:
                 control.currentIndexU = 0;
                 waitingTimerUpper = waitingTimer;
                 Debug.Log("Waiting " + waitTime/50 + " Seconds - Upper Arm");
-                AddReward(-1f);
+                AddReward(-0.5f);
                 break;
             default:
                 break;
@@ -394,8 +394,8 @@ public class DuaroAgentComplexWT : Agent
         {
             Debug.Log("Restarting Scene from Fixed Update (Max Number of Skills)");
             EndEpisode();
-            AddReward(-2.0f);
-            Debug.Log("Add Negative Reward - MAX SKILLS REACHED (-2)");
+            //AddReward(-5.0f);
+            //Debug.Log("Add Negative Reward - MAX SKILLS REACHED (-5)");
         }
 
         // For Collision of Arms (Comment that out, if running without collision checking)

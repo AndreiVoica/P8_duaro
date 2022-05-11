@@ -16,7 +16,7 @@ public class JointAngles
     public JointAngles()
     {
     }
-
+    //JOINT ANGLES ORDER CHECK IT!!!!!
     public JointAngles(float joint1L, float joint2L, float joint3L, float joint4L, float joint1U, float joint2U, float joint3U, float joint4U, float llgripper, float lrgripper, float urgripper, float ulgripper)
     {
         Joint1L = joint1L;
