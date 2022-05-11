@@ -336,6 +336,8 @@ public class DuaroAgentComplexWT : Agent
             { 
                 AddReward(-10.0f);
                 Debug.Log("Add Negative Reward - There is something above (-10) - Restarting Environment");
+                control.currentIndexU = 1000;
+                control.currentIndexL = 1000;
                 EndEpisode();
             } 
         }
