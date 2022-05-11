@@ -2,8 +2,8 @@ behaviors:
   DuaroAgentComplex:
     trainer_type: ppo
     hyperparameters:
-      batch_size: 256
-      buffer_size: 4096
+      batch_size: 512
+      buffer_size: 5120
       learning_rate: 0.0003
       beta: 0.001
       epsilon: 0.20
