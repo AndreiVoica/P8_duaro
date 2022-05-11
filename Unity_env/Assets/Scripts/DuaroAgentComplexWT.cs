@@ -73,7 +73,7 @@ public class DuaroAgentComplexWT : Agent
     private bool moveLowerOrUpper = true;
 
     // Max Number of Steps to be performed before the environment restarts
-    [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 20000;
+    [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 10000;
     public int m_resetTimer;
     // Max Number of Skills to be performed before the environment restarts
     [Tooltip("Max Number of Skills")] public int MaxSkills = 15;
@@ -188,15 +188,15 @@ public class DuaroAgentComplexWT : Agent
         }
     }
 
-    // public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
-    // {      
-    //     //Debug.Log("OnActionReceived");
-    //     // Move the agent using the action.
-    //     MoveAgent(actionBuffers.DiscreteActions);
-    //     AgentRewards(actionBuffers.DiscreteActions);
+    public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
+    {      
+        //Debug.Log("OnActionReceived");
+        // Move the agent using the action.
+        MoveAgent(actionBuffers.DiscreteActions);
+        AgentRewards(actionBuffers.DiscreteActions);
 
-    //     // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
-    // } 
+        // CHECK WHY USE THIS EVEN IN HEURISTIC MODE
+    } 
 
     /// <summary>
     /// Function to call the discrete action selected 
@@ -446,8 +446,8 @@ public class DuaroAgentComplexWT : Agent
             if (count_collision_arm_link == 1)
             {
                 arm_collision = 1;
-                AddReward(-2.0f);
-                Debug.Log("Bad Reward for collision of arms (-2)");
+                AddReward(-10.0f);
+                Debug.Log("Bad Reward for collision of arms (-10)");
                 Debug.Log("CumulativeReward " + reward);
 
                 control.currentIndexU = 1000;
@@ -585,8 +585,6 @@ public class DuaroAgentComplexWT : Agent
             EndEpisode();
         }
     }	 
-
-
 }
 
 
