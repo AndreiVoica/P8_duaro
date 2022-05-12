@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1205,7 +1205,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 198763911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738b5472364cd0c21a513d8868827e56, type: 3}
+  m_Script: {fileID: 11500000, guid: a998be7c288864c7da79f72ab896a979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   red: {fileID: 677450745}
   DuaroAgent: {fileID: 198763916}
   action: 0
-  MaxEnvironmentSteps: 20000
+  MaxEnvironmentSteps: 10000
   m_resetTimer: 0
   MaxSkills: 15
   skillLower: -1
