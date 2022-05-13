@@ -126,6 +126,8 @@ $ conda install -c conda-forge sshfs
 | Andrei | 10.92.0.247  | strato_247.pem |
 | Sabrina  | 10.92.0.33  | strato_33.pem |
 | Daniel | 10.92.0.253  | strato_253.pem |
+| Lekshmi | 10.92.0.151  | strato_151.pem |
+
 
 ### Naming of Trainings
 * Name of environment (env1, env2,...)
