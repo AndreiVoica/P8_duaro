@@ -74,6 +74,7 @@ public class Control : MonoBehaviour
                 var anglesWhite = DecodeLine(lineWhite);
                 jointAnglesL.Add(anglesWhite);
             }
+            strReader.Close();
         }
         Debug.Log("Control - PickGreenLower");
     }
@@ -92,6 +93,7 @@ public class Control : MonoBehaviour
                 var anglesWhite = DecodeLine(lineWhite);
                 jointAnglesU.Add(anglesWhite);
             }
+            strReader.Close();
         }
         Debug.Log("Control - PickGreenUpper");
     }
@@ -110,6 +112,7 @@ public class Control : MonoBehaviour
                 var anglesWhite = DecodeLine(lineWhite);
                 jointAnglesL.Add(anglesWhite);
             }
+            strReader.Close();
         }
         Debug.Log("Control - PickBlackLower");
     }
@@ -128,6 +131,7 @@ public class Control : MonoBehaviour
                 var anglesWhite = DecodeLine(lineWhite);
                 jointAnglesU.Add(anglesWhite);
             }
+            strReader.Close();
         }
         Debug.Log("Control - PickBlackUpper");
     }
@@ -146,6 +150,7 @@ public class Control : MonoBehaviour
                 var anglesWhite = DecodeLine(lineWhite);
                 jointAnglesL.Add(anglesWhite);
             }
+            strReader.Close();
         }
         Debug.Log("Control - PickBlueLower");
     }
@@ -164,6 +169,7 @@ public class Control : MonoBehaviour
                 var anglesWhite = DecodeLine(lineWhite);
                 jointAnglesU.Add(anglesWhite);
             }
+            strReader.Close();
         }
         Debug.Log("Control - PickBlueUpper");
     }
@@ -182,8 +188,10 @@ public class Control : MonoBehaviour
                 var anglesWhite = DecodeLine(lineWhite);
                 jointAnglesL.Add(anglesWhite);
             }
+            strReader.Close();
         }
         Debug.Log("Control - PickRedLower");
+        
     }
 
     public void PickRedUpper()
@@ -200,6 +208,7 @@ public class Control : MonoBehaviour
                 var anglesWhite = DecodeLine(lineWhite);
                 jointAnglesU.Add(anglesWhite);
             }
+            strReader.Close();
         }
         Debug.Log("Control - PickRedUpper");
     }
@@ -218,6 +227,7 @@ public class Control : MonoBehaviour
                 var anglesWhite = DecodeLine(lineWhite);
                 jointAnglesU.Add(anglesWhite);
             }
+            strReader.Close();
         }
         Debug.Log("Control - PickYellowUpper");
     }
@@ -236,6 +246,7 @@ public class Control : MonoBehaviour
                 var anglesWhite = DecodeLine(lineWhite);
                 jointAnglesL.Add(anglesWhite);
             }
+            strReader.Close();
         }
         Debug.Log("Control - PickWhiteLower");
     }
@@ -254,6 +265,7 @@ public class Control : MonoBehaviour
                 var anglesWhite = DecodeLine(lineWhite);
                 jointAnglesU.Add(anglesWhite);
             }
+            strReader.Close();
         }
         Debug.Log("Control - PickWhiteUpper");
     }
