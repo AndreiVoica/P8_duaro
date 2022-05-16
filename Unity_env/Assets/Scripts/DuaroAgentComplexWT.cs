@@ -331,7 +331,7 @@ public class DuaroAgentComplexWT : Agent
                 AddReward(-5.0f);
                 Debug.Log("Add Negative Reward - Choosing the same action (-5)");
             }
-            // Penalize picking up the rectangle while there is something above
+            // Penalize picking up a block with something above
             if(itemsAbove == true)
             { 
                 AddReward(-10.0f);
