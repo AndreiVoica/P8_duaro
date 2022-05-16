@@ -275,7 +275,7 @@ public class DuaroAgentComplex : Agent
 
         // Check if there are items above
         itemsAbove = false;
-        for (int i = itemsPosition[action,1]; i < itemsPosition[action,3]; i++)
+        for (int i = itemsPosition[action,1]; i < itemsPosition[action,1] + itemsPosition[action,3]; i++)
         {
             if (taskArray[itemsPosition[action,0] - 1, i] == 1)
             {
@@ -311,6 +311,9 @@ public class DuaroAgentComplex : Agent
         { 
             AddReward(-2.0f);
             Debug.Log("Add Negative Reward - There is something above (-2)");
+            control.currentIndexU = 1000;
+            control.currentIndexL = 1000;
+            EndEpisode();
         } 
     }
 
