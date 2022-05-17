@@ -9,8 +9,8 @@ public class Control : MonoBehaviour
 
     public List<JointAngles> jointAnglesU = new List<JointAngles>(); //List that holds the joint angles values for the upper hand
     public List<JointAngles> jointAnglesL = new List<JointAngles>(); //List that holds the joint angles values for the lower hand
-    public int currentIndexU = 0; //index that will iterate through each value of the joint angle (Upper hand)
-    public int currentIndexL = 0; //index that will iterate through each value of the joint angle (Lower hand)
+    public int currentIndexU = 2; //index that will iterate through each value of the joint angle (Upper hand)
+    public int currentIndexL = 2; //index that will iterate through each value of the joint angle (Lower hand)
     
 
     public void Start()
@@ -76,7 +76,7 @@ public class Control : MonoBehaviour
             }
             strReader.Close();
         }
-        Debug.Log("Control - PickGreenLower");
+        //Debug.Log("Control - PickGreenLower");
     }
 
     public void PickGreenUpper()
@@ -95,7 +95,7 @@ public class Control : MonoBehaviour
             }
             strReader.Close();
         }
-        Debug.Log("Control - PickGreenUpper");
+        //Debug.Log("Control - PickGreenUpper");
     }
 
     public void PickBlackLower()
@@ -114,7 +114,7 @@ public class Control : MonoBehaviour
             }
             strReader.Close();
         }
-        Debug.Log("Control - PickBlackLower");
+        //Debug.Log("Control - PickBlackLower");
     }
 
     public void PickBlackUpper()
@@ -133,7 +133,7 @@ public class Control : MonoBehaviour
             }
             strReader.Close();
         }
-        Debug.Log("Control - PickBlackUpper");
+        //Debug.Log("Control - PickBlackUpper");
     }
 
     public void PickBlueLower()
@@ -152,7 +152,7 @@ public class Control : MonoBehaviour
             }
             strReader.Close();
         }
-        Debug.Log("Control - PickBlueLower");
+        //Debug.Log("Control - PickBlueLower");
     }
 
     public void PickBlueUpper()
@@ -171,7 +171,7 @@ public class Control : MonoBehaviour
             }
             strReader.Close();
         }
-        Debug.Log("Control - PickBlueUpper");
+        //Debug.Log("Control - PickBlueUpper");
     }
 
     public void PickRedLower()
@@ -190,7 +190,7 @@ public class Control : MonoBehaviour
             }
             strReader.Close();
         }
-        Debug.Log("Control - PickRedLower");
+        //Debug.Log("Control - PickRedLower");
         
     }
 
@@ -210,7 +210,7 @@ public class Control : MonoBehaviour
             }
             strReader.Close();
         }
-        Debug.Log("Control - PickRedUpper");
+        //Debug.Log("Control - PickRedUpper");
     }
 
     public void PickYellowUpper()
@@ -229,7 +229,7 @@ public class Control : MonoBehaviour
             }
             strReader.Close();
         }
-        Debug.Log("Control - PickYellowUpper");
+        //Debug.Log("Control - PickYellowUpper");
     }
 
     public void PickWhiteLower()
@@ -248,7 +248,7 @@ public class Control : MonoBehaviour
             }
             strReader.Close();
         }
-        Debug.Log("Control - PickWhiteLower");
+        //Debug.Log("Control - PickWhiteLower");
     }
 
     public void PickWhiteUpper()
@@ -267,7 +267,7 @@ public class Control : MonoBehaviour
             }
             strReader.Close();
         }
-        Debug.Log("Control - PickWhiteUpper");
+        //Debug.Log("Control - PickWhiteUpper");
     }
 
     // Stop Movement
