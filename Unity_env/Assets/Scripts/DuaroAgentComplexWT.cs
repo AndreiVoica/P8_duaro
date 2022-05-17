@@ -362,6 +362,8 @@ public class DuaroAgentComplexWT : Agent
         if(checkAllDone == 2)
         {
             Debug.Log("RESTARTING ENVIRONMENT -- TASK COMPLETED SUCCESFULLY");
+            control.currentIndexU = 1000;
+            control.currentIndexL = 1000;
             EndEpisode();
         }
 
@@ -390,12 +392,15 @@ public class DuaroAgentComplexWT : Agent
         if (m_resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
         {
             Debug.Log("Restarting Scene from Fixed Update (Max Environment Steps)");
-            //AddReward(MaxEnvironmentSteps* - 0.000001f);
+            control.currentIndexU = 1000;
+            control.currentIndexL = 1000;
             EndEpisode();
         }
         else if(m_resetSkill > MaxSkills)
         {
             Debug.Log("Restarting Scene from Fixed Update (Max Number of Skills)");
+            control.currentIndexU = 1000;
+            control.currentIndexL = 1000;
             EndEpisode();
             AddReward(-10.0f);
             Debug.Log("Add Negative Reward - MAX SKILLS REACHED (-10)");
