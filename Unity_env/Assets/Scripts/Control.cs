@@ -31,7 +31,7 @@ public class Control : MonoBehaviour
         robot.set_lower_joint_target(jointAnglesL[currentIndexL].Joint1L * Mathf.Rad2Deg, jointAnglesL[currentIndexL].Joint2L * Mathf.Rad2Deg, jointAnglesL[currentIndexL].Joint3L, jointAnglesL[currentIndexL].Joint4L * Mathf.Rad2Deg, jointAnglesL[currentIndexL].Lrgripper, jointAnglesL[currentIndexL].Llgripper);
         //robot.set_upper_joint_target(jointAnglesL[currentIndex].Joint1U * Mathf.Rad2Deg, jointAnglesL[currentIndex].Joint2U * Mathf.Rad2Deg, jointAnglesL[currentIndex].Joint3U, jointAnglesL[currentIndex].Joint4U * Mathf.Rad2Deg, jointAnglesL[currentIndex].Ulgripper, jointAnglesL[currentIndex].Urgripper);
         currentIndexL++;
-        Debug.Log("test = " + currentIndexL);
+        //Debug.Log("test = " + currentIndexL);
         // if (currentIndex >= 10000) //For what is this needed?
         // {
 
