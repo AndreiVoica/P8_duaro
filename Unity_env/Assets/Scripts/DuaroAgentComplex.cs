@@ -109,20 +109,21 @@ public class DuaroAgentComplex : Agent
         robot.set_upper_joint_target(45f, -45f, 0.15f, 0f, 0.055f, -0.055f); //Set the upper joint values to a home position
 
         DuaroAgent.position = new Vector3(-0.6622652f, 0.0f, 0.0f);
+
         DuaroAgent.rotation = Quaternion.Euler(rotationVectorDuaro);
         transform.Find("world/duarobase_link").GetComponent<ArticulationBody>().TeleportRoot(DuaroAgent.position, DuaroAgent.rotation);
 
-        black.transform.localPosition = new Vector3(1.22f,0.76f,-1.3663f);
+        black.transform.localPosition = new Vector3(1.22f,0.774f,-1.3263f);
         black.transform.rotation = Quaternion.Euler(rotationVector);
-        green.transform.localPosition = new Vector3(1.219f,0.837f,-1.32f);
+        green.transform.localPosition = new Vector3(1.219f,0.856f,-1.276f);
         green.transform.rotation = Quaternion.Euler(rotationVector);
-        Rectangle.transform.localPosition = new Vector3(1.22f,0.73f,-1.184f);
+        Rectangle.transform.localPosition = new Vector3(1.22f,0.748f,-1.144f);
         Rectangle.transform.rotation = Quaternion.Euler(rotationVector);
-        blue.transform.localPosition = new Vector3(1.219f,0.78f,-1.267f);
+        blue.transform.localPosition = new Vector3(1.219f,0.804f,-1.227f);
         blue.transform.rotation = Quaternion.Euler(rotationVector);
-        yellow.transform.localPosition = new Vector3(1.2213f,0.78f,-1.0598f);
+        yellow.transform.localPosition = new Vector3(1.2213f,0.804f,-1.02f);
         yellow.transform.rotation = Quaternion.Euler(rotationVector);
-        red.transform.localPosition = new Vector3(1.221f,0.78f,-1.1674f);
+        red.transform.localPosition = new Vector3(1.221f,0.823f,-1.13f);
         red.transform.rotation = Quaternion.Euler(rotationVector);
 
         m_resetTimer = 0;
