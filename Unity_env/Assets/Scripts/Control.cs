@@ -31,7 +31,7 @@ public class Control : MonoBehaviour
         robot.set_lower_joint_target(jointAnglesL[currentIndexL].Joint1L * Mathf.Rad2Deg, jointAnglesL[currentIndexL].Joint2L * Mathf.Rad2Deg, jointAnglesL[currentIndexL].Joint3L, jointAnglesL[currentIndexL].Joint4L * Mathf.Rad2Deg, jointAnglesL[currentIndexL].Lrgripper, jointAnglesL[currentIndexL].Llgripper);
         //robot.set_upper_joint_target(jointAnglesL[currentIndex].Joint1U * Mathf.Rad2Deg, jointAnglesL[currentIndex].Joint2U * Mathf.Rad2Deg, jointAnglesL[currentIndex].Joint3U, jointAnglesL[currentIndex].Joint4U * Mathf.Rad2Deg, jointAnglesL[currentIndex].Ulgripper, jointAnglesL[currentIndex].Urgripper);
         currentIndexL++;
-        
+        Debug.Log("test = " + currentIndexL);
         // if (currentIndex >= 10000) //For what is this needed?
         // {
 
@@ -57,7 +57,7 @@ public class Control : MonoBehaviour
     }
 
     // PickWhite, PickBlue and PickRed are functions each representing a skill. PickWhite will pick the white cube in the Unity scene, PickRed -> Red cube, PickBlue -> Blue cube
-    // All 3 functions work the same. The functions will find the csv file and read through all the rows and collumns.
+    // All functions work the same. The functions will find the csv file and read through all the rows and collumns.
     // The values will be then added to the jointAnglesU and jointAnglesL lists.
 
     public void PickGreenLower()

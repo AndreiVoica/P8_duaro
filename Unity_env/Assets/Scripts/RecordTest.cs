@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class RecordTest : MonoBehaviour
 {
+    public GameObject duarolower_link_j1;
+    public GameObject duarolower_link_j2;
+    public GameObject duarolower_link_j3;
+    //public GameObject duarolower_link_j3_obst;
+    public GameObject duarolower_link_j4;
     public GameObject duaroupper_link_j1;
     public GameObject duaroupper_link_j2;
     public GameObject duaroupper_link_j3;
@@ -11,30 +16,25 @@ public class RecordTest : MonoBehaviour
     public GameObject duaroupper_link_j4;
     //public GameObject upper_gripper_gripper_right;
     //public GameObject upper_gripper_gripper_left;
-    public GameObject duarolower_link_j1;
-    public GameObject duarolower_link_j2;
-    public GameObject duarolower_link_j3;
-    //public GameObject duarolower_link_j3_obst;
-    public GameObject duarolower_link_j4;
-    public GameObject upper_gripper_gripper_right;
-    public GameObject upper_gripper_gripper_left;
     public GameObject lower_gripper_gripper_right;
     public GameObject lower_gripper_gripper_left;
+    public GameObject upper_gripper_gripper_right;
+    public GameObject upper_gripper_gripper_left;
     //public GameObject lower_gripper_gripper_right;
     //public GameObject lower_gripper_gripper_left;
+    List<float> lowerLink1 = new List<float>();
+    List<float> lowerLink2 = new List<float>();
+    List<float> lowerLink3 = new List<float>();
+    List<float> lowerLink4 = new List<float>();
     List<float> timestampList = new List<float>();
     List<float> upperLink1 = new List<float>();
     List<float> upperLink2 = new List<float>();
     List<float> upperLink3 = new List<float>();
     List<float> upperLink4 = new List<float>();
-    List<float> lowerLink1 = new List<float>();
-    List<float> lowerLink2 = new List<float>();
-    List<float> lowerLink3 = new List<float>();
-    List<float> lowerLink4 = new List<float>();
-    List<float> GripUpperR = new List<float>();
-    List<float> GripUpperL = new List<float>();
     List<float> GripLowerR = new List<float>();
     List<float> GripLowerL = new List<float>();
+    List<float> GripUpperR = new List<float>();
+    List<float> GripUpperL = new List<float>();
     private float unixTimestamp = 0.0f;
     public float angleU1;
     public float angleU2;
@@ -68,18 +68,18 @@ public class RecordTest : MonoBehaviour
         Time.fixedDeltaTime = 0.1f;
         unixTimestamp += Time.fixedDeltaTime;
         timestampList.Add(unixTimestamp);
-        upperLink1.Add(angleU1 * Mathf.Deg2Rad);
-        upperLink2.Add(angleU2 * Mathf.Deg2Rad);
-        upperLink3.Add(angleU3);
-        upperLink4.Add(angleU4 * Mathf.Deg2Rad);
         lowerLink1.Add(angleL1 * Mathf.Deg2Rad);
         lowerLink2.Add(angleL2 * Mathf.Deg2Rad);
         lowerLink3.Add(angleL3);
         lowerLink4.Add(angleL4 * Mathf.Deg2Rad);
-        GripUpperR.Add(upperR);
-        GripUpperL.Add(upperL);
+        upperLink1.Add(angleU1 * Mathf.Deg2Rad);
+        upperLink2.Add(angleU2 * Mathf.Deg2Rad);
+        upperLink3.Add(angleU3);
+        upperLink4.Add(angleU4 * Mathf.Deg2Rad);
         GripLowerR.Add(lowerR);
         GripLowerL.Add(lowerL);
+        GripUpperR.Add(upperR);
+        GripUpperL.Add(upperL);
     }
 
     private void OnApplicationQuit()
@@ -87,25 +87,25 @@ public class RecordTest : MonoBehaviour
         using (System.IO.StreamWriter file =
            new System.IO.StreamWriter("test.csv"))
            {
-               store.Add("Upper Link 1", upperLink1);
-               store.Add("Upper Link 2", upperLink2);
-               store.Add("Upper Link 3", upperLink3);
-               store.Add("Upper Link 4", upperLink4);
                store.Add("Lower Link 1", lowerLink1);
                store.Add("Lower Link 2", lowerLink2);
                store.Add("Lower Link 3", lowerLink3);
                store.Add("Lower Link 4", lowerLink4);
-               store.Add("Grip Upper R", GripUpperR);
-               store.Add("Grip Upper L", GripUpperL);
+               store.Add("Upper Link 1", upperLink1);
+               store.Add("Upper Link 2", upperLink2);
+               store.Add("Upper Link 3", upperLink3);
+               store.Add("Upper Link 4", upperLink4);
                store.Add("Grip Lower R", GripLowerR);
                store.Add("Grip Lower L", GripLowerL);
-               string[] joints = new[]{"Upper Link 1","Upper Link 2","Upper Link 3","Upper Link 4","Lower Link 1","Lower Link 2","Lower Link 3","Lower Link 4","Grip Upper R","Grip Upper L","Grip Lower R","Grip Lower L"};
+               store.Add("Grip Upper R", GripUpperR);
+               store.Add("Grip Upper L", GripUpperL);
+               string[] joints = new[]{"Lower Link 1","Lower Link 2","Lower Link 3","Lower Link 4","Upper Link 1","Upper Link 2","Upper Link 3","Upper Link 4","Grip Lower R","Grip Lower L","Grip Upper R","Grip Upper L"};
                for (int i = 0; i < store["Lower Link 1"].Capacity; i++)
                {
                     if(i == 0)
                     {
                         //write column headings for .csv file
-                        string colHeadings = "Timestamp, upperLink1, upperLink2, upperLink3, upperLink4, lowerLink1, lowerLink2, lowerLink3, lowerLink4, gripUpperR, gripUpperL, gripLowerR, gripLowerL";
+                        string colHeadings = "Timestamp, lowerLink1, lowerLink2, lowerLink3, lowerLink4, upperLink1, upperLink2, upperLink3, upperLink4, gripLowerR, gripLowerL, gripUpperR, gripUpperL";
     
                         file.WriteLine(colHeadings);
                     }
