@@ -93,6 +93,7 @@ public class DuaroAgentComplexWT : Agent
     public int skillUpper = -1;
     public bool lowerSkillReward;
     public bool upperSkillReward;
+    public int counter = 0;
 
     public override void Initialize()
     {
@@ -109,8 +110,11 @@ public class DuaroAgentComplexWT : Agent
         Vector3 rotationVector = new Vector3(0, 0, 0);
         Vector3 rotationVectorDuaro = new Vector3(0, 180, 0);
         Debug.Log("OnEpisodeBegin");
-
- 
+        counter++;
+        if(counter == 24)
+        {
+            Debug.Break();
+        }
         
         black.transform.localPosition = new Vector3(1.22f,0.774f,-1.3663f);
         black.transform.rotation = Quaternion.Euler(rotationVector);
