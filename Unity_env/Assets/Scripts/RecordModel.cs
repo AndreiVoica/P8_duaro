@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecordTest : MonoBehaviour
+public class RecordModel : MonoBehaviour
 {
     public GameObject duarolower_link_j1;
     public GameObject duarolower_link_j2;
@@ -65,27 +65,27 @@ public class RecordTest : MonoBehaviour
         lowerR = lower_gripper_gripper_right.transform.localPosition.z;
         lowerL = lower_gripper_gripper_left.transform.localPosition.z;
 
-        Time.fixedDeltaTime = 0.1f;
-        unixTimestamp += Time.fixedDeltaTime;
+        Time.fixedDeltaTime = 0.02f;
+        unixTimestamp += Time.fixedDeltaTime*2.5f;
         timestampList.Add(unixTimestamp);
-        lowerLink1.Add(angleL1 * Mathf.Deg2Rad);
-        lowerLink2.Add(angleL2 * Mathf.Deg2Rad);
+        lowerLink1.Add(angleL1 * Mathf.Deg2Rad * Mathf.Sign(-1));
+        lowerLink2.Add(angleL2 * Mathf.Deg2Rad * Mathf.Sign(-1));
         lowerLink3.Add(angleL3);
-        lowerLink4.Add(angleL4 * Mathf.Deg2Rad);
-        upperLink1.Add(angleU1 * Mathf.Deg2Rad);
-        upperLink2.Add(angleU2 * Mathf.Deg2Rad);
+        lowerLink4.Add(angleL4 * Mathf.Deg2Rad * Mathf.Sign(-1));
+        upperLink1.Add(angleU1 * Mathf.Deg2Rad * Mathf.Sign(-1));
+        upperLink2.Add(angleU2 * Mathf.Deg2Rad * Mathf.Sign(-1));
         upperLink3.Add(angleU3);
-        upperLink4.Add(angleU4 * Mathf.Deg2Rad);
-        GripLowerR.Add(lowerR);
-        GripLowerL.Add(lowerL);
-        GripUpperR.Add(upperR);
-        GripUpperL.Add(upperL);
+        upperLink4.Add(angleU4 * Mathf.Deg2Rad * Mathf.Sign(-1));
+        GripLowerR.Add(lowerR * Mathf.Sign(-1));
+        GripLowerL.Add(lowerL * Mathf.Sign(-1));
+        GripUpperR.Add(upperR * Mathf.Sign(-1));
+        GripUpperL.Add(upperL * Mathf.Sign(-1));
     }
 
     private void OnApplicationQuit()
     {
         using (System.IO.StreamWriter file =
-           new System.IO.StreamWriter("test.csv"))
+           new System.IO.StreamWriter("goodfinalseq20hz.csv"))
            {
                store.Add("Lower Link 1", lowerLink1);
                store.Add("Lower Link 2", lowerLink2);
@@ -123,9 +123,10 @@ public class RecordTest : MonoBehaviour
                     //write line to file with timestamp
                     file.WriteLine(timestampList[i] + ", " + toAppend);
                }
-           }
+           
            
     }    
+    }
 }
 
 // + ", " + upperLink1[i] + ", " + upperLink2[i] + ", " + upperLink3[i] + ", " + upperLink4[i]+ ", " + lowerLink1[i] + ", " + lowerLink2[i]+ ", " + lowerLink3[i] + ", " + lowerLink4[i] + ", " + GripUpperR[i] + ", " + GripUpperL[i]+ ", " + GripLowerR[i] + ", " + GripLowerL[i]+ ", "
