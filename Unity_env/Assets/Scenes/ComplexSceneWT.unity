@@ -1227,6 +1227,7 @@ MonoBehaviour:
   skillUpper: -1
   lowerSkillReward: 0
   upperSkillReward: 0
+  counter: 0
 --- !u!114 &198763913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,7 +1377,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 230cf43951e8a947fac79dabe96b2539, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: f47e948995bb6cd599001395375d494c, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: DuaroAgentComplex
@@ -3699,7 +3700,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462134261}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08bc9ac9f369f2ed8bc2e07c97959e6e, type: 3}
   m_Name: 
