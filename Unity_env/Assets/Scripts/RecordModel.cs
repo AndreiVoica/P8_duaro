@@ -85,7 +85,7 @@ public class RecordModel : MonoBehaviour
     private void OnApplicationQuit()
     {
         using (System.IO.StreamWriter file =
-           new System.IO.StreamWriter("goodfinalseq20hz.csv"))
+           new System.IO.StreamWriter("20hz.csv"))
            {
                store.Add("Lower Link 1", lowerLink1);
                store.Add("Lower Link 2", lowerLink2);
