@@ -195,6 +195,7 @@ public class DuaroAgentComplexWT : Agent
         }
     }
 
+    //Comment OnActionReceived() function for heuristic control (manual control) / Uncomment for default (running the models)
     public override void OnActionReceived(ActionBuffers actionBuffers) //receives actions and assigns the reward
     {      
         //Debug.Log("OnActionReceived");
