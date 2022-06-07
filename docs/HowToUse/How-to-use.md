@@ -17,3 +17,15 @@
 <img src = "../../images/TFModels.png" width="1000"> Figure 3
 
 5. To apply a model to the robot, click and drop the desired model in the `Behavior Parameters` under `Model`. (Figure 2)
+
+6. Click the play bottom on the top and enjoy.
+
+## Manual control
+
+1. If you want to use the keyboard to manually control the robot, in the `Behavior Parameters` under `Behavior Type` select `Heuristic only` as seen in Figure 4.
+
+<img src = "../../images/ManualControl.png" width="400"> Figure 4
+
+2. Remove the trained model in the `Behavior Parameters` under `Model`. To do so click the circled bottom next to the model and on the pop-up screen select None as seen in Figure 5.
+
+<img src = "../../images/RemoveModel.png" width="400"> Figure 5
