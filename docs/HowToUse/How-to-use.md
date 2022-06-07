@@ -29,3 +29,5 @@
 2. Remove the trained model in the `Behavior Parameters` under `Model`. To do so click the circled bottom next to the model and on the pop-up screen select None as seen in Figure 5.
 
 <img src = "../../images/RemoveModel.png" width="700"> Figure 5
+
+3. 
