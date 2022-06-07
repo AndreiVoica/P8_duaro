@@ -14,6 +14,6 @@
 
 4. Navigate to the Project window and select the folder named `TFModels`. This folder contains different trained models that can be applied to the Duaro robot. 
 
-<img src = "../../images/TFModels.png" width="400">
+<img src = "../../images/TFModels.png" width="800">
 
 5. To apply a model to the robot, click and drop the desired model in the `Behavior Parameters` under `Model`.
