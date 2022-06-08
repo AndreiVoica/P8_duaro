@@ -18,13 +18,13 @@
 
 5. To apply a model to the robot, click and drop the desired model in the `Behavior Parameters` under `Model`. (Figure 2)
 
-6. Click the play bottom on the top and enjoy.
+6. Click the play bottom on the top.
 
 ## Record the model
 
 1. In the `Hierarchy` section, select `ReadAngels` game object.
 
-<img src = "../../images/ReadAngels.png" width="400"> Figure 4
+<img src = "../../images/ReadAngles.png" width="400"> Figure 4
 
 2. In the `Inspector` make sure that `Record Model` script is selected.
 
