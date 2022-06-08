@@ -30,7 +30,7 @@
 
 <img src = "../../images/RecordModel.png" width="400">
 
-3. After stopping the Unity, a recording will be saved as a .csv file under the main Unity folder
+3. After stopping the Unity, a recording will be saved as a <name>.csv file under the main Unity folder
 
 ## Manual control
 
