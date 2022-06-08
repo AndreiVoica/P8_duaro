@@ -20,6 +20,18 @@
 
 6. Click the play bottom on the top and enjoy.
 
+## Record the model
+
+1. In the `Hierarchy` section, select `ReadAngels` game object.
+
+<img src = "../../images/ReadAngels.png" width="1000"> Figure 4
+
+2. In the `Inspector` make sure that `Record Model` script is selected.
+
+<img src = "../../images/RecordModel.png" width="1000"> Figure 5
+
+
+
 ## Manual control
 
 1. If you want to use the keyboard to manually control the robot, in the `Behavior Parameters` under `Behavior Type` select `Heuristic only` as seen in Figure 4.
