@@ -30,4 +30,12 @@
 
 <img src = "../../images/RemoveModel.png" width="700"> Figure 5
 
-3. 
+3. Go to `Scripts` folder and open the `DuaroAgentComplexWT.cs` script.
+
+<img src = "../../images/Scripts.png" width="700"> Figure 5
+
+4. Comment lines 199 through 207 
+
+<img src = "../../images/HeuristicControl.png" width="700"> Figure 5
+
+5. Press `Play` and use the keys from A to N to control the robot or to reset the episode.
