@@ -24,11 +24,11 @@
 
 1. In the `Hierarchy` section, select `ReadAngels` game object.
 
-<img src = "../../images/ReadAngels.png" width="1000"> Figure 4
+<img src = "../../images/ReadAngels.png" width="400"> Figure 4
 
 2. In the `Inspector` make sure that `Record Model` script is selected.
 
-<img src = "../../images/RecordModel.png" width="1000"> Figure 5
+<img src = "../../images/RecordModel.png" width="400"> Figure 5
 
 
 
