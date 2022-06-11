@@ -22,7 +22,7 @@ In the following video, the trained model is performed by the digital robot, sho
 
 ![](/videos/final_sequence.gif)
 
-In the following video, the obtained sequence is performed on the physical robot. It can be seen that the grippers are not working properly, because of the issues described in the report. However, it can be seen that the sequence of skills is performed accurate.
+In the following video, another obtained sequence is performed on the physical robot. It can be seen that the grippers are not working properly, because of the issues described in the report. However, it can be seen that the sequence of skills is performed accurate.
 
 ![](/videos/physical_robot_test.gif)
 
